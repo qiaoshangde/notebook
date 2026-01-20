@@ -1,16 +1,36 @@
 {
   "recentFiles": [
     {
+      "basename": "手撕",
+      "path": "手撕八股/手撕.md"
+    },
+    {
+      "basename": "hot100",
+      "path": "算法刷题/hot100.md"
+    },
+    {
+      "basename": "agent",
+      "path": "Agent/agent.md"
+    },
+    {
+      "basename": "Infer",
+      "path": "infer/Infer.md"
+    },
+    {
+      "basename": "RAG",
+      "path": "RAG/RAG.md"
+    },
+    {
       "basename": "测试用",
       "path": "测试用.md"
     },
     {
       "basename": "Transformer",
-      "path": "transformer手撕/Transformer.md"
+      "path": "手撕八股/transformer手撕/Transformer.md"
     },
     {
       "basename": "理解Transformer",
-      "path": "transformer手撕/理解Transformer.md"
+      "path": "手撕八股/transformer手撕/理解Transformer.md"
     },
     {
       "basename": "practice_1",
@@ -34,7 +54,7 @@
     },
     {
       "basename": "vit-v NET",
-      "path": "transformer手撕/vit-v/vit-v NET.md"
+      "path": "手撕八股/transformer手撕/vit-v/vit-v NET.md"
     },
     {
       "basename": "动手学习大模型",
