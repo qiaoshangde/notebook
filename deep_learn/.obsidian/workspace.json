@@ -4,17 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "b662a2f666d4a802",
+        "id": "94ef91a29940501a",
         "type": "tabs",
         "children": [
           {
-            "id": "1b3088c3e97a130e",
+            "id": "86830275ab7f2d02",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "vit-v/vit-v NET.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "新标签页"
+              "title": "vit-v NET"
             }
           }
         ]
@@ -123,7 +127,9 @@
               "type": "tag",
               "state": {
                 "sortOrder": "frequency",
-                "useHierarchy": true
+                "useHierarchy": false,
+                "showSearch": false,
+                "searchQuery": ""
               },
               "icon": "lucide-tags",
               "title": "标签"
@@ -134,9 +140,14 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {},
+              "state": {
+                "file": "vit-v/vit-v NET.md",
+                "followCursor": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
               "icon": "lucide-list",
-              "title": "大纲"
+              "title": "vit-v NET 的大纲"
             }
           },
           {
@@ -152,13 +163,23 @@
               "icon": "lucide-archive",
               "title": "添加笔记属性"
             }
+          },
+          {
+            "id": "cd68c1d4ed23f36c",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
+            }
           }
-        ]
+        ],
+        "currentTab": 5
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -170,11 +191,14 @@
       "templates:插入模板": false,
       "command-palette:打开命令面板": false,
       "workspaces:管理工作区布局": false,
-      "audio-recorder:开始/结束录音": false
+      "audio-recorder:开始/结束录音": false,
+      "obsidian-git:Open Git source control": false
     }
   },
-  "active": "6a5eb320d475b043",
+  "active": "86830275ab7f2d02",
   "lastOpenFiles": [
+    "a.md.md",
+    "vit-v/vit-v NET.md",
     "java/attachments/Pasted image 20250404160935.png",
     "java/attachments/Pasted image 20250404134917.png",
     "java/attachments/Pasted image 20250404132736.png",
@@ -188,13 +212,11 @@
     "点云笔记/笔记.assets/image-20241029205226742.png",
     "点云笔记/笔记.assets/image-20241029204841453.png",
     "点云笔记/笔记.assets/image-20241029204012283.png",
-    "点云笔记/笔记.assets/image-20241029203843237.png",
     "点云笔记/笔记.md",
     "点云笔记/笔记.assets",
     "点云笔记",
     "软件使用/我的第一篇笔记.md",
     "杂例（小知识）/神经网络画图工具.md",
-    "a.md.md",
     "未命名.base",
     "未命名.canvas",
     "大模型微调/LLMs    Zero to  Hero.md",
@@ -204,7 +226,6 @@
     "点云/点云基础知识.md",
     "毕业设计/配准：.md",
     "毕业设计/VoxelMorph/VoxelMorph.md",
-    "vit-v/vit-v NET.md",
     "杂例（小知识）/baseline.md",
     "毕业设计/ANTs/ANTs安装和使用.md",
     "杂例（小知识）/杂杂.md",
