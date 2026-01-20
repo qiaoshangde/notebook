@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "94ef91a29940501a",
+        "id": "63e5cfd7f6923063",
         "type": "tabs",
         "children": [
           {
-            "id": "86830275ab7f2d02",
+            "id": "fc6fb9b4f990a2e2",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "a.md.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "a.md"
+              "title": "新标签页"
             }
           }
         ]
@@ -65,13 +61,90 @@
             }
           },
           {
-            "id": "1a7654885a594f6c",
+            "id": "3356edf23540155d",
             "type": "leaf",
             "state": {
-              "type": "bookmarks",
+              "type": "recent-files",
               "state": {},
-              "icon": "lucide-bookmark",
-              "title": "书签"
+              "icon": "clock",
+              "title": "Recent Files"
+            }
+          },
+          {
+            "id": "cd68c1d4ed23f36c",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
+            }
+          },
+          {
+            "id": "4a0cf99042f01edd",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "followCursor": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "大纲"
+            }
+          }
+        ],
+        "currentTab": 3
+      },
+      {
+        "id": "ab52c96cd9267565",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "36fcaf231d4c575b",
+            "type": "leaf",
+            "state": {
+              "type": "keep-the-rhythm",
+              "state": {},
+              "icon": "calendar-days",
+              "title": "Keep the Rhythm"
+            }
+          },
+          {
+            "id": "5a8af198c654a73e",
+            "type": "leaf",
+            "state": {
+              "type": "localgraph",
+              "state": {
+                "options": {
+                  "collapse-filter": true,
+                  "search": "",
+                  "localJumps": 1,
+                  "localBacklinks": true,
+                  "localForelinks": true,
+                  "localInterlinks": false,
+                  "showTags": false,
+                  "showAttachments": false,
+                  "hideUnresolved": false,
+                  "collapse-color-groups": true,
+                  "colorGroups": [],
+                  "collapse-display": true,
+                  "showArrow": false,
+                  "textFadeMultiplier": 0,
+                  "nodeSizeMultiplier": 1,
+                  "lineSizeMultiplier": 1,
+                  "collapse-forces": true,
+                  "centerStrength": 0.518713248970312,
+                  "repelStrength": 10,
+                  "linkStrength": 1,
+                  "linkDistance": 250,
+                  "scale": 1,
+                  "close": true
+                }
+              },
+              "icon": "lucide-git-fork",
+              "title": "关系图谱"
             }
           }
         ]
@@ -87,6 +160,7 @@
       {
         "id": "d1a6ef8db6180afd",
         "type": "tabs",
+        "dimension": 40.25974025974026,
         "children": [
           {
             "id": "0fad585b31f5092b",
@@ -94,7 +168,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "pytorch练习/遇到的bug.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +177,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "遇到的bug 的反向链接列表"
+              "title": "反向链接"
             }
           },
           {
@@ -118,6 +191,16 @@
               },
               "icon": "links-going-out",
               "title": "出链"
+            }
+          },
+          {
+            "id": "1a7654885a594f6c",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "书签"
             }
           },
           {
@@ -136,21 +219,6 @@
             }
           },
           {
-            "id": "4a0cf99042f01edd",
-            "type": "leaf",
-            "state": {
-              "type": "outline",
-              "state": {
-                "file": "a.md.md",
-                "followCursor": true,
-                "showSearch": false,
-                "searchQuery": ""
-              },
-              "icon": "lucide-list",
-              "title": "a.md 的大纲"
-            }
-          },
-          {
             "id": "3caaf44fd2664d47",
             "type": "leaf",
             "state": {
@@ -163,23 +231,40 @@
               "icon": "lucide-archive",
               "title": "添加笔记属性"
             }
-          },
-          {
-            "id": "cd68c1d4ed23f36c",
-            "type": "leaf",
-            "state": {
-              "type": "git-view",
-              "state": {},
-              "icon": "git-pull-request",
-              "title": "Source Control"
-            }
           }
         ],
-        "currentTab": 5
+        "currentTab": 4
+      },
+      {
+        "id": "51deb8f25499109b",
+        "type": "tabs",
+        "dimension": 59.74025974025974,
+        "children": [
+          {
+            "id": "c69ec17849545441",
+            "type": "leaf",
+            "state": {
+              "type": "planner-timeline",
+              "state": {},
+              "icon": "calendar-with-checkmark",
+              "title": "Timeline"
+            }
+          },
+          {
+            "id": "483ec1a15bbf4d50",
+            "type": "leaf",
+            "state": {
+              "type": "smtcmp-chat-view",
+              "state": {},
+              "icon": "wand-sparkles",
+              "title": "Smart composer chat"
+            }
+          }
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 320.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -192,13 +277,28 @@
       "command-palette:打开命令面板": false,
       "workspaces:管理工作区布局": false,
       "audio-recorder:开始/结束录音": false,
-      "obsidian-git:Open Git source control": false
+      "obsidian-git:Open Git source control": false,
+      "keep-the-rhythm:Word Count Stats": false,
+      "templify:Templify 市场": false,
+      "smart-composer:Open smart composer": false,
+      "obsidian-day-planner:Open Timeline": false,
+      "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "86830275ab7f2d02",
+  "active": "cd68c1d4ed23f36c",
   "lastOpenFiles": [
-    "vit-v/vit-v NET.md",
+    "未命名.md",
     "a.md.md",
+    "2026-01-20.md",
+    "2025-11-12.md",
+    "四象限模板-20260120185329.md",
+    "康奈尔笔记模板-20260120185310.md",
+    "软件使用/我的第一篇笔记.md",
+    "大模型微调/动手学习大模型.md",
+    "未命名.canvas",
+    "未命名.base",
+    "pytorch练习/遇到的小的知识点.md",
+    "vit-v/vit-v NET.md",
     "java/attachments/Pasted image 20250404160935.png",
     "java/attachments/Pasted image 20250404134917.png",
     "java/attachments/Pasted image 20250404132736.png",
@@ -215,10 +315,7 @@
     "点云笔记/笔记.md",
     "点云笔记/笔记.assets",
     "点云笔记",
-    "软件使用/我的第一篇笔记.md",
     "杂例（小知识）/神经网络画图工具.md",
-    "未命名.base",
-    "未命名.canvas",
     "大模型微调/LLMs    Zero to  Hero.md",
     "毕业设计/代码.md",
     "毕业设计/配准学习/数据集.md",
@@ -232,17 +329,11 @@
     "杂例（小知识）/算力租界平台.md",
     "pytorch练习/pytorch代码.md",
     "毕业设计/配准学习/配准基础综述.md",
-    "大模型微调/理解deepseek.md",
     "未命名",
-    "大模型微调/大模型微调.md",
-    "大模型微调/动手学习大模型.md",
     "大模型微调/images",
     "大模型微调",
     "毕业设计/VoxelMorph/images",
     "毕业设计/VoxelMorph",
-    "transformer/VIT.md",
-    "transformer/Transformer.md",
-    "transformer/理解Transformer.md",
     "未命名 1.canvas"
   ]
 }

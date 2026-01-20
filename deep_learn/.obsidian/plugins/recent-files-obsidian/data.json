@@ -1,0 +1,28 @@
+{
+  "recentFiles": [
+    {
+      "basename": "a.md",
+      "path": "a.md.md"
+    },
+    {
+      "basename": "我的第一篇笔记",
+      "path": "软件使用/我的第一篇笔记.md"
+    },
+    {
+      "basename": "动手学习大模型",
+      "path": "大模型微调/动手学习大模型.md"
+    },
+    {
+      "basename": "遇到的小的知识点",
+      "path": "pytorch练习/遇到的小的知识点.md"
+    },
+    {
+      "basename": "vit-v NET",
+      "path": "vit-v/vit-v NET.md"
+    }
+  ],
+  "omittedPaths": [],
+  "omittedTags": [],
+  "updateOn": "file-open",
+  "omitBookmarks": false
+}
