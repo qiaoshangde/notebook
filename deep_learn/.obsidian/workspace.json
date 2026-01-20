@@ -1,0 +1,227 @@
+{
+  "main": {
+    "id": "9376456a5e339d08",
+    "type": "split",
+    "children": [
+      {
+        "id": "b662a2f666d4a802",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "1b3088c3e97a130e",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "新标签页"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "a5ad8f9c04d9aec1",
+    "type": "split",
+    "children": [
+      {
+        "id": "3a2b6e0c4e47be60",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "6a5eb320d475b043",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "文件列表"
+            }
+          },
+          {
+            "id": "6b4c3d69d5d9f136",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "搜索"
+            }
+          },
+          {
+            "id": "1a7654885a594f6c",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "书签"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "fd68a9d2938df27d",
+    "type": "split",
+    "children": [
+      {
+        "id": "d1a6ef8db6180afd",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "0fad585b31f5092b",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "pytorch练习/遇到的bug.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "遇到的bug 的反向链接列表"
+            }
+          },
+          {
+            "id": "f2f107f9db2a1df0",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "出链"
+            }
+          },
+          {
+            "id": "20e76941a3d2764e",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              },
+              "icon": "lucide-tags",
+              "title": "标签"
+            }
+          },
+          {
+            "id": "4a0cf99042f01edd",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {},
+              "icon": "lucide-list",
+              "title": "大纲"
+            }
+          },
+          {
+            "id": "3caaf44fd2664d47",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "添加笔记属性"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "bases:新建数据库": false,
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false,
+      "workspaces:管理工作区布局": false,
+      "audio-recorder:开始/结束录音": false
+    }
+  },
+  "active": "6a5eb320d475b043",
+  "lastOpenFiles": [
+    "java/attachments/Pasted image 20250404160935.png",
+    "java/attachments/Pasted image 20250404134917.png",
+    "java/attachments/Pasted image 20250404132736.png",
+    "java/attachments/Pasted image 20250404132028.png",
+    "java/苍穹外卖.md",
+    "java/attachments",
+    "java",
+    "点云笔记/笔记.assets/image-20241031191627765.png",
+    "点云笔记/笔记.assets/image-20241029205725488.png",
+    "点云笔记/笔记.assets/image-20241029205300223.png",
+    "点云笔记/笔记.assets/image-20241029205226742.png",
+    "点云笔记/笔记.assets/image-20241029204841453.png",
+    "点云笔记/笔记.assets/image-20241029204012283.png",
+    "点云笔记/笔记.assets/image-20241029203843237.png",
+    "点云笔记/笔记.md",
+    "点云笔记/笔记.assets",
+    "点云笔记",
+    "软件使用/我的第一篇笔记.md",
+    "杂例（小知识）/神经网络画图工具.md",
+    "a.md.md",
+    "未命名.base",
+    "未命名.canvas",
+    "大模型微调/LLMs    Zero to  Hero.md",
+    "毕业设计/代码.md",
+    "毕业设计/配准学习/数据集.md",
+    "毕业设计/配准学习/配准基础入门1.md",
+    "点云/点云基础知识.md",
+    "毕业设计/配准：.md",
+    "毕业设计/VoxelMorph/VoxelMorph.md",
+    "vit-v/vit-v NET.md",
+    "杂例（小知识）/baseline.md",
+    "毕业设计/ANTs/ANTs安装和使用.md",
+    "杂例（小知识）/杂杂.md",
+    "杂例（小知识）/算力租界平台.md",
+    "pytorch练习/pytorch代码.md",
+    "毕业设计/配准学习/配准基础综述.md",
+    "大模型微调/理解deepseek.md",
+    "未命名",
+    "大模型微调/大模型微调.md",
+    "大模型微调/动手学习大模型.md",
+    "大模型微调/images",
+    "大模型微调",
+    "毕业设计/VoxelMorph/images",
+    "毕业设计/VoxelMorph",
+    "transformer/VIT.md",
+    "transformer/Transformer.md",
+    "transformer/理解Transformer.md",
+    "未命名 1.canvas"
+  ]
+}
