@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "测试用",
+      "path": "测试用.md"
+    },
+    {
       "basename": "手撕",
       "path": "手撕八股/手撕.md"
     },
@@ -19,10 +23,6 @@
     {
       "basename": "RAG",
       "path": "RAG/RAG.md"
-    },
-    {
-      "basename": "测试用",
-      "path": "测试用.md"
     },
     {
       "basename": "Transformer",

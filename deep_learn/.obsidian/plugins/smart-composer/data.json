@@ -27,7 +27,9 @@
     },
     {
       "type": "deepseek",
-      "id": "deepseek"
+      "id": "deepseek",
+      "baseUrl": "https://api.deepseek.com",
+      "apiKey": "sk-40487ff5789c4dbaa6ba9a9ab74cd864"
     },
     {
       "type": "mistral",
@@ -204,8 +206,8 @@
       "dimension": 1024
     }
   ],
-  "chatModelId": "claude-opus-4.5 (plan)",
-  "applyModelId": "gpt-4.1-mini",
+  "chatModelId": "deepseek-chat",
+  "applyModelId": "deepseek-chat",
   "embeddingModelId": "openai/text-embedding-3-small",
   "systemPrompt": "",
   "ragOptions": {
