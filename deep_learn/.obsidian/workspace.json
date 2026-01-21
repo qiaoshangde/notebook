@@ -11,10 +11,14 @@
             "id": "4d26b606a0abf7e8",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "minimind/minimind学习笔记.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "新标签页"
+              "title": "minimind学习笔记"
             }
           }
         ]
@@ -284,8 +288,10 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "c69ec17849545441",
+  "active": "4d26b606a0abf7e8",
   "lastOpenFiles": [
+    "minimind/minimind学习笔记.md",
+    "minimind",
     "测试用.md",
     "手撕八股/手撕.md",
     "项目",
@@ -325,7 +331,6 @@
     "java/attachments/Pasted image 20250404132736.png",
     "java/attachments/Pasted image 20250404132028.png",
     "java/attachments",
-    "java",
     "点云笔记/笔记.assets/image-20241031191627765.png",
     "点云笔记/笔记.assets/image-20241029205725488.png",
     "点云笔记/笔记.assets/image-20241029205300223.png",
