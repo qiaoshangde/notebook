@@ -150,7 +150,7 @@
       },
       {
         "date": "2026-01-20",
-        "filePath": "未命名.md",
+        "filePath": "list/list.md",
         "wordCountStart": 0,
         "charCountStart": 0,
         "changes": [
@@ -386,6 +386,30 @@
         "charCountStart": 0,
         "changes": [],
         "id": 29
+      },
+      {
+        "date": "2026-01-22",
+        "filePath": "list/list.md",
+        "wordCountStart": 0,
+        "charCountStart": 0,
+        "changes": [],
+        "id": 30
+      },
+      {
+        "date": "2026-01-22",
+        "filePath": "测试用.md",
+        "wordCountStart": 0,
+        "charCountStart": 0,
+        "changes": [],
+        "id": 31
+      },
+      {
+        "date": "2026-01-22",
+        "filePath": "点云笔记/笔记.md",
+        "wordCountStart": 233,
+        "charCountStart": 4794,
+        "changes": [],
+        "id": 32
       }
     ]
   }

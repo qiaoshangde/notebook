@@ -1,6 +1,22 @@
 {
   "recentFiles": [
     {
+      "basename": "list",
+      "path": "list/list.md"
+    },
+    {
+      "basename": "测试用",
+      "path": "测试用.md"
+    },
+    {
+      "basename": "笔记",
+      "path": "点云笔记/笔记.md"
+    },
+    {
+      "basename": "学习流程",
+      "path": "minimind/学习流程.md"
+    },
+    {
       "basename": "杂",
       "path": "minimind/杂.md"
     },
@@ -13,16 +29,8 @@
       "path": "minimind/minimind学习笔记.md"
     },
     {
-      "basename": "学习流程",
-      "path": "minimind/学习流程.md"
-    },
-    {
       "basename": "评估",
       "path": "minimind/评估.md"
-    },
-    {
-      "basename": "测试用",
-      "path": "测试用.md"
     },
     {
       "basename": "手撕",
@@ -67,10 +75,6 @@
     {
       "basename": "MarkDown语言的学习",
       "path": "软件使用/MarkDown语言的学习.md"
-    },
-    {
-      "basename": "笔记",
-      "path": "点云笔记/笔记.md"
     },
     {
       "basename": "vit-v NET",

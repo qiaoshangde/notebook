@@ -4,17 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "6555edfda1c52698",
+        "id": "6d939918590fbb94",
         "type": "tabs",
         "children": [
           {
-            "id": "f13b19a0cb4b576f",
+            "id": "bbed647d1f5c3d56",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "list/list.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "新标签页"
+              "title": "list"
             }
           }
         ]
@@ -94,7 +98,8 @@
               "title": "大纲"
             }
           }
-        ]
+        ],
+        "currentTab": 3
       },
       {
         "id": "ab52c96cd9267565",
@@ -116,6 +121,7 @@
             "state": {
               "type": "localgraph",
               "state": {
+                "file": "list/list.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -143,7 +149,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "关系图谱"
+              "title": "list 的关系图"
             }
           }
         ]
@@ -284,15 +290,22 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "f13b19a0cb4b576f",
+  "active": "cd68c1d4ed23f36c",
   "lastOpenFiles": [
+    "list/images/Pasted image 20260122201128.png",
+    "list/images/Pasted image 20260122201040.png",
+    "list/list.md",
+    "list/images/Pasted image 20260122201117.png",
+    "list",
+    "list/images",
+    "测试用.md",
+    "点云笔记/笔记.md",
+    "minimind/学习流程.md",
     "minimind/杂.md",
     "minimind/DDP.md",
     "minimind/minimind学习笔记.md",
-    "minimind/学习流程.md",
     "minimind/评估.md",
     "minimind",
-    "测试用.md",
     "手撕八股/手撕.md",
     "项目",
     "算法刷题/hot100.md",
@@ -315,24 +328,17 @@
     "软件使用/practice_1.md",
     "软件使用/我的第二篇笔记.md",
     "软件使用/我的第一篇笔记.md",
-    "未命名.md",
     "软件使用/MarkDown语言的学习.md",
-    "点云笔记/笔记.md",
     "手撕八股/transformer手撕/vit-v/vit-v NET.md",
-    "2026-01-20.md",
     "未命名.canvas",
-    "未命名.base",
     "java/attachments/Pasted image 20250404160935.png",
     "java/attachments/Pasted image 20250404134917.png",
     "java/attachments/Pasted image 20250404132736.png",
     "java/attachments/Pasted image 20250404132028.png",
-    "java/attachments",
     "点云笔记/笔记.assets/image-20241031191627765.png",
     "点云笔记/笔记.assets/image-20241029205725488.png",
     "点云笔记/笔记.assets/image-20241029205300223.png",
     "点云笔记/笔记.assets/image-20241029205226742.png",
-    "点云笔记/笔记.assets/image-20241029204841453.png",
-    "点云笔记/笔记.assets/image-20241029204012283.png",
     "未命名 1.canvas"
   ]
 }
