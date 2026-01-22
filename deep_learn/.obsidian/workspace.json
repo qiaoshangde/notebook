@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "46b6c5d2c8e1be73",
+        "id": "25115b9946601747",
         "type": "tabs",
         "children": [
           {
-            "id": "4d26b606a0abf7e8",
+            "id": "e3cdd6330816a235",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "minimind/minimind学习笔记.md",
+                "file": "minimind/DDP.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "minimind学习笔记"
+              "title": "DDP"
             }
           }
         ]
@@ -288,8 +288,9 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "4d26b606a0abf7e8",
+  "active": "e3cdd6330816a235",
   "lastOpenFiles": [
+    "minimind/DDP.md",
     "minimind/minimind学习笔记.md",
     "minimind",
     "测试用.md",
@@ -323,7 +324,6 @@
     "2025-11-12.md",
     "四象限模板-20260120185329.md",
     "康奈尔笔记模板-20260120185310.md",
-    "模型微调/动手学习大模型.md",
     "未命名.canvas",
     "未命名.base",
     "java/attachments/Pasted image 20250404160935.png",
