@@ -348,20 +348,6 @@
         "charCountStart": 0,
         "changes": [],
         "id": 25
-      },
-      {
-        "date": "2026-01-22",
-        "filePath": "minimind/minimind学习笔记.md",
-        "wordCountStart": 12,
-        "charCountStart": 131,
-        "changes": [
-          {
-            "timeKey": "14:20",
-            "w": 0,
-            "c": 0
-          }
-        ],
-        "id": 26
       }
     ]
   }
