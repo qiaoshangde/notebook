@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "bb4f798c98a9e85e",
+        "id": "e51039671ce3b4f4",
         "type": "tabs",
         "children": [
           {
-            "id": "ffd31b3285c81de0",
+            "id": "ad67e5d5e9f8cab3",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -284,8 +284,10 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "ffd31b3285c81de0",
+  "active": "6a5eb320d475b043",
   "lastOpenFiles": [
+    "minimind/学习流程.md",
+    "杂乱小知识/transformers.md",
     "list/list.md",
     "list/images/Pasted image 20260122201128.png",
     "list/images/Pasted image 20260122201040.png",
@@ -294,7 +296,6 @@
     "list/images",
     "测试用.md",
     "点云笔记/笔记.md",
-    "minimind/学习流程.md",
     "minimind/杂.md",
     "minimind/DDP.md",
     "minimind/minimind学习笔记.md",
