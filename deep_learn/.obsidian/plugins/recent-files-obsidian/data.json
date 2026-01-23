@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "测试用",
+      "path": "测试用.md"
+    },
+    {
       "basename": "transformers",
       "path": "杂乱小知识/transformers.md"
     },
@@ -11,10 +15,6 @@
     {
       "basename": "list",
       "path": "list/list.md"
-    },
-    {
-      "basename": "测试用",
-      "path": "测试用.md"
     },
     {
       "basename": "笔记",

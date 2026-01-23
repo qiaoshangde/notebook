@@ -11,10 +11,14 @@
             "id": "ad67e5d5e9f8cab3",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "测试用.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "新标签页"
+              "title": "测试用"
             }
           }
         ]
@@ -284,10 +288,10 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "6a5eb320d475b043",
+  "active": "ad67e5d5e9f8cab3",
   "lastOpenFiles": [
-    "minimind/学习流程.md",
     "杂乱小知识/transformers.md",
+    "minimind/学习流程.md",
     "list/list.md",
     "list/images/Pasted image 20260122201128.png",
     "list/images/Pasted image 20260122201040.png",

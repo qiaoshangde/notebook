@@ -434,6 +434,14 @@
         "charCountStart": 0,
         "changes": [],
         "id": 35
+      },
+      {
+        "date": "2026-01-23",
+        "filePath": "测试用.md",
+        "wordCountStart": 0,
+        "charCountStart": 0,
+        "changes": [],
+        "id": 36
       }
     ]
   }
