@@ -1,43 +1,46 @@
-
-1、蒸馏
-2、llama
-3、qwen
-4、deepseek
-5、clip
-6、llama factory
-7、poft
-8、paged attention
-9、显存计算
-
-
+以下都要会
+- [ ] 1、蒸馏
+- [ ] 2、llama
+- [ ] 3、qwen
+- [ ] 4、deepseek
+- [ ] 5、clip
+- [ ] 6、llama factory
+- [ ] 7、peft
+- [ ] 8、paged attention
+- [ ] 9、显存计算
+- [ ] 10、hello agent
+- [ ] 11、熟练掌握dify和coze
 
 以下都要会手撕
-hot-100
-1、lora
-2、dpo
-3、ppo
-4、grpo
-5、spo
-6、rlhf
-7、transformer
-8、clip
-8、bert
-9、moe
-10、flash attention
-11、kv-cache
-12、MQA / GQA
-13、MHA
-14、旋转位置编码
-
-
-hello agent
-
+**hot-100**
+- [ ] 1、lora
+- [ ] 2、dpo
+- [ ] 3、ppo
+- [ ] 4、grpo
+- [ ] 5、spo
+- [ ] 6、rlhf
+- [ ] 7、transformer
+- [ ] 8、clip
+- [ ] 9、bert
+- [ ] 10、flash attention
+- [ ] 11、kv-cache
+- [ ] 12、MQA / GQA
+- [ ] 13、MHA
+- [ ] 14、旋转位置编码
+- [ ] 15、moe
 
 
 
 
 这个项目是DeepSeek R1-Zero的最小复制（也要学习一下）
 [Jiayi-Pan/TinyZero: Minimal reproduction of DeepSeek R1-Zero](https://github.com/Jiayi-Pan/TinyZero)
+
+
+infer （vllm的小复现）
+[Nano-vLLM](https://github.com/liguodongiot/nano-vllm)
+
+
+
 
 
 这个项目包含
@@ -51,12 +54,6 @@ hello agent
 
 这个里面有很多大模型应用的项目（可以用来找项目）
 [Shubhamsaboo/awesome-llm-apps：包含 OpenAI、Anthropic、Gemini 和开源模型的优秀 LLM 应用集，包含 AI 代理和 RAG。](https://github.com/Shubhamsaboo/awesome-llm-apps?tab=readme-ov-file)
-
-
-
-
-infer
-[Nano-vLLM](https://github.com/liguodongiot/nano-vllm)
 
 
 
@@ -78,7 +75,6 @@ kaggle竞赛
 
 
 
-熟练掌握dify和coze
 
 
 cs336

@@ -1,8 +1,64 @@
 {
   "recentFiles": [
     {
+      "basename": "list",
+      "path": "list/list.md"
+    },
+    {
+      "basename": "Pasted image 20260122201128",
+      "path": "list/images/Pasted image 20260122201128.png"
+    },
+    {
+      "basename": "位置编码",
+      "path": "手撕八股/位置编码.md"
+    },
+    {
+      "basename": "Transformer",
+      "path": "手撕八股/transformer手撕/Transformer.md"
+    },
+    {
+      "basename": "VIT",
+      "path": "手撕八股/transformer手撕/VIT.md"
+    },
+    {
+      "basename": "vit-v NET",
+      "path": "手撕八股/transformer手撕/vit-v/vit-v NET.md"
+    },
+    {
+      "basename": "Pasted image 20241211145909",
+      "path": "手撕八股/transformer手撕/images/Pasted image 20241211145909.png"
+    },
+    {
+      "basename": "Pasted image 20241211145741",
+      "path": "手撕八股/transformer手撕/images/Pasted image 20241211145741.png"
+    },
+    {
+      "basename": "Pasted image 20241210144200",
+      "path": "手撕八股/transformer手撕/images/Pasted image 20241210144200.png"
+    },
+    {
       "basename": "测试用",
       "path": "测试用.md"
+    },
+    {
+      "basename": "理解Transformer",
+      "path": "手撕八股/transformer手撕/理解Transformer.md"
+    },
+    {
+      "basename": "手撕",
+      "path": "手撕八股/手撕.md"
+    },
+    {
+      "basename": "minimind学习笔记",
+      "path": "minimind/minimind学习笔记.md"
+    },
+    {
+      "basename": "wandb的使用",
+      "path": "minimind/wandb的使用.md"
+    },
+    {
+      "basename": "杂",
+      "path": "minimind/杂.md"
     },
     {
       "basename": "transformers",
@@ -13,32 +69,16 @@
       "path": "minimind/学习流程.md"
     },
     {
-      "basename": "list",
-      "path": "list/list.md"
-    },
-    {
       "basename": "笔记",
       "path": "点云笔记/笔记.md"
-    },
-    {
-      "basename": "杂",
-      "path": "minimind/杂.md"
     },
     {
       "basename": "DDP",
       "path": "minimind/DDP.md"
     },
     {
-      "basename": "minimind学习笔记",
-      "path": "minimind/minimind学习笔记.md"
-    },
-    {
       "basename": "评估",
       "path": "minimind/评估.md"
-    },
-    {
-      "basename": "手撕",
-      "path": "手撕八股/手撕.md"
     },
     {
       "basename": "hot100",
@@ -57,14 +97,6 @@
       "path": "RAG/RAG.md"
     },
     {
-      "basename": "Transformer",
-      "path": "手撕八股/transformer手撕/Transformer.md"
-    },
-    {
-      "basename": "理解Transformer",
-      "path": "手撕八股/transformer手撕/理解Transformer.md"
-    },
-    {
       "basename": "practice_1",
       "path": "软件使用/practice_1.md"
     },
@@ -79,10 +111,6 @@
     {
       "basename": "MarkDown语言的学习",
       "path": "软件使用/MarkDown语言的学习.md"
-    },
-    {
-      "basename": "vit-v NET",
-      "path": "手撕八股/transformer手撕/vit-v/vit-v NET.md"
     },
     {
       "basename": "动手学习大模型",
