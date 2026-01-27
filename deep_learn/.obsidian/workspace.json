@@ -291,8 +291,13 @@
   },
   "active": "06f1828472f32b77",
   "lastOpenFiles": [
-    "prompt.md",
+    "images/图2.png",
+    "images/Pasted image 20260127223053.png",
+    "images",
+    "minimind/minimind学习笔记.md",
+    "minimind/杂.md",
     "测试用.md",
+    "prompt.md",
     "手撕八股/位置编码.md",
     "list/list.md",
     "手撕八股/速记.md",
@@ -306,9 +311,7 @@
     "未命名",
     "手撕八股/transformer手撕/理解Transformer.md",
     "手撕八股/手撕.md",
-    "minimind/minimind学习笔记.md",
     "minimind/wandb的使用.md",
-    "minimind/杂.md",
     "杂乱小知识/transformers.md",
     "minimind/学习流程.md",
     "list/images/Pasted image 20260122201040.png",
@@ -331,13 +334,10 @@
     "pytorch练习",
     "java/苍穹外卖.md",
     "Agent",
-    "RAG",
-    "pytorch练习/遇到的bug.md",
     "未命名.canvas",
     "java/attachments/Pasted image 20250404160935.png",
     "java/attachments/Pasted image 20250404134917.png",
     "java/attachments/Pasted image 20250404132736.png",
-    "java/attachments/Pasted image 20250404132028.png",
     "未命名 1.canvas"
   ]
 }

@@ -5,6 +5,14 @@
       "path": "测试用.md"
     },
     {
+      "basename": "minimind学习笔记",
+      "path": "minimind/minimind学习笔记.md"
+    },
+    {
+      "basename": "杂",
+      "path": "minimind/杂.md"
+    },
+    {
       "basename": "prompt",
       "path": "prompt.md"
     },
@@ -57,16 +65,8 @@
       "path": "手撕八股/手撕.md"
     },
     {
-      "basename": "minimind学习笔记",
-      "path": "minimind/minimind学习笔记.md"
-    },
-    {
       "basename": "wandb的使用",
       "path": "minimind/wandb的使用.md"
-    },
-    {
-      "basename": "杂",
-      "path": "minimind/杂.md"
     },
     {
       "basename": "transformers",
