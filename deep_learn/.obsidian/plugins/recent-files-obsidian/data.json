@@ -1,16 +1,28 @@
 {
   "recentFiles": [
     {
-      "basename": "list",
-      "path": "list/list.md"
+      "basename": "测试用",
+      "path": "测试用.md"
     },
     {
-      "basename": "Pasted image 20260122201128",
-      "path": "list/images/Pasted image 20260122201128.png"
+      "basename": "prompt",
+      "path": "prompt.md"
     },
     {
       "basename": "位置编码",
       "path": "手撕八股/位置编码.md"
+    },
+    {
+      "basename": "list",
+      "path": "list/list.md"
+    },
+    {
+      "basename": "速记",
+      "path": "手撕八股/速记.md"
+    },
+    {
+      "basename": "Pasted image 20260122201128",
+      "path": "list/images/Pasted image 20260122201128.png"
     },
     {
       "basename": "Transformer",
@@ -35,10 +47,6 @@
     {
       "basename": "Pasted image 20241210144200",
       "path": "手撕八股/transformer手撕/images/Pasted image 20241210144200.png"
-    },
-    {
-      "basename": "测试用",
-      "path": "测试用.md"
     },
     {
       "basename": "理解Transformer",
