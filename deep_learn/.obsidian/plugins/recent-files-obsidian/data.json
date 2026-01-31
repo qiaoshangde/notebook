@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "prompt",
+      "path": "prompt.md"
+    },
+    {
       "basename": "测试用",
       "path": "测试用.md"
     },
@@ -11,10 +15,6 @@
     {
       "basename": "杂",
       "path": "minimind/杂.md"
-    },
-    {
-      "basename": "prompt",
-      "path": "prompt.md"
     },
     {
       "basename": "位置编码",
