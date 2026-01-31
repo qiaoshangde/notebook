@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "hot100",
+      "path": "算法刷题/hot100.md"
+    },
+    {
       "basename": "寒假计划",
       "path": "list/寒假计划.md"
     },
@@ -91,10 +95,6 @@
     {
       "basename": "评估",
       "path": "minimind/评估.md"
-    },
-    {
-      "basename": "hot100",
-      "path": "算法刷题/hot100.md"
     },
     {
       "basename": "agent",
