@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "算法刷题/hot100.md",
+                "file": "list/寒假计划.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "hot100"
+              "title": "寒假计划"
             }
           }
         ]
@@ -90,17 +90,16 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "算法刷题/hot100.md",
+                "file": "list/寒假计划.md",
                 "followCursor": true,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "hot100 的大纲"
+              "title": "寒假计划 的大纲"
             }
           }
-        ],
-        "currentTab": 4
+        ]
       },
       {
         "id": "ab52c96cd9267565",
@@ -293,6 +292,8 @@
   },
   "active": "a90534917360e27f",
   "lastOpenFiles": [
+    "list/list.md",
+    "算法刷题/hot100.md",
     "算法刷题/images/Pasted image 20260202135053.png",
     "算法刷题/images/Pasted image 20260202131218.png",
     "算法刷题/images/Pasted image 20260201171413.png",
@@ -303,7 +304,6 @@
     "算法刷题/images/Pasted image 20260201140345.png",
     "算法刷题/images/Pasted image 20260201134457.png",
     "算法刷题/images/Pasted image 20260201133705.png",
-    "算法刷题/images/Pasted image 20260131144041.png",
     "算法刷题/images",
     "list/寒假计划.md",
     "prompt.md",
@@ -312,7 +312,6 @@
     "minimind/minimind学习笔记.md",
     "minimind/杂.md",
     "手撕八股/位置编码.md",
-    "list/list.md",
     "手撕八股/速记.md",
     "手撕八股/transformer手撕/Transformer.md",
     "手撕八股/transformer手撕/VIT.md",
@@ -330,7 +329,6 @@
     "minimind/评估.md",
     "minimind",
     "项目",
-    "算法刷题/hot100.md",
     "Agent/agent.md",
     "infer/Infer.md",
     "RAG/RAG.md",
