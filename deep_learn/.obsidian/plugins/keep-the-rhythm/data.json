@@ -634,6 +634,22 @@
         "charCountStart": 62,
         "changes": [],
         "id": 60
+      },
+      {
+        "date": "2026-02-03",
+        "filePath": "list/寒假计划.md",
+        "wordCountStart": 12,
+        "charCountStart": 100,
+        "changes": [],
+        "id": 61
+      },
+      {
+        "date": "2026-02-03",
+        "filePath": "算法刷题/hot100.md",
+        "wordCountStart": 941,
+        "charCountStart": 14469,
+        "changes": [],
+        "id": 62
       }
     ]
   }
