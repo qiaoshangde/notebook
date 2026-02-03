@@ -90,17 +90,17 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "list/寒假计划.md",
+                "file": "算法刷题/hot100.md",
                 "followCursor": true,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "寒假计划 的大纲"
+              "title": "hot100 的大纲"
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 4
       },
       {
         "id": "ab52c96cd9267565",
@@ -291,8 +291,14 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "3356edf23540155d",
+  "active": "a90534917360e27f",
   "lastOpenFiles": [
+    "算法刷题/images/Pasted image 20260203144147.png",
+    "算法刷题/images/Pasted image 20260203143243.png",
+    "算法刷题/images/Pasted image 20260203142436.png",
+    "算法刷题/images/Pasted image 20260203141755.png",
+    "算法刷题/images/Pasted image 20260203140940.png",
+    "算法刷题/images/Pasted image 20260203140331.png",
     "list/寒假计划.md",
     "list/list.md",
     "算法刷题/hot100.md",
@@ -301,11 +307,6 @@
     "算法刷题/images/Pasted image 20260201171413.png",
     "算法刷题/images/Pasted image 20260201165945.png",
     "算法刷题/images/Pasted image 20260201164831.png",
-    "算法刷题/images/Pasted image 20260201150207.png",
-    "算法刷题/images/Pasted image 20260201142238.png",
-    "算法刷题/images/Pasted image 20260201140345.png",
-    "算法刷题/images/Pasted image 20260201134457.png",
-    "算法刷题/images/Pasted image 20260201133705.png",
     "算法刷题/images",
     "prompt.md",
     "测试用.md",
