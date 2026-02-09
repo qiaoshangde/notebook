@@ -67,7 +67,9 @@
     "highestStreak": 0,
     "highestStreakStartDate": "",
     "highestStreakEndDate": "",
-    "daysWithCompletedGoal": [],
+    "daysWithCompletedGoal": [
+      "2026-02-09"
+    ],
     "dailyActivity": [
       {
         "date": "2026-01-20",
@@ -672,7 +674,13 @@
         "filePath": "算法刷题/hot100.md",
         "wordCountStart": 2110,
         "charCountStart": 29606,
-        "changes": [],
+        "changes": [
+          {
+            "timeKey": "16:25",
+            "w": 542,
+            "c": 6731
+          }
+        ],
         "id": 65
       }
     ]
