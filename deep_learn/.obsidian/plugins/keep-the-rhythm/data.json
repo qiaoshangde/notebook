@@ -704,6 +704,36 @@
           }
         ],
         "id": 67
+      },
+      {
+        "date": "2026-03-03",
+        "filePath": "list/寒假计划.md",
+        "wordCountStart": 12,
+        "charCountStart": 100,
+        "changes": [
+          {
+            "timeKey": "19:40",
+            "w": -12,
+            "c": -100
+          }
+        ],
+        "id": 68
+      },
+      {
+        "date": "2026-03-03",
+        "filePath": "list/list.md",
+        "wordCountStart": 335,
+        "charCountStart": 2644,
+        "changes": [],
+        "id": 69
+      },
+      {
+        "date": "2026-03-03",
+        "filePath": "list/明天计划.md",
+        "wordCountStart": 0,
+        "charCountStart": 0,
+        "changes": [],
+        "id": 70
       }
     ]
   }
