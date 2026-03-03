@@ -696,7 +696,13 @@
         "filePath": "算法刷题/hot100.md",
         "wordCountStart": 2971,
         "charCountStart": 40085,
-        "changes": [],
+        "changes": [
+          {
+            "timeKey": "19:40",
+            "w": 430,
+            "c": 4452
+          }
+        ],
         "id": 67
       }
     ]
