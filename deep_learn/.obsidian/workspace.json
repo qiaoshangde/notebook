@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "8bd9c6ef0b630a6d",
+        "id": "b20ce38e0242a632",
         "type": "tabs",
         "children": [
           {
-            "id": "e8b5738a1abd2a64",
+            "id": "e7e9649648cace9d",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -86,13 +86,12 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "list/list.md",
                 "followCursor": true,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "list 的大纲"
+              "title": "大纲"
             }
           }
         ]
@@ -286,8 +285,14 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "e8b5738a1abd2a64",
+  "active": "6a5eb320d475b043",
   "lastOpenFiles": [
+    "算法刷题/hot100.md",
+    "算法刷题/images/Pasted image 20260304201715.png",
+    "算法刷题/images/Pasted image 20260304201134.png",
+    "算法刷题/images/Pasted image 20260304200833.png",
+    "算法刷题/images/Pasted image 20260304200201.png",
+    "算法刷题/images/Pasted image 20260304194454.png",
     "prompt.md",
     "杂乱小知识/transformers.md",
     "杂乱小知识/uv.md",
@@ -299,11 +304,6 @@
     "杂乱小知识/img",
     "杂乱小知识/image/Agent/1759129523652.png",
     "杂乱小知识/image/Agent/1759129200763.png",
-    "杂乱小知识/image/Agent/1759128951263.png",
-    "杂乱小知识/image/Agent/1759124482271.png",
-    "杂乱小知识/image/Agent/1759124005677.png",
-    "杂乱小知识/image/Agent/1759123997061.png",
-    "杂乱小知识/image/Agent/1759123084064.png",
     "杂乱小知识/image/Agent",
     "杂乱小知识/image",
     "杂乱小知识/conda/conda.assets",
@@ -327,13 +327,11 @@
     "list/list.md",
     "list/明天计划.md",
     "list/寒假计划.md",
-    "算法刷题/hot100.md",
     "测试用.md",
     "minimind/minimind学习笔记.md",
     "minimind/杂.md",
     "手撕八股/transformer手撕/Transformer.md",
     "手撕八股/transformer手撕/VIT.md",
-    "手撕八股/transformer手撕/vit-v/vit-v NET.md",
     "未命名.canvas",
     "未命名 1.canvas"
   ]
