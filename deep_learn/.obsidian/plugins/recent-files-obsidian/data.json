@@ -1,8 +1,20 @@
 {
   "recentFiles": [
     {
+      "basename": "prompt",
+      "path": "prompt.md"
+    },
+    {
+      "basename": "transformers",
+      "path": "杂乱小知识/transformers.md"
+    },
+    {
       "basename": "uv",
       "path": "杂乱小知识/uv.md"
+    },
+    {
+      "basename": "Agent",
+      "path": "杂乱小知识/Agent.md"
     },
     {
       "basename": "2026.3.4  八股",
@@ -39,10 +51,6 @@
     {
       "basename": "hot100",
       "path": "算法刷题/hot100.md"
-    },
-    {
-      "basename": "prompt",
-      "path": "prompt.md"
     },
     {
       "basename": "测试用",
@@ -91,10 +99,6 @@
     {
       "basename": "wandb的使用",
       "path": "minimind/wandb的使用.md"
-    },
-    {
-      "basename": "transformers",
-      "path": "杂乱小知识/transformers.md"
     },
     {
       "basename": "学习流程",
