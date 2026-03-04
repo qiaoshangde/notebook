@@ -88,3 +88,42 @@ uv python install 3.11
 
 
 `deactivate` 是用于**退出当前激活的 Python 虚拟环境**的命令。
+
+
+
+```bash
+
+# 1. 初始化项目
+$ uv init weba pp
+$ cd webapp
+
+# 2. 添加生产依赖（会写入 pyproject.toml）
+$ uv add fastapi uvicorn
+✅ 更新 pyproject.toml
+✅ 生成 uv.lock
+✅ 安装到 .venv
+
+# 3. 添加开发依赖（也会写入，但标记为 dev）
+$ uv add --dev pytest black ruff
+✅ 更新 pyproject.toml（添加 [tool.uv.dev-dependencies]）
+
+# 4. 临时测试一个包（不记录）
+$ uv pip install ipython  # 临时用一下，不污染项目配置
+
+# 5. 查看最终的 pyproject.toml
+$ cat pyproject.toml
+[project]
+name = "webapp"
+version = "0.1.0"
+dependencies = [
+    "fastapi>=0.104.0",
+    "uvicorn>=0.24.0",
+]
+
+[tool.uv]
+dev-dependencies = [
+    "pytest>=7.4.0",
+    "black>=23.0.0",
+    "ruff>=0.1.0",
+]
+```
