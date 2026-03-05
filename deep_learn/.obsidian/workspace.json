@@ -4,17 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "b20ce38e0242a632",
+        "id": "a466d725e866d6b5",
         "type": "tabs",
         "children": [
           {
-            "id": "e7e9649648cace9d",
+            "id": "44ca8dce884940f3",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "list/list.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "新标签页"
+              "title": "list"
             }
           }
         ]
@@ -86,12 +90,13 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "list/list.md",
                 "followCursor": true,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "大纲"
+              "title": "list 的大纲"
             }
           }
         ]
@@ -285,15 +290,30 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "6a5eb320d475b043",
+  "active": "44ca8dce884940f3",
   "lastOpenFiles": [
+    "杂乱小知识/点云笔记/笔记.md",
+    "手撕八股/每日笔记/2026.3.4  八股.md",
+    "list/list.md",
+    "Agent/agent.md",
+    "项目/未命名.md",
+    "minimind/评估.md",
+    "minimind/学习流程.md",
+    "minimind/杂.md",
+    "minimind/DDP.md",
+    "minimind/minimind学习笔记.md",
+    "minimind/wandb的使用.md",
+    "RAG/RAG.md",
+    "杂乱小知识/prompt.md",
+    "测试用.md",
+    "infer/Infer.md",
+    "list/明天计划.md",
     "算法刷题/hot100.md",
     "算法刷题/images/Pasted image 20260304201715.png",
     "算法刷题/images/Pasted image 20260304201134.png",
     "算法刷题/images/Pasted image 20260304200833.png",
     "算法刷题/images/Pasted image 20260304200201.png",
     "算法刷题/images/Pasted image 20260304194454.png",
-    "prompt.md",
     "杂乱小知识/transformers.md",
     "杂乱小知识/uv.md",
     "杂乱小知识/Agent.md",
@@ -318,20 +338,6 @@
     "杂乱小知识/notebook/conda/conda.md",
     "杂乱小知识/notebook/思考.md",
     "杂乱小知识/notebook/Agent.md",
-    "手撕八股/每日笔记/2026.3.4  八股.md",
-    "手撕八股/手撕.md",
-    "手撕八股/速记.md",
-    "手撕八股/位置编码.md",
-    "项目/未命名.md",
-    "杂乱小知识/算力租界平台.md",
-    "list/list.md",
-    "list/明天计划.md",
-    "list/寒假计划.md",
-    "测试用.md",
-    "minimind/minimind学习笔记.md",
-    "minimind/杂.md",
-    "手撕八股/transformer手撕/Transformer.md",
-    "手撕八股/transformer手撕/VIT.md",
     "未命名.canvas",
     "未命名 1.canvas"
   ]

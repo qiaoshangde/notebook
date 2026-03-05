@@ -1,8 +1,56 @@
 {
   "recentFiles": [
     {
+      "basename": "list",
+      "path": "list/list.md"
+    },
+    {
+      "basename": "笔记",
+      "path": "杂乱小知识/点云笔记/笔记.md"
+    },
+    {
+      "basename": "2026.3.4  八股",
+      "path": "手撕八股/每日笔记/2026.3.4  八股.md"
+    },
+    {
+      "basename": "agent",
+      "path": "Agent/agent.md"
+    },
+    {
+      "basename": "评估",
+      "path": "minimind/评估.md"
+    },
+    {
+      "basename": "学习流程",
+      "path": "minimind/学习流程.md"
+    },
+    {
+      "basename": "杂",
+      "path": "minimind/杂.md"
+    },
+    {
+      "basename": "DDP",
+      "path": "minimind/DDP.md"
+    },
+    {
+      "basename": "minimind学习笔记",
+      "path": "minimind/minimind学习笔记.md"
+    },
+    {
+      "basename": "wandb的使用",
+      "path": "minimind/wandb的使用.md"
+    },
+    {
+      "basename": "RAG",
+      "path": "RAG/RAG.md"
+    },
+    {
       "basename": "prompt",
-      "path": "prompt.md"
+      "path": "杂乱小知识/prompt.md"
+    },
+    {
+      "basename": "测试用",
+      "path": "测试用.md"
     },
     {
       "basename": "hot100",
@@ -21,10 +69,6 @@
       "path": "杂乱小知识/Agent.md"
     },
     {
-      "basename": "2026.3.4  八股",
-      "path": "手撕八股/每日笔记/2026.3.4  八股.md"
-    },
-    {
       "basename": "手撕",
       "path": "手撕八股/手撕.md"
     },
@@ -37,32 +81,8 @@
       "path": "手撕八股/位置编码.md"
     },
     {
-      "basename": "未命名",
-      "path": "项目/未命名.md"
-    },
-    {
       "basename": "算力租界平台",
       "path": "杂乱小知识/算力租界平台.md"
-    },
-    {
-      "basename": "list",
-      "path": "list/list.md"
-    },
-    {
-      "basename": "明天计划",
-      "path": "list/明天计划.md"
-    },
-    {
-      "basename": "测试用",
-      "path": "测试用.md"
-    },
-    {
-      "basename": "minimind学习笔记",
-      "path": "minimind/minimind学习笔记.md"
-    },
-    {
-      "basename": "杂",
-      "path": "minimind/杂.md"
     },
     {
       "basename": "Pasted image 20260122201128",
@@ -97,52 +117,20 @@
       "path": "手撕八股/transformer手撕/理解Transformer.md"
     },
     {
-      "basename": "wandb的使用",
-      "path": "minimind/wandb的使用.md"
-    },
-    {
-      "basename": "学习流程",
-      "path": "minimind/学习流程.md"
-    },
-    {
-      "basename": "笔记",
-      "path": "点云笔记/笔记.md"
-    },
-    {
-      "basename": "DDP",
-      "path": "minimind/DDP.md"
-    },
-    {
-      "basename": "评估",
-      "path": "minimind/评估.md"
-    },
-    {
-      "basename": "agent",
-      "path": "Agent/agent.md"
-    },
-    {
-      "basename": "Infer",
-      "path": "infer/Infer.md"
-    },
-    {
-      "basename": "RAG",
-      "path": "RAG/RAG.md"
-    },
-    {
       "basename": "practice_1",
-      "path": "软件使用/practice_1.md"
+      "path": "杂乱小知识/软件使用/practice_1.md"
     },
     {
       "basename": "我的第二篇笔记",
-      "path": "软件使用/我的第二篇笔记.md"
+      "path": "杂乱小知识/软件使用/我的第二篇笔记.md"
     },
     {
       "basename": "我的第一篇笔记",
-      "path": "软件使用/我的第一篇笔记.md"
+      "path": "杂乱小知识/软件使用/我的第一篇笔记.md"
     },
     {
       "basename": "MarkDown语言的学习",
-      "path": "软件使用/MarkDown语言的学习.md"
+      "path": "杂乱小知识/软件使用/MarkDown语言的学习.md"
     },
     {
       "basename": "动手学习大模型",
