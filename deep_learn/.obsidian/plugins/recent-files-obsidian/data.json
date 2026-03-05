@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "list",
+      "path": "list/list.md"
+    },
+    {
       "basename": "agent",
       "path": "Agent/agent.md"
     },
@@ -11,10 +15,6 @@
     {
       "basename": "uv",
       "path": "杂乱小知识/uv.md"
-    },
-    {
-      "basename": "list",
-      "path": "list/list.md"
     },
     {
       "basename": "笔记",

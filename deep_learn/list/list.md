@@ -27,6 +27,17 @@ agent：
 rag：
 	all in rag代码手撕
 
+要学会的是：
+1、transformer架构，MHA，gpt\llama\qwen等常见架构
+2、GRPO\ppo\dpo\GSPO-----
+3、ReActAgent\ReflectionAgent\PlanAndSlveAgent
+4、lora微调
+5、
+
+
+
+
+
 参考飞书云文档，肯定要过一遍
 minimind手撕
 背，总结 八股面经
