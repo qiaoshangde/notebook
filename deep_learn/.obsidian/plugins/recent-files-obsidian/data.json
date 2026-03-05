@@ -1,6 +1,18 @@
 {
   "recentFiles": [
     {
+      "basename": "agent",
+      "path": "Agent/agent.md"
+    },
+    {
+      "basename": "杂杂",
+      "path": "杂乱小知识/杂杂.md"
+    },
+    {
+      "basename": "uv",
+      "path": "杂乱小知识/uv.md"
+    },
+    {
       "basename": "list",
       "path": "list/list.md"
     },
@@ -11,10 +23,6 @@
     {
       "basename": "2026.3.4  八股",
       "path": "手撕八股/每日笔记/2026.3.4  八股.md"
-    },
-    {
-      "basename": "agent",
-      "path": "Agent/agent.md"
     },
     {
       "basename": "评估",
@@ -59,10 +67,6 @@
     {
       "basename": "transformers",
       "path": "杂乱小知识/transformers.md"
-    },
-    {
-      "basename": "uv",
-      "path": "杂乱小知识/uv.md"
     },
     {
       "basename": "Agent",

@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "list/list.md",
+                "file": "Agent/agent.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "list"
+              "title": "agent"
             }
           }
         ]
@@ -292,9 +292,11 @@
   },
   "active": "44ca8dce884940f3",
   "lastOpenFiles": [
+    "杂乱小知识/杂杂.md",
+    "杂乱小知识/uv.md",
+    "list/list.md",
     "杂乱小知识/点云笔记/笔记.md",
     "手撕八股/每日笔记/2026.3.4  八股.md",
-    "list/list.md",
     "Agent/agent.md",
     "项目/未命名.md",
     "minimind/评估.md",
@@ -315,7 +317,6 @@
     "算法刷题/images/Pasted image 20260304200201.png",
     "算法刷题/images/Pasted image 20260304194454.png",
     "杂乱小知识/transformers.md",
-    "杂乱小知识/uv.md",
     "杂乱小知识/Agent.md",
     "杂乱小知识/jupyter的使用.ipynb",
     "杂乱小知识/img/强化学习书籍.jpg",
@@ -337,7 +338,6 @@
     "杂乱小知识/notebook/pytorch/pytorch.md",
     "杂乱小知识/notebook/conda/conda.md",
     "杂乱小知识/notebook/思考.md",
-    "杂乱小知识/notebook/Agent.md",
     "未命名.canvas",
     "未命名 1.canvas"
   ]
