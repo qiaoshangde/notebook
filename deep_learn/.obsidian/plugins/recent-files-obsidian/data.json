@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "hot100",
+      "path": "算法刷题/hot100.md"
+    },
+    {
       "basename": "list",
       "path": "list/list.md"
     },
@@ -59,10 +63,6 @@
     {
       "basename": "测试用",
       "path": "测试用.md"
-    },
-    {
-      "basename": "hot100",
-      "path": "算法刷题/hot100.md"
     },
     {
       "basename": "transformers",

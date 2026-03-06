@@ -18,7 +18,7 @@
 	hot100
 
 agent：
-	hello-agents
+	hello-agents（难度有点大，慢慢来），以及一些agenticRL
 	building AI Agents in Pure Python
 	acwing（项目）
 	TradingAgents（项目）
