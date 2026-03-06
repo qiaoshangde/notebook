@@ -1,12 +1,16 @@
 {
   "recentFiles": [
     {
-      "basename": "hot100",
-      "path": "算法刷题/hot100.md"
+      "basename": "2026.3.4  八股",
+      "path": "手撕八股/每日笔记/2026.3.4  八股.md"
     },
     {
       "basename": "list",
       "path": "list/list.md"
+    },
+    {
+      "basename": "hot100",
+      "path": "算法刷题/hot100.md"
     },
     {
       "basename": "agent",
@@ -23,10 +27,6 @@
     {
       "basename": "笔记",
       "path": "杂乱小知识/点云笔记/笔记.md"
-    },
-    {
-      "basename": "2026.3.4  八股",
-      "path": "手撕八股/每日笔记/2026.3.4  八股.md"
     },
     {
       "basename": "评估",
