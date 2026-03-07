@@ -25,6 +25,7 @@
 agent：
 	hello-agents（难度有点大，慢慢来），以及一些agenticRL
 	building AI Agents in Pure Python
+	Camel[‍​﻿‬⁠​​​⁠⁠‬​﻿‍‌​​‌﻿‍⁠​​‍﻿​​​​​⁠​​​​​​⁠​​‍‌​‬​‬​​‍‬Handy Multi-Agent Tutorial - 飞书云文档](https://my.feishu.cn/docx/AF4XdOZpIo6TOaxzDK8cxInNnCe)
 	acwing（项目）
 	TradingAgents（项目）
 		

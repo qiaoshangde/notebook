@@ -1,12 +1,16 @@
 {
   "recentFiles": [
     {
-      "basename": "2026.3.4  八股",
-      "path": "手撕八股/每日笔记/2026.3.4  八股.md"
-    },
-    {
       "basename": "list",
       "path": "list/list.md"
+    },
+    {
+      "basename": "测试用",
+      "path": "测试用.md"
+    },
+    {
+      "basename": "2026.3.4  八股",
+      "path": "手撕八股/每日笔记/2026.3.4  八股.md"
     },
     {
       "basename": "hot100",
@@ -59,10 +63,6 @@
     {
       "basename": "prompt",
       "path": "杂乱小知识/prompt.md"
-    },
-    {
-      "basename": "测试用",
-      "path": "测试用.md"
     },
     {
       "basename": "transformers",
