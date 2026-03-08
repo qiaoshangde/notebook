@@ -7,51 +7,62 @@
 
 每周要有可以输出的东西，可以讲出来的。
 
-
-
-第一周：hello_agents   7、8、9、10章过一遍，但是不手撕
-第二周：hello_agents    11、12、13、14、15   以及一些共创的案例  过一遍
-
-
-
-
-
-
+第一周：hello_agents   7、8、9、10
+第二周：hello_agents    11、12、13、14、15  
 
 最近要学会的。45天
-算法：
-	hot100
+	算法：
+		hot100
+	agent：
+		hello-agents（难度有点大，慢慢来），以及一些agenticRL
+		building AI Agents in Pure Python
+		Camel[‍​﻿‬⁠​​​⁠⁠‬​﻿‍‌​​‌﻿‍⁠​​‍﻿​​​​​⁠​​​​​​⁠​​‍‌​‬​‬​​‍‬Handy Multi-Agent Tutorial - 飞书云文档](https://my.feishu.cn/docx/AF4XdOZpIo6TOaxzDK8cxInNnCe)
+		acwing（项目）
+		TradingAgents（项目）
+	rag：
+		all in rag代码手撕
+	train:（GRPO\ppo\dpo\GSPO-----）学会手撕
+		minimind(手撕)
+		Tinyzero[TinyZero最详细复现笔记（二）：VeRL框架与PPO训练细节 - 知乎](https://zhuanlan.zhihu.com/p/1903855264207200959)
+	手撕：
+		1、transformer架构，MHA，gpt\llama\qwen等常见架构
+		2、ReActAgent\ReflectionAgent\PlanAndSlveAgent
+		3、lora微调
+		4、tiny-universe
+	
+一些手搓
+[datawhalechina/tiny-universe: 《大模型白盒子构建指南》：一个全手搓的Tiny-Universe](https://github.com/datawhalechina/tiny-universe)
+1. 手写图像生成模型--Tiny Diffusion
+2. 深入剖析大模型原理——Qwen Blog
+3. 逐步预训练一个手搓大模型——Tiny Llama3
+4. 如何评估你的大模型——Tiny Eval
+5. 纯手工搭建 RAG 框架——Tiny RAG
+6. 手搓一个最小的 Agent 系统——Tiny Agent
+7. 深入理解大模型基础——Tiny Transformer
+8. 手搓一个基本的 GraphRAG 系统——Tiny GraphRAG
 
-agent：
-	hello-agents（难度有点大，慢慢来），以及一些agenticRL
-	building AI Agents in Pure Python
-	Camel[‍​﻿‬⁠​​​⁠⁠‬​﻿‍‌​​‌﻿‍⁠​​‍﻿​​​​​⁠​​​​​​⁠​​‍‌​‬​‬​​‍‬Handy Multi-Agent Tutorial - 飞书云文档](https://my.feishu.cn/docx/AF4XdOZpIo6TOaxzDK8cxInNnCe)
-	acwing（项目）
-	TradingAgents（项目）
+
+
+
+这个项目是DeepSeek R1-Zero的最小复制（也要学习一下）
+[Jiayi-Pan/TinyZero: Minimal reproduction of DeepSeek R1-Zero](https://github.com/Jiayi-Pan/TinyZero)
 		
 
-rag：
-	all in rag代码手撕
-
-要学会的是：
-1、transformer架构，MHA，gpt\llama\qwen等常见架构
-2、GRPO\ppo\dpo\GSPO-----
-3、ReActAgent\ReflectionAgent\PlanAndSlveAgent
-4、lora微调
-5、
-
-
-
-
-
 参考飞书云文档，肯定要过一遍
-minimind手撕
+
 背，总结 八股面经
 
 
 做一个agenticRL项目
 
 最好把小红书和微信公众号收藏都看一看
+
+
+
+强化学习公式：[大语言模型RLHF全链路揭秘：从策略梯度、PPO、GAE到DPO的实战指南](https://mp.weixin.qq.com/s/S72LO26IsZ8AED8sQKIWnQ)
+
+EZ_encoder的社区里面内容知识挺多的尤其是CS336共学项目
+
 
 
 
@@ -62,7 +73,7 @@ minimind手撕
 2、手撕题目全部做了
 3、做几个开源的项目
 4、八股背一下
-5、self llm   tiny-universe
+5、self llm   
 6、以及其他要写的代码
 
 
@@ -100,8 +111,6 @@ minimind手撕
 
 
 
-这个项目是DeepSeek R1-Zero的最小复制（也要学习一下）
-[Jiayi-Pan/TinyZero: Minimal reproduction of DeepSeek R1-Zero](https://github.com/Jiayi-Pan/TinyZero)
 
 
 infer （vllm的小复现）
@@ -125,17 +134,6 @@ infer （vllm的小复现）
 
 
 
-
-一些手搓
-[datawhalechina/tiny-universe: 《大模型白盒子构建指南》：一个全手搓的Tiny-Universe](https://github.com/datawhalechina/tiny-universe)
-1. 手写图像生成模型--Tiny Diffusion
-2. 深入剖析大模型原理——Qwen Blog
-3. 逐步预训练一个手搓大模型——Tiny Llama3
-4. 如何评估你的大模型——Tiny Eval
-5. 纯手工搭建 RAG 框架——Tiny RAG
-6. 手搓一个最小的 Agent 系统——Tiny Agent
-7. 深入理解大模型基础——Tiny Transformer
-8. 手搓一个基本的 GraphRAG 系统——Tiny GraphRAG
 
 
 kaggle竞赛
