@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "437d8f4e56e17507",
+        "id": "6c8d70d13e93280f",
         "type": "tabs",
         "children": [
           {
-            "id": "3cdb2e7292de6c8f",
+            "id": "bbd6d94cb7511cde",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "list/list.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "list"
+              "title": "新标签页"
             }
           }
         ]
@@ -292,12 +288,13 @@
   },
   "active": "6a5eb320d475b043",
   "lastOpenFiles": [
+    "Agent/agent.md",
+    "list/images/Pasted image 20260122201128.png",
+    "list/list.md",
     "测试用.md",
     "手撕八股/每日笔记/2026.3.4  八股.md",
-    "list/list.md",
     "算法刷题/hot100.md",
     "算法刷题/images/Pasted image 20260305214118.png",
-    "Agent/agent.md",
     "杂乱小知识/杂杂.md",
     "杂乱小知识/uv.md",
     "杂乱小知识/点云笔记/笔记.md",
@@ -324,7 +321,6 @@
     "杂乱小知识/img/llm.jpg",
     "杂乱小知识/img/langchain.jpg",
     "杂乱小知识/img",
-    "杂乱小知识/image/Agent/1759129523652.png",
     "杂乱小知识/image/Agent",
     "杂乱小知识/image",
     "杂乱小知识/conda/conda.assets",

@@ -1,6 +1,14 @@
 {
   "recentFiles": [
     {
+      "basename": "agent",
+      "path": "Agent/agent.md"
+    },
+    {
+      "basename": "Pasted image 20260122201128",
+      "path": "list/images/Pasted image 20260122201128.png"
+    },
+    {
       "basename": "list",
       "path": "list/list.md"
     },
@@ -15,10 +23,6 @@
     {
       "basename": "hot100",
       "path": "算法刷题/hot100.md"
-    },
-    {
-      "basename": "agent",
-      "path": "Agent/agent.md"
     },
     {
       "basename": "杂杂",
@@ -87,10 +91,6 @@
     {
       "basename": "算力租界平台",
       "path": "杂乱小知识/算力租界平台.md"
-    },
-    {
-      "basename": "Pasted image 20260122201128",
-      "path": "list/images/Pasted image 20260122201128.png"
     },
     {
       "basename": "Transformer",
