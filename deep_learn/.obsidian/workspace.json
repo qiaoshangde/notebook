@@ -11,10 +11,14 @@
             "id": "bbd6d94cb7511cde",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "手撕八股/每日笔记/2026.3.4  八股.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "新标签页"
+              "title": "2026.3.4  八股"
             }
           }
         ]
@@ -288,6 +292,9 @@
   },
   "active": "6a5eb320d475b043",
   "lastOpenFiles": [
+    "杂乱小知识/uv.md",
+    "TinyZero/相关知识.md",
+    "TinyZero",
     "Agent/agent.md",
     "list/images/Pasted image 20260122201128.png",
     "list/list.md",
@@ -296,7 +303,6 @@
     "算法刷题/hot100.md",
     "算法刷题/images/Pasted image 20260305214118.png",
     "杂乱小知识/杂杂.md",
-    "杂乱小知识/uv.md",
     "杂乱小知识/点云笔记/笔记.md",
     "项目/未命名.md",
     "minimind/评估.md",
@@ -330,7 +336,6 @@
     "杂乱小知识/随笔整理.ipynb",
     "杂乱小知识/思考.md",
     "杂乱小知识/recommend_books.ipynb",
-    "杂乱小知识/notebook/pytorch/实战/第一章：PyTorch框架基本处理操作/PyTorch基础/img/book_DeepLearning_in_PyTorch_Source-master.zip",
     "杂乱小知识/notebook/pytorch/pytorch.md",
     "杂乱小知识/notebook/conda/conda.md",
     "未命名.canvas",
