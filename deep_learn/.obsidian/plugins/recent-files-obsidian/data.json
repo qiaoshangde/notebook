@@ -1,12 +1,12 @@
 {
   "recentFiles": [
     {
-      "basename": "大模型微调",
-      "path": "微调/大模型微调.md"
-    },
-    {
       "basename": "猛猿",
       "path": "八股/ppo/猛猿.md"
+    },
+    {
+      "basename": "大模型微调",
+      "path": "微调/大模型微调.md"
     },
     {
       "basename": "速记",
@@ -42,7 +42,7 @@
     },
     {
       "basename": "hot100",
-      "path": "算法刷题/hot100.md"
+      "path": "算法题/hot100.md"
     },
     {
       "basename": "杂杂",
