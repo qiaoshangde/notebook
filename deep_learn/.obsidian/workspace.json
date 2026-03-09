@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "手撕八股/ppo/猛猿.md",
+                "file": "八股/ppo/猛猿.md",
                 "mode": "source",
                 "source": false
               },
@@ -292,6 +292,12 @@
   },
   "active": "bbd6d94cb7511cde",
   "lastOpenFiles": [
+    "八股/速记.md",
+    "八股/位置编码/位置编码.md",
+    "八股/位置编码",
+    "八股/ppo/猛猿.md",
+    "手撕八股/手撕.md",
+    "八股/dpo",
     "杂乱小知识/uv.md",
     "TinyZero/相关知识.md",
     "TinyZero",
@@ -299,7 +305,6 @@
     "list/images/Pasted image 20260122201128.png",
     "list/list.md",
     "测试用.md",
-    "手撕八股/ppo/猛猿.md",
     "算法刷题/hot100.md",
     "算法刷题/images/Pasted image 20260305214118.png",
     "杂乱小知识/杂杂.md",
@@ -333,11 +338,6 @@
     "杂乱小知识/conda/conda.md",
     "杂乱小知识/conda",
     "杂乱小知识/做项目最好的方法.ipynb",
-    "杂乱小知识/随笔整理.ipynb",
-    "杂乱小知识/思考.md",
-    "杂乱小知识/recommend_books.ipynb",
-    "杂乱小知识/notebook/pytorch/pytorch.md",
-    "杂乱小知识/notebook/conda/conda.md",
     "未命名.canvas",
     "未命名 1.canvas"
   ]

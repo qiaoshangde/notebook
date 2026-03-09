@@ -2,7 +2,15 @@
   "recentFiles": [
     {
       "basename": "猛猿",
-      "path": "手撕八股/ppo/猛猿.md"
+      "path": "八股/ppo/猛猿.md"
+    },
+    {
+      "basename": "速记",
+      "path": "八股/速记.md"
+    },
+    {
+      "basename": "位置编码",
+      "path": "八股/位置编码/位置编码.md"
     },
     {
       "basename": "uv",
@@ -81,48 +89,36 @@
       "path": "杂乱小知识/Agent.md"
     },
     {
-      "basename": "手撕",
-      "path": "手撕八股/手撕.md"
-    },
-    {
-      "basename": "速记",
-      "path": "手撕八股/速记.md"
-    },
-    {
-      "basename": "位置编码",
-      "path": "手撕八股/位置编码.md"
-    },
-    {
       "basename": "算力租界平台",
       "path": "杂乱小知识/算力租界平台.md"
     },
     {
       "basename": "Transformer",
-      "path": "手撕八股/transformer手撕/Transformer.md"
+      "path": "八股/transformer/Transformer.md"
     },
     {
       "basename": "VIT",
-      "path": "手撕八股/transformer手撕/VIT.md"
+      "path": "八股/transformer/VIT.md"
     },
     {
       "basename": "vit-v NET",
-      "path": "手撕八股/transformer手撕/vit-v/vit-v NET.md"
+      "path": "八股/transformer/vit-v/vit-v NET.md"
     },
     {
       "basename": "Pasted image 20241211145909",
-      "path": "手撕八股/transformer手撕/images/Pasted image 20241211145909.png"
+      "path": "八股/transformer/images/Pasted image 20241211145909.png"
     },
     {
       "basename": "Pasted image 20241211145741",
-      "path": "手撕八股/transformer手撕/images/Pasted image 20241211145741.png"
+      "path": "八股/transformer/images/Pasted image 20241211145741.png"
     },
     {
       "basename": "Pasted image 20241210144200",
-      "path": "手撕八股/transformer手撕/images/Pasted image 20241210144200.png"
+      "path": "八股/transformer/images/Pasted image 20241210144200.png"
     },
     {
       "basename": "理解Transformer",
-      "path": "手撕八股/transformer手撕/理解Transformer.md"
+      "path": "八股/transformer/理解Transformer.md"
     },
     {
       "basename": "practice_1",
