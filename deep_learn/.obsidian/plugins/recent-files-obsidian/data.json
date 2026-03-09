@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "大模型微调",
+      "path": "微调/大模型微调.md"
+    },
+    {
       "basename": "猛猿",
       "path": "八股/ppo/猛猿.md"
     },
@@ -135,10 +139,6 @@
     {
       "basename": "MarkDown语言的学习",
       "path": "杂乱小知识/软件使用/MarkDown语言的学习.md"
-    },
-    {
-      "basename": "动手学习大模型",
-      "path": "模型微调/动手学习大模型.md"
     }
   ],
   "omittedPaths": [],

@@ -1094,6 +1094,56 @@
         "charCountStart": 332,
         "changes": [],
         "id": 112
+      },
+      {
+        "date": "2026-03-09",
+        "filePath": "模型微调/动手学习大模型.md",
+        "wordCountStart": 0,
+        "charCountStart": 3,
+        "changes": [
+          {
+            "timeKey": "13:15",
+            "w": 0,
+            "c": -3
+          }
+        ],
+        "id": 113
+      },
+      {
+        "date": "2026-03-09",
+        "filePath": "模型微调/理解deepseek.md",
+        "wordCountStart": 42,
+        "charCountStart": 426,
+        "changes": [
+          {
+            "timeKey": "13:15",
+            "w": -42,
+            "c": -426
+          }
+        ],
+        "id": 114
+      },
+      {
+        "date": "2026-03-09",
+        "filePath": "模型微调/LLMs    Zero to  Hero.md",
+        "wordCountStart": 0,
+        "charCountStart": 1,
+        "changes": [
+          {
+            "timeKey": "13:15",
+            "w": 0,
+            "c": -1
+          }
+        ],
+        "id": 115
+      },
+      {
+        "date": "2026-03-09",
+        "filePath": "微调/大模型微调.md",
+        "wordCountStart": 66,
+        "charCountStart": 899,
+        "changes": [],
+        "id": 116
       }
     ]
   }

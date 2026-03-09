@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "八股/ppo/猛猿.md",
+                "file": "微调/大模型微调.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "猛猿"
+              "title": "大模型微调"
             }
           }
         ]
@@ -290,12 +290,17 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "bbd6d94cb7511cde",
+  "active": "6a5eb320d475b043",
   "lastOpenFiles": [
+    "模型微调/理解deepseek.md",
+    "微调/大模型微调.md",
+    "模型微调/LLMs    Zero to  Hero.md",
+    "模型微调/动手学习大模型.md",
+    "八股/ppo/猛猿.md",
+    "八股/skill",
     "八股/速记.md",
     "八股/位置编码/位置编码.md",
     "八股/位置编码",
-    "八股/ppo/猛猿.md",
     "手撕八股/手撕.md",
     "八股/dpo",
     "杂乱小知识/uv.md",
@@ -319,14 +324,11 @@
     "RAG/RAG.md",
     "杂乱小知识/prompt.md",
     "infer/Infer.md",
-    "list/明天计划.md",
     "算法刷题/images/Pasted image 20260304201715.png",
     "算法刷题/images/Pasted image 20260304201134.png",
     "算法刷题/images/Pasted image 20260304200833.png",
     "算法刷题/images/Pasted image 20260304200201.png",
     "算法刷题/images/Pasted image 20260304194454.png",
-    "杂乱小知识/transformers.md",
-    "杂乱小知识/Agent.md",
     "杂乱小知识/jupyter的使用.ipynb",
     "杂乱小知识/img/强化学习书籍.jpg",
     "杂乱小知识/img/llm.jpg",
@@ -335,9 +337,7 @@
     "杂乱小知识/image/Agent",
     "杂乱小知识/image",
     "杂乱小知识/conda/conda.assets",
-    "杂乱小知识/conda/conda.md",
     "杂乱小知识/conda",
-    "杂乱小知识/做项目最好的方法.ipynb",
     "未命名.canvas",
     "未命名 1.canvas"
   ]
