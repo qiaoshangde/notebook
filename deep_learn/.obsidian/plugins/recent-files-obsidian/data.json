@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "list",
+      "path": "list/list.md"
+    },
+    {
       "basename": "猛猿",
       "path": "八股/ppo/猛猿.md"
     },
@@ -31,10 +35,6 @@
     {
       "basename": "Pasted image 20260122201128",
       "path": "list/images/Pasted image 20260122201128.png"
-    },
-    {
-      "basename": "list",
-      "path": "list/list.md"
     },
     {
       "basename": "测试用",
