@@ -11,10 +11,14 @@
             "id": "58c1bd365b2f5064",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "杂乱小知识/conda/conda.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "新标签页"
+              "title": "conda"
             }
           }
         ]
@@ -286,7 +290,7 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "6a5eb320d475b043",
+  "active": "58c1bd365b2f5064",
   "lastOpenFiles": [
     "八股/ppo/PPO.md",
     "大语言模型基础与实践学习笔记.md",
