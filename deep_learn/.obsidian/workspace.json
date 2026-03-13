@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "d5d98fa3de0372ec",
+        "id": "7a71a7963ad4465d",
         "type": "tabs",
         "children": [
           {
-            "id": "58c1bd365b2f5064",
+            "id": "813b1b27408d7183",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "杂乱小知识/conda/conda.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "conda"
+              "title": "新标签页"
             }
           }
         ]
@@ -290,8 +286,9 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "58c1bd365b2f5064",
+  "active": "6a5eb320d475b043",
   "lastOpenFiles": [
+    "杂乱小知识/conda/conda.md",
     "八股/ppo/PPO.md",
     "大语言模型基础与实践学习笔记.md",
     "杂乱小知识/note/images/Pasted image 20241128181022.png",
