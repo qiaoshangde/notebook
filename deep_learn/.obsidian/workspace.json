@@ -11,10 +11,14 @@
             "id": "813b1b27408d7183",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "八股/GRPO/未命名.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "新标签页"
+              "title": "未命名"
             }
           }
         ]
@@ -286,8 +290,12 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "6a5eb320d475b043",
+  "active": "813b1b27408d7183",
   "lastOpenFiles": [
+    "八股/GRPO/images/Pasted image 20260313153400.png",
+    "八股/GRPO/images",
+    "八股/GRPO/未命名.md",
+    "八股/GRPO",
     "杂乱小知识/conda/conda.md",
     "八股/ppo/PPO.md",
     "大语言模型基础与实践学习笔记.md",
@@ -328,12 +336,8 @@
     "算法题/hot100.md",
     "杂乱小知识/杂杂.md",
     "杂乱小知识/点云笔记/笔记.md",
-    "项目/未命名.md",
-    "minimind/评估.md",
     "杂乱小知识/jupyter的使用.ipynb",
     "杂乱小知识/img",
-    "杂乱小知识/image/Agent",
-    "杂乱小知识/image",
     "未命名.canvas",
     "未命名 1.canvas"
   ]
