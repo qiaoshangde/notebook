@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "list",
+      "path": "list/list.md"
+    },
+    {
       "basename": "未命名",
       "path": "八股/GRPO/未命名.md"
     },
@@ -11,10 +15,6 @@
     {
       "basename": "PPO",
       "path": "八股/ppo/PPO.md"
-    },
-    {
-      "basename": "list",
-      "path": "list/list.md"
     },
     {
       "basename": "猛猿",

@@ -65,6 +65,31 @@ EZ_encoder的社区里面内容知识挺多的尤其是CS336共学项目
 
 
 
+前沿信息
+## paper
+
+[https://arxiv.org/](https://arxiv.org/)  
+[https://huggingface.co/papers](https://huggingface.co/papers) （主要看看热点）
+
+## blog
+
+[https://lilianweng.github.io/](https://lilianweng.github.io/)  
+[https://blog.langchain.com/](https://blog.langchain.com/)  
+[https://www.anthropic.com/engineering](https://www.anthropic.com/engineering)  
+[https://cognition.ai/blog/1](https://cognition.ai/blog/1)  
+[https://sierra.ai/blog](https://sierra.ai/blog)  
+[https://sebastianraschka.com/](https://sebastianraschka.com/)  
+[https://kexue.fm/](https://kexue.fm/)  
+[https://yuanchaofa.com/](https://yuanchaofa.com/) （我自己的）
+
+## Twitter
+
+[https://x.com/karpathy](https://x.com/karpathy)  
+[https://x.com/_jasonwei](https://x.com/_jasonwei)  
+[https://x.com/sama](https://x.com/sama)  
+[https://x.com/huybery](https://x.com/huybery)  
+[https://x.com/Francis_YAO](https://x.com/Francis_YAO)_  
+[https://x.com/ShunyuYao12](https://x.com/ShunyuYao12)
 
 
 对于技术所有的知识开头都要讲，其解决了什么问题，是怎么解决的，有没有更好的方法。
