@@ -186,3 +186,4 @@ $$R_t = r_t + \gamma V_\phi(s_{t+1})$$
 $$R_t = \hat{A}_t^{\text{GAE}} + V'_\phi(s_t)$$
 
 当然这里也可以加入裁剪策略。
+![[Pasted image 20260313214405.png]]

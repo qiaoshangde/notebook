@@ -1,6 +1,26 @@
 {
   "recentFiles": [
     {
+      "basename": "速记",
+      "path": "八股/速记.md"
+    },
+    {
+      "basename": "未命名",
+      "path": "八股/dpo/未命名.md"
+    },
+    {
+      "basename": "Pasted image 20260313214919",
+      "path": "八股/dpo/images/Pasted image 20260313214919.png"
+    },
+    {
+      "basename": "未命名",
+      "path": "八股/KL散度/未命名.md"
+    },
+    {
+      "basename": "PPO",
+      "path": "八股/ppo/PPO.md"
+    },
+    {
       "basename": "list",
       "path": "list/list.md"
     },
@@ -13,20 +33,12 @@
       "path": "杂乱小知识/conda/conda.md"
     },
     {
-      "basename": "PPO",
-      "path": "八股/ppo/PPO.md"
-    },
-    {
       "basename": "猛猿",
       "path": "八股/ppo/猛猿.md"
     },
     {
       "basename": "大模型微调",
       "path": "微调/大模型微调.md"
-    },
-    {
-      "basename": "速记",
-      "path": "八股/速记.md"
     },
     {
       "basename": "位置编码",
