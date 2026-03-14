@@ -11,10 +11,14 @@
             "id": "2f74887525cabdc8",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "八股/dpo/DPO.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "新标签页"
+              "title": "DPO"
             }
           }
         ]
@@ -86,16 +90,17 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "list/list.md",
+                "file": "八股/dpo/DPO.md",
                 "followCursor": true,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "list 的大纲"
+              "title": "DPO 的大纲"
             }
           }
-        ]
+        ],
+        "currentTab": 4
       },
       {
         "id": "ab52c96cd9267565",
@@ -288,18 +293,19 @@
   },
   "active": "2f74887525cabdc8",
   "lastOpenFiles": [
+    "八股/dpo/images/Pasted image 20260314140726.png",
+    "八股/dpo/images/Pasted image 20260314140632.png",
+    "八股/dpo/images/Pasted image 20260314140553.png",
+    "八股/dpo/images/Pasted image 20260314140446.png",
+    "八股/dpo/images/Pasted image 20260314140416.png",
+    "八股/dpo/images/Pasted image 20260314134746.png",
+    "八股/dpo/images/Pasted image 20260314134702.png",
+    "八股/dpo/images/Pasted image 20260314134606.png",
+    "八股/dpo/images/Pasted image 20260314134434.png",
+    "八股/dpo/images/Pasted image 20260314134334.png",
+    "八股/dpo/images/Pasted image 20260314134235.png",
     "八股/速记.md",
-    "八股/dpo/未命名.md",
-    "八股/dpo/images/Pasted image 20260313220249.png",
-    "八股/dpo/images/Pasted image 20260313220237.png",
-    "八股/dpo/images/Pasted image 20260313220157.png",
-    "八股/dpo/images/Pasted image 20260313220034.png",
-    "八股/dpo/images/Pasted image 20260313215907.png",
-    "八股/dpo/images/Pasted image 20260313215822.png",
-    "八股/dpo/images/Pasted image 20260313215749.png",
-    "八股/dpo/images/Pasted image 20260313215657.png",
-    "八股/dpo/images/Pasted image 20260313215411.png",
-    "八股/dpo/images/Pasted image 20260313215256.png",
+    "八股/dpo/DPO.md",
     "八股/KL散度/未命名.md",
     "八股/ppo/PPO.md",
     "八股/ppo/images",

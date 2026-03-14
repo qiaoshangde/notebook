@@ -1,4 +1,4 @@
-
+# 1
 ![[Pasted image 20260313211828.png]]![[Pasted image 20260313212012.png]]
 
 通过导数为0可以求得
@@ -16,7 +16,7 @@
 ![[Pasted image 20260313213658.png]]![[Pasted image 20260313213816.png]]![[Pasted image 20260313213821.png]]
 
 
-另一个视频的公式推导
+# 另一个视频的公式推导
 
 ![[Pasted image 20260313214454.png]] ![[Pasted image 20260313214610.png]]
 
@@ -35,3 +35,15 @@ Bradley-Terry模型
 
 
 ![[Pasted image 20260313215907.png]]![[Pasted image 20260313220157.png]]![[Pasted image 20260313220237.png]]![[Pasted image 20260313220249.png]]
+
+
+
+# 细节手撕怪
+
+
+DPO是ppo之后，最流行的应用于LLM的强化学习算法
+
+![[Pasted image 20260314134235.png]]![[Pasted image 20260314134334.png]]  ![[Pasted image 20260314134434.png]]
+
+
+![[Pasted image 20260314134606.png]]![[Pasted image 20260314134702.png]]![[Pasted image 20260314134746.png]]![[Pasted image 20260314140416.png]]![[Pasted image 20260314140446.png]]![[Pasted image 20260314140553.png]]![[Pasted image 20260314140632.png]]![[Pasted image 20260314140726.png]]
