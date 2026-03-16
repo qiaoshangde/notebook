@@ -1,6 +1,46 @@
 {
   "recentFiles": [
     {
+      "basename": "神经网络画图工具",
+      "path": "杂乱小知识/神经网络画图工具.md"
+    },
+    {
+      "basename": "算力租界平台",
+      "path": "杂乱小知识/算力租界平台.md"
+    },
+    {
+      "basename": "思考",
+      "path": "杂乱小知识/思考.md"
+    },
+    {
+      "basename": "遇到的小的知识点",
+      "path": "杂乱小知识/遇到的小的知识点.md"
+    },
+    {
+      "basename": "杂杂",
+      "path": "杂乱小知识/杂杂.md"
+    },
+    {
+      "basename": "uv",
+      "path": "杂乱小知识/uv.md"
+    },
+    {
+      "basename": "transformers",
+      "path": "杂乱小知识/transformers.md"
+    },
+    {
+      "basename": "prompt",
+      "path": "杂乱小知识/prompt.md"
+    },
+    {
+      "basename": "baseline",
+      "path": "杂乱小知识/baseline.md"
+    },
+    {
+      "basename": "Agent",
+      "path": "杂乱小知识/Agent.md"
+    },
+    {
       "basename": "conda",
       "path": "杂乱小知识/conda/conda.md"
     },
@@ -49,10 +89,6 @@
       "path": "八股/位置编码/位置编码.md"
     },
     {
-      "basename": "uv",
-      "path": "杂乱小知识/uv.md"
-    },
-    {
       "basename": "相关知识",
       "path": "TinyZero/相关知识.md"
     },
@@ -71,10 +107,6 @@
     {
       "basename": "hot100",
       "path": "算法题/hot100.md"
-    },
-    {
-      "basename": "杂杂",
-      "path": "杂乱小知识/杂杂.md"
     },
     {
       "basename": "笔记",
@@ -107,22 +139,6 @@
     {
       "basename": "RAG",
       "path": "RAG/RAG.md"
-    },
-    {
-      "basename": "prompt",
-      "path": "杂乱小知识/prompt.md"
-    },
-    {
-      "basename": "transformers",
-      "path": "杂乱小知识/transformers.md"
-    },
-    {
-      "basename": "Agent",
-      "path": "杂乱小知识/Agent.md"
-    },
-    {
-      "basename": "算力租界平台",
-      "path": "杂乱小知识/算力租界平台.md"
     },
     {
       "basename": "VIT",

@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "4714f281677f3979",
+        "id": "3324111b3b3a8938",
         "type": "tabs",
         "children": [
           {
-            "id": "fa5dfb907069ecf8",
+            "id": "496816a9cb43c075",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -116,7 +116,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "杂乱小知识/conda/conda.md",
+                "file": "杂乱小知识/神经网络画图工具.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -144,7 +144,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "conda 的关系图"
+              "title": "神经网络画图工具 的关系图"
             }
           }
         ]
@@ -287,6 +287,15 @@
   },
   "active": "6a5eb320d475b043",
   "lastOpenFiles": [
+    "杂乱小知识/算力租界平台.md",
+    "杂乱小知识/思考.md",
+    "杂乱小知识/遇到的小的知识点.md",
+    "杂乱小知识/杂杂.md",
+    "杂乱小知识/uv.md",
+    "杂乱小知识/transformers.md",
+    "杂乱小知识/prompt.md",
+    "杂乱小知识/baseline.md",
+    "杂乱小知识/Agent.md",
     "杂乱小知识/conda/conda.md",
     "list/list.md",
     "八股/速记.md",
@@ -322,17 +331,8 @@
     "杂乱小知识/note/images",
     "杂乱小知识/note",
     "八股/ppo/猛猿.md",
-    "微调/大模型微调.md",
-    "模型微调/理解deepseek.md",
-    "模型微调/LLMs    Zero to  Hero.md",
-    "模型微调/动手学习大模型.md",
     "八股/skill",
-    "八股/位置编码/位置编码.md",
     "八股/位置编码",
-    "手撕八股/手撕.md",
-    "杂乱小知识/uv.md",
-    "TinyZero/相关知识.md",
-    "Agent/agent.md",
     "未命名.canvas",
     "未命名 1.canvas"
   ]

@@ -1340,6 +1340,86 @@
         "charCountStart": 1149,
         "changes": [],
         "id": 137
+      },
+      {
+        "date": "2026-03-16",
+        "filePath": "杂乱小知识/杂杂.md",
+        "wordCountStart": 166,
+        "charCountStart": 2190,
+        "changes": [],
+        "id": 138
+      },
+      {
+        "date": "2026-03-16",
+        "filePath": "杂乱小知识/Agent.md",
+        "wordCountStart": 58,
+        "charCountStart": 714,
+        "changes": [],
+        "id": 139
+      },
+      {
+        "date": "2026-03-16",
+        "filePath": "杂乱小知识/baseline.md",
+        "wordCountStart": 5,
+        "charCountStart": 157,
+        "changes": [],
+        "id": 140
+      },
+      {
+        "date": "2026-03-16",
+        "filePath": "杂乱小知识/prompt.md",
+        "wordCountStart": 0,
+        "charCountStart": 82,
+        "changes": [],
+        "id": 141
+      },
+      {
+        "date": "2026-03-16",
+        "filePath": "杂乱小知识/transformers.md",
+        "wordCountStart": 148,
+        "charCountStart": 1818,
+        "changes": [],
+        "id": 142
+      },
+      {
+        "date": "2026-03-16",
+        "filePath": "杂乱小知识/uv.md",
+        "wordCountStart": 196,
+        "charCountStart": 1865,
+        "changes": [],
+        "id": 143
+      },
+      {
+        "date": "2026-03-16",
+        "filePath": "杂乱小知识/遇到的小的知识点.md",
+        "wordCountStart": 310,
+        "charCountStart": 3294,
+        "changes": [],
+        "id": 144
+      },
+      {
+        "date": "2026-03-16",
+        "filePath": "杂乱小知识/思考.md",
+        "wordCountStart": 34,
+        "charCountStart": 1675,
+        "changes": [],
+        "id": 145
+      },
+      {
+        "date": "2026-03-16",
+        "filePath": "杂乱小知识/算力租界平台.md",
+        "wordCountStart": 35,
+        "charCountStart": 353,
+        "changes": [],
+        "id": 146
+      },
+      {
+        "date": "2026-03-16",
+        "filePath": "杂乱小知识/神经网络画图工具.md",
+        "wordCountStart": 21,
+        "charCountStart": 341,
+        "changes": [],
+        "id": 147
       }
     ]
   }
