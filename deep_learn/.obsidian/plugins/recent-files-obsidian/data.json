@@ -1,12 +1,24 @@
 {
   "recentFiles": [
     {
-      "basename": "DPO",
-      "path": "八股/dpo/DPO.md"
+      "basename": "conda",
+      "path": "杂乱小知识/conda/conda.md"
     },
     {
-      "basename": "速记",
-      "path": "八股/速记.md"
+      "basename": "list",
+      "path": "list/list.md"
+    },
+    {
+      "basename": "Transformer",
+      "path": "八股/transformer/Transformer.md"
+    },
+    {
+      "basename": "理解Transformer",
+      "path": "八股/transformer/理解Transformer.md"
+    },
+    {
+      "basename": "DPO",
+      "path": "八股/dpo/DPO.md"
     },
     {
       "basename": "Pasted image 20260313214919",
@@ -21,16 +33,8 @@
       "path": "八股/ppo/PPO.md"
     },
     {
-      "basename": "list",
-      "path": "list/list.md"
-    },
-    {
       "basename": "未命名",
       "path": "八股/GRPO/未命名.md"
-    },
-    {
-      "basename": "conda",
-      "path": "杂乱小知识/conda/conda.md"
     },
     {
       "basename": "猛猿",
@@ -121,10 +125,6 @@
       "path": "杂乱小知识/算力租界平台.md"
     },
     {
-      "basename": "Transformer",
-      "path": "八股/transformer/Transformer.md"
-    },
-    {
       "basename": "VIT",
       "path": "八股/transformer/VIT.md"
     },
@@ -143,10 +143,6 @@
     {
       "basename": "Pasted image 20241210144200",
       "path": "八股/transformer/images/Pasted image 20241210144200.png"
-    },
-    {
-      "basename": "理解Transformer",
-      "path": "八股/transformer/理解Transformer.md"
     },
     {
       "basename": "practice_1",

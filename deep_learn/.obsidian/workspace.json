@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "32df3640182a1d13",
+        "id": "4714f281677f3979",
         "type": "tabs",
         "children": [
           {
-            "id": "4422cf85dbe02053",
+            "id": "fa5dfb907069ecf8",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -116,7 +116,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "手撕八股/每日笔记/2026.3.4  八股.md",
+                "file": "杂乱小知识/conda/conda.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -144,7 +144,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "2026.3.4  八股 的关系图"
+              "title": "conda 的关系图"
             }
           }
         ]
@@ -285,8 +285,13 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "4422cf85dbe02053",
+  "active": "6a5eb320d475b043",
   "lastOpenFiles": [
+    "杂乱小知识/conda/conda.md",
+    "list/list.md",
+    "八股/速记.md",
+    "八股/transformer/Transformer.md",
+    "八股/transformer/理解Transformer.md",
     "Extra01-参考答案.md",
     "八股/dpo/DPO.md",
     "八股/dpo/images/Pasted image 20260314140726.png",
@@ -299,18 +304,15 @@
     "八股/dpo/images/Pasted image 20260314134606.png",
     "八股/dpo/images/Pasted image 20260314134434.png",
     "八股/dpo/images/Pasted image 20260314134334.png",
-    "八股/速记.md",
     "八股/KL散度/未命名.md",
     "八股/ppo/PPO.md",
     "八股/ppo/images",
     "八股/dpo/images",
     "八股/KL散度/images",
-    "list/list.md",
     "八股/KL散度",
     "八股/GRPO/未命名.md",
     "八股/GRPO/images",
     "八股/GRPO",
-    "杂乱小知识/conda/conda.md",
     "大语言模型基础与实践学习笔记.md",
     "杂乱小知识/note/认知提升.md",
     "杂乱小知识/note/穿搭护肤.md",
@@ -331,8 +333,6 @@
     "杂乱小知识/uv.md",
     "TinyZero/相关知识.md",
     "Agent/agent.md",
-    "测试用.md",
-    "算法题/hot100.md",
     "未命名.canvas",
     "未命名 1.canvas"
   ]

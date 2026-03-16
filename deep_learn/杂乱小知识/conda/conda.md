@@ -60,4 +60,13 @@ torch.cuda.is_available()显示true导入成功
 
 如果显示pytorch的版本号，则显示安装成功
 
-本机所用：conda install pytorch torchvision torchaudio pytorch-cuda=11.8 -c pytorch -c nvidia
+
+**装pytorch12.1**
+```
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+```
+
+
+```
+conda install pytorch pytorch-cuda=12.1 -c pytorch -c nvidia
+```

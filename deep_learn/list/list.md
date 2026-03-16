@@ -44,6 +44,75 @@
 
 
 
+
+
+```
+# MTP  Multi-token-prediction
+
+  
+  
+
+# 问题1：模型是非常依赖perfect context，否则模型会错的越来越离谱。  
+
+# 问题2：模型每次都只生成一个token，会导致模型是一个非常短视的模型，只能看到眼 前的输出 .它的planning的能力会很差。
+
+# 问题3：training signal比较弱，提供更多监督信息
+
+  
+  
+
+#自然就会想到，每次不预测一个token，每次预测多个token。
+
+
+# 强化学习可以让模型在没见过的任务上表现可以
+
+#supervised learing学习，不可能超过人类，有上限（因为你的label就是来自人类的
+
+# 只能达到接近人类的水平）
+
+# 但是强化学习可以超越人类的水平
+
+
+
+# 学习一下 Andrej Karpathy
+
+
+
+# 学习方法
+
+# 1.平时得积累, 大量的泛读很多paper, 我就是扫一眼标题和摘要, 知道这篇paper在干什么就可以了, 我用X追踪领域的最新发展 2.如果遇到新的领域, 我之前完全不了解的, 就用google scholar找几篇领域内citation
+
+# 最高的先读一下, 看看这些paper related work里面提到哪些paper, 然后再顺藤摸瓜
+
+
+
+# deepseek r1是如何让大语言模型学会自我思考的
+
+# LLM思考10s为什么比思考1s得到的效果好.
+
+# cot 是如何诞生的
+
+
+
+
+训练一个神经网络，就是找到一个拟合函数。（world is a function）（找到一个规则）（拟合一一个世界）
+
+大语言模型本质上还是一个分类问题。分的是各个字类别。
+
+attention核心是加权求和。注意力大就是权重大。找出最相关的信息。
+
+
+在pytorch中是一个层时，就要继承nn.Module类.要有__init__  和forward方法
+ 
+ nn.parameter（）使参数可训练
+ 
+ 
+ 
+ 
+```
+```
+
+
 这个项目是DeepSeek R1-Zero的最小复制（也要学习一下）
 [Jiayi-Pan/TinyZero: Minimal reproduction of DeepSeek R1-Zero](https://github.com/Jiayi-Pan/TinyZero)
 		
