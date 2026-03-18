@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "list/list.md",
+                "file": "常用prompt.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "list"
+              "title": "常用prompt"
             }
           }
         ]
@@ -291,6 +291,7 @@
   },
   "active": "f1ac5f7ad41b4b88",
   "lastOpenFiles": [
+    "list/list.md",
     "常用prompt.md",
     "不信.md",
     "杂乱小知识/神经网络画图工具.md",
@@ -304,7 +305,6 @@
     "杂乱小知识/baseline.md",
     "杂乱小知识/Agent.md",
     "杂乱小知识/conda/conda.md",
-    "list/list.md",
     "八股/速记.md",
     "八股/transformer/Transformer.md",
     "八股/transformer/理解Transformer.md",

@@ -1,12 +1,12 @@
 {
   "recentFiles": [
     {
-      "basename": "list",
-      "path": "list/list.md"
-    },
-    {
       "basename": "常用prompt",
       "path": "常用prompt.md"
+    },
+    {
+      "basename": "list",
+      "path": "list/list.md"
     },
     {
       "basename": "神经网络画图工具",
