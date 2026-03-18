@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "常用prompt.md",
+                "file": "list/list.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "常用prompt"
+              "title": "list"
             }
           }
         ]
@@ -292,6 +292,7 @@
   "active": "f1ac5f7ad41b4b88",
   "lastOpenFiles": [
     "常用prompt.md",
+    "不信.md",
     "杂乱小知识/神经网络画图工具.md",
     "杂乱小知识/算力租界平台.md",
     "杂乱小知识/思考.md",
@@ -332,7 +333,6 @@
     "杂乱小知识/note/认知提升.md",
     "杂乱小知识/note/穿搭护肤.md",
     "杂乱小知识/note/计划.md",
-    "杂乱小知识/note/恋爱提升.md",
     "杂乱小知识/note/images",
     "杂乱小知识/note",
     "八股/skill",
