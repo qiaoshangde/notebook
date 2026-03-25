@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "conda",
+      "path": "杂乱小知识/conda/conda.md"
+    },
+    {
       "basename": "list",
       "path": "list/list.md"
     },
@@ -47,10 +51,6 @@
     {
       "basename": "Agent",
       "path": "杂乱小知识/Agent.md"
-    },
-    {
-      "basename": "conda",
-      "path": "杂乱小知识/conda/conda.md"
     },
     {
       "basename": "Transformer",
