@@ -24,7 +24,8 @@
 
 5、pip list 可以查看此环境中已经安装的包。
 
-6、conda create --name new_env_name --clone old_env_name #复制old_env_name为new_env_name
+6、conda create --name new_env_name --clone old_env_name‘
+复制old_env_name为new_env_name
 
 7、conda clean -i   清除conda缓存
 
