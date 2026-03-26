@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "2d42a9d26fccc303",
+        "id": "89e72df52442db2f",
         "type": "tabs",
         "children": [
           {
-            "id": "f1ac5f7ad41b4b88",
+            "id": "d94ef702a58c87ea",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "杂乱小知识/conda/conda.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "conda"
+              "title": "新标签页"
             }
           }
         ]
@@ -289,8 +285,10 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "6a5eb320d475b043",
+  "active": "d94ef702a58c87ea",
   "lastOpenFiles": [
+    "杂乱小知识/git.md",
+    "杂乱小知识/conda/conda.md",
     "list/list.md",
     "常用prompt.md",
     "不信.md",
@@ -304,7 +302,6 @@
     "杂乱小知识/prompt.md",
     "杂乱小知识/baseline.md",
     "杂乱小知识/Agent.md",
-    "杂乱小知识/conda/conda.md",
     "八股/速记.md",
     "八股/transformer/Transformer.md",
     "八股/transformer/理解Transformer.md",
@@ -332,7 +329,6 @@
     "大语言模型基础与实践学习笔记.md",
     "杂乱小知识/note/认知提升.md",
     "杂乱小知识/note/穿搭护肤.md",
-    "杂乱小知识/note/计划.md",
     "杂乱小知识/note/images",
     "杂乱小知识/note",
     "八股/skill",
