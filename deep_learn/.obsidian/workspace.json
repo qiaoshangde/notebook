@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "89e72df52442db2f",
+        "id": "d88104f401aaac6c",
         "type": "tabs",
         "children": [
           {
-            "id": "d94ef702a58c87ea",
+            "id": "dab7f8988ed84c9f",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -285,8 +285,14 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "d94ef702a58c87ea",
+  "active": "6a5eb320d475b043",
   "lastOpenFiles": [
+    "八股/未命名",
+    "八股/skill/images/Pasted image 20260326211833.png",
+    "八股/skill/Skills.md",
+    "八股/skill/images/Pasted image 20260326212005.png",
+    "八股/skill/images/Pasted image 20260326211807.png",
+    "八股/skill/images",
     "杂乱小知识/git.md",
     "杂乱小知识/conda/conda.md",
     "list/list.md",
@@ -314,9 +320,6 @@
     "八股/dpo/images/Pasted image 20260314140416.png",
     "八股/dpo/images/Pasted image 20260314134746.png",
     "八股/dpo/images/Pasted image 20260314134702.png",
-    "八股/dpo/images/Pasted image 20260314134606.png",
-    "八股/dpo/images/Pasted image 20260314134434.png",
-    "八股/dpo/images/Pasted image 20260314134334.png",
     "八股/KL散度/未命名.md",
     "八股/ppo/PPO.md",
     "八股/ppo/images",
@@ -327,12 +330,9 @@
     "八股/GRPO/images",
     "八股/GRPO",
     "大语言模型基础与实践学习笔记.md",
-    "杂乱小知识/note/认知提升.md",
-    "杂乱小知识/note/穿搭护肤.md",
     "杂乱小知识/note/images",
     "杂乱小知识/note",
     "八股/skill",
-    "八股/位置编码",
     "未命名.canvas",
     "未命名 1.canvas"
   ]
