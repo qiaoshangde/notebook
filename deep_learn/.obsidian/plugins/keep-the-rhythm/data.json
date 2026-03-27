@@ -527,7 +527,7 @@
       },
       {
         "date": "2026-01-24",
-        "filePath": "八股/位置编码/位置编码.md",
+        "filePath": "八股/transformer/位置编码/位置编码.md",
         "wordCountStart": 0,
         "charCountStart": 0,
         "changes": [],
@@ -783,7 +783,7 @@
       },
       {
         "date": "2026-03-04",
-        "filePath": "八股/位置编码/位置编码.md",
+        "filePath": "八股/transformer/位置编码/位置编码.md",
         "wordCountStart": 32,
         "charCountStart": 332,
         "changes": [],
@@ -799,7 +799,7 @@
       },
       {
         "date": "2026-03-04",
-        "filePath": "八股/ppo/猛猿.md",
+        "filePath": "八股/rl/ppo/猛猿.md",
         "wordCountStart": 0,
         "charCountStart": 0,
         "changes": [],
@@ -1003,7 +1003,7 @@
       },
       {
         "date": "2026-03-06",
-        "filePath": "八股/ppo/猛猿.md",
+        "filePath": "八股/rl/ppo/猛猿.md",
         "wordCountStart": 1,
         "charCountStart": 13,
         "changes": [],
@@ -1059,7 +1059,7 @@
       },
       {
         "date": "2026-03-09",
-        "filePath": "八股/ppo/猛猿.md",
+        "filePath": "八股/rl/ppo/猛猿.md",
         "wordCountStart": 1,
         "charCountStart": 13,
         "changes": [],
@@ -1089,7 +1089,7 @@
       },
       {
         "date": "2026-03-09",
-        "filePath": "八股/位置编码/位置编码.md",
+        "filePath": "八股/transformer/位置编码/位置编码.md",
         "wordCountStart": 32,
         "charCountStart": 332,
         "changes": [],
@@ -1147,7 +1147,7 @@
       },
       {
         "date": "2026-03-10",
-        "filePath": "八股/ppo/猛猿.md",
+        "filePath": "八股/rl/ppo/猛猿.md",
         "wordCountStart": 65,
         "charCountStart": 740,
         "changes": [],
@@ -1185,7 +1185,7 @@
       },
       {
         "date": "2026-03-11",
-        "filePath": "八股/ppo/PPO.md",
+        "filePath": "八股/rl/ppo/PPO.md",
         "wordCountStart": 1096,
         "charCountStart": 7722,
         "changes": [],
@@ -1193,7 +1193,7 @@
       },
       {
         "date": "2026-03-12",
-        "filePath": "八股/ppo/PPO.md",
+        "filePath": "八股/rl/ppo/PPO.md",
         "wordCountStart": 1096,
         "charCountStart": 7721,
         "changes": [],
@@ -1217,7 +1217,7 @@
       },
       {
         "date": "2026-03-13",
-        "filePath": "八股/GRPO/未命名.md",
+        "filePath": "八股/rl/GRPO/未命名.md",
         "wordCountStart": 0,
         "charCountStart": 0,
         "changes": [],
@@ -1233,7 +1233,7 @@
       },
       {
         "date": "2026-03-13",
-        "filePath": "八股/KL散度/未命名.md",
+        "filePath": "八股/rl/KL散度/未命名.md",
         "wordCountStart": 0,
         "charCountStart": 0,
         "changes": [],
@@ -1241,7 +1241,7 @@
       },
       {
         "date": "2026-03-13",
-        "filePath": "八股/dpo/DPO.md",
+        "filePath": "八股/rl/dpo/DPO.md",
         "wordCountStart": 0,
         "charCountStart": 0,
         "changes": [],
@@ -1249,7 +1249,7 @@
       },
       {
         "date": "2026-03-13",
-        "filePath": "八股/ppo/PPO.md",
+        "filePath": "八股/rl/ppo/PPO.md",
         "wordCountStart": 1096,
         "charCountStart": 7721,
         "changes": [],
@@ -1265,7 +1265,7 @@
       },
       {
         "date": "2026-03-14",
-        "filePath": "八股/dpo/DPO.md",
+        "filePath": "八股/rl/dpo/DPO.md",
         "wordCountStart": 96,
         "charCountStart": 925,
         "changes": [],
@@ -1522,6 +1522,38 @@
         "charCountStart": 0,
         "changes": [],
         "id": 159
+      },
+      {
+        "date": "2026-03-27",
+        "filePath": "八股/rl/trl/trl库.md",
+        "wordCountStart": 0,
+        "charCountStart": 0,
+        "changes": [],
+        "id": 160
+      },
+      {
+        "date": "2026-03-27",
+        "filePath": "八股/transformer/理解Transformer.md",
+        "wordCountStart": 25,
+        "charCountStart": 633,
+        "changes": [],
+        "id": 161
+      },
+      {
+        "date": "2026-03-27",
+        "filePath": "八股/transformer/Transformer.md",
+        "wordCountStart": 17,
+        "charCountStart": 203,
+        "changes": [],
+        "id": 162
+      },
+      {
+        "date": "2026-03-27",
+        "filePath": "八股/transformer/VIT.md",
+        "wordCountStart": 1,
+        "charCountStart": 74,
+        "changes": [],
+        "id": 163
       }
     ]
   }

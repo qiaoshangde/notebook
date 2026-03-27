@@ -1,6 +1,22 @@
 {
   "recentFiles": [
     {
+      "basename": "trl库",
+      "path": "八股/rl/trl/trl库.md"
+    },
+    {
+      "basename": "VIT",
+      "path": "八股/transformer/VIT.md"
+    },
+    {
+      "basename": "Transformer",
+      "path": "八股/transformer/Transformer.md"
+    },
+    {
+      "basename": "理解Transformer",
+      "path": "八股/transformer/理解Transformer.md"
+    },
+    {
       "basename": "Skills",
       "path": "八股/skill/Skills.md"
     },
@@ -61,36 +77,28 @@
       "path": "杂乱小知识/Agent.md"
     },
     {
-      "basename": "Transformer",
-      "path": "八股/transformer/Transformer.md"
-    },
-    {
-      "basename": "理解Transformer",
-      "path": "八股/transformer/理解Transformer.md"
-    },
-    {
       "basename": "DPO",
-      "path": "八股/dpo/DPO.md"
+      "path": "八股/rl/dpo/DPO.md"
     },
     {
       "basename": "Pasted image 20260313214919",
-      "path": "八股/dpo/images/Pasted image 20260313214919.png"
+      "path": "八股/rl/dpo/images/Pasted image 20260313214919.png"
     },
     {
       "basename": "未命名",
-      "path": "八股/KL散度/未命名.md"
+      "path": "八股/rl/KL散度/未命名.md"
     },
     {
       "basename": "PPO",
-      "path": "八股/ppo/PPO.md"
+      "path": "八股/rl/ppo/PPO.md"
     },
     {
       "basename": "未命名",
-      "path": "八股/GRPO/未命名.md"
+      "path": "八股/rl/GRPO/未命名.md"
     },
     {
       "basename": "猛猿",
-      "path": "八股/ppo/猛猿.md"
+      "path": "八股/rl/ppo/猛猿.md"
     },
     {
       "basename": "大模型微调",
@@ -98,7 +106,7 @@
     },
     {
       "basename": "位置编码",
-      "path": "八股/位置编码/位置编码.md"
+      "path": "八股/transformer/位置编码/位置编码.md"
     },
     {
       "basename": "相关知识",
@@ -147,10 +155,6 @@
     {
       "basename": "RAG",
       "path": "RAG/RAG.md"
-    },
-    {
-      "basename": "VIT",
-      "path": "八股/transformer/VIT.md"
     },
     {
       "basename": "vit-v NET",
