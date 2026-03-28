@@ -1,12 +1,100 @@
 {
   "recentFiles": [
     {
+      "basename": "评估",
+      "path": "minimind/评估.md"
+    },
+    {
+      "basename": "minimind学习笔记",
+      "path": "minimind/minimind学习笔记.md"
+    },
+    {
+      "basename": "DDP",
+      "path": "minimind/DDP.md"
+    },
+    {
+      "basename": "git",
+      "path": "小知识/git.md"
+    },
+    {
+      "basename": "python小的知识点",
+      "path": "小知识/python小的知识点.md"
+    },
+    {
+      "basename": "名言",
+      "path": "小知识/note/名言.md"
+    },
+    {
+      "basename": "恋爱提升",
+      "path": "小知识/note/恋爱提升.md"
+    },
+    {
+      "basename": "穿搭护肤",
+      "path": "小知识/note/穿搭护肤.md"
+    },
+    {
+      "basename": "思考",
+      "path": "小知识/note/思考.md"
+    },
+    {
+      "basename": "Agent笔记",
+      "path": "Agent/Agent笔记.md"
+    },
+    {
+      "basename": "agent基础知识",
+      "path": "Agent/agent基础知识.md"
+    },
+    {
+      "basename": "1759129523652",
+      "path": "Agent/image/1759129523652.png"
+    },
+    {
+      "basename": "1759129200763",
+      "path": "Agent/image/1759129200763.png"
+    },
+    {
+      "basename": "1759128951263",
+      "path": "Agent/image/1759128951263.png"
+    },
+    {
+      "basename": "1759124482271",
+      "path": "Agent/image/1759124482271.png"
+    },
+    {
+      "basename": "1759124005677",
+      "path": "Agent/image/1759124005677.png"
+    },
+    {
+      "basename": "1759123997061",
+      "path": "Agent/image/1759123997061.png"
+    },
+    {
+      "basename": "1759123084064",
+      "path": "Agent/image/1759123084064.png"
+    },
+    {
+      "basename": "1759123076705",
+      "path": "Agent/image/1759123076705.png"
+    },
+    {
+      "basename": "1759122866215",
+      "path": "Agent/image/1759122866215.png"
+    },
+    {
+      "basename": "agent 代码能力测试方法",
+      "path": "Agent/agent 代码能力测试方法.md"
+    },
+    {
+      "basename": "transformers库",
+      "path": "小知识/transformers库.md"
+    },
+    {
       "basename": "常用prompt",
       "path": "常用prompt.md"
     },
     {
-      "basename": "agent  测试",
-      "path": "杂乱小知识/agent  测试.md"
+      "basename": "python包管理",
+      "path": "小知识/python包管理/python包管理.md"
     },
     {
       "basename": "trl库",
@@ -29,56 +117,8 @@
       "path": "八股/skill/Skills.md"
     },
     {
-      "basename": "git",
-      "path": "杂乱小知识/git.md"
-    },
-    {
-      "basename": "conda",
-      "path": "杂乱小知识/conda/conda.md"
-    },
-    {
       "basename": "list",
       "path": "list/list.md"
-    },
-    {
-      "basename": "神经网络画图工具",
-      "path": "杂乱小知识/神经网络画图工具.md"
-    },
-    {
-      "basename": "算力租界平台",
-      "path": "杂乱小知识/算力租界平台.md"
-    },
-    {
-      "basename": "思考",
-      "path": "杂乱小知识/思考.md"
-    },
-    {
-      "basename": "遇到的小的知识点",
-      "path": "杂乱小知识/遇到的小的知识点.md"
-    },
-    {
-      "basename": "杂杂",
-      "path": "杂乱小知识/杂杂.md"
-    },
-    {
-      "basename": "uv",
-      "path": "杂乱小知识/uv.md"
-    },
-    {
-      "basename": "transformers",
-      "path": "杂乱小知识/transformers.md"
-    },
-    {
-      "basename": "prompt",
-      "path": "杂乱小知识/prompt.md"
-    },
-    {
-      "basename": "baseline",
-      "path": "杂乱小知识/baseline.md"
-    },
-    {
-      "basename": "Agent",
-      "path": "杂乱小知识/Agent.md"
     },
     {
       "basename": "DPO",
@@ -117,10 +157,6 @@
       "path": "TinyZero/相关知识.md"
     },
     {
-      "basename": "agent",
-      "path": "Agent/agent.md"
-    },
-    {
       "basename": "Pasted image 20260122201128",
       "path": "list/images/Pasted image 20260122201128.png"
     },
@@ -129,28 +165,12 @@
       "path": "算法题/hot100.md"
     },
     {
-      "basename": "笔记",
-      "path": "杂乱小知识/点云笔记/笔记.md"
-    },
-    {
-      "basename": "评估",
-      "path": "minimind/评估.md"
-    },
-    {
       "basename": "学习流程",
       "path": "minimind/学习流程.md"
     },
     {
       "basename": "杂",
       "path": "minimind/杂.md"
-    },
-    {
-      "basename": "DDP",
-      "path": "minimind/DDP.md"
-    },
-    {
-      "basename": "minimind学习笔记",
-      "path": "minimind/minimind学习笔记.md"
     },
     {
       "basename": "wandb的使用",
@@ -175,22 +195,6 @@
     {
       "basename": "Pasted image 20241210144200",
       "path": "八股/transformer/images/Pasted image 20241210144200.png"
-    },
-    {
-      "basename": "practice_1",
-      "path": "杂乱小知识/软件使用/practice_1.md"
-    },
-    {
-      "basename": "我的第二篇笔记",
-      "path": "杂乱小知识/软件使用/我的第二篇笔记.md"
-    },
-    {
-      "basename": "我的第一篇笔记",
-      "path": "杂乱小知识/软件使用/我的第一篇笔记.md"
-    },
-    {
-      "basename": "MarkDown语言的学习",
-      "path": "杂乱小知识/软件使用/MarkDown语言的学习.md"
     }
   ],
   "omittedPaths": [],

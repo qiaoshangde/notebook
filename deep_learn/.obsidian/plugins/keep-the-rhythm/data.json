@@ -249,7 +249,7 @@
       },
       {
         "date": "2026-01-20",
-        "filePath": "杂乱小知识/遇到的小的知识点.md",
+        "filePath": "小知识/python小的知识点.md",
         "wordCountStart": 310,
         "charCountStart": 3294,
         "changes": [
@@ -321,7 +321,7 @@
       },
       {
         "date": "2026-01-20",
-        "filePath": "Agent/agent.md",
+        "filePath": "Agent/agent基础知识.md",
         "wordCountStart": 0,
         "charCountStart": 0,
         "changes": [],
@@ -431,7 +431,7 @@
       },
       {
         "date": "2026-01-23",
-        "filePath": "杂乱小知识/transformers.md",
+        "filePath": "小知识/transformers库.md",
         "wordCountStart": 0,
         "charCountStart": 0,
         "changes": [],
@@ -807,7 +807,7 @@
       },
       {
         "date": "2026-03-04",
-        "filePath": "杂乱小知识/Agent.md",
+        "filePath": "Agent/Agent笔记.md",
         "wordCountStart": 58,
         "charCountStart": 766,
         "changes": [],
@@ -815,7 +815,7 @@
       },
       {
         "date": "2026-03-04",
-        "filePath": "杂乱小知识/transformers.md",
+        "filePath": "小知识/transformers库.md",
         "wordCountStart": 148,
         "charCountStart": 1818,
         "changes": [],
@@ -875,7 +875,7 @@
       },
       {
         "date": "2026-03-04",
-        "filePath": "Agent/agent.md",
+        "filePath": "Agent/agent基础知识.md",
         "wordCountStart": 0,
         "charCountStart": 0,
         "changes": [],
@@ -971,7 +971,7 @@
       },
       {
         "date": "2026-03-05",
-        "filePath": "Agent/agent.md",
+        "filePath": "Agent/agent基础知识.md",
         "wordCountStart": 0,
         "charCountStart": 0,
         "changes": [],
@@ -1035,7 +1035,7 @@
       },
       {
         "date": "2026-03-08",
-        "filePath": "Agent/agent.md",
+        "filePath": "Agent/agent基础知识.md",
         "wordCountStart": 46,
         "charCountStart": 541,
         "changes": [],
@@ -1201,7 +1201,7 @@
       },
       {
         "date": "2026-03-12",
-        "filePath": "杂乱小知识/conda/conda.md",
+        "filePath": "小知识/python包管理/python包管理.md",
         "wordCountStart": 124,
         "charCountStart": 1212,
         "changes": [],
@@ -1209,7 +1209,7 @@
       },
       {
         "date": "2026-03-13",
-        "filePath": "杂乱小知识/conda/conda.md",
+        "filePath": "小知识/python包管理/python包管理.md",
         "wordCountStart": 124,
         "charCountStart": 1149,
         "changes": [],
@@ -1335,7 +1335,7 @@
       },
       {
         "date": "2026-03-16",
-        "filePath": "杂乱小知识/conda/conda.md",
+        "filePath": "小知识/python包管理/python包管理.md",
         "wordCountStart": 124,
         "charCountStart": 1149,
         "changes": [],
@@ -1351,7 +1351,7 @@
       },
       {
         "date": "2026-03-16",
-        "filePath": "杂乱小知识/Agent.md",
+        "filePath": "Agent/Agent笔记.md",
         "wordCountStart": 58,
         "charCountStart": 714,
         "changes": [],
@@ -1375,7 +1375,7 @@
       },
       {
         "date": "2026-03-16",
-        "filePath": "杂乱小知识/transformers.md",
+        "filePath": "小知识/transformers库.md",
         "wordCountStart": 148,
         "charCountStart": 1818,
         "changes": [],
@@ -1391,7 +1391,7 @@
       },
       {
         "date": "2026-03-16",
-        "filePath": "杂乱小知识/遇到的小的知识点.md",
+        "filePath": "小知识/python小的知识点.md",
         "wordCountStart": 310,
         "charCountStart": 3294,
         "changes": [],
@@ -1399,7 +1399,7 @@
       },
       {
         "date": "2026-03-16",
-        "filePath": "杂乱小知识/思考.md",
+        "filePath": "小知识/note/思考.md",
         "wordCountStart": 34,
         "charCountStart": 1675,
         "changes": [],
@@ -1485,7 +1485,7 @@
       },
       {
         "date": "2026-03-19",
-        "filePath": "杂乱小知识/conda/conda.md",
+        "filePath": "小知识/python包管理/python包管理.md",
         "wordCountStart": 140,
         "charCountStart": 1248,
         "changes": [],
@@ -1493,7 +1493,7 @@
       },
       {
         "date": "2026-03-25",
-        "filePath": "杂乱小知识/conda/conda.md",
+        "filePath": "小知识/python包管理/python包管理.md",
         "wordCountStart": 140,
         "charCountStart": 1248,
         "changes": [],
@@ -1501,7 +1501,7 @@
       },
       {
         "date": "2026-03-26",
-        "filePath": "杂乱小知识/conda/conda.md",
+        "filePath": "小知识/python包管理/python包管理.md",
         "wordCountStart": 140,
         "charCountStart": 1248,
         "changes": [],
@@ -1509,7 +1509,7 @@
       },
       {
         "date": "2026-03-26",
-        "filePath": "杂乱小知识/git.md",
+        "filePath": "小知识/git.md",
         "wordCountStart": 0,
         "charCountStart": 0,
         "changes": [],
@@ -1565,7 +1565,7 @@
       },
       {
         "date": "2026-03-28",
-        "filePath": "杂乱小知识/agent  测试.md",
+        "filePath": "Agent/agent 代码能力测试方法.md",
         "wordCountStart": 0,
         "charCountStart": 0,
         "changes": [],
@@ -1578,6 +1578,278 @@
         "charCountStart": 2494,
         "changes": [],
         "id": 166
+      },
+      {
+        "date": "2026-03-28",
+        "filePath": "小知识/git.md",
+        "wordCountStart": 12,
+        "charCountStart": 78,
+        "changes": [],
+        "id": 167
+      },
+      {
+        "date": "2026-03-28",
+        "filePath": "杂乱小知识/baseline.md",
+        "wordCountStart": 5,
+        "charCountStart": 157,
+        "changes": [
+          {
+            "timeKey": "21:50",
+            "w": -5,
+            "c": -157
+          }
+        ],
+        "id": 168
+      },
+      {
+        "date": "2026-03-28",
+        "filePath": "Agent/Agent笔记.md",
+        "wordCountStart": 58,
+        "charCountStart": 714,
+        "changes": [],
+        "id": 169
+      },
+      {
+        "date": "2026-03-28",
+        "filePath": "杂乱小知识/杂杂.md",
+        "wordCountStart": 166,
+        "charCountStart": 2190,
+        "changes": [
+          {
+            "timeKey": "21:50",
+            "w": -166,
+            "c": -2190
+          }
+        ],
+        "id": 170
+      },
+      {
+        "date": "2026-03-28",
+        "filePath": "小知识/python小的知识点.md",
+        "wordCountStart": 310,
+        "charCountStart": 3294,
+        "changes": [],
+        "id": 171
+      },
+      {
+        "date": "2026-03-28",
+        "filePath": "小知识/transformers库.md",
+        "wordCountStart": 148,
+        "charCountStart": 1818,
+        "changes": [],
+        "id": 172
+      },
+      {
+        "date": "2026-03-28",
+        "filePath": "杂乱小知识/uv.md",
+        "wordCountStart": 196,
+        "charCountStart": 1865,
+        "changes": [
+          {
+            "timeKey": "21:50",
+            "w": -196,
+            "c": -1865
+          }
+        ],
+        "id": 173
+      },
+      {
+        "date": "2026-03-28",
+        "filePath": "小知识/python包管理/python包管理.md",
+        "wordCountStart": 140,
+        "charCountStart": 1248,
+        "changes": [],
+        "id": 174
+      },
+      {
+        "date": "2026-03-28",
+        "filePath": "杂乱小知识/神经网络画图工具.md",
+        "wordCountStart": 21,
+        "charCountStart": 341,
+        "changes": [
+          {
+            "timeKey": "21:55",
+            "w": -21,
+            "c": -341
+          }
+        ],
+        "id": 175
+      },
+      {
+        "date": "2026-03-28",
+        "filePath": "杂乱小知识/prompt.md",
+        "wordCountStart": 0,
+        "charCountStart": 82,
+        "changes": [
+          {
+            "timeKey": "21:50",
+            "w": 0,
+            "c": -82
+          }
+        ],
+        "id": 176
+      },
+      {
+        "date": "2026-03-28",
+        "filePath": "小知识/note/思考.md",
+        "wordCountStart": 34,
+        "charCountStart": 1422,
+        "changes": [],
+        "id": 177
+      },
+      {
+        "date": "2026-03-28",
+        "filePath": "杂乱小知识/算力租界平台.md",
+        "wordCountStart": 35,
+        "charCountStart": 353,
+        "changes": [
+          {
+            "timeKey": "21:50",
+            "w": -35,
+            "c": -353
+          }
+        ],
+        "id": 178
+      },
+      {
+        "date": "2026-03-28",
+        "filePath": "杂乱小知识/点云笔记/笔记.md",
+        "wordCountStart": 189,
+        "charCountStart": 4354,
+        "changes": [
+          {
+            "timeKey": "21:50",
+            "w": -189,
+            "c": -4354
+          }
+        ],
+        "id": 179
+      },
+      {
+        "date": "2026-03-28",
+        "filePath": "小知识/note/恋爱提升.md",
+        "wordCountStart": 49,
+        "charCountStart": 1870,
+        "changes": [],
+        "id": 180
+      },
+      {
+        "date": "2026-03-28",
+        "filePath": "杂乱小知识/软件使用/practice_1.md",
+        "wordCountStart": 63,
+        "charCountStart": 765,
+        "changes": [
+          {
+            "timeKey": "21:55",
+            "w": -63,
+            "c": -765
+          }
+        ],
+        "id": 181
+      },
+      {
+        "date": "2026-03-28",
+        "filePath": "杂乱小知识/软件使用/MarkDown语言的学习.md",
+        "wordCountStart": 107,
+        "charCountStart": 1463,
+        "changes": [
+          {
+            "timeKey": "21:55",
+            "w": -107,
+            "c": -1463
+          }
+        ],
+        "id": 182
+      },
+      {
+        "date": "2026-03-28",
+        "filePath": "杂乱小知识/软件使用/我的第一篇笔记.md",
+        "wordCountStart": 12,
+        "charCountStart": 122,
+        "changes": [
+          {
+            "timeKey": "21:55",
+            "w": -12,
+            "c": -122
+          }
+        ],
+        "id": 183
+      },
+      {
+        "date": "2026-03-28",
+        "filePath": "杂乱小知识/软件使用/我的第二篇笔记.md",
+        "wordCountStart": 0,
+        "charCountStart": 90,
+        "changes": [
+          {
+            "timeKey": "21:55",
+            "w": 0,
+            "c": -90
+          }
+        ],
+        "id": 184
+      },
+      {
+        "date": "2026-03-28",
+        "filePath": "Agent/agent基础知识.md",
+        "wordCountStart": 46,
+        "charCountStart": 541,
+        "changes": [],
+        "id": 185
+      },
+      {
+        "date": "2026-03-28",
+        "filePath": "小知识/note/穿搭护肤.md",
+        "wordCountStart": 41,
+        "charCountStart": 398,
+        "changes": [],
+        "id": 186
+      },
+      {
+        "date": "2026-03-28",
+        "filePath": "杂乱小知识/note/计划.md",
+        "wordCountStart": 0,
+        "charCountStart": 0,
+        "changes": [
+          {
+            "timeKey": "21:55",
+            "w": 0,
+            "c": 0
+          }
+        ],
+        "id": 187
+      },
+      {
+        "date": "2026-03-28",
+        "filePath": "小知识/note/名言.md",
+        "wordCountStart": 39,
+        "charCountStart": 1028,
+        "changes": [],
+        "id": 188
+      },
+      {
+        "date": "2026-03-28",
+        "filePath": "minimind/DDP.md",
+        "wordCountStart": 196,
+        "charCountStart": 2817,
+        "changes": [],
+        "id": 189
+      },
+      {
+        "date": "2026-03-28",
+        "filePath": "minimind/minimind学习笔记.md",
+        "wordCountStart": 29,
+        "charCountStart": 293,
+        "changes": [],
+        "id": 190
+      },
+      {
+        "date": "2026-03-28",
+        "filePath": "minimind/评估.md",
+        "wordCountStart": 51,
+        "charCountStart": 659,
+        "changes": [],
+        "id": 191
       }
     ]
   }

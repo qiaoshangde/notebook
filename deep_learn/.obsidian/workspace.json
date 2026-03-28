@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "8128f832e555ff54",
+        "id": "926c4da01c4e7a69",
         "type": "tabs",
         "children": [
           {
-            "id": "0e3345ce70695616",
+            "id": "cd9acc59b5c503b9",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "常用prompt.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "常用prompt"
+              "title": "新标签页"
             }
           }
         ]
@@ -98,7 +94,8 @@
               "title": "大纲"
             }
           }
-        ]
+        ],
+        "currentTab": 3
       },
       {
         "id": "ab52c96cd9267565",
@@ -289,54 +286,54 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "0e3345ce70695616",
+  "active": "cd68c1d4ed23f36c",
   "lastOpenFiles": [
-    "杂乱小知识/agent  测试.md",
-    "八股/rl/trl/trl库.md",
-    "八股/transformer/VIT.md",
-    "八股/transformer/Transformer.md",
-    "八股/transformer/理解Transformer.md",
+    "minimind/评估.md",
+    "minimind/minimind学习笔记.md",
+    "minimind/DDP.md",
+    "小知识/git.md",
+    "小知识/python小的知识点.md",
+    "小知识/note/名言.md",
+    "小知识/note/恋爱提升.md",
+    "小知识/note/穿搭护肤.md",
+    "杂乱小知识/note/计划.md",
+    "小知识/note/思考.md",
+    "Agent/Agent笔记.md",
+    "Agent/agent基础知识.md",
+    "Agent/image/1759129523652.png",
+    "Agent/image/1759129200763.png",
+    "Agent/image/1759128951263.png",
+    "Agent/image/1759124482271.png",
+    "Agent/image/1759124005677.png",
+    "Agent/image/1759123997061.png",
+    "Agent/image/1759123084064.png",
+    "Agent/image/1759123076705.png",
+    "Agent/image/1759122866215.png",
+    "Agent/agent 代码能力测试方法.md",
+    "小知识/transformers库.md",
+    "常用prompt.md",
+    "杂乱小知识/神经网络画图工具.md",
+    "杂乱小知识/软件使用/我的第二篇笔记.md",
+    "杂乱小知识/软件使用/我的第一篇笔记.md",
+    "杂乱小知识/软件使用/MarkDown语言的学习.md",
+    "杂乱小知识/软件使用/practice_1.md",
+    "杂乱小知识/算力租界平台.md",
+    "杂乱小知识/prompt.md",
+    "杂乱小知识/uv.md",
+    "杂乱小知识/点云笔记/笔记.md",
+    "小知识/python包管理/python包管理.md",
+    "杂乱小知识/杂杂.md",
+    "杂乱小知识/img/llm.jpg",
     "八股/rl",
     "八股/rl/trl",
-    "八股/skill/images/Pasted image 20260326211833.png",
-    "八股/skill/Skills.md",
-    "八股/skill/images/Pasted image 20260326212005.png",
-    "八股/skill/images/Pasted image 20260326211807.png",
     "八股/skill/images",
-    "杂乱小知识/git.md",
-    "杂乱小知识/conda/conda.md",
-    "list/list.md",
-    "常用prompt.md",
-    "不信.md",
-    "杂乱小知识/神经网络画图工具.md",
-    "杂乱小知识/算力租界平台.md",
-    "杂乱小知识/思考.md",
-    "杂乱小知识/遇到的小的知识点.md",
-    "杂乱小知识/杂杂.md",
-    "杂乱小知识/uv.md",
-    "杂乱小知识/transformers.md",
-    "杂乱小知识/prompt.md",
-    "杂乱小知识/baseline.md",
-    "杂乱小知识/Agent.md",
-    "八股/速记.md",
-    "Extra01-参考答案.md",
-    "八股/rl/dpo/DPO.md",
-    "八股/rl/dpo/images/Pasted image 20260314140726.png",
-    "八股/rl/dpo/images/Pasted image 20260314140632.png",
-    "八股/rl/dpo/images/Pasted image 20260314140553.png",
-    "八股/rl/dpo/images/Pasted image 20260314140446.png",
-    "八股/rl/dpo/images/Pasted image 20260314140416.png",
-    "八股/rl/dpo/images/Pasted image 20260314134746.png",
-    "八股/rl/dpo/images/Pasted image 20260314134702.png",
-    "八股/rl/KL散度/未命名.md",
-    "八股/rl/ppo/PPO.md",
     "八股/rl/ppo/images",
     "八股/rl/dpo/images",
     "八股/rl/KL散度/images",
     "八股/rl/KL散度",
     "八股/rl/GRPO/images",
     "八股/rl/GRPO",
-    "杂乱小知识/note/images",
+    "小知识/note/images",
     "未命名.canvas",
     "未命名 1.canvas"
   ]
