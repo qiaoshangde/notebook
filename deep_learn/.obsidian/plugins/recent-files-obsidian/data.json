@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "常用prompt",
+      "path": "常用prompt.md"
+    },
+    {
       "basename": "agent  测试",
       "path": "杂乱小知识/agent  测试.md"
     },
@@ -35,10 +39,6 @@
     {
       "basename": "list",
       "path": "list/list.md"
-    },
-    {
-      "basename": "常用prompt",
-      "path": "常用prompt.md"
     },
     {
       "basename": "神经网络画图工具",
