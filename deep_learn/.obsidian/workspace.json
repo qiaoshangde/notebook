@@ -94,8 +94,7 @@
               "title": "大纲"
             }
           }
-        ],
-        "currentTab": 3
+        ]
       },
       {
         "id": "ab52c96cd9267565",
@@ -286,7 +285,7 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "cd68c1d4ed23f36c",
+  "active": "6a5eb320d475b043",
   "lastOpenFiles": [
     "杂乱小知识/agent  测试.md",
     "八股/rl/trl/trl库.md",
