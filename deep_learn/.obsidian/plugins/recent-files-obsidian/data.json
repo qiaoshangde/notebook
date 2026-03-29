@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "git",
+      "path": "小知识/git.md"
+    },
+    {
       "basename": "评估",
       "path": "minimind/评估.md"
     },
@@ -11,10 +15,6 @@
     {
       "basename": "DDP",
       "path": "minimind/DDP.md"
-    },
-    {
-      "basename": "git",
-      "path": "小知识/git.md"
     },
     {
       "basename": "python小的知识点",

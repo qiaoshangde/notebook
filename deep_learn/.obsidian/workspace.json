@@ -11,10 +11,14 @@
             "id": "cd9acc59b5c503b9",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "小知识/git.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "新标签页"
+              "title": "git"
             }
           }
         ]
@@ -94,8 +98,7 @@
               "title": "大纲"
             }
           }
-        ],
-        "currentTab": 3
+        ]
       },
       {
         "id": "ab52c96cd9267565",
@@ -286,7 +289,7 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "cd68c1d4ed23f36c",
+  "active": "cd9acc59b5c503b9",
   "lastOpenFiles": [
     "minimind/评估.md",
     "minimind/minimind学习笔记.md",
