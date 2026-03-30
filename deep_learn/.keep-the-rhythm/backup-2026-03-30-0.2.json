@@ -1874,6 +1874,22 @@
         "charCountStart": 0,
         "changes": [],
         "id": 194
+      },
+      {
+        "date": "2026-03-30",
+        "filePath": "list/生活计划.md",
+        "wordCountStart": 44,
+        "charCountStart": 683,
+        "changes": [],
+        "id": 195
+      },
+      {
+        "date": "2026-03-30",
+        "filePath": "小知识/git.md",
+        "wordCountStart": 46,
+        "charCountStart": 374,
+        "changes": [],
+        "id": 196
       }
     ]
   }
