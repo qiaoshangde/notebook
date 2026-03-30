@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Agent/Agent笔记.md",
+                "file": "list/生活计划.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Agent笔记"
+              "title": "生活计划"
             }
           }
         ]
@@ -291,6 +291,8 @@
   },
   "active": "19ececafd3ceab20",
   "lastOpenFiles": [
+    "Agent/Agent笔记.md",
+    "list/生活计划.md",
     "小知识/git.md",
     "minimind/评估.md",
     "minimind/minimind学习笔记.md",
@@ -301,7 +303,6 @@
     "小知识/note/穿搭护肤.md",
     "杂乱小知识/note/计划.md",
     "小知识/note/思考.md",
-    "Agent/Agent笔记.md",
     "Agent/agent基础知识.md",
     "Agent/image/1759129523652.png",
     "Agent/image/1759129200763.png",
@@ -325,7 +326,6 @@
     "杂乱小知识/uv.md",
     "杂乱小知识/点云笔记/笔记.md",
     "小知识/python包管理/python包管理.md",
-    "杂乱小知识/杂杂.md",
     "杂乱小知识/img/llm.jpg",
     "八股/rl",
     "八股/rl/trl",
