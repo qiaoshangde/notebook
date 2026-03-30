@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "list/生活计划.md",
+                "file": "小知识/git.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "生活计划"
+              "title": "git"
             }
           }
         ]
@@ -291,8 +291,8 @@
   },
   "active": "19ececafd3ceab20",
   "lastOpenFiles": [
-    "Agent/Agent笔记.md",
     "list/生活计划.md",
+    "Agent/Agent笔记.md",
     "小知识/git.md",
     "minimind/评估.md",
     "minimind/minimind学习笔记.md",
