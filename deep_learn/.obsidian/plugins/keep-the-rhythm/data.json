@@ -1890,6 +1890,20 @@
         "charCountStart": 374,
         "changes": [],
         "id": 196
+      },
+      {
+        "date": "2026-03-30",
+        "filePath": "AiFriend的Qoder_wiki/快速开始.md",
+        "wordCountStart": 1236,
+        "charCountStart": 9839,
+        "changes": [
+          {
+            "timeKey": "19:25",
+            "w": -1236,
+            "c": -9839
+          }
+        ],
+        "id": 197
       }
     ]
   }
