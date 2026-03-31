@@ -1,6 +1,14 @@
 {
   "recentFiles": [
     {
+      "basename": "生活计划",
+      "path": "list/生活计划.md"
+    },
+    {
+      "basename": "常用prompt",
+      "path": "常用prompt.md"
+    },
+    {
       "basename": "架构改进",
       "path": "安全/架构改进.md"
     },
@@ -19,10 +27,6 @@
     {
       "basename": "git",
       "path": "小知识/git.md"
-    },
-    {
-      "basename": "生活计划",
-      "path": "list/生活计划.md"
     },
     {
       "basename": "Agent笔记",
@@ -107,10 +111,6 @@
     {
       "basename": "transformers库",
       "path": "小知识/transformers库.md"
-    },
-    {
-      "basename": "常用prompt",
-      "path": "常用prompt.md"
     },
     {
       "basename": "python包管理",
