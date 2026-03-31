@@ -1,6 +1,14 @@
 {
   "recentFiles": [
     {
+      "basename": "Skills",
+      "path": "八股/skill/Skills.md"
+    },
+    {
+      "basename": "Pasted image 20260326212005",
+      "path": "八股/skill/images/Pasted image 20260326212005.png"
+    },
+    {
       "basename": "git",
       "path": "小知识/git.md"
     },
@@ -115,10 +123,6 @@
     {
       "basename": "理解Transformer",
       "path": "八股/transformer/理解Transformer.md"
-    },
-    {
-      "basename": "Skills",
-      "path": "八股/skill/Skills.md"
     },
     {
       "basename": "list",

@@ -11,10 +11,14 @@
             "id": "45979cd986fe8324",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "八股/skill/Skills.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "新标签页"
+              "title": "Skills"
             }
           }
         ]
@@ -285,8 +289,10 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "6a5eb320d475b043",
+  "active": "45979cd986fe8324",
   "lastOpenFiles": [
+    "八股/skill/images/Pasted image 20260326212005.png",
+    "AiFriend的Qoder_wiki/快速开始.md",
     "AiFriend的Qoder_wiki/项目概述.md",
     "AiFriend的Qoder_wiki/部署指南/部署指南.md",
     "AiFriend的Qoder_wiki/部署指南/监控运维.md",
@@ -315,8 +321,6 @@
     "AiFriend的Qoder_wiki/数据库设计",
     "AiFriend的Qoder_wiki/故障排除/网络连接问题.md",
     "AiFriend的Qoder_wiki/故障排除/环境配置问题.md",
-    "AiFriend的Qoder_wiki/故障排除/数据库问题.md",
-    "AiFriend的Qoder_wiki/故障排除/故障排除.md",
     "AiFriend的Qoder_wiki/故障排除",
     "AiFriend的Qoder_wiki/后端开发/API视图实现",
     "AiFriend的Qoder_wiki/后端开发",
