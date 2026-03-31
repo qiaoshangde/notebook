@@ -1,6 +1,14 @@
 {
   "recentFiles": [
     {
+      "basename": "周汇报安排",
+      "path": "周汇报安排.md"
+    },
+    {
+      "basename": "list",
+      "path": "list/list.md"
+    },
+    {
       "basename": "生活计划",
       "path": "list/生活计划.md"
     },
@@ -133,10 +141,6 @@
       "path": "八股/transformer/理解Transformer.md"
     },
     {
-      "basename": "list",
-      "path": "list/list.md"
-    },
-    {
       "basename": "DPO",
       "path": "八股/rl/dpo/DPO.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "RAG",
       "path": "RAG/RAG.md"
-    },
-    {
-      "basename": "vit-v NET",
-      "path": "八股/transformer/vit-v/vit-v NET.md"
     }
   ],
   "omittedPaths": [],
