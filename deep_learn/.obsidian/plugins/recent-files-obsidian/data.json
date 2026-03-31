@@ -5,6 +5,10 @@
       "path": "周汇报安排.md"
     },
     {
+      "basename": "猛猿",
+      "path": "八股/rl/ppo/猛猿.md"
+    },
+    {
       "basename": "list",
       "path": "list/list.md"
     },
@@ -159,10 +163,6 @@
     {
       "basename": "未命名",
       "path": "八股/rl/GRPO/未命名.md"
-    },
-    {
-      "basename": "猛猿",
-      "path": "八股/rl/ppo/猛猿.md"
     },
     {
       "basename": "大模型微调",

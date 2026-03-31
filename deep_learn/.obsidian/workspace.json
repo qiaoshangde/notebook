@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "b0f4ca7a60004e6a",
+        "id": "dc0d2a36a43e3aab",
         "type": "tabs",
         "children": [
           {
-            "id": "7d69173c769d55e9",
+            "id": "91c687642289b3a8",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -98,8 +98,7 @@
               "title": "大纲"
             }
           }
-        ],
-        "currentTab": 3
+        ]
       },
       {
         "id": "ab52c96cd9267565",
@@ -290,8 +289,9 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "cd68c1d4ed23f36c",
+  "active": "91c687642289b3a8",
   "lastOpenFiles": [
+    "八股/rl/ppo/猛猿.md",
     "周汇报安排.md",
     "list/list.md",
     "list/生活计划.md",
@@ -321,7 +321,6 @@
     "AiFriend的Qoder_wiki/数据库设计/数据模型详解/消息模型设计.md",
     "AiFriend的Qoder_wiki/数据库设计/数据模型详解/数据模型详解.md",
     "AiFriend的Qoder_wiki/数据库设计/数据模型详解/好友关系模型设计.md",
-    "AiFriend的Qoder_wiki/数据库设计/数据模型详解/AI角色模型设计.md",
     "AiFriend的Qoder_wiki/数据库设计/数据模型详解",
     "AiFriend的Qoder_wiki/数据库设计",
     "AiFriend的Qoder_wiki/故障排除",
