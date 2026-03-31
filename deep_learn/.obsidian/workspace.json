@@ -98,7 +98,8 @@
               "title": "大纲"
             }
           }
-        ]
+        ],
+        "currentTab": 3
       },
       {
         "id": "ab52c96cd9267565",
@@ -289,7 +290,7 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "91c687642289b3a8",
+  "active": "cd68c1d4ed23f36c",
   "lastOpenFiles": [
     "八股/rl/ppo/猛猿.md",
     "周汇报安排.md",
