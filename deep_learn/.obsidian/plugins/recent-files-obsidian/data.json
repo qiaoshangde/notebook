@@ -1,6 +1,14 @@
 {
   "recentFiles": [
     {
+      "basename": "架构改进",
+      "path": "安全/架构改进.md"
+    },
+    {
+      "basename": "新进展",
+      "path": "安全/新进展.md"
+    },
+    {
       "basename": "Skills",
       "path": "八股/skill/Skills.md"
     },
@@ -191,14 +199,6 @@
     {
       "basename": "vit-v NET",
       "path": "八股/transformer/vit-v/vit-v NET.md"
-    },
-    {
-      "basename": "Pasted image 20241211145909",
-      "path": "八股/transformer/images/Pasted image 20241211145909.png"
-    },
-    {
-      "basename": "Pasted image 20241211145741",
-      "path": "八股/transformer/images/Pasted image 20241211145741.png"
     }
   ],
   "omittedPaths": [],
