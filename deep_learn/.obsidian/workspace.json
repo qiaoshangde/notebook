@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "dc0d2a36a43e3aab",
+        "id": "7c4b3bc25cbbff3c",
         "type": "tabs",
         "children": [
           {
-            "id": "91c687642289b3a8",
+            "id": "f33e3d25e747ea13",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "周汇报安排.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "周汇报安排"
+              "title": "新标签页"
             }
           }
         ]
@@ -98,8 +94,7 @@
               "title": "大纲"
             }
           }
-        ],
-        "currentTab": 3
+        ]
       },
       {
         "id": "ab52c96cd9267565",
@@ -290,10 +285,10 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "cd68c1d4ed23f36c",
+  "active": "6a5eb320d475b043",
   "lastOpenFiles": [
-    "八股/rl/ppo/猛猿.md",
     "周汇报安排.md",
+    "八股/rl/ppo/猛猿.md",
     "list/list.md",
     "list/生活计划.md",
     "常用prompt.md",
