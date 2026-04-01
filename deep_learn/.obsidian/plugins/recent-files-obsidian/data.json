@@ -1,6 +1,14 @@
 {
   "recentFiles": [
     {
+      "basename": "git",
+      "path": "小知识/git.md"
+    },
+    {
+      "basename": "常用prompt",
+      "path": "常用prompt.md"
+    },
+    {
       "basename": "周汇报安排",
       "path": "周汇报安排.md"
     },
@@ -17,10 +25,6 @@
       "path": "list/生活计划.md"
     },
     {
-      "basename": "常用prompt",
-      "path": "常用prompt.md"
-    },
-    {
       "basename": "架构改进",
       "path": "安全/架构改进.md"
     },
@@ -35,10 +39,6 @@
     {
       "basename": "Pasted image 20260326212005",
       "path": "八股/skill/images/Pasted image 20260326212005.png"
-    },
-    {
-      "basename": "git",
-      "path": "小知识/git.md"
     },
     {
       "basename": "Agent笔记",

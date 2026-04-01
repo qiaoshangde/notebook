@@ -1984,6 +1984,22 @@
         "charCountStart": 1423,
         "changes": [],
         "id": 207
+      },
+      {
+        "date": "2026-04-01",
+        "filePath": "小知识/git.md",
+        "wordCountStart": 138,
+        "charCountStart": 1150,
+        "changes": [],
+        "id": 208
+      },
+      {
+        "date": "2026-04-01",
+        "filePath": "常用prompt.md",
+        "wordCountStart": 66,
+        "charCountStart": 1082,
+        "changes": [],
+        "id": 209
       }
     ]
   }

@@ -61,22 +61,24 @@ git push  # 需要指定 origin，或配置别名
 
 
 ```
-# 设置当前分支跟踪指定的远程分支
-git branch -u <远程仓库>/<分支名>
+
 
 # 完整写法
 git branch --set-upstream-to <远程仓库>/<分支名>
 ```
 
 
+**设置当前分支跟踪指定的远程分支**
+git branch -u <远程仓库>/<分支名>
+
 **不常用**
 git branch -a   查看所有分支情况
+
+git branch -vv   查看分支跟踪情况
 
 git checkout -b my-current-work   创建并切换到新分支   git switch -c my-current-work    （-c代表create）
 
 git checkout master   切换到master分支
-
-git branch -vv   查看分支跟踪情况
 
 git remote add  ___
 
