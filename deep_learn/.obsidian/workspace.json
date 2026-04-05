@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "小知识/git.md",
+                "file": "常用prompt.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "git"
+              "title": "常用prompt"
             }
           }
         ]
@@ -291,8 +291,10 @@
   },
   "active": "f33e3d25e747ea13",
   "lastOpenFiles": [
-    "常用prompt.md",
+    "images/Pasted image 20260405235629.png",
+    "images",
     "小知识/git.md",
+    "常用prompt.md",
     "周汇报安排.md",
     "八股/rl/ppo/猛猿.md",
     "list/list.md",
@@ -320,14 +322,12 @@
     "AiFriend的Qoder_wiki/数据库设计/数据模型详解/系统提示模型设计.md",
     "AiFriend的Qoder_wiki/数据库设计/数据模型详解/用户模型设计.md",
     "AiFriend的Qoder_wiki/数据库设计/数据模型详解/消息模型设计.md",
-    "AiFriend的Qoder_wiki/数据库设计/数据模型详解/数据模型详解.md",
     "AiFriend的Qoder_wiki/数据库设计/数据模型详解",
     "AiFriend的Qoder_wiki/数据库设计",
     "AiFriend的Qoder_wiki/故障排除",
     "AiFriend的Qoder_wiki/后端开发/API视图实现",
     "AiFriend的Qoder_wiki/后端开发",
     "AiFriend的Qoder_wiki/前端开发/组件系统",
-    "AiFriend的Qoder_wiki/前端开发",
     "Agent/image/1759129523652.png",
     "Agent/image/1759129200763.png",
     "Agent/image/1759128951263.png",
