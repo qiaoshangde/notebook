@@ -1890,6 +1890,172 @@
         "charCountStart": 374,
         "changes": [],
         "id": 196
+      },
+      {
+        "date": "2026-03-30",
+        "filePath": "AiFriend的Qoder_wiki/快速开始.md",
+        "wordCountStart": 1236,
+        "charCountStart": 9839,
+        "changes": [
+          {
+            "timeKey": "19:25",
+            "w": -1236,
+            "c": -9839
+          }
+        ],
+        "id": 197
+      },
+      {
+        "date": "2026-03-30",
+        "filePath": "八股/skill/Skills.md",
+        "wordCountStart": 11,
+        "charCountStart": 213,
+        "changes": [],
+        "id": 198
+      },
+      {
+        "date": "2026-03-31",
+        "filePath": "八股/skill/Skills.md",
+        "wordCountStart": 11,
+        "charCountStart": 220,
+        "changes": [],
+        "id": 199
+      },
+      {
+        "date": "2026-03-31",
+        "filePath": "安全/架构改进.md",
+        "wordCountStart": 0,
+        "charCountStart": 0,
+        "changes": [],
+        "id": 200
+      },
+      {
+        "date": "2026-03-31",
+        "filePath": "安全/新进展.md",
+        "wordCountStart": 0,
+        "charCountStart": 0,
+        "changes": [],
+        "id": 201
+      },
+      {
+        "date": "2026-03-31",
+        "filePath": "常用prompt.md",
+        "wordCountStart": 66,
+        "charCountStart": 1082,
+        "changes": [],
+        "id": 202
+      },
+      {
+        "date": "2026-03-31",
+        "filePath": "list/生活计划.md",
+        "wordCountStart": 44,
+        "charCountStart": 683,
+        "changes": [],
+        "id": 203
+      },
+      {
+        "date": "2026-03-31",
+        "filePath": "list/list.md",
+        "wordCountStart": 618,
+        "charCountStart": 5499,
+        "changes": [],
+        "id": 204
+      },
+      {
+        "date": "2026-03-31",
+        "filePath": "周汇报安排.md",
+        "wordCountStart": 0,
+        "charCountStart": 0,
+        "changes": [],
+        "id": 205
+      },
+      {
+        "date": "2026-03-31",
+        "filePath": "八股/rl/ppo/猛猿.md",
+        "wordCountStart": 65,
+        "charCountStart": 740,
+        "changes": [],
+        "id": 206
+      },
+      {
+        "date": "2026-04-01",
+        "filePath": "周汇报安排.md",
+        "wordCountStart": 86,
+        "charCountStart": 1423,
+        "changes": [],
+        "id": 207
+      },
+      {
+        "date": "2026-04-01",
+        "filePath": "小知识/git.md",
+        "wordCountStart": 138,
+        "charCountStart": 1150,
+        "changes": [],
+        "id": 208
+      },
+      {
+        "date": "2026-04-01",
+        "filePath": "常用prompt.md",
+        "wordCountStart": 66,
+        "charCountStart": 1082,
+        "changes": [],
+        "id": 209
+      },
+      {
+        "date": "2026-04-05",
+        "filePath": "小知识/git.md",
+        "wordCountStart": 138,
+        "charCountStart": 1154,
+        "changes": [],
+        "id": 210
+      },
+      {
+        "date": "2026-04-05",
+        "filePath": "常用prompt.md",
+        "wordCountStart": 66,
+        "charCountStart": 1082,
+        "changes": [],
+        "id": 211
+      },
+      {
+        "date": "2026-04-07",
+        "filePath": "常用prompt.md",
+        "wordCountStart": 68,
+        "charCountStart": 1227,
+        "changes": [],
+        "id": 212
+      },
+      {
+        "date": "2026-04-07",
+        "filePath": "周汇报安排.md",
+        "wordCountStart": 86,
+        "charCountStart": 1423,
+        "changes": [],
+        "id": 213
+      },
+      {
+        "date": "2026-04-08",
+        "filePath": "周汇报安排.md",
+        "wordCountStart": 86,
+        "charCountStart": 1423,
+        "changes": [],
+        "id": 214
+      },
+      {
+        "date": "2026-04-12",
+        "filePath": "周汇报安排.md",
+        "wordCountStart": 86,
+        "charCountStart": 1423,
+        "changes": [],
+        "id": 215
+      },
+      {
+        "date": "2026-04-14",
+        "filePath": "周汇报安排.md",
+        "wordCountStart": 86,
+        "charCountStart": 1423,
+        "changes": [],
+        "id": 216
       }
     ]
   }
