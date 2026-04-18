@@ -1,8 +1,28 @@
 {
   "recentFiles": [
     {
-      "basename": "周汇报安排",
-      "path": "周汇报安排.md"
+      "basename": "hot100",
+      "path": "八股/算法题/hot100.md"
+    },
+    {
+      "basename": "list",
+      "path": "list/list.md"
+    },
+    {
+      "basename": "生活计划",
+      "path": "list/生活计划.md"
+    },
+    {
+      "basename": "工作安排",
+      "path": "安全/工作安排.md"
+    },
+    {
+      "basename": "架构改进",
+      "path": "安全/架构改进.md"
+    },
+    {
+      "basename": "minimind学习笔记",
+      "path": "post_train/minimind/minimind学习笔记.md"
     },
     {
       "basename": "常用prompt",
@@ -15,18 +35,6 @@
     {
       "basename": "猛猿",
       "path": "八股/rl/ppo/猛猿.md"
-    },
-    {
-      "basename": "list",
-      "path": "list/list.md"
-    },
-    {
-      "basename": "生活计划",
-      "path": "list/生活计划.md"
-    },
-    {
-      "basename": "架构改进",
-      "path": "安全/架构改进.md"
     },
     {
       "basename": "新进展",
@@ -46,15 +54,11 @@
     },
     {
       "basename": "评估",
-      "path": "minimind/评估.md"
-    },
-    {
-      "basename": "minimind学习笔记",
-      "path": "minimind/minimind学习笔记.md"
+      "path": "post_train/minimind/评估.md"
     },
     {
       "basename": "DDP",
-      "path": "minimind/DDP.md"
+      "path": "post_train/minimind/DDP.md"
     },
     {
       "basename": "python小的知识点",
@@ -166,7 +170,7 @@
     },
     {
       "basename": "大模型微调",
-      "path": "微调/大模型微调.md"
+      "path": "post_train/微调/大模型微调.md"
     },
     {
       "basename": "位置编码",
@@ -174,31 +178,27 @@
     },
     {
       "basename": "相关知识",
-      "path": "TinyZero/相关知识.md"
+      "path": "post_train/TinyZero/相关知识.md"
     },
     {
       "basename": "Pasted image 20260122201128",
       "path": "list/images/Pasted image 20260122201128.png"
     },
     {
-      "basename": "hot100",
-      "path": "算法题/hot100.md"
-    },
-    {
       "basename": "学习流程",
-      "path": "minimind/学习流程.md"
+      "path": "post_train/minimind/学习流程.md"
     },
     {
       "basename": "杂",
-      "path": "minimind/杂.md"
+      "path": "post_train/minimind/杂.md"
     },
     {
       "basename": "wandb的使用",
-      "path": "minimind/wandb的使用.md"
+      "path": "post_train/minimind/wandb的使用.md"
     },
     {
       "basename": "RAG",
-      "path": "RAG/RAG.md"
+      "path": "Agent/RAG/RAG.md"
     }
   ],
   "omittedPaths": [],
