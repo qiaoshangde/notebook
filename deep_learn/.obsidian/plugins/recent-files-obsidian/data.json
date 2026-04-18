@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "python小的知识点",
+      "path": "小知识/python小的知识点.md"
+    },
+    {
       "basename": "hot100",
       "path": "八股/算法题/hot100.md"
     },
@@ -59,10 +63,6 @@
     {
       "basename": "DDP",
       "path": "post_train/minimind/DDP.md"
-    },
-    {
-      "basename": "python小的知识点",
-      "path": "小知识/python小的知识点.md"
     },
     {
       "basename": "名言",
