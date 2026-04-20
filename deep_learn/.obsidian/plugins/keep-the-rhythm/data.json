@@ -2126,6 +2126,30 @@
           }
         ],
         "id": 224
+      },
+      {
+        "date": "2026-04-18",
+        "filePath": "小知识/python小的知识点.md",
+        "wordCountStart": 310,
+        "charCountStart": 3295,
+        "changes": [],
+        "id": 225
+      },
+      {
+        "date": "2026-04-18",
+        "filePath": "小知识/python包管理/python包管理.md",
+        "wordCountStart": 338,
+        "charCountStart": 3128,
+        "changes": [],
+        "id": 226
+      },
+      {
+        "date": "2026-04-20",
+        "filePath": "小知识/python包管理/python包管理.md",
+        "wordCountStart": 338,
+        "charCountStart": 3128,
+        "changes": [],
+        "id": 227
       }
     ]
   }

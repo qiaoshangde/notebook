@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "python包管理",
+      "path": "小知识/python包管理/python包管理.md"
+    },
+    {
       "basename": "python小的知识点",
       "path": "小知识/python小的知识点.md"
     },
@@ -127,10 +131,6 @@
     {
       "basename": "transformers库",
       "path": "小知识/transformers库.md"
-    },
-    {
-      "basename": "python包管理",
-      "path": "小知识/python包管理/python包管理.md"
     },
     {
       "basename": "trl库",
