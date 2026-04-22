@@ -1,6 +1,26 @@
 {
   "recentFiles": [
     {
+      "basename": "hot100",
+      "path": "八股/算法题/hot100.md"
+    },
+    {
+      "basename": "增量",
+      "path": "安全/增量.md"
+    },
+    {
+      "basename": "新进展",
+      "path": "安全/新进展.md"
+    },
+    {
+      "basename": "架构改进",
+      "path": "安全/架构改进.md"
+    },
+    {
+      "basename": "工作安排",
+      "path": "安全/工作安排.md"
+    },
+    {
       "basename": "python包管理",
       "path": "小知识/python包管理/python包管理.md"
     },
@@ -9,24 +29,12 @@
       "path": "小知识/python小的知识点.md"
     },
     {
-      "basename": "hot100",
-      "path": "八股/算法题/hot100.md"
-    },
-    {
       "basename": "list",
       "path": "list/list.md"
     },
     {
       "basename": "生活计划",
       "path": "list/生活计划.md"
-    },
-    {
-      "basename": "工作安排",
-      "path": "安全/工作安排.md"
-    },
-    {
-      "basename": "架构改进",
-      "path": "安全/架构改进.md"
     },
     {
       "basename": "minimind学习笔记",
@@ -43,10 +51,6 @@
     {
       "basename": "猛猿",
       "path": "八股/rl/ppo/猛猿.md"
-    },
-    {
-      "basename": "新进展",
-      "path": "安全/新进展.md"
     },
     {
       "basename": "Skills",
@@ -195,10 +199,6 @@
     {
       "basename": "wandb的使用",
       "path": "post_train/minimind/wandb的使用.md"
-    },
-    {
-      "basename": "RAG",
-      "path": "Agent/RAG/RAG.md"
     }
   ],
   "omittedPaths": [],
