@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "安全/增量.md",
+                "file": "八股/算法题/hot100.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "增量"
+              "title": "hot100"
             }
           }
         ]
@@ -90,16 +90,17 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "安全/增量.md",
+                "file": "八股/算法题/hot100.md",
                 "followCursor": true,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "增量 的大纲"
+              "title": "hot100 的大纲"
             }
           }
-        ]
+        ],
+        "currentTab": 4
       },
       {
         "id": "ab52c96cd9267565",
@@ -292,8 +293,9 @@
   },
   "active": "a3bb4e309a393e9e",
   "lastOpenFiles": [
-    "安全/新进展.md",
+    "八股/算法题/images/Pasted image 20260422144618.png",
     "安全/增量.md",
+    "安全/新进展.md",
     "安全/架构改进.md",
     "安全/工作安排.md",
     "小知识/python包管理/python包管理.md",
@@ -327,7 +329,6 @@
     "AiFriend的Qoder_wiki/架构设计/整体架构概览.md",
     "AiFriend的Qoder_wiki/架构设计/数据流设计.md",
     "AiFriend的Qoder_wiki/架构设计/技术栈选型.md",
-    "AiFriend的Qoder_wiki/架构设计/后端架构设计.md",
     "AiFriend的Qoder_wiki/架构设计",
     "AiFriend的Qoder_wiki/数据库设计/数据模型详解",
     "AiFriend的Qoder_wiki/数据库设计",
