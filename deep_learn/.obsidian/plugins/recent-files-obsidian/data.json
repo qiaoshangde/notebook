@@ -1,6 +1,18 @@
 {
   "recentFiles": [
     {
+      "basename": "未命名",
+      "path": "未命名.md"
+    },
+    {
+      "basename": "git",
+      "path": "小知识/git.md"
+    },
+    {
+      "basename": "常用prompt",
+      "path": "常用prompt.md"
+    },
+    {
       "basename": "hot100",
       "path": "八股/算法题/hot100.md"
     },
@@ -39,14 +51,6 @@
     {
       "basename": "minimind学习笔记",
       "path": "post_train/minimind/minimind学习笔记.md"
-    },
-    {
-      "basename": "常用prompt",
-      "path": "常用prompt.md"
-    },
-    {
-      "basename": "git",
-      "path": "小知识/git.md"
     },
     {
       "basename": "猛猿",
@@ -195,10 +199,6 @@
     {
       "basename": "杂",
       "path": "post_train/minimind/杂.md"
-    },
-    {
-      "basename": "wandb的使用",
-      "path": "post_train/minimind/wandb的使用.md"
     }
   ],
   "omittedPaths": [],
