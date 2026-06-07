@@ -11,22 +11,3 @@
 
 
 
-为了更直观地展示网络结构图，你可以使用以下工具绘制网络结构：
-
-- **[PlotNeuralNet](https://github.com/HarisIqbal88/PlotNeuralNet)**：一个专门用于绘制神经网络架构的工具。
-- **[Netron](https://netron.app/)**：一个非常好的可视化工具，可以打开模型文件（如 `.h5`, `.pth` 等），并自动绘制网络结构。
-- **TensorBoard**：如果你使用 TensorFlow，可以通过 TensorBoard 可视化你的网络结构，但 PyTorch 也可以通过 `torch.utils.tensorboard` 来实现。
-
-这些工具可以帮助你生成更详细、直观的网络结构图。
-
-
-好但是贵：阿里云，腾讯云等大厂
-免费白嫖：Kaggle，Colab  百度AIStudio
-
-
-AutoDL   AI算力云    链接 ：[AutoDL算力云 | 弹性、好用、省钱。租GPU就上AutoDL](https://www.autodl.com/register?code=8458c843-06c7-440e-a189-b1f2c215c1cc)
-
-炼丹侠AI ：链接： [炼丹侠AI服务平台-高质量数据集、模型开源共享，高性能GPU算力资源，免费体验，开箱即用 (liandanxia.com)](https://market.liandanxia.com/)
-
-
-矩池云  [矩池云 - 主机市场 (matgo.cn)](https://matgo.cn/host-market)

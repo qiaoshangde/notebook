@@ -1,12 +1,16 @@
 {
   "recentFiles": [
     {
-      "basename": "常用prompt",
-      "path": "常用prompt.md"
+      "basename": "2026.6.7",
+      "path": "八股/每日八股/2026.6.7.md"
     },
     {
-      "basename": "未命名",
-      "path": "未命名.md"
+      "basename": "算法开发讨论",
+      "path": "算法开发讨论.md"
+    },
+    {
+      "basename": "常用prompt",
+      "path": "常用prompt.md"
     },
     {
       "basename": "git",
@@ -195,10 +199,6 @@
     {
       "basename": "学习流程",
       "path": "post_train/minimind/学习流程.md"
-    },
-    {
-      "basename": "杂",
-      "path": "post_train/minimind/杂.md"
     }
   ],
   "omittedPaths": [],
