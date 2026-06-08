@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "3032444f929ae4a7",
+        "id": "bdd8df89a439737a",
         "type": "tabs",
         "children": [
           {
-            "id": "08c82f0fe51d5cc1",
+            "id": "4ca87eefb92d4970",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "八股/每日八股/2026.6.7.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "2026.6.7"
+              "title": "新标签页"
             }
           }
         ]
@@ -290,9 +286,11 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "08c82f0fe51d5cc1",
+  "active": "6a5eb320d475b043",
   "lastOpenFiles": [
-    "八股/每日八股/2026.6.7.md",
+    "八股/每日八股/agent.md",
+    "八股/claude_code/claude code.md",
+    "八股/claude_code",
     "八股/每日八股",
     "算法开发讨论.md",
     "常用prompt.md",
@@ -335,9 +333,7 @@
     "AiFriend的Qoder_wiki/部署指南/容器化部署.md",
     "AiFriend的Qoder_wiki/部署指南",
     "AiFriend的Qoder_wiki/架构设计/架构设计.md",
-    "AiFriend的Qoder_wiki/架构设计/整体架构概览.md",
     "AiFriend的Qoder_wiki/架构设计",
-    "AiFriend的Qoder_wiki/数据库设计/数据模型详解",
     "未命名.canvas",
     "未命名 1.canvas"
   ]

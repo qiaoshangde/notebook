@@ -1,8 +1,12 @@
 {
   "recentFiles": [
     {
-      "basename": "2026.6.7",
-      "path": "八股/每日八股/2026.6.7.md"
+      "basename": "claude code",
+      "path": "八股/claude_code/claude code.md"
+    },
+    {
+      "basename": "agent",
+      "path": "八股/每日八股/agent.md"
     },
     {
       "basename": "算法开发讨论",
@@ -195,10 +199,6 @@
     {
       "basename": "Pasted image 20260122201128",
       "path": "list/images/Pasted image 20260122201128.png"
-    },
-    {
-      "basename": "学习流程",
-      "path": "post_train/minimind/学习流程.md"
     }
   ],
   "omittedPaths": [],
