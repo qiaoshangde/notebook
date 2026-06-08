@@ -2311,7 +2311,7 @@
       },
       {
         "date": "2026-06-07",
-        "filePath": "八股/每日八股/2026.6.7.md",
+        "filePath": "八股/每日八股/agent.md",
         "wordCountStart": 0,
         "charCountStart": 0,
         "changes": [
@@ -2322,6 +2322,22 @@
           }
         ],
         "id": 247
+      },
+      {
+        "date": "2026-06-08",
+        "filePath": "八股/每日八股/agent.md",
+        "wordCountStart": 329,
+        "charCountStart": 12180,
+        "changes": [],
+        "id": 248
+      },
+      {
+        "date": "2026-06-08",
+        "filePath": "八股/claude_code/claude code.md",
+        "wordCountStart": 0,
+        "charCountStart": 0,
+        "changes": [],
+        "id": 249
       }
     ]
   }
