@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "工作安排",
+      "path": "安全/工作安排.md"
+    },
+    {
       "basename": "claude code",
       "path": "八股/claude_code/claude code.md"
     },
@@ -35,10 +39,6 @@
     {
       "basename": "架构改进",
       "path": "安全/架构改进.md"
-    },
-    {
-      "basename": "工作安排",
-      "path": "安全/工作安排.md"
     },
     {
       "basename": "python包管理",

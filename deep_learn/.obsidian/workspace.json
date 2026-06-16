@@ -11,10 +11,14 @@
             "id": "4ca87eefb92d4970",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "安全/工作安排.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "新标签页"
+              "title": "工作安排"
             }
           }
         ]
@@ -286,7 +290,7 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "6a5eb320d475b043",
+  "active": "4ca87eefb92d4970",
   "lastOpenFiles": [
     "八股/每日八股/agent.md",
     "八股/claude_code/claude code.md",
