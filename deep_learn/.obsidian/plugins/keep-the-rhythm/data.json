@@ -2177,7 +2177,7 @@
       },
       {
         "date": "2026-04-20",
-        "filePath": "安全/增量.md",
+        "filePath": "安全/AI AGENT安全.md",
         "wordCountStart": 0,
         "charCountStart": 0,
         "changes": [],
@@ -2185,7 +2185,7 @@
       },
       {
         "date": "2026-04-22",
-        "filePath": "安全/增量.md",
+        "filePath": "安全/AI AGENT安全.md",
         "wordCountStart": 113,
         "charCountStart": 1670,
         "changes": [],
@@ -2344,8 +2344,30 @@
         "filePath": "安全/工作安排.md",
         "wordCountStart": 76,
         "charCountStart": 1259,
-        "changes": [],
+        "changes": [
+          {
+            "timeKey": "17:15",
+            "w": -76,
+            "c": -1259
+          }
+        ],
         "id": 250
+      },
+      {
+        "date": "2026-06-16",
+        "filePath": "安全/架构改进.md",
+        "wordCountStart": 99,
+        "charCountStart": 6575,
+        "changes": [],
+        "id": 251
+      },
+      {
+        "date": "2026-06-16",
+        "filePath": "安全/AI AGENT安全.md",
+        "wordCountStart": 113,
+        "charCountStart": 1670,
+        "changes": [],
+        "id": 252
       }
     ]
   }

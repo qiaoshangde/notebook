@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "安全/工作安排.md",
+                "file": "安全/AI AGENT安全.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "工作安排"
+              "title": "AI AGENT安全"
             }
           }
         ]
@@ -292,6 +292,8 @@
   },
   "active": "4ca87eefb92d4970",
   "lastOpenFiles": [
+    "安全/架构改进.md",
+    "安全/工作安排.md",
     "八股/每日八股/agent.md",
     "八股/claude_code/claude code.md",
     "八股/claude_code",
@@ -308,10 +310,8 @@
     "八股/算法题/images/Pasted image 20260427132318.png",
     "八股/算法题/images/Pasted image 20260427130942.png",
     "八股/算法题/images/Pasted image 20260422144618.png",
-    "安全/增量.md",
+    "安全/AI AGENT安全.md",
     "安全/新进展.md",
-    "安全/架构改进.md",
-    "安全/工作安排.md",
     "小知识/python包管理/python包管理.md",
     "小知识/python小的知识点.md",
     "八股/算法题/images/Pasted image 20260418121307.png",

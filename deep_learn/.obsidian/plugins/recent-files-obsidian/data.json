@@ -1,8 +1,12 @@
 {
   "recentFiles": [
     {
-      "basename": "工作安排",
-      "path": "安全/工作安排.md"
+      "basename": "AI AGENT安全",
+      "path": "安全/AI AGENT安全.md"
+    },
+    {
+      "basename": "架构改进",
+      "path": "安全/架构改进.md"
     },
     {
       "basename": "claude code",
@@ -29,16 +33,8 @@
       "path": "八股/算法题/hot100.md"
     },
     {
-      "basename": "增量",
-      "path": "安全/增量.md"
-    },
-    {
       "basename": "新进展",
       "path": "安全/新进展.md"
-    },
-    {
-      "basename": "架构改进",
-      "path": "安全/架构改进.md"
     },
     {
       "basename": "python包管理",
