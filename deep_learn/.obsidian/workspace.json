@@ -99,7 +99,8 @@
               "title": "codetop前200题题解手册 的大纲"
             }
           }
-        ]
+        ],
+        "currentTab": 4
       },
       {
         "id": "ab52c96cd9267565",
@@ -290,7 +291,7 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "613c66abc00943c4",
+  "active": "4a0cf99042f01edd",
   "lastOpenFiles": [
     "八股/算法题/hot100.md",
     "八股/算法题/codetop前200题题解手册.md",
