@@ -1,6 +1,18 @@
 {
   "recentFiles": [
     {
+      "basename": "hot100",
+      "path": "八股/算法题/hot100.md"
+    },
+    {
+      "basename": "几个项目",
+      "path": "几个项目.md"
+    },
+    {
+      "basename": "学习",
+      "path": "学习.md"
+    },
+    {
       "basename": "code_review面试题目",
       "path": "八股/code_review/code_review面试题目.md"
     },
@@ -31,10 +43,6 @@
     {
       "basename": "git",
       "path": "小知识/git.md"
-    },
-    {
-      "basename": "hot100",
-      "path": "八股/算法题/hot100.md"
     },
     {
       "basename": "新进展",
@@ -191,14 +199,6 @@
     {
       "basename": "位置编码",
       "path": "八股/transformer/位置编码/位置编码.md"
-    },
-    {
-      "basename": "相关知识",
-      "path": "post_train/TinyZero/相关知识.md"
-    },
-    {
-      "basename": "Pasted image 20260122201128",
-      "path": "list/images/Pasted image 20260122201128.png"
     }
   ],
   "omittedPaths": [],
