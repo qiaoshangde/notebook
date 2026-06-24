@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "codetop前200题题解手册",
+      "path": "八股/算法题/codetop前200题题解手册.md"
+    },
+    {
       "basename": "hot100",
       "path": "八股/算法题/hot100.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "大模型微调",
       "path": "post_train/微调/大模型微调.md"
-    },
-    {
-      "basename": "位置编码",
-      "path": "八股/transformer/位置编码/位置编码.md"
     }
   ],
   "omittedPaths": [],
