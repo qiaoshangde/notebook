@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "dd29b161f9e574fa",
+        "id": "338bfa6994a466cc",
         "type": "tabs",
         "children": [
           {
-            "id": "613c66abc00943c4",
+            "id": "d80a4a6a22dec43d",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "八股/算法题/codetop前200题题解手册.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "codetop前200题题解手册"
+              "title": "新标签页"
             }
           }
         ]
@@ -90,17 +86,15 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "八股/算法题/codetop前200题题解手册.md",
                 "followCursor": true,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "codetop前200题题解手册 的大纲"
+              "title": "大纲"
             }
           }
-        ],
-        "currentTab": 4
+        ]
       },
       {
         "id": "ab52c96cd9267565",
@@ -291,14 +285,17 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "4a0cf99042f01edd",
+  "active": "d80a4a6a22dec43d",
   "lastOpenFiles": [
-    "八股/算法题/hot100.md",
+    "八股/agenticRAG/面试.md",
+    "八股/code_review/code_review面试题目.md",
+    "八股/agenticRAG",
     "八股/算法题/codetop前200题题解手册.md",
+    "八股/算法题/经典排序算法手册.md",
+    "八股/算法题/hot100.md",
     "八股/算法题/images/Pasted image 20260624220951.png",
     "几个项目.md",
     "学习.md",
-    "八股/code_review/code_review面试题目.md",
     "项目",
     "八股/agent/agent.md",
     "八股/code_review",
@@ -334,11 +331,8 @@
     "images",
     "八股/rl/ppo/猛猿.md",
     "八股/skill/Skills.md",
-    "安全",
     "AiFriend的Qoder_wiki/快速开始.md",
     "AiFriend的Qoder_wiki/项目概述.md",
-    "AiFriend的Qoder_wiki/部署指南/部署指南.md",
-    "AiFriend的Qoder_wiki/部署指南/监控运维.md",
     "未命名.canvas",
     "未命名 1.canvas"
   ]
