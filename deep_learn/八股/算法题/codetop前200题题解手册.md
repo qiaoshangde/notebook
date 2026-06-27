@@ -9364,6 +9364,25 @@ class Solution:
         return min(dp[-1])
 ```
 
+简化：
+
+```python
+class Solution:
+    def minimumTotal(self, triangle):
+        n = len(triangle)
+
+        dp = [[0] * len(row) for row in triangle]
+        dp[0][0] = triangle[0][0]
+
+        for i in range(1, n):
+            dp[i][0] = dp[i - 1][0] + triangle[i][0]
+            dp[i][i] = dp[i - 1][i - 1] + triangle[i][i]
+
+            for j in range(1, i):
+                dp[i][j] = min(dp[i - 1][j - 1], dp[i - 1][j]) + triangle[i][j]
+
+        return min(dp[n - 1])
+```
 #### 详细分析、小例子与代码执行流程
 三角形 `[[2],[3,4],[6,5,7],[4,1,8,3]]`，从底往上算，3 那个位置会选择下面 5 比 6 更小，最终最小路径是 `2+3+5+1=11`。
 
