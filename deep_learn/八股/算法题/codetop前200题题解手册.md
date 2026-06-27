@@ -11,7 +11,7 @@
 说明：
 
 - 只有稳定题型才给模板；模拟题、数学概率题、特定技巧题不强行套模板。
-- 代码默认 Python，偏 LeetCode 写法；需要 `List`、`Optional`、`deque`、`defaultdict`、`heapq` 等时，默认从标准库导入。
+- 代码默认 Python，偏 LeetCode 写法；需要 `List`、`Optional`、`deque`、`defaultdict`、`heap q` 等时，默认从标准库导入。
 
 ## 题型模板
 
