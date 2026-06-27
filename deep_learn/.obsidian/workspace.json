@@ -94,8 +94,7 @@
               "title": "大纲"
             }
           }
-        ],
-        "currentTab": 4
+        ]
       },
       {
         "id": "ab52c96cd9267565",
@@ -286,7 +285,7 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "3759faeb4ece6657",
+  "active": "6a5eb320d475b043",
   "lastOpenFiles": [
     "八股/算法题/codetop前200题题解手册.md",
     "八股/算法题/经典排序算法手册.md",
