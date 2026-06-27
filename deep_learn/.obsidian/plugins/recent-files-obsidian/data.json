@@ -1,6 +1,14 @@
 {
   "recentFiles": [
     {
+      "basename": "面试",
+      "path": "八股/agenticRAG/面试.md"
+    },
+    {
+      "basename": "数据",
+      "path": "八股/agenticRAG/数据.md"
+    },
+    {
       "basename": "codetop前200题题解手册",
       "path": "八股/算法题/codetop前200题题解手册.md"
     },
@@ -11,10 +19,6 @@
     {
       "basename": "经典排序算法手册",
       "path": "八股/算法题/经典排序算法手册.md"
-    },
-    {
-      "basename": "面试",
-      "path": "八股/agenticRAG/面试.md"
     },
     {
       "basename": "code_review面试题目",
@@ -195,10 +199,6 @@
     {
       "basename": "未命名",
       "path": "八股/rl/KL散度/未命名.md"
-    },
-    {
-      "basename": "PPO",
-      "path": "八股/rl/ppo/PPO.md"
     }
   ],
   "omittedPaths": [],
