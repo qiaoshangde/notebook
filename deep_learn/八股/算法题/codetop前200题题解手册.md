@@ -102,7 +102,9 @@ while l <= r:
 return -1
 ```
 
-### 树 DFS / BST 模板
+
+### 树类题目
+#### 树 DFS / BST 模板
 
 适用题目：22. 二叉树的最近公共祖先；35. 二叉树中的最大路径和；57. 构造二叉树；63. 求根到叶子节点数字之和；66. 对称二叉树；72. 二叉树的最大深度；74. 平衡二叉树；79. 验证二叉搜索树；84. 二叉树的直径；88. 路径总和 II；92. 路径总和；97. 翻转二叉树；105. 二叉树的序列化与反序列化；124. 树的子结构；125. 二叉树展开为链表；128. 二叉搜索树与双向链表；140. 另一个树的子树；141. 二叉树的后序遍历；150. 删除二叉搜索树中的节点；151. 二叉搜索树的第 k 大节点；166. 从中序与后序遍历序列构造二叉树；169. 二叉搜索树中第 K 小的元素；194. 二叉树的镜像。它们共同点是“递归返回值必须先定义清楚”。
 
@@ -116,56 +118,7 @@ def dfs(root):
     right = dfs(root.right)
     return 当前节点返回值
 ```
-
-#### 树 DFS / BST 刷题顺序
-
-树题不要一上来就背复杂递归，建议按“遍历方式 -> 返回值 -> 路径贡献 -> BST 性质 -> 构造变形”的顺序刷。
-
-第一阶段：树的遍历，先建立二叉树手感
-
-适合做：12. 二叉树的层序遍历；20. 二叉树的锯齿形层序遍历；40. 二叉树的右视图；47. 二叉树的中序遍历；141. 二叉树的后序遍历。
-
-目标：先熟悉树的基本访问顺序。BFS 用队列一层一层处理；DFS 用递归或栈处理前序、中序、后序。
-
-第二阶段：基础递归，练“递归函数返回什么”
-
-适合做：72. 二叉树的最大深度；97. 翻转二叉树；194. 二叉树的镜像；66. 对称二叉树；74. 平衡二叉树。
-
-目标：每题都先问一句：`dfs(root)` 返回给父节点的是什么。最大深度返回高度，平衡二叉树返回高度或不平衡标记，对称二叉树比较左右两个节点。
-
-第三阶段：路径类，理解从根到叶子和全局答案
-
-适合做：92. 路径总和；88. 路径总和 II；63. 求根到叶子节点数字之和；84. 二叉树的直径；35. 二叉树中的最大路径和。
-
-目标：区分两类路径题。根到叶子路径通常带着当前路径或剩余目标往下走；直径、最大路径和通常需要 `dfs` 返回单边贡献，同时用全局变量更新答案。
-
-第四阶段：公共祖先和子树匹配
-
-适合做：22. 二叉树的最近公共祖先；124. 树的子结构；140. 另一个树的子树。
-
-目标：最近公共祖先重点看左右子树返回值；子结构和子树重点看“从当前节点开始是否匹配”和“继续去左右子树找”这两层递归。
-
-第五阶段：BST，利用中序有序性质
-
-适合做：79. 验证二叉搜索树；151. 二叉搜索树的第 k 大节点；169. 二叉搜索树中第 K 小的元素；128. 二叉搜索树与双向链表；150. 删除二叉搜索树中的节点。
-
-目标：记住 BST 的核心性质：中序遍历是升序。第 k 小用中序，第 k 大用反中序，验证 BST 可以用上下界或中序递增，删除节点重点处理左右孩子情况。
-
-第六阶段：构造、序列化和原地改造
-
-适合做：57. 从前序与中序遍历序列构造二叉树；166. 从中序与后序遍历序列构造二叉树；105. 二叉树的序列化与反序列化；125. 二叉树展开为链表；82. 二叉树最大宽度；129. 二叉树的完全性检验。
-
-目标：构造题先找根节点，再切分左右子树；序列化要保留空节点信息；展开链表是递归改指针；最大宽度和完全性检验是 BFS 加位置编号或空节点规则。
-
-一句话记忆：
-
-- 层序题：队列按层处理。
-- 普通 DFS：先想清楚递归返回值。
-- 路径贡献题：返回给父节点的是单边贡献，全局答案可以经过当前节点拐弯。
-- BST 题：中序有序，反中序倒着有序。
-- 构造题：根节点定左右边界，递归造左右子树。
-
-### 树 BFS 模板
+#### 树 BFS 模板
 
 适用题目：12. 二叉树的层序遍历；20. 二叉树的锯齿形层序遍历；40. 二叉树的右视图；82. 二叉树最大宽度；129. 二叉树的完全性检验。它们共同点是“一层一层处理，用队列和当前层 size”。
 
@@ -178,6 +131,69 @@ while q:
         if node.left: q.append(node.left)
         if node.right: q.append(node.right)
 ```
+
+#### 树的刷题顺序
+
+树题不要一上来就背复杂递归，建议按“遍历方式 -> 返回值 -> 路径贡献 -> BST 性质 -> 构造变形”的顺序刷。这里是完整树题顺序，包含 BFS、DFS、BST、构造和序列化。
+
+第一阶段：树的遍历，先建立二叉树手感
+
+BFS 层序类：12. 二叉树的层序遍历；20. 二叉树的锯齿形层序遍历；40. 二叉树的右视图。
+
+DFS 遍历类：47. 二叉树的中序遍历；141. 二叉树的后序遍历。
+
+目标：先熟悉树的基本访问顺序。BFS 用队列一层一层处理；DFS 用递归或栈处理前序、中序、后序。
+
+第二阶段：基础递归，练“递归函数返回什么”
+
+DFS 基础递归类：72. 二叉树的最大深度；97. 翻转二叉树；194. 二叉树的镜像；66. 对称二叉树；74. 平衡二叉树。
+
+目标：每题都先问一句：`dfs(root)` 返回给父节点的是什么。最大深度返回高度，平衡二叉树返回高度或不平衡标记，对称二叉树比较左右两个节点。
+
+第三阶段：路径类，理解从根到叶子和全局答案
+
+DFS 根到叶子路径类：92. **路径总和**；88. 路径总和 II；63. 求根到叶子节点数字之和。
+
+DFS 后序贡献类：84. 二叉树的直径；35. 二叉树中的最大路径和。
+
+目标：区分两类路径题。根到叶子路径通常带着当前路径或剩余目标往下走；直径、最大路径和通常需要 `dfs` 返回单边贡献，同时用全局变量更新答案。
+
+第四阶段：公共祖先和子树匹配
+
+DFS 最近公共祖先类：22. 二叉树的最近公共祖先。
+
+DFS 子树匹配类：124. 树的子结构；140. 另一个树的子树。
+
+目标：最近公共祖先重点看左右子树返回值；子结构和子树重点看“从当前节点开始是否匹配”和“继续去左右子树找”这两层递归。
+
+第五阶段：BST，利用中序有序性质
+
+BST 中序性质类：79. 验证二叉搜索树；151. 二叉搜索树的第 k 大节点；169. 二叉搜索树中第 K 小的元素；128. 二叉搜索树与双向链表。
+
+BST 结构修改类：150. 删除二叉搜索树中的节点。
+
+目标：记住 BST 的核心性质：中序遍历是升序。第 k 小用中序，第 k 大用反中序，验证 BST 可以用上下界或中序递增，删除节点重点处理左右孩子情况。
+
+第六阶段：构造、序列化和原地改造
+
+DFS 构造类：57. 从前序与中序遍历序列构造二叉树；166. 从中序与后序遍历序列构造二叉树。
+
+DFS / BFS 序列化类：105. 二叉树的序列化与反序列化。
+
+DFS 原地改造类：125. 二叉树展开为链表。
+
+BFS 结构判断类：82. 二叉树最大宽度；129. 二叉树的完全性检验。
+
+目标：构造题先找根节点，再切分左右子树；序列化要保留空节点信息；展开链表是递归改指针；最大宽度和完全性检验是 BFS 加位置编号或空节点规则。
+
+一句话记忆：
+
+- 层序题：队列按层处理。
+- 普通 DFS：先想清楚递归返回值。
+- 路径贡献题：返回给父节点的是单边贡献，全局答案可以经过当前节点拐弯。
+- BST 题：中序有序，反中序倒着有序。
+- 构造题：根节点定左右边界，递归造左右子树。
+
 
 ### 回溯模板
 
@@ -361,7 +377,7 @@ if i >= 2 and 10 <= int(s[i - 2:i]) <= 26:
 
 第六阶段：LIS 及变体
 
-适合做：21. 最长上升子序列；183. 最长递增子序列的个数；126. 矩阵中的最长递增路径。
+适合做：21. **最长上升子序列**；183. 最长递增子序列的个数；126. 矩阵中的最长递增路径。
 
 目标：理解“以当前位置结尾”的状态，以及什么时候需要记忆化搜索。
 
@@ -2782,6 +2798,38 @@ class Solution:
 - 相似题：层序遍历、锯齿形遍历。
 - 记忆卡片：右视图 = 每层最后一个被看到的节点。
 
+层序遍历版：
+```python
+from collections import deque
+
+class Solution:
+    def rightSideView(self, root):
+        if not root:
+            return []
+
+        ans = []
+        queue = deque([root])
+
+        while queue:
+            size = len(queue)
+            level = []
+
+            for _ in range(size):
+                node = queue.popleft()
+                level.append(node.val)
+
+                if node.left:
+                    queue.append(node.left)
+
+                if node.right:
+                    queue.append(node.right)
+
+            ans.append(level[-1])
+
+        return ans
+```
+
+不额外开列表（降低空间复杂度）
 ```python
 class Solution:
     def rightSideView(self, root):
@@ -3197,6 +3245,25 @@ class Solution:
 - 相似题：前序遍历、验证 BST。
 - 记忆卡片：中序 = 左根右；迭代就是一路压左。
 
+递归：
+```
+class Solution:
+    def inorderTraversal(self, root):
+        ans = []
+
+        def dfs(node):
+            if not node:
+                return
+
+            dfs(node.left)
+            ans.append(node.val)
+            dfs(node.right)
+
+        dfs(root)
+        return ans
+```
+
+迭代写法：
 ```python
 class Solution:
     def inorderTraversal(self, root):
@@ -4288,6 +4355,28 @@ class Solution:
 - 相似题：翻转二叉树、相同的树。
 - 记忆卡片：对称比较交叉：外侧对外侧，内侧对内侧。
 
+方便理解版：
+```python
+class Solution:
+    def isSymmetric(self, root):
+        if not root:
+            return True
+
+        def dfs(left, right):
+            if not left and not right:
+                return True
+
+            if not left or not right:
+                return False
+
+            if left.val != right.val:
+                return False
+
+            return dfs(left.left, right.right) and dfs(left.right, right.left)
+
+        return dfs(root.left, root.right)
+```
+缩写版本：
 ```python
 class Solution:
     def isSymmetric(self, root) -> bool:
@@ -4614,7 +4703,11 @@ class Solution:
     def maxDepth(self, root) -> int:
         if not root:
             return 0
-        return max(self.maxDepth(root.left), self.maxDepth(root.right)) + 1
+
+        left_depth = self.maxDepth(root.left)
+        right_depth = self.maxDepth(root.right)
+
+        return max(left_depth, right_depth) + 1
 ```
 
 
@@ -4710,6 +4803,29 @@ class Solution:
 - 相似题：最大深度、二叉树直径。
 - 记忆卡片：查平衡顺便算高度，不平衡用 -1 传上去。
 
+```
+class Solution:
+    def isBalanced(self, root) -> bool:
+        def height(node):
+            if not node:
+                return 0
+
+            left = height(node.left)
+            if left == -1:
+                return -1
+
+            right = height(node.right)
+            if right == -1:
+                return -1
+
+            if abs(left - right) > 1:
+                return -1
+
+            return max(left, right) + 1
+
+        return height(root) != -1
+```
+等价于
 ```python
 class Solution:
     def isBalanced(self, root) -> bool:
@@ -5986,6 +6102,7 @@ class Solution:
 - 相似题：对称二叉树。
 - 记忆卡片：翻转树，每个节点都交换左右孩子。
 
+先交换当前再翻转左右子树
 ```python
 class Solution:
     def invertTree(self, root):
@@ -5997,6 +6114,17 @@ class Solution:
         return root
 ```
 
+先翻转子树再交换当前
+```python
+class Solution:
+    def invertTree(self, root):
+        if not root:
+            return None
+
+        root.left, root.right = self.invertTree(root.right), self.invertTree(root.left)
+
+        return root
+```
 
 #### 详细分析、小例子与代码执行流程
 翻转二叉树就是每个节点的左右孩子交换。交换当前节点后，再递归处理左右子树即可。
@@ -8220,7 +8348,25 @@ class Solution:
 - 坑：压栈顺序要配合最终反转。
 - 相似题：前序遍历、中序遍历。
 - 记忆卡片：后序迭代可先做根右左，再整体反转。
+递归写法
+```python
+class Solution:
+    def postorderTraversal(self, root):
+        ans = []
 
+        def dfs(node):
+            if not node:
+                return
+
+            dfs(node.left)
+            dfs(node.right)
+            ans.append(node.val)
+
+        dfs(root)
+        return ans
+```
+
+栈的写法（先根右左再翻转）
 ```python
 class Solution:
     def postorderTraversal(self, root):
@@ -8231,6 +8377,30 @@ class Solution:
             if node.left: st.append(node.left)
             if node.right: st.append(node.right)
         return ans[::-1]
+```
+
+```python
+class Solution:
+    def postorderTraversal(self, root):
+        ans = []
+        stack = []
+        cur = root
+        prev = None
+
+        while cur or stack:
+            while cur:
+                stack.append(cur)
+                cur = cur.left
+
+            node = stack[-1]
+
+            if node.right and prev != node.right:
+                cur = node.right
+            else:
+                ans.append(node.val)
+                prev = stack.pop()
+
+        return ans
 ```
 
 #### 详细分析、小例子与代码执行流程
@@ -10883,7 +11053,7 @@ class Solution:
 6. 最后执行 `return ans`。返回的是所有状态都处理完之后的最终结果，不是某一轮的临时值。
 7. 手算时拿本题小例子逐行模拟：每轮只记录发生变化的变量，比如指针、答案、栈/队列、哈希表或 DP 表。
 
-### 194. 二叉树的镜像
+### 194. 二叉树的镜像（与翻转二叉树一个题）
 
 #### 题目简述
 给定二叉树，返回它的镜像，即每个节点左右孩子交换。

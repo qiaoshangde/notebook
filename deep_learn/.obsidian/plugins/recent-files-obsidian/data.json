@@ -1,6 +1,14 @@
 {
   "recentFiles": [
     {
+      "basename": "codetop前200题题解手册",
+      "path": "八股/算法题/codetop前200题题解手册.md"
+    },
+    {
+      "basename": "code_review面试题目",
+      "path": "八股/code_review/code_review面试题目.md"
+    },
+    {
       "basename": "面试",
       "path": "八股/agenticRAG/面试.md"
     },
@@ -13,20 +21,12 @@
       "path": "八股/agenticRAG/数据.md"
     },
     {
-      "basename": "codetop前200题题解手册",
-      "path": "八股/算法题/codetop前200题题解手册.md"
-    },
-    {
       "basename": "hot100",
       "path": "八股/算法题/hot100.md"
     },
     {
       "basename": "经典排序算法手册",
       "path": "八股/算法题/经典排序算法手册.md"
-    },
-    {
-      "basename": "code_review面试题目",
-      "path": "八股/code_review/code_review面试题目.md"
     },
     {
       "basename": "几个项目",
