@@ -354,7 +354,7 @@ DFS 基础递归类：72. 二叉树的最大深度；97. 翻转二叉树；194. 
 
 第三阶段：路径类，理解从根到叶子和全局答案
 
-DFS 根到叶子路径类：92. **路径总和**；88. 路径总和 II；63. 求根到叶子节点数字之和。
+DFS 根到叶子路径类：92. 路径总和；88. 路径总和 II；63. 求根到叶子节点数字之和。
 
 DFS 后序贡献类：84. 二叉树的直径；35. 二叉树中的最大路径和。
 
@@ -5867,7 +5867,7 @@ class Solution:
 
 - 类型：树 DFS + 回溯。
 - 分析：需要返回所有从根到叶子的路径，路径和等于 target。DFS 过程中维护当前路径和剩余目标，到叶子时判断。
-- 思路：进入节点时加入 path，减少 remain；若叶子且 remain 等于节点值，收集路径；递归结束后弹出。
+- 思路：进入节点时加入 path，并从 remain 中扣掉当前节点值；若到叶子且 remain 变成 0，收集路径；递归结束后弹出。
 - 核心结构：`path/remain`。
 - 坑：必须是根到叶子；加入答案要拷贝 path。
 - 相似题：路径总和、求根到叶数字之和。
@@ -5880,11 +5880,16 @@ class Solution:
 
         def dfs(node, remain):
             if not node:
-                returnpath.append(node.val)
-            if not node.left and not node.right and remain == node.val:
+                return
+
+            path.append(node.val)
+            remain -= node.val
+
+            if not node.left and not node.right and remain == 0:
                 ans.append(path[:])
-            dfs(node.left, remain - node.val)
-            dfs(node.right, remain - node.val)
+
+            dfs(node.left, remain)
+            dfs(node.right, remain)
             path.pop()
 
         dfs(root, targetSum)
@@ -5913,10 +5918,12 @@ class Solution:
 1. 先看《路径总和 II》代码的入口：方法被调用后，代码先准备变量，再通过循环、递归或数据结构一步步逼近答案。
 2. 初始化重点看 `ans, path = [], []`。这一步相当于准备草稿纸：先放答案容器、指针、哈希表、DP 表或辅助结构。
 3. 这题主要靠递归/辅助方法推进。每次调用只解决当前这一小块，剩下的交给更小的同类问题。
-4. 第一个关键分支是 `if not node:`。它通常负责判断边界、重复、是否命中答案、当前状态是否合法，或者决定下一步往哪边走。
-5. 状态更新重点看 `path.pop()`。这一行会把当前这一步的结果写回变量，下一轮循环或上一层递归会继续使用它。
-6. 最后执行 `return ans`。返回的是所有状态都处理完之后的最终结果，不是某一轮的临时值。
-7. 手算时拿本题小例子逐行模拟：每轮只记录发生变化的变量，比如指针、答案、栈/队列、哈希表或 DP 表。
+4. 第一个关键分支是 `if not node:`。遇到空节点直接返回，表示这条路走不通。
+5. 进入真实节点后执行 `path.append(node.val)`，把当前节点加入路径；再执行 `remain -= node.val`，表示目标和扣掉当前节点值。
+6. 如果当前节点是叶子节点，并且 `remain == 0`，说明这一整条根到叶路径满足要求，于是执行 `ans.append(path[:])`。这里必须复制一份 path。
+7. 然后继续搜索左子树和右子树：`dfs(node.left, remain)`、`dfs(node.right, remain)`。
+8. 当前节点的左右子树都搜索完后，执行 `path.pop()`，把当前节点从路径里撤销，回到上一层继续搜索别的分支。
+9. 最后执行 `return ans`，返回所有满足条件的路径。
 
 ### 89. 两两交换链表中的节点
 
