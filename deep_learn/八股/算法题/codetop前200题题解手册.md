@@ -5593,6 +5593,39 @@ class Solution:
 - 相似题：层序遍历、右视图。
 - 记忆卡片：宽度不是节点数，是完全二叉树编号的跨度。
 
+
+
+```python
+from collections import deque
+
+class Solution:
+    def widthOfBinaryTree(self, root) -> int:
+        if not root:
+            return 0
+
+        queue = deque([(root, 1)])
+        ans = 0
+
+        while queue:
+            size = len(queue)
+            left = queue[0][1]
+            right = queue[-1][1]
+
+            ans = max(ans, right - left + 1)
+
+            for _ in range(size):
+                node, idx = queue.popleft()
+
+                if node.left:
+                    queue.append((node.left, idx * 2))
+
+                if node.right:
+                    queue.append((node.right, idx * 2 + 1))
+
+        return ans
+```
+
+防止编号过大，每层先减掉最左编号
 ```python
 class Solution:
     def widthOfBinaryTree(self, root) -> int:
@@ -6876,22 +6909,34 @@ class Solution:
 class Codec:
     def serialize(self, root):
         vals = []
+
         def dfs(node):
             if not node:
-                vals.append('#'); return
+                vals.append('#')
+                return
+
             vals.append(str(node.val))
-            dfs(node.left); dfs(node.right)
+            dfs(node.left)
+            dfs(node.right)
+
         dfs(root)
         return ','.join(vals)
 
     def deserialize(self, data):
         vals = iter(data.split(','))
+
         def dfs():
-            v = next(vals)
-            if v == '#': return None
-            node = TreeNode(int(v))
-            node.left = dfs(); node.right = dfs()
+            val = next(vals)
+
+            if val == '#':
+                return None
+
+            node = TreeNode(int(val))
+            node.left = dfs()
+            node.right = dfs()
+
             return node
+
         return dfs()
 ```
 
@@ -7886,15 +7931,48 @@ class Solution:
 ```python
 class Solution:
     def flatten(self, root):
-        if not root: return
-        self.flatten(root.left); self.flatten(root.right)
+        if not root:
+            return
+
+        self.flatten(root.left)
+        self.flatten(root.right)
+
         left, right = root.left, root.right
+
         root.left = None
         root.right = left
+
         cur = root
-        while cur.right: cur = cur.right
+        while cur.right:
+            cur = cur.right
+
         cur.right = right
 ```
+
+写法二：迭代版
+
+迭代版更直观：从当前节点 `cur` 开始，如果它有左子树，就把左子树搬到右边，再把原来的右子树接到左子树最右节点后面。然后 `cur` 继续沿着右指针往下走。
+
+```python
+class Solution:
+    def flatten(self, root):
+        cur = root
+
+        while cur:
+            if cur.left:
+                pre = cur.left
+
+                while pre.right:
+                    pre = pre.right
+
+                pre.right = cur.right
+                cur.right = cur.left
+                cur.left = None
+
+            cur = cur.right
+```
+
+两种写法本质一样：左子树搬到右边，原右子树接到左链表尾部。
 
 #### 详细分析、小例子与代码执行流程
 树 `1(左2,右5)`，前序是 `1,2,3,4,5,6`。展开后就是 `1->2->3->4->5->6`，所有节点都沿右指针串起来。
