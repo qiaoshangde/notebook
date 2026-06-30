@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "cc1b93f2425c2058",
+        "id": "1b83d9d684b8940f",
         "type": "tabs",
         "children": [
           {
-            "id": "c63301f1666b681b",
+            "id": "e69d0007fee56ed5",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -86,16 +86,16 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "八股/code_review/code_review面试题目.md",
                 "followCursor": true,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "大纲"
+              "title": "code_review面试题目 的大纲"
             }
           }
-        ],
-        "currentTab": 4
+        ]
       },
       {
         "id": "ab52c96cd9267565",
@@ -287,11 +287,11 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "c63301f1666b681b",
+  "active": "6a5eb320d475b043",
   "lastOpenFiles": [
-    "八股/算法题/codetop前200题题解手册.md",
     "八股/code_review/code_review面试题目.md",
     "八股/agenticRAG/面试.md",
+    "八股/算法题/codetop前200题题解手册.md",
     "八股/agenticRAG/评价指标.md",
     "八股/agenticRAG/数据.md",
     "八股/算法题/hot100.md",
