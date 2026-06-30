@@ -4123,20 +4123,35 @@ class Solution:
 ```python
 class Solution:
     def buildTree(self, preorder, inorder):
-        pos = {v: i for i, v in enumerate(inorder)}
+        index = {val: i for i, val in enumerate(inorder)}
 
-        def build(pl, pr, il, ir):
-            if pl > pr:
+        def dfs(pre_l, pre_r, in_l, in_r):
+            if pre_l > pre_r:
                 return None
-            root_val = preorder[pl]
+
+            root_val = preorder[pre_l]
             root = TreeNode(root_val)
-            k = pos[root_val]
-            left_size = k - il
-            root.left = build(pl + 1, pl + left_size, il, k - 1)
-            root.right = build(pl + left_size + 1, pr, k + 1, ir)
+
+            idx = index[root_val]
+            left_size = idx - in_l
+
+            root.left = dfs(
+                pre_l + 1,
+                pre_l + left_size,
+                in_l,
+                idx - 1
+            )
+
+            root.right = dfs(
+                pre_l + left_size + 1,
+                pre_r,
+                idx + 1,
+                in_r
+            )
+
             return root
 
-        return build(0, len(preorder) - 1, 0, len(inorder) - 1)
+        return dfs(0, len(preorder) - 1, 0, len(inorder) - 1)
 ```
 
 
@@ -10072,17 +10087,35 @@ class Solution:
 ```python
 class Solution:
     def buildTree(self, inorder, postorder):
-        pos = {v:i for i,v in enumerate(inorder)}
-        def build(il, ir, pl, pr):
-            if il > ir: return None
-            root_val = postorder[pr]
+        index = {val: i for i, val in enumerate(inorder)}
+
+        def dfs(in_l, in_r, post_l, post_r):
+            if in_l > in_r:
+                return None
+
+            root_val = postorder[post_r]
             root = TreeNode(root_val)
-            k = pos[root_val]
-            left = k - il
-            root.left = build(il, k-1, pl, pl+left-1)
-            root.right = build(k+1, ir, pl+left, pr-1)
+
+            idx = index[root_val]
+            left_size = idx - in_l
+
+            root.left = dfs(
+                in_l,
+                idx - 1,
+                post_l,
+                post_l + left_size - 1
+            )
+
+            root.right = dfs(
+                idx + 1,
+                in_r,
+                post_l + left_size,
+                post_r - 1
+            )
+
             return root
-        return build(0, len(inorder)-1, 0, len(postorder)-1)
+
+        return dfs(0, len(inorder) - 1, 0, len(postorder) - 1)
 ```
 
 #### 详细分析、小例子与代码执行流程
