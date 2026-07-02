@@ -122,7 +122,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "常用prompt.md",
+                "file": "八股/算法题/codetop前200题题解手册.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -150,10 +150,11 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "常用prompt 的关系图"
+              "title": "codetop前200题题解手册 的关系图"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -292,7 +293,7 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "4a0cf99042f01edd",
+  "active": "5a8af198c654a73e",
   "lastOpenFiles": [
     "八股/code_review/code_review面试题目.md",
     "八股/agenticRAG/面试.md",
