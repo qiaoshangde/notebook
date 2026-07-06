@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "阅读：",
+      "path": "八股/阅读：.md"
+    },
+    {
       "basename": "agent",
       "path": "八股/agent/agent.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "DPO",
       "path": "八股/rl/dpo/DPO.md"
-    },
-    {
-      "basename": "Pasted image 20260313214919",
-      "path": "八股/rl/dpo/images/Pasted image 20260313214919.png"
     }
   ],
   "omittedPaths": [],

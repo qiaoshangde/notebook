@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "1b83d9d684b8940f",
+        "id": "3eaf456ad3dc37ec",
         "type": "tabs",
         "children": [
           {
-            "id": "e69d0007fee56ed5",
+            "id": "3477b0725e8568c7",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "八股/agent/agent.md",
+                "file": "八股/阅读：.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "agent"
+              "title": "阅读："
             }
           }
         ]
@@ -90,13 +90,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "八股/agent/agent.md",
+                "file": "八股/阅读：.md",
                 "followCursor": true,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "agent 的大纲"
+              "title": "阅读： 的大纲"
             }
           }
         ]
@@ -291,8 +291,13 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "e69d0007fee56ed5",
+  "active": "3477b0725e8568c7",
   "lastOpenFiles": [
+    "八股/agent/agent.md",
+    "八股/阅读：.md",
+    "八股/agent/images/Pasted image 20260706111316.png",
+    "八股/agent/images/Pasted image 20260706105338.png",
+    "八股/agent/images",
     "八股/算法题/codetop前200题题解手册.md",
     "八股/code_review/code_review面试题目.md",
     "八股/agenticRAG/面试.md",
@@ -305,7 +310,6 @@
     "几个项目.md",
     "学习.md",
     "项目",
-    "八股/agent/agent.md",
     "八股/code_review",
     "安全/架构改进.md",
     "安全/AI AGENT安全.md",
@@ -327,7 +331,6 @@
     "安全/新进展.md",
     "小知识/python包管理/python包管理.md",
     "小知识/python小的知识点.md",
-    "八股/算法题/images/Pasted image 20260418121307.png",
     "list/list.md",
     "list/生活计划.md",
     "未命名",
@@ -335,10 +338,6 @@
     "post_train",
     "Agent/claudcode",
     "Agent/claw0",
-    "images/Pasted image 20260405235629.png",
-    "images",
-    "八股/rl/ppo/猛猿.md",
-    "八股/skill/Skills.md",
     "未命名.canvas",
     "未命名 1.canvas"
   ]
