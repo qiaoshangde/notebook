@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "八股/rl/GRPO/面试.md",
+                "file": "八股/agenticRAG/面试.md",
                 "mode": "source",
                 "source": false
               },
@@ -90,7 +90,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "八股/rl/GRPO/面试.md",
+                "file": "八股/agenticRAG/面试.md",
                 "followCursor": true,
                 "showSearch": false,
                 "searchQuery": ""
@@ -293,19 +293,19 @@
   },
   "active": "bba62b6b528749ca",
   "lastOpenFiles": [
-    "八股/rl/GRPO/grpo.md",
-    "八股/rl/GRPO/面试.md",
-    "八股/阅读：.md",
-    "八股/rl/ppo/PPO.md",
+    "八股/agenticRAG/评价指标.md",
+    "八股/agenticRAG/数据.md",
     "八股/agenticRAG/面试.md",
     "八股/agent/agent.md",
+    "八股/rl/GRPO/面试.md",
+    "八股/rl/GRPO/grpo.md",
+    "八股/阅读：.md",
+    "八股/rl/ppo/PPO.md",
     "八股/agent/images/Pasted image 20260706111316.png",
     "八股/agent/images/Pasted image 20260706105338.png",
     "八股/agent/images",
     "八股/算法题/codetop前200题题解手册.md",
     "八股/code_review/code_review面试题目.md",
-    "八股/agenticRAG/评价指标.md",
-    "八股/agenticRAG/数据.md",
     "八股/算法题/hot100.md",
     "八股/算法题/经典排序算法手册.md",
     "八股/agenticRAG",
