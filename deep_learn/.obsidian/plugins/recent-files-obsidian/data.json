@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "agent",
+      "path": "八股/agent/agent.md"
+    },
+    {
       "basename": "codetop前200题题解手册",
       "path": "八股/算法题/codetop前200题题解手册.md"
     },
@@ -35,10 +39,6 @@
     {
       "basename": "学习",
       "path": "学习.md"
-    },
-    {
-      "basename": "agent",
-      "path": "八股/agent/agent.md"
     },
     {
       "basename": "架构改进",
