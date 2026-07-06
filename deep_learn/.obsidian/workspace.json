@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "3eaf456ad3dc37ec",
+        "id": "7c057d5e45a1c03a",
         "type": "tabs",
         "children": [
           {
-            "id": "3477b0725e8568c7",
+            "id": "bba62b6b528749ca",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "八股/阅读：.md",
+                "file": "八股/rl/GRPO/面试.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "阅读："
+              "title": "面试"
             }
           }
         ]
@@ -90,13 +90,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "八股/阅读：.md",
+                "file": "八股/rl/GRPO/面试.md",
                 "followCursor": true,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "阅读： 的大纲"
+              "title": "面试 的大纲"
             }
           }
         ]
@@ -291,16 +291,19 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "3477b0725e8568c7",
+  "active": "bba62b6b528749ca",
   "lastOpenFiles": [
-    "八股/agent/agent.md",
+    "八股/rl/GRPO/grpo.md",
+    "八股/rl/GRPO/面试.md",
     "八股/阅读：.md",
+    "八股/rl/ppo/PPO.md",
+    "八股/agenticRAG/面试.md",
+    "八股/agent/agent.md",
     "八股/agent/images/Pasted image 20260706111316.png",
     "八股/agent/images/Pasted image 20260706105338.png",
     "八股/agent/images",
     "八股/算法题/codetop前200题题解手册.md",
     "八股/code_review/code_review面试题目.md",
-    "八股/agenticRAG/面试.md",
     "八股/agenticRAG/评价指标.md",
     "八股/agenticRAG/数据.md",
     "八股/算法题/hot100.md",
@@ -332,9 +335,7 @@
     "小知识/python包管理/python包管理.md",
     "小知识/python小的知识点.md",
     "list/list.md",
-    "list/生活计划.md",
     "未命名",
-    "post_train/minimind/minimind学习笔记.md",
     "post_train",
     "Agent/claudcode",
     "Agent/claw0",
