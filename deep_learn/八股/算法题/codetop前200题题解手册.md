@@ -181,7 +181,7 @@ return dummy.next
 
 第三阶段：删除、去重和旋转
 
-删除节点 / 快慢距离差：36. 删除链表的倒数第 N 个节点。
+删除节点 / 快慢距离差：**36. 删除链表的倒数第 N 个节点**。
 
 有序链表去重 / 保留一个：93. 删除排序链表中的重复元素。
 
@@ -227,6 +227,20 @@ return dummy.next
 - 合并题：`dummy + tail` 负责接新链。
 - 快慢题：制造距离差、找中点或配合反转后半段。
 - 复杂链表题：先复制节点关系，再处理随机指针或拆链。
+
+反转类统一记忆：
+
+- 反转链表：把整条链当成一段，`start = head`，直接 `reverse(start)`。
+- 反转链表 II：找到 `before/start/end/after`，切出 `[start, end]`，`reverse(start)` 后接回。
+- K 个一组翻转：每次找到一段长度为 k 的 `before/start/end/after`，切出后 `reverse(start)`，不足 k 个就停止。
+- 两两交换链表：就是 K 个一组翻转的 `k = 2`，同样可以按 `before/start/end/after` 切段、反转、接回。
+
+边界变量统一记法：
+
+- `before`：要反转片段的前一个节点。
+- `start`：要反转片段的第一个节点，反转后会变成片段尾。
+- `end`：要反转片段的最后一个节点。
+- `after`：要反转片段后面的第一个节点。
 
 ### 二分 / 排名定位模板
 
@@ -919,6 +933,8 @@ class Solution:
         return prev
 ```
 
+统一到“找一段、翻转、接回”的记忆里，反转链表就是最基础的一段：`start = head`，`after = None`，整条链都交给 `reverse` 处理。反转完成后，原来的 `head` 会变成尾节点，返回值 `prev` 是新的头节点。
+
 
 #### 详细分析、小例子与代码执行流程
 反转链表的本质是把每个节点的 `next` 指针反过来。因为单链表不能回头，一旦你把 `cur.next` 改掉，就会丢失后面的链表，所以必须先保存 `nxt = cur.next`。
@@ -1021,12 +1037,16 @@ class Solution:
 给定链表和 k，每 k 个节点一组翻转，不足 k 个保持原样。
 
 - 类型：链表分组反转。
-- 分析：本题不是反转值，而是改节点指针。每次先检查后面是否够 k 个，不够则保持原样。够 k 个后反转 `[group_start, group_end]`，再接回前后链表。
-- 思路：用 `dummy` 和 `pre` 指向每组前一个节点；找到 `end`；保存 `nxt=end.next`；断开后反转这一段；接回；`pre` 移到原组头。
-- 核心结构：`pre/end/start/nxt`。
+- 分析：本题不是反转值，而是改节点指针。每次先检查后面是否够 k 个，不够则保持原样。够 k 个后反转 `[start, end]`，再接回前后链表。
+- 思路：用 `dummy` 和 `before` 指向每组前一个节点；找到 `end`；保存 `after=end.next`；断开后反转这一段；接回；`before` 移到原组头 `start`。
+- 核心结构：`before/start/end/after`。
 - 坑：最后不足 k 个不能反转；反转后原 `start` 变成组尾。
 - 相似题：反转链表、反转链表 II、两两交换链表节点。
 - 记忆卡片：先数够 k，再断开反转，最后接回。
+
+写法一：断开 + reverse + 接回
+
+这版先把当前这一组 k 个节点断开，调用普通反转链表函数，再把反转后的这一组接回原链表。边界变量统一记：`before` 是这一组前一个节点，`start` 是这一组第一个节点，`end` 是这一组最后一个节点，`after` 是下一组开头。
 
 ```python
 class Solution:
@@ -1041,28 +1061,73 @@ class Solution:
             return prev
 
         dummy = ListNode(0, head)
-        pre = dummy
+        before = dummy
         while True:
-            end = pre
+            end = before
             for _ in range(k):
                 end = end.next
                 if not end:
                     return dummy.next
-            start = pre.next
-            nxt = end.next
+
+            start = before.next
+            after = end.next
+
             end.next = None
-            pre.next = reverse(start)
-            start.next = nxt
-            pre = start
+
+            new_head = reverse(start)
+
+            before.next = new_head
+            start.next = after
+
+            before = start
 ```
 
+写法二：边反转边接回
+
+这版不单独调用 `reverse`，而是把当前这一组直接反转到 `group_next` 前面。
+
+```python
+class Solution:
+    def reverseKGroup(self, head, k: int):
+        dummy = ListNode(0, head)
+        group_prev = dummy
+
+        def get_kth(node, k):
+            while node and k > 0:
+                node = node.next
+                k -= 1
+            return node
+
+        while True:
+            kth = get_kth(group_prev, k)
+            if not kth:
+                break
+
+            group_next = kth.next
+
+            prev = group_next
+            cur = group_prev.next
+
+            while cur != group_next:
+                nxt = cur.next
+                cur.next = prev
+                prev = cur
+                cur = nxt
+
+            old_group_head = group_prev.next
+            group_prev.next = kth
+            group_prev = old_group_head
+
+        return dummy.next
+
+```
 
 #### 详细分析、小例子与代码执行流程
 这题难点不是反转，而是“分组”和“接回去”。每组反转前必须先确认后面至少还有 k 个节点；如果不够 k 个，最后那段必须原样保留。
 
 例子：`1->2->3->4->5, k=2`。第一组 `1,2` 反转为 `2,1`；第二组 `3,4` 反转为 `4,3`；最后 `5` 不够 2 个，不动，结果是 `2->1->4->3->5`。
 
-指针关系要特别小心：反转前的组头反转后会变成组尾，所以它要接到下一组的开头。通常用 `pre/end/start/nxt` 四个变量把边界固定住。
+指针关系要特别小心：反转前的组头 `start` 反转后会变成组尾，所以它要接到下一组开头 `after`。切段反转写法统一用 `before/start/end/after` 四个变量把边界固定住。
 
 
 #### 代码执行流程（零基础）
@@ -1855,6 +1920,8 @@ class Solution:
 - 相似题：反转链表、K 个一组翻转链表。
 - 记忆卡片：局部反转用头插，`cur` 留在组尾不动。
 
+写法一：头插法
+
 ```python
 class Solution:
     def reverseBetween(self, head, left: int, right: int):
@@ -1871,7 +1938,49 @@ class Solution:
         return dummy.next
 ```
 
+写法二：断开 + reverse + 接回
 
+这版和 K 个一组翻转的统一风格一致：先找到 `before/start/end/after`，把 `[start, end]` 这一段断开，调用普通 `reverse`，最后接回。
+
+```python
+class Solution:
+    def reverseBetween(self, head, left: int, right: int):
+        dummy = ListNode(0, head)
+
+        before = dummy
+        for _ in range(left - 1):
+            before = before.next
+
+        start = before.next
+
+        end = before
+        for _ in range(right - left + 1):
+            end = end.next
+
+        after = end.next
+        end.next = None
+
+        before.next = None
+
+        new_head = self.reverse(start)
+
+        before.next = new_head
+        start.next = after
+
+        return dummy.next
+
+    def reverse(self, head):
+        pre = None
+        cur = head
+
+        while cur:
+            nxt = cur.next
+            cur.next = pre
+            pre = cur
+            cur = nxt
+
+        return pre
+```
 #### 详细分析、小例子与代码执行流程
 局部反转可以用头插法。`pre` 固定在反转区间前一个节点，`cur` 固定为反转区间的尾部候选；每次把 `cur.next` 摘下来，插到 `pre.next` 前面。
 
@@ -6027,6 +6136,10 @@ class Solution:
 - 相似题：K 个一组翻转链表、反转链表 II。
 - 记忆卡片：两两交换就是 k=2 的分组反转。
 
+写法一：直接交换相邻两个节点
+
+这是本题最短的专用写法。每次把 `pre -> a -> b` 改成 `pre -> b -> a`。
+
 ```python
 class Solution:
     def swapPairs(self, head):
@@ -6042,6 +6155,90 @@ class Solution:
         return dummy.next
 ```
 
+写法二：当成 K 个一组翻转，断开 + reverse + 接回
+
+这版把本题看成 `k = 2` 的 K 个一组翻转链表。每次找出两个节点，断开，调用普通反转链表函数，再接回原链表。变量仍然统一成 `before/start/end/after`。
+
+```python
+class Solution:
+    def swapPairs(self, head):
+        dummy = ListNode(0, head)
+        before = dummy
+        k = 2
+
+        while True:
+            end = before
+
+            for _ in range(k):
+                end = end.next
+                if not end:
+                    return dummy.next
+
+            start = before.next
+            after = end.next
+
+            end.next = None
+
+            new_head = self.reverse(start)
+
+            before.next = new_head
+            start.next = after
+
+            before = start
+
+    def reverse(self, head):
+        pre = None
+        cur = head
+
+        while cur:
+            nxt = cur.next
+            cur.next = pre
+            pre = cur
+            cur = nxt
+
+        return pre
+```
+
+写法三：当成 K 个一组翻转，边反转边接回
+
+这版也把本题看成 `k = 2`，但不单独调用 `reverse`。它直接在当前这一组内部反转指针，并接到 `group_next` 前面。
+
+```python
+class Solution:
+    def swapPairs(self, head):
+        dummy = ListNode(0, head)
+        group_prev = dummy
+        k = 2
+
+        def get_kth(node, k):
+            while node and k > 0:
+                node = node.next
+                k -= 1
+            return node
+
+        while True:
+            kth = get_kth(group_prev, k)
+            if not kth:
+                break
+
+            group_next = kth.next
+
+            prev = group_next
+            cur = group_prev.next
+
+            while cur != group_next:
+                nxt = cur.next
+                cur.next = prev
+                prev = cur
+                cur = nxt
+
+            old_group_head = group_prev.next
+            group_prev.next = kth
+            group_prev = old_group_head
+
+        return dummy.next
+```
+
 
 #### 详细分析、小例子与代码执行流程
 两两交换就是每次处理两个节点。用 `pre` 指向这一对节点前面的位置，`a=pre.next`，`b=a.next`，然后把 `b` 放到 `a` 前面。
@@ -6049,6 +6246,8 @@ class Solution:
 例子：`1->2->3->4`。第一轮把 2 放到 1 前面，得到 `2->1->3->4`；第二轮把 4 放到 3 前面，得到 `2->1->4->3`。
 
 最后如果只剩一个节点，没有成对，就保持原样。
+
+如果按 K 个一组翻转理解，这题就是固定 `k = 2`。所以也可以套两种 K 组反转模板：一种是“断开 + reverse + 接回”，另一种是“边反转边接回”。三种写法结果一样，第一种最短，后两种更方便和 K 个一组翻转统一记忆。
 
 
 #### 代码执行流程（零基础）
