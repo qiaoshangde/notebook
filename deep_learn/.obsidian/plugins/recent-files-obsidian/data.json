@@ -5,6 +5,10 @@
       "path": "八股/算法题/codetop前200题题解手册.md"
     },
     {
+      "basename": "阅读：",
+      "path": "八股/阅读：.md"
+    },
+    {
       "basename": "code_review面试题目",
       "path": "八股/code_review/code_review面试题目.md"
     },
@@ -13,8 +17,8 @@
       "path": "八股/agenticRAG/面试.md"
     },
     {
-      "basename": "评价指标",
-      "path": "八股/agenticRAG/评价指标.md"
+      "basename": "claude code",
+      "path": "八股/claude_code/claude code.md"
     },
     {
       "basename": "数据",
@@ -25,16 +29,16 @@
       "path": "八股/agent/agent.md"
     },
     {
+      "basename": "评价指标",
+      "path": "八股/agenticRAG/评价指标.md"
+    },
+    {
       "basename": "面试",
       "path": "八股/rl/GRPO/面试.md"
     },
     {
       "basename": "grpo",
       "path": "八股/rl/GRPO/grpo.md"
-    },
-    {
-      "basename": "阅读：",
-      "path": "八股/阅读：.md"
     },
     {
       "basename": "PPO",
@@ -63,10 +67,6 @@
     {
       "basename": "AI AGENT安全",
       "path": "安全/AI AGENT安全.md"
-    },
-    {
-      "basename": "claude code",
-      "path": "八股/claude_code/claude code.md"
     },
     {
       "basename": "算法开发讨论",
