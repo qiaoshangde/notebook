@@ -197,7 +197,7 @@ return dummy.next
 
 链表归并排序 / 快慢切分：45. 排序链表。
 
-特殊有序链表排序 / 拆分后合并：**133. 排序奇升偶降链表**。
+特殊有序链表排序 / 拆分后合并：133. 排序奇升偶降链表。
 
 目标：合并 K 个链表不要两两硬扫，常用小根堆动态取最小节点。排序链表适合归并排序：快慢指针找中点并断开，递归排左右，再合并两个有序链表。
 
@@ -2327,26 +2327,39 @@ class Solution:
     def reorderList(self, head) -> None:
         if not head or not head.next:
             return
+
         slow, fast = head, head.next
         while fast and fast.next:
             slow = slow.next
             fast = fast.next.next
+
         second = slow.next
         slow.next = None
 
-        prev = None
-        while second:
-            nxt = second.next
-            second.next = prev
-            prev = second
-            second = nxt
+        second = self.reverse(second)
 
-        first, second = head, prev
+        first = head
         while second:
-            n1, n2 = first.next, second.next
+            first_next = first.next
+            second_next = second.next
+
             first.next = second
-            second.next = n1
-            first, second = n1, n2
+            second.next = first_next
+
+            first = first_next
+            second = second_next
+
+    def reverse(self, head):
+        pre = None
+        cur = head
+
+        while cur:
+            nxt = cur.next
+            cur.next = pre
+            pre = cur
+            cur = nxt
+
+        return pre
 ```
 
 
@@ -2369,12 +2382,13 @@ class Solution:
 
 #### 本题代码运行时的真实流程
 1. 先看《重排链表》代码的入口：方法被调用后，代码先准备变量，再通过循环、递归或数据结构一步步逼近答案。
-2. 初始化重点看 `slow, fast = head, head.next`。这一步相当于准备草稿纸：先放答案容器、指针、哈希表、DP 表或辅助结构。
-3. 主循环是 `while fast and fast.next:`。只要条件成立，代码就继续移动指针、缩小范围、弹出元素或推进状态。
-4. 第一个关键分支是 `if not head or not head.next:`。它通常负责判断边界、重复、是否命中答案、当前状态是否合法，或者决定下一步往哪边走。
-5. 状态更新重点看 `second.next = n1`。这一行会把当前这一步的结果写回变量，下一轮循环或上一层递归会继续使用它。
-6. 这类代码可能没有显式返回答案，而是原地修改数组、链表或对象；检查最终结构是否已经变成题目要求的样子。
-7. 手算时拿本题小例子逐行模拟：每轮只记录发生变化的变量，比如指针、答案、栈/队列、哈希表或 DP 表。
+2. 用 `slow, fast = head, head.next` 找中点。这个写法会让 `slow` 停在前半段尾部。
+3. `second = slow.next` 记录后半段开头，然后 `slow.next = None` 把前后两段断开。
+4. 执行 `second = self.reverse(second)`，把后半段反转。例如 `4->5` 反转成 `5->4`。
+5. `first = head` 指向前半段开头，`second` 指向反转后的后半段开头。
+6. 交替合并时先保存 `first_next` 和 `second_next`，再执行 `first.next = second`、`second.next = first_next`。
+7. 每轮结束后移动 `first = first_next`、`second = second_next`。循环条件是 `while second`，因为前半段长度一定大于或等于后半段。
+8. 这题没有显式返回值，因为它要求原地修改链表结构。
 
 ### 26. 环形链表
 
@@ -5273,38 +5287,57 @@ class Solution:
 
 - 类型：链表中点 + 反转。
 - 分析：判断链表是否回文，可以找到中点，反转后半段，然后从两头向中间比较。
-- 思路：快慢指针找中点；反转 slow 之后的链表；前半和后半逐个比较。
+- 思路：快慢指针找中点；断开并反转后半段；前半和后半逐个比较。
 - 核心结构：中点、反转后半段。
-- 坑：奇数长度时 slow 在中间，反转从 slow 开始也能比较；只比较后半段长度。
+- 坑：奇数长度时中点留在前半段，不需要比较；只比较后半段长度。
 - 相似题：重排链表、反转链表。
 - 记忆卡片：链表回文不能倒着走，就把后半段反过来。
 
 ```python
 class Solution:
     def isPalindrome(self, head) -> bool:
-        slow = fast = head
+        if not head or not head.next:
+            return True
+
+        slow = head
+        fast = head.next
+
         while fast and fast.next:
             slow = slow.next
             fast = fast.next.next
-        prev = None
-        cur = slow
+
+        second = slow.next
+        slow.next = None
+
+        second = self.reverse(second)
+
+        first = head
+
+        while second:
+            if first.val != second.val:
+                return False
+
+            first = first.next
+            second = second.next
+
+        return True
+
+    def reverse(self, head):
+        pre = None
+        cur = head
+
         while cur:
             nxt = cur.next
-            cur.next = prev
-            prev = cur
+            cur.next = pre
+            pre = cur
             cur = nxt
-        p, q = head, prev
-        while q:
-            if p.val != q.val:
-                return False
-            p = p.next
-            q = q.next
-        return True
+
+        return pre
 ```
 
 
 #### 详细分析、小例子与代码执行流程
-单链表不能从尾往前走，所以判断回文时，可以先找到中点，把后半段反转，然后从头和反转后的后半段一起往后比较。
+单链表不能从尾往前走，所以判断回文时，可以先找到中点，把后半段断开并反转，然后从头和反转后的后半段一起往后比较。
 
 例子：`1->2->2->1`。后半段 `2->1` 反转为 `1->2`，再和前半段 `1->2` 逐个比较，完全相同，所以是回文。
 
@@ -5321,13 +5354,14 @@ class Solution:
 5. 最后返回 dummy.next 或新的头节点。检查链表题时，最好手画 3 到 5 个节点，看每次 `next` 怎么变。
 
 #### 本题代码运行时的真实流程
-1. 先看《回文链表》代码的入口：方法被调用后，代码先准备变量，再通过循环、递归或数据结构一步步逼近答案。
-2. 初始化重点看 `slow = fast = head`。这一步相当于准备草稿纸：先放答案容器、指针、哈希表、DP 表或辅助结构。
-3. 主循环是 `while fast and fast.next:`。只要条件成立，代码就继续移动指针、缩小范围、弹出元素或推进状态。
-4. 第一个关键分支是 `if p.val != q.val:`。它通常负责判断边界、重复、是否命中答案、当前状态是否合法，或者决定下一步往哪边走。
-5. 状态更新重点看 `q = q.next`。这一行会把当前这一步的结果写回变量，下一轮循环或上一层递归会继续使用它。
-6. 最后执行 `return True`。返回的是所有状态都处理完之后的最终结果，不是某一轮的临时值。
-7. 手算时拿本题小例子逐行模拟：每轮只记录发生变化的变量，比如指针、答案、栈/队列、哈希表或 DP 表。
+1. 先处理特殊情况：空链表或单节点链表一定是回文，直接返回 `True`。
+2. 用 `slow = head`、`fast = head.next` 找中点。这个写法会让 `slow` 停在前半段尾部。
+3. `second = slow.next` 记录后半段开头，然后 `slow.next = None` 把前后两段断开。
+4. 执行 `second = self.reverse(second)`，把后半段反转。
+5. `first = head` 指向前半段开头，`second` 指向反转后的后半段开头。
+6. 循环比较 `first.val` 和 `second.val`。只要有一对不同，就返回 `False`。
+7. 循环条件是 `while second`，因为奇数长度时中间节点留在前半段，不需要比较。
+8. 后半段全部比较完都相等，就返回 `True`。
 
 ### 76. 乘积最大子数组
 
@@ -8624,26 +8658,71 @@ class Solution:
 - 记忆卡片：奇升偶降链表 = 拆奇偶，反偶链，再归并。
 
 ```python
-def sortOddEvenList(head):
-    if not head or not head.next: return head
-    odd_dummy = ListNode(); even_dummy = ListNode()
-    odd = odd_dummy; even = even_dummy; cur = head; idx = 1
-    while cur:
-        nxt = cur.next; cur.next = None
-        if idx % 2: odd.next = cur; odd = odd.next
-        else: even.next = cur; even = even.next
-        cur = nxt; idx += 1
-    prev, cur = None, even_dummy.next
-    while cur:
-        nxt = cur.next; cur.next = prev; prev = cur; cur = nxt
-    a, b = odd_dummy.next, prev
-    dummy = ListNode(); tail = dummy
-    while a and b:
-        if a.val <= b.val: tail.next = a; a = a.next
-        else: tail.next = b; b = b.next
-        tail = tail.next
-    tail.next = a or b
-    return dummy.next
+class Solution:
+    def sortOddEvenList(self, head):
+        if not head or not head.next:
+            return head
+
+        odd_dummy = ListNode(0)
+        even_dummy = ListNode(0)
+
+        odd = odd_dummy
+        even = even_dummy
+
+        cur = head
+        index = 1
+
+        while cur:
+            nxt = cur.next
+            cur.next = None
+
+            if index % 2 == 1:
+                odd.next = cur
+                odd = odd.next
+            else:
+                even.next = cur
+                even = even.next
+
+            cur = nxt
+            index += 1
+
+        even_head = self.reverse(even_dummy.next)
+
+        return self.merge(odd_dummy.next, even_head)
+
+    def reverse(self, head):
+        pre = None
+        cur = head
+
+        while cur:
+            nxt = cur.next
+            cur.next = pre
+            pre = cur
+            cur = nxt
+
+        return pre
+
+    def merge(self, l1, l2):
+        dummy = ListNode(0)
+        cur = dummy
+
+        while l1 and l2:
+            if l1.val <= l2.val:
+                cur.next = l1
+                l1 = l1.next
+            else:
+                cur.next = l2
+                l2 = l2.next
+
+            cur = cur.next
+
+        if l1:
+            cur.next = l1
+
+        if l2:
+            cur.next = l2
+
+        return dummy.next
 ```
 
 #### 详细分析、小例子与代码执行流程
@@ -8660,13 +8739,13 @@ def sortOddEvenList(head):
 5. 最后返回 dummy.next 或新的头节点。检查链表题时，最好手画 3 到 5 个节点，看每次 `next` 怎么变。
 
 #### 本题代码运行时的真实流程
-1. 先看《排序奇升偶降链表》代码的入口：方法被调用后，代码先准备变量，再通过循环、递归或数据结构一步步逼近答案。
-2. 初始化重点看 `odd_dummy = ListNode(); even_dummy = ListNode()`。这一步相当于准备草稿纸：先放答案容器、指针、哈希表、DP 表或辅助结构。
-3. 主循环是 `while cur:`。只要条件成立，代码就继续移动指针、缩小范围、弹出元素或推进状态。
-4. 第一个关键分支是 `if not head or not head.next: return head`。它通常负责判断边界、重复、是否命中答案、当前状态是否合法，或者决定下一步往哪边走。
-5. 状态更新重点看 `tail.next = a or b`。这一行会把当前这一步的结果写回变量，下一轮循环或上一层递归会继续使用它。
-6. 最后执行 `return dummy.next`。返回的是所有状态都处理完之后的最终结果，不是某一轮的临时值。
-7. 手算时拿本题小例子逐行模拟：每轮只记录发生变化的变量，比如指针、答案、栈/队列、哈希表或 DP 表。
+1. 先处理特殊情况：空链表或单节点链表已经有序，直接返回 `head`。
+2. 准备两条新链：`odd_dummy` 用来接奇数位置节点，`even_dummy` 用来接偶数位置节点。
+3. 遍历原链表时，先保存 `nxt = cur.next`，再执行 `cur.next = None`，把当前节点从原链表里摘出来，避免旧指针干扰后续合并。
+4. 如果 `index` 是奇数，就把当前节点接到 odd 链后面；如果 `index` 是偶数，就接到 even 链后面。
+5. 遍历结束后，奇数链本来就是升序，偶数链本来是降序，所以执行 `even_head = self.reverse(even_dummy.next)` 把偶数链反转成升序。
+6. 最后执行 `self.merge(odd_dummy.next, even_head)`，合并两条升序链表。
+7. `merge` 的逻辑和“合并两个有序链表”一样：每次接较小节点，最后把剩余链表直接接上。
 
 ### 134. 整数反转
 
