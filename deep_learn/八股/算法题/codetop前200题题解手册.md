@@ -181,7 +181,7 @@ return dummy.next
 
 第三阶段：删除、去重和旋转
 
-删除节点 / 快慢距离差：**36. 删除链表的倒数第 N 个节点**。
+删除节点 / 快慢距离差：36. 删除链表的倒数第 N 个节点。
 
 有序链表去重 / 保留一个：93. 删除排序链表中的重复元素。
 
@@ -7831,19 +7831,31 @@ class Solution:
 ```python
 class Solution:
     def rotateRight(self, head, k: int):
-        if not head or not head.next or k == 0: return head
-        n, tail = 1, head
+        if not head or not head.next or k == 0:
+            return head
+
+        n = 1
+        tail = head
+
         while tail.next:
-            tail = tail.next; n += 1
-        k %= n
-        if k == 0: return head
+            tail = tail.next
+            n += 1
+
+        k = k % n
+        if k == 0:
+            return head
+
         tail.next = head
+
         steps = n - k
         new_tail = tail
-        while steps:
-            new_tail = new_tail.next; steps -= 1
+
+        for _ in range(steps):
+            new_tail = new_tail.next
+
         new_head = new_tail.next
         new_tail.next = None
+
         return new_head
 ```
 
@@ -7861,13 +7873,14 @@ class Solution:
 5. 最后返回 dummy.next 或新的头节点。检查链表题时，最好手画 3 到 5 个节点，看每次 `next` 怎么变。
 
 #### 本题代码运行时的真实流程
-1. 先看《旋转链表》代码的入口：方法被调用后，代码先准备变量，再通过循环、递归或数据结构一步步逼近答案。
-2. 初始化重点看 `n, tail = 1, head`。这一步相当于准备草稿纸：先放答案容器、指针、哈希表、DP 表或辅助结构。
-3. 主循环是 `while tail.next:`。只要条件成立，代码就继续移动指针、缩小范围、弹出元素或推进状态。
-4. 第一个关键分支是 `if not head or not head.next or k == 0: return head`。它通常负责判断边界、重复、是否命中答案、当前状态是否合法，或者决定下一步往哪边走。
-5. 状态更新重点看 `new_tail.next = None`。这一行会把当前这一步的结果写回变量，下一轮循环或上一层递归会继续使用它。
-6. 最后执行 `return new_head`。返回的是所有状态都处理完之后的最终结果，不是某一轮的临时值。
-7. 手算时拿本题小例子逐行模拟：每轮只记录发生变化的变量，比如指针、答案、栈/队列、哈希表或 DP 表。
+1. 先处理特殊情况：空链表、单节点链表、`k == 0` 都不用旋转，直接返回 `head`。
+2. 用 `tail` 从头走到尾，同时统计长度 `n`。循环结束后，`tail` 指向原链表尾节点。
+3. 执行 `k = k % n`。如果 `k` 是长度的整数倍，旋转后链表不变，直接返回 `head`。
+4. 执行 `tail.next = head`，把链表首尾相连成一个环。
+5. 右旋 `k` 位后，新尾巴是原链表第 `n-k` 个节点。代码从原尾 `tail` 开始走 `steps = n - k` 步，到达 `new_tail`。
+6. `new_head = new_tail.next`，新头就是新尾巴的下一个节点。
+7. 执行 `new_tail.next = None`，把环断开，得到旋转后的链表。
+8. 最后返回 `new_head`。
 
 ### 120. 手撕归并排序
 
