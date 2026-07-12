@@ -289,7 +289,7 @@ return -1
 
 第四阶段：二维矩阵，降维或排除区域
 
-二维矩阵 / 拉平成一维二分：**132. 搜索二维矩阵**。
+二维矩阵 / 拉平成一维二分：132. 搜索二维矩阵。
 
 目标：如果矩阵每行有序，且下一行第一个数大于上一行最后一个数，就可以把它看成长度为 `m * n` 的一维数组。下标换算是 `row = mid // n`，`col = mid % n`。
 
@@ -6563,7 +6563,7 @@ class Solution:
                 left = mid + 1
             else:
                 right = mid
-        return left
+        return left #退出上面循环的条件是left=right，所以返回left和right都可以
 ```
 
 

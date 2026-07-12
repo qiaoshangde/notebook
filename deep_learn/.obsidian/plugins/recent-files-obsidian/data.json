@@ -1,12 +1,16 @@
 {
   "recentFiles": [
     {
-      "basename": "codetop前200题题解手册",
-      "path": "八股/算法题/codetop前200题题解手册.md"
-    },
-    {
       "basename": "经典排序算法手册",
       "path": "八股/算法题/经典排序算法手册.md"
+    },
+    {
+      "basename": "hot100",
+      "path": "八股/算法题/hot100.md"
+    },
+    {
+      "basename": "codetop前200题题解手册",
+      "path": "八股/算法题/codetop前200题题解手册.md"
     },
     {
       "basename": "阅读：",
@@ -47,10 +51,6 @@
     {
       "basename": "PPO",
       "path": "八股/rl/ppo/PPO.md"
-    },
-    {
-      "basename": "hot100",
-      "path": "八股/算法题/hot100.md"
     },
     {
       "basename": "几个项目",
