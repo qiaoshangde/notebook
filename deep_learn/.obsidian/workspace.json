@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "八股/算法题/经典排序算法手册.md",
+                "file": "八股/算法题/codetop前200题题解手册.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "经典排序算法手册"
+              "title": "codetop前200题题解手册"
             }
           }
         ]
@@ -90,16 +90,17 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "八股/算法题/经典排序算法手册.md",
+                "file": "八股/算法题/codetop前200题题解手册.md",
                 "followCursor": true,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "经典排序算法手册 的大纲"
+              "title": "codetop前200题题解手册 的大纲"
             }
           }
-        ]
+        ],
+        "currentTab": 4
       },
       {
         "id": "ab52c96cd9267565",
@@ -291,11 +292,11 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "037da05d76e74a93",
+  "active": "4a0cf99042f01edd",
   "lastOpenFiles": [
+    "八股/算法题/经典排序算法手册.md",
     "八股/算法题/hot100.md",
     "八股/算法题/codetop前200题题解手册.md",
-    "八股/算法题/经典排序算法手册.md",
     "八股/阅读：.md",
     "八股/code_review/code_review面试题目.md",
     "八股/agenticRAG/面试.md",
