@@ -428,6 +428,174 @@ def backtrack(start):
         path.pop()
 ```
 
+#### 子集、组合与排列的区别
+
+这三类题都使用“做选择 -> 递归 -> 撤销选择”的回溯框架，但它们枚举的对象不同。判断题型时，先问自己两个问题：**顺序是否重要？是不是每走到一个位置都要收集答案？**
+
+| 类型 | 顺序是否重要 | 什么时候收集答案 | 如何避免重复选择 | 典型题目 |
+| --- | --- | --- | --- | --- |
+| 子集 | 不重要 | 每个递归节点都是一个子集，进入递归后立即收集 | 用 `start`，下一层通常从 `i + 1` 开始 | 58. 子集 |
+| 组合 | 不重要 | 只有满足长度、目标和等条件时才收集 | 用 `start`；能否重复使用决定传 `i` 还是 `i + 1` | 65. 组合总和；113. 组合总和 II |
+| 排列 | 重要 | `path` 长度等于元素个数时收集 | 每一层从头枚举，用 `used` 记录当前路径已经使用的位置 | 15. 全排列；108. 全排列 II |
+
+例如有数字 `[1, 2]`：
+
+- 子集要得到 `[]`、`[1]`、`[2]`、`[1, 2]`。不需要 `[2, 1]`，因为它与 `[1, 2]` 选中的元素相同。
+- 如果组合题要求“选出的数字之和等于 3”，只收集 `[1, 2]`，不会收集没有满足目标的中间路径。
+- 排列要得到 `[1, 2]` 和 `[2, 1]`，因为顺序不同就算不同答案。
+
+##### 1. 子集：每个递归节点都是答案
+
+```python
+def subsets(nums):
+    result = []
+    path = []
+
+    def backtrack(start):
+        # 无论 path 有几个元素，它都是一个合法子集
+        result.append(path[:])
+
+        for i in range(start, len(nums)):
+            path.append(nums[i])
+            # 每个位置只能使用一次，下一层从 i + 1 开始
+            backtrack(i + 1)
+            path.pop()
+
+    backtrack(0)
+    return result
+```
+
+这里使用 `start` 是为了不往回选。选择 `nums[1]` 后，下一层只能选择它右边的元素，因此不会再生成顺序相反但元素相同的答案。
+
+一句话记忆：**子集没有必须满足的目标，每到一个递归节点就拍照保存。**
+
+##### 2. 组合：满足条件时才是答案
+
+组合与子集一样，顺序不重要，所以也使用 `start`。区别在于组合通常带有条件，例如“选 `k` 个数”或“数字之和等于 `target`”，只有满足条件时才能保存答案。
+
+以“组合总和”为例，如果一个数字可以重复使用，递归时继续传 `i`：
+
+```python
+def combination_sum(candidates, target):
+    candidates.sort()
+    result = []
+    path = []
+
+    def backtrack(start, remaining):
+        if remaining == 0:
+            result.append(path[:])
+            return
+
+        for i in range(start, len(candidates)):
+            number = candidates[i]
+            if number > remaining:
+                break
+
+            path.append(number)
+            # 传 i：下一层仍然可以再次使用当前数字
+            backtrack(i, remaining - number)
+            path.pop()
+
+    backtrack(0, target)
+    return result
+```
+
+如果每个位置只能使用一次，递归时传 `i + 1`：
+
+```python
+path.append(candidates[i])
+backtrack(i + 1, remaining - candidates[i])
+path.pop()
+```
+
+因此组合题最关键的记忆点是：
+
+- 当前数字可以重复使用：下一层传 `i`。
+- 当前位置只能使用一次：下一层传 `i + 1`。
+- 只有满足题目的目标条件时，才把 `path` 加入答案。
+
+##### 3. 排列：每个位置都可以选择任意未使用元素
+
+```python
+def permute(nums):
+    result = []
+    path = []
+    used = [False] * len(nums)
+
+    def backtrack():
+        if len(path) == len(nums):
+            result.append(path[:])
+            return
+
+        # 每一层都要从头检查所有元素，不能使用 start
+        for i in range(len(nums)):
+            if used[i]:
+                continue
+
+            used[i] = True
+            path.append(nums[i])
+
+            backtrack()
+
+            path.pop()
+            used[i] = False
+
+    backtrack()
+    return result
+```
+
+排列不能使用 `start` 限制只能向右选择，因为 `[1, 2]` 和 `[2, 1]` 都要保留。每一层都从头枚举，再通过 `used[i]` 判断某个位置是否已经出现在当前路径中。
+
+一句话记忆：**组合只关心选了谁，用 `start`；排列还关心先后顺序，用 `used`。**
+
+##### 4. 有重复元素时，去重条件也不同
+
+数组存在重复数字时，通常先排序，使相同数字相邻。
+
+组合去重使用：
+
+```python
+if i > start and nums[i] == nums[i - 1]:
+    continue
+```
+
+它表示：同一层的循环中，相同数字只选择第一个；进入下一层后，位于不同位置的相同数字仍然可以被选择。适用于 113. 组合总和 II。
+
+排列去重使用：
+
+```python
+if i > 0 and nums[i] == nums[i - 1] and not used[i - 1]:
+    continue
+```
+
+`not used[i - 1]` 表示前一个相同数字没有出现在当前路径中，此时两个相同数字属于同一层的两条重复分支，应当跳过。适用于 108. 全排列 II。
+
+##### 5. 最终判断口诀
+
+1. 要返回所有选法，而且任意长度都算答案：**子集**，每个节点收集，使用 `start`。
+2. 要满足选取数量、目标和等条件：**组合**，满足条件才收集，使用 `start`。
+3. 相同元素换一个顺序也算新答案：**排列**，每层从头枚举，使用 `used`。
+4. 组合中元素可重复使用传 `i`，不可重复使用传 `i + 1`。
+5. 输入有重复元素时先排序，再进行同层去重。
+
+##### 固定层候选集合模板
+
+适用于 195. 电话号码的字母组合。这类题的每一层都有自己固定的候选集合：第 `index` 层只从第 `index` 组候选项中选择一个，因此使用 `index` 表示当前处理到哪一层，不需要组合题的 `start`，也不需要排列题的 `used`。
+
+```python
+def backtrack(index):
+    if index == len(groups):
+        result.append(path[:])
+        return
+
+    for choice in groups[index]:
+        path.append(choice)
+        backtrack(index + 1)
+        path.pop()
+```
+
+一句话记忆：**一个输入位置就是一层；当前层遍历这一组的全部候选；选择后进入下一层。**
+
 #### 回溯刷题顺序
 
 回溯题不要先背代码，先判断“每一层在枚举什么选择”。建议按“子集组合 -> 排列 -> 切割字符串 -> 网格搜索 -> 树路径 -> 棋盘和游戏”的顺序刷。
@@ -444,7 +612,7 @@ def backtrack(start):
 
 第二阶段：排列，理解 used 控制已经选过的元素
 
-全排列 / 无重复元素：**15. 全排列**。
+全排列 / 无重复元素：15. 全排列。
 
 全排列 / 有重复元素去重：108. 全排列 II。
  
@@ -2243,10 +2411,12 @@ class Solution:
             if len(path) == len(nums):
                 result.append(path[:])
                 return
-            for i, x in enumerate(nums):
+            for i, number in enumerate(nums):
                 if used[i]:
                     continue
-                used[i] = Truepath.append(x)
+
+                used[i] = True
+                path.append(number)
                 backtrack()
                 path.pop()
                 used[i] = False
@@ -2277,9 +2447,9 @@ class Solution:
 1. 先抓住本题主线：当 `path` 长度等于 `nums` 长度时加入答案；否则枚举每个未使用数字，选择、递归、撤销。
 2. 代码对外入口是 `permute`，主要依赖的结构是：`path` 和 `used`。
 3. 初始化先执行 `result, path = ([], [])`。这一阶段准备后续循环或递归需要的状态。
-4. 主过程从 `for i, x in enumerate(nums):` 开始。代码会按这个范围反复处理元素、节点或状态。
+4. 主过程从 `for i, number in enumerate(nums):` 开始。每一层都会检查所有数字，并跳过当前路径中已经使用的数字。
 5. 第一个关键判断是 `if len(path) == len(nums):`。它负责处理边界、命中答案或决定下一步走向。
-6. 状态更新重点看 `used[i] = Truepath.append(x)`。更新后的值会被下一轮循环或上一层递归继续使用。
+6. 选择数字时先执行 `used[i] = True`，再执行 `path.append(number)`；递归返回后执行 `path.pop()` 和 `used[i] = False`，把现场恢复成选择前的状态。
 7. 最后通过 `return result` 返回结果。手算时应确认这里返回的是最终状态，而不是中间变量。
 
 ### 16. 有效的括号
@@ -3396,9 +3566,17 @@ class Solution:
         result, path = [], []
 
         def backtrack(idx):
-            remain = 4 - len(path)
-            if len(s) - idx < remain or len(s) - idx > remain * 3:
+            remaining_parts = 4 - len(path)  # 还需要切出多少段
+            remaining_chars = len(s) - idx   # 还有多少个字符没有使用
+
+            # 每段至少需要 1 个字符：剩余字符太少，无法凑够 remaining_parts 段
+            if remaining_chars < remaining_parts:
                 return
+
+            # 每段最多使用 3 个字符：剩余字符太多，remaining_parts 段装不下
+            if remaining_chars > remaining_parts * 3:
+                return
+
             if len(path) == 4:
                 if idx == len(s):
                     result.append(".".join(path))
@@ -3439,7 +3617,7 @@ class Solution:
 2. 代码对外入口是 `restoreIpAddresses`，主要依赖的结构是：`idx/path`。
 3. 初始化先执行 `result, path = ([], [])`。这一阶段准备后续循环或递归需要的状态。
 4. 主过程从 `for end in range(idx + 1, min(idx + 4, len(s) + 1)):` 开始。代码会按这个范围反复处理元素、节点或状态。
-5. 第一个关键判断是 `if len(s) - idx < remain or len(s) - idx > remain * 3:`。它负责处理边界、命中答案或决定下一步走向。
+5. 先用 `remaining_chars < remaining_parts` 排除“剩余字符不够每段至少分一个”的情况，再用 `remaining_chars > remaining_parts * 3` 排除“按照每段最多三位也装不下”的情况。
 6. 状态更新重点看 `part = s[idx:end]`。更新后的值会被下一轮循环或上一层递归继续使用。
 7. 最后通过 `return result` 返回结果。手算时应确认这里返回的是最终状态，而不是中间变量。
 
@@ -3993,12 +4171,65 @@ class Solution:
 ```
 
 
+
+```python
+class Solution:
+    def generateParenthesis(self, n: int):
+        result = []
+        path = []
+
+        def backtrack(left_count, right_count):
+            # 已经放入 n 个左括号和 n 个右括号
+            if left_count == n and right_count == n:
+                result.append("".join(path))
+                return
+
+            # 左括号还没有用完，可以继续放左括号
+            if left_count < n:
+                path.append("(")
+                backtrack(left_count + 1, right_count)
+                path.pop()
+
+            # 已使用的右括号必须少于左括号，才能放右括号
+            if right_count < left_count:
+                path.append(")")
+                backtrack(left_count, right_count + 1)
+                path.pop()
+
+        backtrack(0, 0)
+        return result
+```
+
 #### 详细分析、小例子与代码执行流程
 合法括号串的任意前缀中，右括号数量都不能超过左括号数量，否则前面已经无法匹配。回溯时只要遵守这个规则，就不会生成非法结果。
 
 例子：`n=2`。一开始只能放 `(`。当当前串是 `"("` 时，可以继续放 `(` 得到 `"(("`，也可以放 `)` 得到 `"()"`。最终得到 `"(())"` 和 `"()()"`。
 
 判断能不能放：左括号数量小于 n 才能放左括号；右括号数量小于左括号数量才能放右括号。
+
+一句话记忆：
+
+```text
+左括号没用完就能放；
+右括号比左括号少才能放；
+左右都用了 n 个就收集答案。
+```
+
+核心模板：
+
+```python
+if left_count < n:
+    放左括号
+    递归
+    撤销
+
+if right_count < left_count:
+    放右括号
+    递归
+    撤销
+```
+
+这里的“撤销”是回溯的通用含义。本题代码传入的是 `path + "("` 或 `path + ")"`，每次都会创建一个新字符串，不会修改上一层的 `path`，因此递归返回后自动回到原来的字符串，不需要显式执行 `path.pop()`。
 
 
 #### 代码执行流程（零基础）
@@ -6721,20 +6952,27 @@ class Solution:
 ```python
 class Solution:
     def pathSum(self, root, targetSum: int):
-        result, path = [], []
+        result = []
+        path = []
 
         def dfs(node, remain):
+            # 空节点不能继续搜索
             if not node:
                 return
 
+            # 进入当前节点：记录节点，并扣除节点值
             path.append(node.val)
             remain -= node.val
 
+            # 必须同时满足：当前节点是叶子，并且剩余目标为 0
             if not node.left and not node.right and remain == 0:
                 result.append(path[:])
 
+            # 继续搜索左右子树
             dfs(node.left, remain)
             dfs(node.right, remain)
+
+            # 离开当前节点：撤销对 path 的修改
             path.pop()
 
         dfs(root, targetSum)
@@ -7664,59 +7902,119 @@ class Solution:
 
 ```python
 class Solution:
-    def exist(self, board, word):
-        rows, columns = len(board), len(board[0])
+    def exist(self, board, word: str) -> bool:
+        rows = len(board)
+        columns = len(board[0])
 
-        def dfs(row, column, word_index):
-            if word_index == len(word):
+        def dfs(row, column, index):
+            # word 中的所有字符都已经匹配完成
+            if index == len(word):
                 return True
+
+            # 当前坐标超出网格范围
             if (
                 row < 0
                 or row >= rows
                 or column < 0
                 or column >= columns
-                or board[row][column] != word[word_index]
             ):
                 return False
+
+            # 当前格子的字符与需要匹配的字符不同
+            if board[row][column] != word[index]:
+                return False
+
+            # 暂时标记当前格子，防止当前路径再次使用它
             original_character = board[row][column]
             board[row][column] = "#"
+
+            # 继续从上下左右寻找 word 的下一个字符
             found = (
-                dfs(row + 1, column, word_index + 1)
-                or dfs(row - 1, column, word_index + 1)
-                or dfs(row, column + 1, word_index + 1)
-                or dfs(row, column - 1, word_index + 1)
+                dfs(row - 1, column, index + 1)
+                or dfs(row + 1, column, index + 1)
+                or dfs(row, column - 1, index + 1)
+                or dfs(row, column + 1, index + 1)
             )
+
+            # 恢复当前格子，让其他搜索路径仍然可以使用它
             board[row][column] = original_character
+
             return found
 
+        # 单词可以从任意格子开始
         for row in range(rows):
             for column in range(columns):
                 if dfs(row, column, 0):
                     return True
+
         return False
 ```
 
+
+每个格子都尝试当起点；
+越界或字符不匹配就失败；
+匹配后标记当前格子；
+递归搜索上下左右；
+返回前恢复当前格子。
+
+模板
+```python
+def dfs(row, column, index):
+    if 单词已经匹配完成:
+        return True
+
+    if 越界 or 字符不匹配:
+        return False
+
+    暂时标记当前格子
+
+    found = (
+        dfs(上一个方向, index + 1)
+        or dfs(下一个方向, index + 1)
+        or dfs(左边, index + 1)
+        or dfs(右边, index + 1)
+    )
+
+    恢复当前格子
+    return found
+```
 #### 详细分析、小例子与代码执行流程
-如果网格里有 `A B C E / S F C S / A D E E`，找 `ABCCED`，可以从左上角 A 出发，右走 B、右走 C、下走 C、左下走 E、左走 D。每走一步都把当前格临时占用，避免绕回来重复使用。
+
+`dfs(row, column, index)` 表示：检查位置 `(row, column)` 能否匹配 `word[index]`，并从这里继续找完后面的字符。`index` 不是已经匹配的字符数量，而是当前准备匹配的字符下标。
+
+如果网格是 `A B C E / S F C S / A D E E`，查找 `ABCCED`，可以从左上角 `A` 出发，依次向右找到 `B`、向右找到 `C`、向下找到第二个 `C`、向下找到 `E`、向左找到 `D`。字符顺序完整匹配，因此返回 `True`。
+
+外层双重循环把每一个格子都当作起点，并传入 `index=0`，表示尝试从这里匹配 `word[0]`。题目只要求判断是否存在，所以任何起点返回 `True` 后都可以立刻结束。
+
+DFS 有两个失败条件：坐标越界，或者当前格子的字符不等于 `word[index]`。字符匹配后，代码把当前格子临时改成 `"#"`。如果本条路径绕回来再次访问它，`"#"` 不会等于目标字符，搜索就会失败，从而保证同一个格子在一条路径中只能使用一次。
+
+四个方向用 `or` 连接，是因为只要其中一个方向能找完剩余单词，当前状态就成功。Python 的 `or` 具有短路特性：前面的方向返回 `True` 后，后面的方向不再搜索。
+
+无论四个方向最终成功还是失败，返回前都要执行 `board[row][column] = original_character`。不能永久保留 `"#"`，因为“格子不能重复使用”只限制当前路径，其他起点或其他分支仍然可以使用这个格子。这一步就是回溯中的“撤销选择”。
+
+递归成功出口 `index == len(word)` 放在越界判断前，是因为上一层已经匹配完最后一个字符。此时单词已经完整找到，不需要再检查为了进入下一层而传入的相邻坐标是否合法。
+
+一句话记忆：**每格都试起点；越界或不匹配就返回；匹配后标记；搜索上下左右；返回前恢复。**
 
 
 #### 代码执行流程（零基础）
 下面按代码运行顺序看《单词搜索》：
 
-1. path 表示当前已经做出的选择，比如已经选了哪些数字、已经走过哪些格子。
-2. 递归函数先判断是否已经形成一个完整答案；如果是，就把 path 复制进答案列表。
-3. 如果还没结束，就枚举下一步可以做的选择。
-4. 每次选择后进入下一层递归；递归回来后要撤销选择，也就是 pop 或恢复现场。
-5. 回溯可以理解为“试一条路，走到底；不行或记录答案后退回来，再试下一条路”。
+1. `exist` 先记录网格的行数和列数，然后用双重循环尝试所有起点。
+2. 每个起点调用 `dfs(row, column, 0)`，从 `word[0]` 开始匹配。
+3. DFS 先判断单词是否已经全部匹配，再判断坐标是否越界、当前字符是否匹配。
+4. 当前字符匹配后，把格子暂时改成 `"#"`，再让 `index + 1` 到上下左右四个相邻位置继续寻找下一个字符。
+5. 四个方向的结果保存到 `found` 后，立即恢复当前格子的原字符，再把 `found` 返回上一层。
+6. 任意起点找到完整单词就返回 `True`；所有起点都失败才返回 `False`。
 
 #### 本题代码运行时的真实流程
-1. 先抓住本题主线：枚举起点；DFS 参数为坐标和匹配到的下标；匹配完返回 True。
-2. 代码对外入口是 `exist`，主要依赖的结构是：`dfs(i,j,k)` 表示从格子 `(i,j)` 匹配 `word[k]`。
-3. 初始化先执行 `rows, columns = (len(board), len(board[0]))`。这一阶段准备后续循环或递归需要的状态。
-4. 主过程从 `for row in range(rows):` 开始。代码会按这个范围反复处理元素、节点或状态。
-5. 第一个关键判断是 `if word_index == len(word):`。它负责处理边界、命中答案或决定下一步走向。
-6. 每一步处理完成后，代码把当前结果交给下一轮或上一层递归继续组合。
-7. 最后通过 `return False` 返回结果。手算时应确认这里返回的是最终状态，而不是中间变量。
+1. 先抓住本题主线：枚举所有起点，通过 `dfs(row, column, index)` 按顺序匹配字符，并在当前路径中临时标记已经使用的格子。
+2. `index == len(word)` 表示最后一个字符已经在上一层匹配完成，当前分支成功返回 `True`。
+3. 坐标越界或 `board[row][column] != word[index]` 时，当前分支无法继续，返回 `False`。
+4. 字符匹配后保存 `original_character`，再把当前格子改成 `"#"`，防止这一条路径重复进入它。
+5. 使用四个 `or` 搜索上下左右；只要一个方向成功，`found` 就是 `True`。
+6. 返回前恢复 `board[row][column]`，保证其他搜索分支看到的仍然是原网格。
+7. 外层循环发现任意 DFS 成功便返回 `True`，否则遍历完所有格子后返回 `False`。
 
 ### 104. 验证IP地址
 
@@ -8040,7 +8338,7 @@ class Solution:
 - 分析：和全排列一样用 used，但重复数字会生成重复排列。排序后，同一层如果前一个相同数字还没使用，就跳过当前数字。
 - 思路：排序；枚举每个未使用位置；若 `i>0 and nums[i]==nums[i-1] and not used[i-1]` 则跳过。
 - 核心结构：`used` + 同层去重。
-- 坑：去重条件是 `not used[i-1]`，表示同一层重复选择。
+- 坑：`not used[i - 1]` 表示前一个相同数字不在当前路径中，此时当前数字与它属于同一层的重复选择，应跳过。
 - 相似题：全排列、组合总和 II、子集 II。
 - 记忆卡片：重复排列先排序，同层相同数字只让第一个出手。
 
@@ -8053,17 +8351,28 @@ class Solution:
         used = [False] * len(nums)
 
         def backtrack():
+            # path 已经放入全部数字，得到一个完整排列
             if len(path) == len(nums):
                 result.append(path[:])
                 return
+
+            # 排列中的每个位置都可以从所有数字中选择
             for i, number in enumerate(nums):
+                # 下标 i 对应的数字已经在当前路径中，不能重复使用
                 if used[i]:
                     continue
+
+                # 相同数字在同一层只能选择第一个，避免产生重复排列
                 if i > 0 and nums[i] == nums[i - 1] and not used[i - 1]:
                     continue
+
+                # 做选择
                 used[i] = True
                 path.append(number)
+
                 backtrack()
+
+                # 撤销选择，尝试当前层的下一个数字
                 path.pop()
                 used[i] = False
 
@@ -8072,7 +8381,9 @@ class Solution:
 ```
 
 #### 详细分析、小例子与代码执行流程
-`[1,1,2]` 如果不去重，会得到两个 `[1,1,2]`，只是用了不同位置的 1。排序后规定同一层先用前一个 1，后一个 1 在前一个没用时不能先用，就避免重复。
+`[1,1,2]` 如果不去重，会得到两个 `[1,1,2]`，只是使用两个 1 的先后位置不同。排序后，相同数字会相邻。规定同一层必须优先使用前一个 1；当前一个 1 没有出现在路径中时，不能越过它选择后一个 1，这样便不会开启内容完全相同的重复分支。
+
+去重判断可以分成三部分理解：`i > 0` 只负责保证前一个位置存在；`nums[i] == nums[i - 1]` 说明当前数字与前一个数字相同；`not used[i - 1]` 说明前一个相同数字不在当前路径中，因此这是同一层的重复选择。若前一个相同数字已经在路径中，则当前数字位于更深一层，可以正常选择。
 
 
 #### 代码执行流程（零基础）
@@ -8088,10 +8399,10 @@ class Solution:
 1. 先抓住本题主线：排序；枚举每个未使用位置；若 `i>0 and nums[i]==nums[i-1] and not used[i-1]` 则跳过。
 2. 代码对外入口是 `permuteUnique`，主要依赖的结构是：`used` + 同层去重。
 3. 初始化先执行 `result = []`。这一阶段准备后续循环或递归需要的状态。
-4. 主过程从 `for i, number in enumerate(nums):` 开始。代码会按这个范围反复处理元素、节点或状态。
-5. 第一个关键判断是 `if len(path) == len(nums):`。它负责处理边界、命中答案或决定下一步走向。
-6. 状态更新重点看 `used[i] = True`。更新后的值会被下一轮循环或上一层递归继续使用。
-7. 最后通过 `return result` 返回结果。手算时应确认这里返回的是最终状态，而不是中间变量。
+4. 主过程从 `for i, number in enumerate(nums):` 开始。每一层都从头检查所有数字，`used[i]` 为 `True` 的位置不能再次选择。
+5. 若当前数字与前一个数字相同，并且前一个数字没有被当前路径使用，说明它们正在竞争排列中的同一个位置，跳过当前数字以消除同层重复分支。
+6. 选择数字时执行 `used[i] = True` 和 `path.append(number)`；递归返回后执行 `path.pop()` 和 `used[i] = False`，恢复现场后尝试下一个数字。
+7. 当 `len(path) == len(nums)` 时复制当前排列到 `result`，所有搜索完成后返回 `result`。
 
 ### 109. 基本计算器
 
@@ -12280,50 +12591,75 @@ class Solution:
         EPS = 1e-6
 
         def dfs(numbers):
+            # 只剩一个数时，检查它是否接近 24
             if len(numbers) == 1:
                 return abs(numbers[0] - 24) < EPS
+
+            # 有顺序地选择两个不同位置上的数字
             for i in range(len(numbers)):
                 for j in range(len(numbers)):
                     if i == j:
                         continue
+
+                    # 删除选中的两个数，保留其余数字
                     rest = [
                         numbers[k] for k in range(len(numbers)) if k != i and k != j
                     ]
+
+                    # 尝试加法、减法和乘法
                     for value in (
                         numbers[i] + numbers[j],
                         numbers[i] - numbers[j],
                         numbers[i] * numbers[j],
                     ):
+                        # 把运算结果放回列表，继续合并剩余数字
                         if dfs(rest + [value]):
                             return True
+
+                    # 除数不能为 0；合法时再尝试除法
                     if abs(numbers[j]) > EPS and dfs(rest + [numbers[i] / numbers[j]]):
                         return True
+
             return False
 
+        # 转成浮点数，便于进行除法运算
         return dfs([float(number) for number in cards])
 ```
 
 #### 详细分析、小例子与代码执行流程
-`[4,1,8,7]` 可以做 `(8-4)*(7-1)=24`。回溯会枚举先合并 8 和 4 得 4，再合并 7 和 1 得 6，最后 4*6。
+
+加、减、乘、除每次都需要两个操作数，所以每层从 `numbers` 中选择两个不同位置 `i` 和 `j`，计算一个结果 `value`，再用这个结果替换原来的两个数。数字数量会按照 `4 -> 3 -> 2 -> 1` 逐层减少；只剩一个数时，判断它是否接近 24。
+
+`rest` 是删除 `numbers[i]` 和 `numbers[j]` 后剩余的数字。例如 `numbers=[4,1,8,7]`，选择 8 和 4 后，`rest=[1,7]`；若计算 `8-4=4`，下一层就是 `dfs([1,7,4])`。
+
+两层循环枚举的是有顺序的两个数，因此既会处理“8 和 4”，也会处理“4 和 8”。加法和乘法虽然会被重复计算，但减法和除法必须考虑两个方向，因为 `8-4` 与 `4-8`、`8/4` 与 `4/8` 的结果不同。
+
+代码使用 `rest + [value]` 创建新列表，没有修改当前层的 `numbers`，所以递归返回后现场自然保持原样，不需要执行 `pop()`。选择并合并两个数的顺序已经隐式表示括号，例如依次合并 `8-4` 和 `7-1`，最后相乘，就等价于 `(8-4)*(7-1)`。
+
+除法必须保证除数 `numbers[j]` 不接近 0。最终结果也不能直接写成 `numbers[0] == 24`，因为浮点除法可能产生微小误差，所以使用 `abs(numbers[0] - 24) < EPS`。
+
+例子：`[4,1,8,7]` 先合并 8 和 4 得到 4，再合并 7 和 1 得到 6，最后合并 4 和 6 得到 24，因此返回 `True`。
+
+一句话记忆：**每次选两个数，尝试加减乘除，把结果放回；直到只剩一个数，判断它是否接近 24。**
 
 
 #### 代码执行流程（零基础）
 下面按代码运行顺序看《24 点游戏》：
 
-1. path 表示当前已经做出的选择，比如已经选了哪些数字、已经走过哪些格子。
-2. 递归函数先判断是否已经形成一个完整答案；如果是，就把 path 复制进答案列表。
-3. 如果还没结束，就枚举下一步可以做的选择。
-4. 每次选择后进入下一层递归；递归回来后要撤销选择，也就是 pop 或恢复现场。
-5. 回溯可以理解为“试一条路，走到底；不行或记录答案后退回来，再试下一条路”。
+1. 入口把四张牌转成浮点数，再调用 `dfs(numbers)`。
+2. 如果只剩一个数，就用误差 `EPS` 判断它是否接近 24。
+3. 如果还剩多个数，两层循环选择两个不同位置 `i` 和 `j`，并创建不包含它们的 `rest`。
+4. 依次尝试加法、减法、乘法，把每个结果加入 `rest` 后继续递归。
+5. 当 `numbers[j]` 不接近 0 时，再尝试 `numbers[i] / numbers[j]`。
+6. 任意分支返回 `True` 就立即向上返回；所有选择和运算都失败后才返回 `False`。
 
 #### 本题代码运行时的真实流程
-1. 先抓住本题主线：递归枚举两数和运算；浮点比较用误差。
-2. 代码对外入口是 `judgePoint24`，主要依赖的结构是：选择两数 -> 合并成一个数。
-3. 初始化先执行 `EPS = 1e-06`。这一阶段准备后续循环或递归需要的状态。
-4. 主过程从 `for i in range(len(numbers)):` 开始。代码会按这个范围反复处理元素、节点或状态。
-5. 第一个关键判断是 `if len(numbers) == 1:`。它负责处理边界、命中答案或决定下一步走向。
-6. 状态更新重点看 `rest = [numbers[k] for k in range(len(numbers)) if k != i and k != j]`。更新后的值会被下一轮循环或上一层递归继续使用。
-7. 最后通过 `return dfs([float(number) for number in cards])` 返回结果。手算时应确认这里返回的是最终状态，而不是中间变量。
+1. `judgePoint24` 设置误差 `EPS=1e-6`，并将输入转换成浮点数。
+2. `dfs(numbers)` 每层有顺序地选择两个不同位置，通过 `rest` 保存没有参与本次运算的数字。
+3. 每次把两个数合并为一个 `value`，调用 `dfs(rest + [value])` 后，数字数量减少一个。
+4. 两层循环会覆盖减法与除法的正反顺序；除法只在 `abs(numbers[j]) > EPS` 时执行。
+5. 若某个分支最终只剩一个接近 24 的数，就逐层返回 `True`。
+6. 当前层所有两数组合和运算都不能成功时，返回 `False`。
 
 ### 182. 最大连续1的个数 III
 
@@ -12611,28 +12947,43 @@ class Solution:
 class Solution:
     def solveNQueens(self, n: int):
         result = []
+
+        # 创建 n × n 棋盘，初始全部为空
         board = [["."] * n for _ in range(n)]
+
+        # 分别记录已经被占用的列和两种对角线
         columns = set()
         main_diagonals = set()
         anti_diagonals = set()
 
         def dfs(row):
+            # 前 n 行都已经放置完成，得到一个答案
             if row == n:
-                result.append(["".join(board_row) for board_row in board])
+                result.append(
+                    ["".join(board_row) for board_row in board]
+                )
                 return
 
+            # 尝试把当前行的皇后放到每一列
             for column in range(n):
+                # 当前列或者两条斜线已经被占用，不能放
                 if (
                     column in columns
                     or row - column in main_diagonals
                     or row + column in anti_diagonals
                 ):
                     continue
+
+                # 做选择：在当前位置放置皇后
+                board[row][column] = "Q"
                 columns.add(column)
                 main_diagonals.add(row - column)
                 anti_diagonals.add(row + column)
-                board[row][column] = "Q"
+
+                # 处理下一行
                 dfs(row + 1)
+
+                # 撤销选择：恢复棋盘和三个集合
                 board[row][column] = "."
                 columns.remove(column)
                 main_diagonals.remove(row - column)
@@ -12642,6 +12993,24 @@ class Solution:
         return result
 ```
 
+```python
+def dfs(row):
+    if row == n:
+        收集棋盘
+        return
+
+    for column in range(n):
+        if 列冲突 or 两条斜线冲突:
+            continue
+
+        放置皇后
+        记录列和两条斜线
+
+        dfs(row + 1)
+
+        撤销皇后
+        删除列和两条斜线记录
+```
 #### 详细分析、小例子与代码执行流程
 n=4 时，第一行放在第 1 列后，第二行不能放同列，也不能放两条斜线冲突的位置。不断尝试和回退，最终找到两个方案。
 
@@ -13060,7 +13429,8 @@ class Solution:
     def letterCombinations(self, digits: str):
         if not digits:
             return []
-        mapping = {
+
+        digit_to_letters = {
             "2": "abc",
             "3": "def",
             "4": "ghi",
@@ -13073,21 +13443,39 @@ class Solution:
         result = []
         path = []
 
-        def dfs(index):
+        def backtrack(index):
+            # 所有数字都已经处理完，得到一个完整组合
             if index == len(digits):
                 result.append("".join(path))
                 return
-            for letter in mapping[digits[index]]:
+
+            # 找到当前数字对应的所有候选字母
+            current_digit = digits[index]
+            letters = digit_to_letters[current_digit]
+
+            # 当前层依次尝试每个候选字母
+            for letter in letters:
+                # 做选择
                 path.append(letter)
-                dfs(index + 1)
+
+                # 处理下一个数字
+                backtrack(index + 1)
+
+                # 撤销选择
                 path.pop()
 
-        dfs(0)
+        backtrack(0)
         return result
 ```
 
 #### 详细分析、小例子与代码执行流程
 `23` 中，2 对应 abc，3 对应 def。先选 a，再配 d/e/f，得到 ad、ae、af；再选 b、c，同理生成 9 个组合。
+
+本题不使用 `start`。子集和组合是在同一个候选数组里继续向右选择，才需要 `start` 限制下一次从哪里开始；电话号码题的第 0 层只能从第 0 个数字对应的字母中选择，第 1 层只能从第 1 个数字对应的字母中选择，因此直接用 `index` 表示当前处理哪一个数字。
+
+本题也不使用 `used`。排列题的每一层都会重新枚举全部元素，所以需要 `used` 防止同一个位置在当前路径中被重复选择；电话号码题每层的候选集合不同，例如数字 2 的候选是 `abc`，进入下一层处理数字 3 时只会枚举 `def`，不会再次选择上一层的字母。
+
+可以这样区分：子集、组合中的 `start` 决定下一次从候选数组哪里开始；排列中的 `used` 决定哪些位置已经放进当前路径；电话号码组合中的 `index` 决定当前应该处理哪一组候选字母。
 
 
 #### 代码执行流程（零基础）
@@ -13102,10 +13490,10 @@ class Solution:
 #### 本题代码运行时的真实流程
 1. 先抓住本题主线：按下标递归；枚举当前数字对应字母；path 满长加入答案。
 2. 代码对外入口是 `letterCombinations`，主要依赖的结构是：数字到字母映射 + path。
-3. 初始化先执行 `mapping = {'2': 'abc', '3': 'def', '4': 'ghi', '5': 'jkl', '6': 'mno', '7': 'pqrs', '8': 'tuv', '9': 'wxyz'}`。这一阶段准备后续循环或递归需要的状态。
-4. 主过程从 `for letter in mapping[digits[index]]:` 开始。代码会按这个范围反复处理元素、节点或状态。
+3. 初始化先建立 `digit_to_letters`，用于找到每个数字对应的候选字母，并创建 `result` 与当前路径 `path`。
+4. 每层先通过 `current_digit = digits[index]` 找到当前数字，再通过 `for letter in digit_to_letters[current_digit]:` 依次尝试它对应的所有字母。
 5. 第一个关键判断是 `if not digits:`。它负责处理边界、命中答案或决定下一步走向。
-6. 每一步处理完成后，代码把当前结果交给下一轮或上一层递归继续组合。
+6. 选择字母后调用 `backtrack(index + 1)` 处理下一个数字；递归返回后执行 `path.pop()`，撤销当前选择并尝试下一个字母。
 7. 最后通过 `return result` 返回结果。手算时应确认这里返回的是最终状态，而不是中间变量。
 
 ### 196. 前 K 个高频单词
@@ -13360,4 +13748,3 @@ class Solution:
 5. 第一个关键判断是 `if last_position.get(larger_digit, -1) > index:`。它负责处理边界、命中答案或决定下一步走向。
 6. 状态更新重点看 `current = int(character)`。更新后的值会被下一轮循环或上一层递归继续使用。
 7. 最后通过 `return num` 返回结果。手算时应确认这里返回的是最终状态，而不是中间变量。
-
