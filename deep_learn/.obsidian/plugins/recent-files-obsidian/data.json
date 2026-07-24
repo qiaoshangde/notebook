@@ -5,6 +5,10 @@
       "path": "八股/算法题/codetop前200题题解手册.md"
     },
     {
+      "basename": "hot100",
+      "path": "八股/算法题/hot100.md"
+    },
+    {
       "basename": "面试",
       "path": "八股/agenticRAG/面试.md"
     },
@@ -23,10 +27,6 @@
     {
       "basename": "经典排序算法手册",
       "path": "八股/算法题/经典排序算法手册.md"
-    },
-    {
-      "basename": "hot100",
-      "path": "八股/算法题/hot100.md"
     },
     {
       "basename": "阅读：",
