@@ -4066,12 +4066,12 @@ class Solution:
         queue = deque()
         result = []
         for i, x in enumerate(nums):
-            while queue and nums[queue[-1]] <= x:
+            while queue and nums[queue[-1]] <= x:#新来的比他大，还比他新，就应该弹出。维护递减性，保证队头最大（取结果时取出来的值是最大的）
                 queue.pop()
             queue.append(i)
-            if queue[0] <= i - k:
+            if queue[0] <= i - k:#窗口最老和元素和最新的元素之间不能超过窗口
                 queue.popleft()
-            if i >= k - 1:
+            if i >= k - 1:#保证窗口已经形成
                 result.append(nums[queue[0]])
         return result
 ```
@@ -7870,6 +7870,7 @@ class Solution:
 - 坑：栈里存下标，不是温度值；相等温度不算更高。
 - 相似题：滑动窗口最大值、下一个更大元素。
 - 记忆卡片：找右边第一个更大，用单调递减栈。
+- **遇大弹出清旧账，新值入栈等未来；相等不退压一起，严格递增才结算**
 
 ```python
 class Solution:
