@@ -95,8 +95,10 @@ while l < r:
 快慢指针 / 环检测：26. 环形链表；38. 环形链表 II。
 
 快慢指针 / 倒数位置：36. 删除链表的倒数第 N 个节点；61. 链表中倒数第 k 个节点。
+	返回目标节点：slow 停在目标节点。
+	删除目标节点：slow 停在目标节点前面。
 
-快慢指针 / 找中点与反转后半段：75. 回文链表；25. 重排链表；45. 排序链表。
+快慢指针 / 找中点与反转后半段：75. 回文链表；25. 重排链表；**45. 排序链表**。
 
 目标：快慢指针不是只为了“快慢”，而是制造信息差。环题靠速度差相遇；倒数题靠距离差；中点题靠 fast 走两步、slow 走一步。
 
@@ -1862,6 +1864,31 @@ class Solution:
 - 坑：不能返回重复三元组；`nums[i] > 0` 后可以提前结束。
 - 相似题：两数之和、四数之和、最接近的三数之和。
 - 记忆卡片：三数之和先排序，固定一个，双指针找另外两个。
+核心模板：
+```python
+
+nums.sort()
+
+for i in range(len(nums) - 2):
+    跳过重复的固定数字
+
+    left = i + 1
+    right = len(nums) - 1
+
+    while left < right:
+        total = nums[i] + nums[left] + nums[right]
+
+        if total < target:
+            left += 1
+        elif total > target:
+            right -= 1
+        else:
+            收集答案
+            跳过左右重复数字
+            left += 1
+            right -= 1
+
+```
 
 ```python
 class Solution:
@@ -1892,7 +1919,64 @@ class Solution:
         return result
 ```
 
+另一种写法
+```python
 
+class Solution:
+    def threeSum(self, nums):
+        nums.sort()
+        result = []
+        n = len(nums)
+
+        for i in range(n - 2):
+            # 当前最小的数已经大于 0，后面不可能凑出 0
+            if nums[i] > 0:
+                break
+
+            # 固定的第一个数不能与上一轮相同，避免重复答案
+            if i > 0 and nums[i] == nums[i - 1]:
+                continue
+
+            left = i + 1
+            right = n - 1
+
+            while left < right:
+                total = nums[i] + nums[left] + nums[right]
+
+                if total < 0:
+                    # 和太小，需要让它变大
+                    left += 1
+
+                elif total > 0:
+                    # 和太大，需要让它变小
+                    right -= 1
+
+                else:
+                    result.append(
+                        [nums[i], nums[left], nums[right]]
+                    )
+
+                    # 跳过左边重复的数字
+                    while (
+                        left < right
+                        and nums[left] == nums[left + 1]
+                    ):
+                        left += 1
+
+                    # 跳过右边重复的数字
+                    while (
+                        left < right
+                        and nums[right] == nums[right - 1]
+                    ):
+                        right -= 1
+
+                    # 离开当前已经使用过的两个数字
+                    left += 1
+                    right -= 1
+
+        return result
+
+```
 #### 详细分析、小例子与代码执行流程
 三数之和最大的麻烦是去重。如果不排序，既难去重，也很难快速决定指针怎么移动。排序后，固定第一个数，剩下两个数就变成有序数组里的两数之和。
 
@@ -3098,7 +3182,64 @@ class Solution:
         return previous
 ```
 
+注释版本
+分为三步：
+```
+1. 将链表从中间切成前后两段。
+2. 反转后半段。
+3. 将两段链表交替合并。
+```
 
+```python
+
+class Solution:
+    def reorderList(self, head) -> None:
+        if not head or not head.next:
+            return
+
+        # 第一步：找到前半段的最后一个节点
+        slow = head
+        fast = head.next
+
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+
+        # 第二步：切出后半段
+        second = slow.next
+        slow.next = None
+
+        # 第三步：反转后半段
+        second = self.reverse(second)
+
+        # 第四步：将前后两段交替合并
+        first = head
+
+        while second:
+            # 先保存两段链表各自的下一个节点
+            first_next = first.next
+            second_next = second.next
+
+            # 把 second 插入 first 后面
+            first.next = second
+            second.next = first_next
+
+            # 两个指针分别前进
+            first = first_next
+            second = second_next
+
+    def reverse(self, head):
+        previous = None
+        current = head
+
+        while current:
+            next_node = current.next
+            current.next = previous
+            previous = current
+            current = next_node
+
+        return previous
+```
 #### 详细分析、小例子与代码执行流程
 目标顺序是 `L0 -> Ln -> L1 -> Ln-1 ...`，后半段需要倒着插入前半段。所以可以拆成三步：找中点、反转后半段、前后两段交替合并。
 
@@ -3150,6 +3291,61 @@ class Solution:
         return False
 ```
 
+带注释版本
+
+```python
+class Solution:
+    def hasCycle(self, head) -> bool:
+        slow = head
+        fast = head
+
+        # fast 每次需要走两步，所以必须保证 fast 和 fast.next 存在
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+
+            # 两个指针指向同一个节点，说明存在环
+            if slow is fast:
+                return True
+
+        # fast 走到 None，说明链表存在终点，没有环
+        return False
+```
+
+
+快慢指针版本：
+
+```
+时间复杂度：O(n)
+空间复杂度：O(1)
+```
+
+
+哈希集合法
+
+时间复杂度：O(n)
+空间复杂度：O(n)
+```
+
+```
+
+```python
+
+class Solution:
+    def hasCycle(self, head) -> bool:
+        visited = set()
+        current = head
+
+        while current:
+            if current in visited:
+                return True
+
+            visited.add(current)
+            current = current.next
+
+        return False
+
+```
 
 #### 详细分析、小例子与代码执行流程
 如果链表有环，快指针每次走两步，慢指针每次走一步。慢指针进入环后，快指针相当于在环形跑道上追慢指针，每轮距离缩短 1，最终一定相遇。
@@ -3420,14 +3616,79 @@ class Solution:
             left_max = max(left_max, height[left])
             right_max = max(right_max, height[right])
             if left_max < right_max:
+	            #左边最高挡板更矮，左边水位已经确定。
                 result += left_max - height[left]
                 left += 1
-            else:
+            else:#右边最高挡板更矮，右边水位已经确定。
                 result += right_max - height[right]
                 right -= 1
         return result
 ```
 
+
+
+```python
+class Solution:
+    def trap(self, height):
+        if not height:
+            return 0
+
+        left = 0
+        right = len(height) - 1
+
+        left_max = 0
+        right_max = 0
+        total_water = 0
+
+        while left < right:
+            if height[left] < height[right]:
+                # 更新左边已经见过的最高柱子。水一定不会从右边边流出去
+                left_max = max(left_max, height[left])
+
+                # 左边当前位置能够接到的水
+                total_water += left_max - height[left]
+
+                left += 1
+            else:
+                # 更新右边已经见过的最高柱子
+                right_max = max(right_max, height[right])
+
+                # 右边当前位置能够接到的水
+                total_water += right_max - height[right]
+
+                right -= 1
+
+        return total_water
+```
+
+
+dp解法
+```python
+class Solution:
+    def trap(self, height):
+        n = len(height)
+        if n == 0:
+            return 0
+
+        left_max = [0] * n
+        right_max = [0] * n
+
+        left_max[0] = height[0]
+        for i in range(1, n):
+            left_max[i] = max(left_max[i - 1], height[i])
+
+        right_max[n - 1] = height[n - 1]
+        for i in range(n - 2, -1, -1):
+            right_max[i] = max(right_max[i + 1], height[i])
+
+        total_water = 0
+
+        for i in range(n):
+            water_level = min(left_max[i], right_max[i])
+            total_water += water_level - height[i]
+
+        return total_water
+```
 
 #### 详细分析、小例子与代码执行流程
 每个位置能接多少水，取决于左边最高墙和右边最高墙的较小值。双指针维护两边最高值，哪边最高值更小，就说明哪边当前位置的水量已经可以确定。
@@ -3729,7 +3990,32 @@ class Solution:
         return dummy.next
 ```
 
+注释版本
+```
+class Solution:
+    def removeNthFromEnd(self, head, n: int):
+        # 虚拟头节点方便统一处理“删除头节点”
+        dummy = ListNode(0, head)
 
+        slow = dummy
+        fast = dummy
+
+        # 快指针先走 n 步
+        for _ in range(n):
+            fast = fast.next
+
+        # 快慢指针一起移动
+        # 当 fast 到达最后一个节点时，
+        # slow 正好位于待删除节点的前一个节点
+        while fast.next:
+            slow = slow.next
+            fast = fast.next
+
+        # 删除 slow 后面的节点
+        slow.next = slow.next.next
+
+        return dummy.next
+```
 #### 详细分析、小例子与代码执行流程
 倒数第 N 个节点可以通过快慢指针制造距离差。让 fast 先走 N 步，然后 slow 和 fast 一起走；当 fast 到尾部时，slow 正好在待删除节点前面。
 
@@ -3868,13 +4154,153 @@ class Solution:
         return None
 ```
 
+版本1
+```python
+class Solution:
+    def detectCycle(self, head):
+        slow = head
+        fast = head
 
+        # 第一阶段：寻找相遇点
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+
+            if slow is fast:
+                # 第二阶段：从头节点和相遇点同时出发
+                pointer = head
+
+                while pointer is not slow:
+                    pointer = pointer.next
+                    slow = slow.next
+
+                return pointer
+
+        # fast 能走到 None，说明没有环
+        return None
+```
+
+
+
+版本2
+
+```python
+class Solution:
+    def detectCycle(self, head):
+        slow = head
+        fast = head
+
+        # 第一阶段：寻找快慢指针的相遇点
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+
+            if slow is fast:
+                break
+        else:
+            # fast 到达链表末尾，说明没有环
+            return None
+
+        # 第二阶段：寻找环的入口
+        pointer = head
+
+        while pointer is not slow:
+            pointer = pointer.next
+            slow = slow.next
+
+        return pointer
+```
 #### 详细分析、小例子与代码执行流程
 第一次快慢指针相遇只能说明有环。相遇后，把一个指针放回头节点，另一个留在相遇点，两者每次走一步，它们会在环入口相遇。
 
 例子：`1->2->3->4->5`，5 指回 3。第一次相遇可能在 4 或 5。然后一个从 1 出发，一个从相遇点出发，同步走，最终会在 3 相遇。
 
 面试时不用死背公式，可以说这是由快指针比慢指针多走的环长倍数推出的。
+
+
+#### 用距离解释
+
+把链表分成三段：
+
+```
+头节点 ------ 环入口 ------ 相遇点 ------ 环入口
+          a           b             c
+```
+
+定义：
+
+```
+a：头节点到环入口的距离
+b：环入口到第一次相遇点的距离
+c：相遇点继续走到环入口的距离
+```
+
+环的长度是：
+
+```
+b + c
+```
+
+#### 第一次相遇时慢指针走了多少
+
+慢指针从头节点走到相遇点：
+
+```
+a + b
+```
+
+#### 快指针走了多少
+
+快指针速度是慢指针的两倍：
+
+```
+快指针路程 = 2 × (a + b)
+```
+
+另一方面，快指针比慢指针多走了若干个完整的环。假设多走了 `k` 圈：
+
+```
+快指针路程 = a + b + k × (b + c)
+```
+
+所以：
+
+```
+2(a + b) = a + b + k(b + c)
+```
+
+整理：
+
+```
+a + b = k(b + c)
+```
+
+继续整理：
+
+```
+a = k(b + c) - b
+```
+
+也就是：
+
+```
+a = (k - 1)(b + c) + c
+```
+
+这句话的含义是：
+
+```
+从头节点走到环入口的距离 a
+=
+从相遇点走若干个完整环，再走 c 到环入口
+```
+
+因此：
+
+- `pointer` 从头节点走 `a` 步会到达环入口。
+- `slow` 从相遇点走 `a` 步，也会绕若干圈后到达环入口。
+
+所以两个指针每次都走一步，最终会在环入口相遇。
 
 
 #### 代码执行流程（零基础）
@@ -5332,7 +5758,25 @@ class Solution:
         return slow
 ```
 
+注释版本
+```python
+class Solution:
+    def getKthFromEnd(self, head, k: int):
+        slow = head
+        fast = head
 
+        # 快指针先走 k 步
+        for _ in range(k):
+            fast = fast.next
+
+        # 快慢指针保持 k 步距离，一起向后移动
+        while fast:
+            slow = slow.next
+            fast = fast.next
+
+        # fast 到达 None 时，slow 就是倒数第 k 个节点
+        return slow
+```
 #### 详细分析、小例子与代码执行流程
 倒数第 k 个节点可以用快慢指针定位。让 fast 先走 k 步，然后 slow 和 fast 同时走；fast 走到空时，slow 就刚好在倒数第 k 个节点。
 
@@ -6154,19 +6598,19 @@ class Solution:
 
         slow = head
         fast = head.next
-
+		#找到前半段的最后一个节点
         while fast and fast.next:
             slow = slow.next
             fast = fast.next.next
 
         second = slow.next
         slow.next = None
-
+		#翻转后半段
         second = self.reverse(second)
 
         first = head
 
-        while second:
+        while second:#因为这个切法在奇数时会让第二段少一个
             if first.val != second.val:
                 return False
 
@@ -8511,6 +8955,30 @@ class Solution:
         return result
 ```
 
+
+方便理解的解法
+```python
+class Solution:
+    def maxArea(self, height):
+        left = 0
+        right = len(height) - 1
+        max_area = 0
+
+        while left < right:
+            width = right - left
+            container_height = min(height[left], height[right])
+            current_area = width * container_height
+
+            max_area = max(max_area, current_area)
+
+            # 移动较短的一边，才有可能找到更高的容器
+            if height[left] < height[right]:
+                left += 1
+            else:
+                right -= 1
+
+        return max_area
+```
 #### 详细分析、小例子与代码执行流程
 `[1,8,6,2,5,4,8,3,7]` 中，左右端面积是 8。左边 1 太短，必须移动左边。最终找到高度 8 和 7，宽度 7，面积 49。
 
@@ -8730,6 +9198,30 @@ class Solution:
 - 坑：不是找等于 target，而是最接近；等于时可直接返回。
 - 相似题：三数之和、盛最多水的容器。
 - 记忆卡片：三数最接近 = 排序后固定一个，双指针逼近 target。
+模板
+
+```python
+
+closest_sum = 一个真实三数之和
+
+for i in range(n - 2):
+    left = i + 1
+    right = n - 1
+
+    while left < right:
+        current_sum = nums[i] + nums[left] + nums[right]
+
+        if 当前距离更小:
+            closest_sum = current_sum
+
+        if current_sum < target:
+            left += 1
+        elif current_sum > target:
+            right -= 1
+        else:
+            return target
+
+```
 
 ```python
 class Solution:
@@ -8750,6 +9242,48 @@ class Solution:
                     return current_sum
         return result
 ```
+
+另一个写法：
+```python
+class Solution:
+    def threeSumClosest(self, nums, target: int) -> int:
+        nums.sort()
+        n = len(nums)
+
+        # 先用前三个数字的和作为初始答案
+        closest_sum = nums[0] + nums[1] + nums[2]
+
+        for i in range(n - 2):
+            # 相同的固定数字会产生相同搜索过程，可以跳过
+            if i > 0 and nums[i] == nums[i - 1]:
+                continue
+
+            left = i + 1
+            right = n - 1
+
+            while left < right:
+                current_sum = nums[i] + nums[left] + nums[right]
+
+                # 当前三数之和距离 target 更近，更新答案
+                if abs(current_sum - target) < abs(closest_sum - target):
+                    closest_sum = current_sum
+
+                if current_sum < target:
+                    # 当前和太小，增大左边的数字
+                    left += 1
+
+                elif current_sum > target:
+                    # 当前和太大，减小右边的数字
+                    right -= 1
+
+                else:
+                    # 已经正好等于 target，不可能有更接近的答案
+                    return target
+
+        return closest_sum
+
+```
+
 
 #### 详细分析、小例子与代码执行流程
 `[-1,2,1,-4], target=1` 排序后固定 -1，左右找 2 和 1，和为 2，距离 target 只有 1，是最接近答案。
@@ -10139,15 +10673,34 @@ class Solution:
     def isPalindrome(self, text: str) -> bool:
         left, right = 0, len(text) - 1
         while left < right:
-            while left < right and not text[left].isalnum():
+            while left < right and not text[left].isalnum():#跳过无效字符
                 left += 1
-            while left < right and not text[right].isalnum():
+            while left < right and not text[right].isalnum():#跳过无效字符
                 right -= 1
             if text[left].lower() != text[right].lower():
                 return False
             left += 1
             right -= 1
         return True
+```
+
+
+
+isalnum():  是判断字符是不是字母或数字
+
+先翻转再比较，但是空间复杂度比较高
+```python
+
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        cleaned = [
+            character.lower()
+            for character in s
+            if character.isalnum()
+        ]
+
+        return cleaned == cleaned[::-1]
+
 ```
 
 #### 详细分析、小例子与代码执行流程
@@ -12586,6 +13139,24 @@ n=11。前 9 位是 1 到 9，剩下第 2 位落在两位数区域。第 10、11
 - 相似题：三数之和、最接近三数之和。
 - 记忆卡片：三角形排序后，只看两小边和是否大于最大边。
 
+模板
+```python
+
+nums.sort()
+
+for k in range(len(nums) - 1, 1, -1):
+    left = 0
+    right = k - 1
+
+    while left < right:
+        if nums[left] + nums[right] > nums[k]:
+            count += right - left
+            right -= 1
+        else:
+            left += 1
+
+```
+
 ```python
 class Solution:
     def triangleNumber(self, nums):
@@ -12601,6 +13172,39 @@ class Solution:
                     left += 1
         return result
 ```
+
+方便理解的解法
+```python
+
+class Solution:
+    def triangleNumber(self, nums):
+        nums.sort()
+        count = 0
+        n = len(nums)
+
+        # 固定 nums[k] 作为三条边中的最长边
+        for k in range(n - 1, 1, -1):
+            left = 0
+            right = k - 1
+
+            while left < right:
+                # 两条较短边之和大于最长边，可以组成三角形
+                if nums[left] + nums[right] > nums[k]:
+                    # nums[left] 到 nums[right - 1]
+                    # 都可以和 nums[right]、nums[k] 组成三角形
+                    count += right - left
+
+                    # 当前 right 对应的组合已经全部统计，继续换更小的边
+                    right -= 1
+                else:
+                    # 两条短边之和不够大，需要增大较短的 nums[left]
+                    left += 1
+
+        return count
+
+```
+
+
 
 #### 详细分析、小例子与代码执行流程
 `[2,2,3,4]`，固定最大边 4，`2+3>4`，所以两个 2 分别和 3、4 都可组成三角形，计数 2；再固定 3，可得到一个 `[2,2,3]`，总共 3。
