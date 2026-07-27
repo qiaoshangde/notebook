@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "Skills",
+      "path": "八股/skill/Skills.md"
+    },
+    {
       "basename": "codetop前200题题解手册",
       "path": "八股/算法题/codetop前200题题解手册.md"
     },
@@ -107,10 +111,6 @@
     {
       "basename": "猛猿",
       "path": "八股/rl/ppo/猛猿.md"
-    },
-    {
-      "basename": "Skills",
-      "path": "八股/skill/Skills.md"
     },
     {
       "basename": "Pasted image 20260326212005",
