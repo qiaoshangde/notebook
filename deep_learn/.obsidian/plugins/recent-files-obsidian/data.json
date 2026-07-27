@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "一些知识",
+      "path": "八股/aifriend/一些知识.md"
+    },
+    {
       "basename": "codetop前200题题解手册",
       "path": "八股/算法题/codetop前200题题解手册.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "transformers库",
       "path": "小知识/transformers库.md"
-    },
-    {
-      "basename": "trl库",
-      "path": "八股/rl/trl/trl库.md"
     }
   ],
   "omittedPaths": [],
