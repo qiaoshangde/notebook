@@ -1,12 +1,16 @@
 {
   "recentFiles": [
     {
-      "basename": "Skills",
-      "path": "八股/skill/Skills.md"
-    },
-    {
       "basename": "codetop前200题题解手册",
       "path": "八股/算法题/codetop前200题题解手册.md"
+    },
+    {
+      "basename": "superpower 使用体验",
+      "path": "八股/skill/superpower 使用体验.md"
+    },
+    {
+      "basename": "Skills",
+      "path": "八股/skill/Skills.md"
     },
     {
       "basename": "hot100",
@@ -195,10 +199,6 @@
     {
       "basename": "trl库",
       "path": "八股/rl/trl/trl库.md"
-    },
-    {
-      "basename": "VIT",
-      "path": "八股/transformer/VIT.md"
     }
   ],
   "omittedPaths": [],
