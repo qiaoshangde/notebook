@@ -98,7 +98,7 @@ while l < r:
 	返回目标节点：slow 停在目标节点。
 	删除目标节点：slow 停在目标节点前面。
 
-快慢指针 / 找中点与反转后半段：75. 回文链表；25. 重排链表；**45. 排序链表**。
+快慢指针 / 找中点与反转后半段：75. 回文链表；25. 重排链表；45. 排序链表。
 
 目标：快慢指针不是只为了“快慢”，而是制造信息差。环题靠速度差相遇；倒数题靠距离差；中点题靠 fast 走两步、slow 走一步。
 
@@ -108,7 +108,7 @@ while l < r:
 
 原地移动 / 颜色分区：121. 颜色分类。
 
-原地移动 / 奇偶分区：178. 调整数组顺序使奇数位于偶数前面。
+原地移动 / 奇偶分区：**178. 调整数组顺序使奇数位于偶数前面**。
 
 原地合并：17. 合并两个有序数组。
 
@@ -8149,6 +8149,50 @@ class Solution:
 ```
 
 
+注释版
+```python
+class Solution:
+    def moveZeroes(self, nums) -> None:
+        slow = 0
+
+        # fast 扫描整个数组，寻找非零元素
+        for fast in range(len(nums)):
+            if nums[fast] != 0:
+                # 把当前非零元素放到前面的正确位置
+                nums[slow], nums[fast] = nums[fast], nums[slow]
+
+                # 下一个非零元素应该放在 slow 的下一个位置
+                slow += 1
+```
+
+
+
+另一种写法
+
+```python
+class Solution:
+    def moveZeroes(self, nums) -> None:
+        slow = 0
+
+        # 把非零元素依次写到前面
+        for number in nums:
+            if number != 0:
+                nums[slow] = number
+                slow += 1
+
+        # 剩余位置全部填成 0
+        while slow < len(nums):
+            nums[slow] = 0
+            slow += 1
+```
+
+
+职责：
+
+fast：扫描整个数组，寻找非零元素
+
+slow：指向下一个非零元素应该放置的位置
+
 #### 详细分析、小例子与代码执行流程
 目标是把非零元素按原相对顺序放到前面，零移动到后面。`slow` 指向下一个非零元素应该放的位置，`fast` 负责扫描数组。
 
@@ -9691,6 +9735,28 @@ class Solution:
 - 相似题：移动零、调整奇偶顺序。
 - 记忆卡片：0 往左扔，2 往右扔，1 留中间。
 
+
+
+模板：
+```python
+left = 0
+current = 0
+right = len(nums) - 1
+
+while current <= right:
+    if nums[current] == 0:
+        nums[left], nums[current] = nums[current], nums[left]
+        left += 1
+        current += 1
+
+    elif nums[current] == 1:
+        current += 1
+
+    else:
+        nums[current], nums[right] = nums[right], nums[current]
+        right -= 1
+```
+
 ```python
 class Solution:
     def sortColors(self, nums):
@@ -9712,6 +9778,137 @@ class Solution:
             else:
                 current_index += 1
 ```
+
+
+注释版
+
+
+```python
+
+class Solution:
+    def sortColors(self, nums) -> None:
+        left = 0
+        current = 0
+        right = len(nums) - 1
+
+        while current <= right:
+            if nums[current] == 0:
+                # 0 应该放到左边
+                nums[left], nums[current] = (
+                    nums[current],
+                    nums[left],
+                )
+
+                left += 1
+                current += 1
+
+            elif nums[current] == 1:
+                # 1 本来就应该位于中间
+                current += 1
+
+            else:
+                # nums[current] == 2，应该放到右边
+                nums[current], nums[right] = (
+                    nums[right],
+                    nums[current],
+                )
+
+                right -= 1
+
+                # 这里不能移动 current，
+                # 因为从右边交换过来的数字还没有检查
+
+```
+
+解析
+
+为什么两个指针都可以移动？
+
+因为交换前：
+
+```
+[left, current - 1]
+```
+
+这个区域已经全部是 `1`。
+
+如果 `left < current`，那么 `nums[left]` 一定是已经检查过的 `1`。
+
+交换后：
+
+```
+0 被放入左侧正确位置
+1 被换到 current 的位置
+```
+
+两个位置都已经确定，所以：
+
+```
+left 前进
+current 也前进
+```
+
+为什么遇到 `2` 后不能 `current += 1`
+
+这是这道题最关键的地方。
+
+从右边交换到 `current` 位置的数字还没有检查。
+
+它可能是：
+
+```
+0、1 或 2
+```
+
+例如：
+
+```
+nums = [2, 0, 1]
+```
+
+初始：
+
+```
+current = 0
+right = 2
+```
+
+当前是 `2`，与右边的 `1` 交换：
+
+```
+[1, 0, 2]
+```
+
+现在 `current` 位置变成了 `1`。
+
+这个 `1` 还没有处理，所以需要让 `current` 留在原地，下一轮重新检查。
+
+
+
+
+> 遇到 `0` 也发生了交换，为什么那时可以移动 `current`？
+
+因为 `left` 左侧都是 `0`，而：
+
+```
+[left, current - 1]
+```
+
+已经全部是 `1`。
+
+所以从 `left` 位置交换到 `current` 的数字只可能是：
+
+```
+已经检查过的 1
+```
+
+它不需要重新检查。
+
+但 `right` 指针左边仍属于未检查区域，所以从右边换过来的数字是什么并不知道，必须重新检查。
+
+
+
+
 
 #### 详细分析、小例子与代码执行流程
 `[2,0,2,1,1,0]`。遇到第一个 2，把它换到右边；换回来的是 0，还要继续检查并放到左边。最终得到 `[0,0,1,1,2,2]`。
@@ -10064,6 +10261,53 @@ class Solution:
                 nums[slow] = nums[fast]
         return slow + 1
 ```
+
+
+这个题目有个很重要的前提就是，这个数组是一个升序数组。
+
+
+
+注释版
+
+```python
+class Solution:
+    def removeDuplicates(self, nums) -> int:
+        if not nums:
+            return 0
+
+        # nums[0] 一定是第一个不同元素
+        # 所以下一个不同元素应该写到下标 1
+        slow = 1
+
+        for fast in range(1, len(nums)):
+            # nums[slow - 1] 是目前已经保留的最后一个元素
+            if nums[fast] != nums[slow - 1]:
+                nums[slow] = nums[fast]#是覆盖，不是交换，所有最后肯定会多一截。前面部分肯定是不含重复元素的
+                slow += 1
+
+        # slow 同时也是不同元素的个数
+        return slow
+```
+
+
+slow为0
+
+```python
+class Solution:
+    def removeDuplicates(self, nums) -> int:
+        if not nums:
+            return 0
+
+        slow = 0
+
+        for fast in range(1, len(nums)):
+            if nums[fast] != nums[slow]:
+                slow += 1
+                nums[slow] = nums[fast]
+
+        return slow + 1
+```
+
 
 #### 详细分析、小例子与代码执行流程
 `[1,1,2]` 中，slow 先在第一个 1。fast 扫到第二个 1，跳过；扫到 2，不同，写到 slow+1，结果前两位是 `[1,2]`，长度 2。
