@@ -108,7 +108,7 @@ while l < r:
 
 原地移动 / 颜色分区：121. 颜色分类。
 
-原地移动 / 奇偶分区：**178. 调整数组顺序使奇数位于偶数前面**。
+原地移动 / 奇偶分区：178. 调整数组顺序使奇数位于偶数前面。
 
 原地合并：17. 合并两个有序数组。
 
@@ -825,7 +825,7 @@ if i >= 2 and 10 <= int(s[i - 2 : i]) <= 26:
 
 第六阶段：LIS 及变体
 
-适合做：21. 最长上升子序列；**183. 最长递增子序列的个数**；126. 矩阵中的最长递增路径。
+适合做：21. 最长上升子序列；183. 最长递增子序列的个数；126. 矩阵中的最长递增路径。
 
 目标：理解“以当前位置结尾”的状态，以及什么时候需要记忆化搜索。
 
@@ -973,8 +973,14 @@ q = deque(i for i in range(n) if indeg[i] == 0)
 - 100. 课程表：问“能不能全部完成”，最后返回 `seen == numCourses`。
 - 131. 检测循环依赖：问“有没有环”，最后返回 `seen != len(nodes)`，与课程表的判断方向相反。
 - 167. 课程表 II：问“完成顺序是什么”，出队时记录节点，最后返回 `ans`。
-
-一句话记忆：
+		课程表：
+		出队一个，计数器加一。
+		
+		课程表 II：
+		
+		出队一个，加入结果数组。
+		
+		一句话记忆：
 
 - 建图方向：`a` 依赖 `b`，边就是 `b -> a`。
 - 入度含义：一个节点还有多少个前置条件没有完成。
@@ -2608,18 +2614,59 @@ class Solution:
 ```python
 class Solution:
     def merge(self, nums1, m: int, nums2, n: int) -> None:
+        # i、j 分别指向 nums1、nums2 的有效元素末尾；k 指向最终写入位置
         i, j, k = m - 1, n - 1, m + n - 1
+
+        # 只要 nums2 还有元素就继续：
+        # nums2 的所有元素都必须写入 nums1；nums1 若有剩余，本来就在正确位置
         while j >= 0:
+            # nums1 还有元素，并且它更大，就把 nums1[i] 放到末尾
             if i >= 0 and nums1[i] > nums2[j]:
                 nums1[k] = nums1[i]
                 i -= 1
             else:
+                # nums2[j] 更大，或者 nums1 已经用完（i < 0）
+                # 后一种情况会让 nums2 的剩余元素继续依次写入 nums1
                 nums1[k] = nums2[j]
                 j -= 1
+
+            # 下一个元素写到前一个位置
             k -= 1
 ```
 
+注释版
 
+```python
+
+class Solution:
+    def merge(self, nums1, m: int, nums2, n: int) -> None:
+        # nums1 有效部分的最后一个位置
+        first = m - 1
+
+        # nums2 的最后一个位置
+        second = n - 1
+
+        # nums1 最后一个待写入位置
+        write = m + n - 1
+
+        # 从后向前放置较大的数字
+        while first >= 0 and second >= 0:
+            if nums1[first] > nums2[second]:
+                nums1[write] = nums1[first]
+                first -= 1
+            else:
+                nums1[write] = nums2[second]
+                second -= 1
+
+            write -= 1
+
+        # 如果 nums2 还有剩余，将它们复制到 nums1 前面
+        while second >= 0:
+            nums1[write] = nums2[second]
+            second -= 1
+            write -= 1
+
+```
 #### 详细分析、小例子与代码执行流程
 `nums1` 后面预留了空位。如果从前往后合并，会覆盖 `nums1` 里还没处理的有效元素。从后往前放最大值，就能安全使用这些空位。
 
@@ -3566,6 +3613,59 @@ class Solution:
         return pointer_a
 ```
 
+
+注释版
+```
+时间复杂度：O(m+n)
+空间复杂度：O(1)
+```
+```python
+class Solution:
+    def getIntersectionNode(self, headA, headB):
+        pointer_a = headA
+        pointer_b = headB
+
+        while pointer_a is not pointer_b:
+            # A 走完以后，从 B 的头节点继续
+            if pointer_a:
+                pointer_a = pointer_a.next
+            else:
+                pointer_a = headB
+
+            # B 走完以后，从 A 的头节点继续
+            if pointer_b:
+                pointer_b = pointer_b.next
+            else:
+                pointer_b = headA
+
+        # 相交时是交点；不相交时二者都是 None
+        return pointer_a
+```
+
+
+哈希集合法
+```
+时间复杂度：O(m+n)
+空间复杂度：O(m)
+```
+```python
+class Solution:
+    def getIntersectionNode(self, headA, headB):
+        visited = set()
+
+        current = headA
+        while current:
+            visited.add(current)
+            current = current.next
+
+        current = headB
+        while current:
+            if current in visited:
+                return current
+            current = current.next
+
+        return None
+```
 
 #### 详细分析、小例子与代码执行流程
 两条链表可能长度不同，所以两个指针同时从头走不一定能同时到交点。让 A 指针走完 A 后去走 B，让 B 指针走完 B 后去走 A，它们走过的总长度就相同了。
@@ -6798,6 +6898,58 @@ class Solution:
 ```
 
 
+注释版
+```python
+class Solution:
+    def searchMatrix(self, matrix, target: int) -> bool:
+        if not matrix or not matrix[0]:
+            return False
+
+        rows = len(matrix)
+        columns = len(matrix[0])
+
+        # 从右上角开始
+        row = 0
+        column = columns - 1
+
+        while row < rows and column >= 0:
+            current = matrix[row][column]
+
+            if current == target:
+                return True
+
+            if current > target:
+                # 当前值太大，排除当前列，向左移动
+                column -= 1
+            else:
+                # 当前值太小，排除当前行，向下移动
+                row += 1
+
+        return False
+
+```
+
+
+#### 为什么从右上角开始
+
+右上角有一个很特殊的性质：
+
+```
+它左边的数字比它小
+它下面的数字比它大
+```
+
+因此当前位置可以同时决定两个方向：
+
+```
+当前值太大 -> 向左找更小的
+当前值太小 -> 向下找更大的
+```
+
+每次比较都能排除完整的一行或一列
+
+
+
 #### 详细分析、小例子与代码执行流程
 矩阵每行从左到右递增，每列从上到下递增。从右上角开始最方便：当前值太大就左移，太小就下移，每一步都能排除一整行或一整列。
 
@@ -8254,18 +8406,62 @@ class Solution:
         return processed_count == numCourses
 ```
 
+注释版
 
+
+```python
+
+from collections import deque
+
+
+class Solution:
+    def canFinish(self, numCourses: int, prerequisites) -> bool:
+        # graph[course]：学完 course 后可以解锁的课程
+        graph = [[] for _ in range(numCourses)]
+
+        # indegree[course]：course 还有多少门先修课没有完成
+        indegree = [0] * numCourses
+
+        # 建图
+        for course, prerequisite in prerequisites:
+            # prerequisite 学完以后，可以学习 course
+            graph[prerequisite].append(course)
+
+            # course 多了一门先修课程
+            indegree[course] += 1
+
+        # 所有入度为 0 的课程都可以立即学习
+        queue = deque()
+
+        for course in range(numCourses):
+            if indegree[course] == 0:
+                queue.append(course)
+
+        completed_courses = 0
+
+        while queue:
+            # 学习一门当前没有前置要求的课程
+            current_course = queue.popleft()
+            completed_courses += 1
+
+            # 学完 current_course 后，更新它能解锁的课程
+            for next_course in graph[current_course]:
+                indegree[next_course] -= 1
+
+                # next_course 的所有先修课都已经完成
+                if indegree[next_course] == 0:
+                    queue.append(next_course)
+
+        # 能处理全部课程，说明不存在循环依赖
+        return completed_courses == numCourses
+
+```
 #### 详细分析、小例子与代码执行流程
 课程依赖可以看成有向图。`[a,b]` 表示学 a 之前必须先学 b，也就是有一条边 `b -> a`。如果图里有环，就会出现互相等待，无法完成所有课程。
 
 例子：课程 0 依赖 1，课程 1 又依赖 0。两门课都等对方先学，队列里没有入度为 0 的课程，所以无法完成。
 
 拓扑排序的做法是：先学所有入度为 0 的课程；学完一门课，就把它指向的后续课程入度减 1。最后如果学过的课程数等于总数，说明没有环。
-
-
-
-
-
 
 #### 代码执行流程（零基础）
 下面按代码运行顺序看《课程表》：
@@ -8323,6 +8519,68 @@ class Solution:
         return nums
 ```
 
+
+
+注释版
+
+```python
+class Solution:
+    def sortArray(self, nums):
+        def sift_down(index, heap_size):
+            """
+            将 index 位置的元素向下调整，
+            让 nums[0:heap_size] 恢复为大根堆。
+            """
+            while True:
+                largest = index
+
+                left = 2 * index + 1
+                right = 2 * index + 2
+
+                # 左孩子存在，并且比当前最大值更大
+                if (
+                    left < heap_size
+                    and nums[left] > nums[largest]
+                ):
+                    largest = left
+
+                # 右孩子存在，并且比当前最大值更大
+                if (
+                    right < heap_size
+                    and nums[right] > nums[largest]
+                ):
+                    largest = right
+
+                # 当前节点已经不小于两个孩子，调整完成
+                if largest == index:
+                    break
+
+                # 把较大的孩子换到父节点位置
+                nums[index], nums[largest] = (
+                    nums[largest],
+                    nums[index],
+                )
+
+                # 原来的父节点被换到了孩子位置，
+                # 继续向下检查它是否破坏下一层的大根堆
+                index = largest
+
+        n = len(nums)
+
+        # 第一阶段：从最后一个非叶子节点开始，建立大根堆
+        for index in range(n // 2 - 1, -1, -1):
+            sift_down(index, n)
+
+        # 第二阶段：依次把堆顶最大值放到数组末尾
+        for end in range(n - 1, 0, -1):
+            nums[0], nums[end] = nums[end], nums[0]
+
+            # nums[end] 已经是最终位置，不再属于堆
+            sift_down(0, end)
+
+        return nums
+
+```
 #### 详细分析、小例子与代码执行流程
 堆可以理解成“父节点总是不小于孩子”的树。大顶堆的堆顶永远是当前最大值，所以每次把堆顶换到数组最后，就确定了一个最终位置。
 
@@ -10550,30 +10808,114 @@ class CQueue:
 - 相似题：课程表、课程表 II。
 - 记忆卡片：依赖问题看有向环，拓扑删不完就是有环。
 
+
+和课程表的类似
+
+
+
 ```python
-from collections import defaultdict, deque
+from collections import deque
 
 
 def has_cycle(dependencies):
-    graph = defaultdict(list)
-    in_degree = defaultdict(int)
+    # 第 131 题没有直接给出所有节点，需要先收集
     all_nodes = set()
+
     for dependent, prerequisite in dependencies:
-        # dependent 依赖 prerequisite，因此边方向是 prerequisite -> dependent。
-        graph[prerequisite].append(dependent)
-        in_degree[dependent] += 1
         all_nodes.add(dependent)
         all_nodes.add(prerequisite)
+
+    # 对应课程表中的 graph 和 indegree
+    graph = {
+        node: []
+        for node in all_nodes
+    }
+    indegree = {
+        node: 0
+        for node in all_nodes
+    }
+
+    # 建图
+    for dependent, prerequisite in dependencies:
+        # dependent 依赖 prerequisite：
+        # 必须先完成 prerequisite，再完成 dependent
+        graph[prerequisite].append(dependent)
+        indegree[dependent] += 1
+
+    # 所有入度为 0 的节点都可以立即处理
+    queue = deque()
+
+    for node in all_nodes:
+        if indegree[node] == 0:
+            queue.append(node)
+
+    completed_nodes = 0
+
+    while queue:
+        current_node = queue.popleft()
+        completed_nodes += 1
+
+        # 完成 current_node 后，更新它的后续节点
+        for next_node in graph[current_node]:
+            indegree[next_node] -= 1
+
+            if indegree[next_node] == 0:
+                queue.append(next_node)
+
+    # 处理不完所有节点，说明存在循环依赖
+    return completed_nodes != len(all_nodes)
+```
+不好记忆版本。
+```python
+from collections import defaultdict, deque
+
+def has_cycle(dependencies):
+    # graph[node]：完成 node 后，可以继续处理哪些节点
+    graph = defaultdict(list)
+
+    # in_degree[node]：node 还有多少个前置依赖没有完成
+    in_degree = defaultdict(int)
+
+    # 保存依赖关系中出现过的全部节点
+    all_nodes = set()
+
+    for dependent, prerequisite in dependencies:
+        # dependent 依赖 prerequisite
+        # 所以必须先完成 prerequisite，再完成 dependent
+        graph[prerequisite].append(dependent)
+
+        # dependent 多了一个前置依赖
+        in_degree[dependent] += 1
+
+        # 依赖双方都必须加入全部节点集合
+        all_nodes.add(dependent)
+        all_nodes.add(prerequisite)
+
+        # prerequisite 可能没有依赖其他节点，确保它的入度被记录为 0
         in_degree.setdefault(prerequisite, 0)
-    queue = deque(node for node in all_nodes if in_degree[node] == 0)
+
+    # 没有任何前置依赖的节点，可以立即处理
+    queue = deque(
+        node
+        for node in all_nodes
+        if in_degree[node] == 0
+    )
+
     processed_count = 0
+
     while queue:
         current_node = queue.popleft()
         processed_count += 1
+
+        # current_node 已经完成，它的后续节点少了一个前置依赖
         for next_node in graph[current_node]:
             in_degree[next_node] -= 1
+
+            # 所有前置依赖都已完成，可以加入队列
             if in_degree[next_node] == 0:
                 queue.append(next_node)
+
+    # 处理不完全部节点，说明剩余节点形成了循环依赖
     return processed_count != len(all_nodes)
 ```
 
@@ -12185,6 +12527,30 @@ class Solution:
         return finder
 ```
 
+将数组转化为了链表
+与环形链表 II  完全相同
+```python
+class Solution:
+    def findDuplicate(self, nums) -> int:
+        # 第一阶段：快慢指针寻找环内相遇点
+        slow = nums[0]
+        fast = nums[nums[0]]
+
+        while slow != fast:
+            slow = nums[slow]
+            fast = nums[nums[fast]]
+
+        # 第二阶段：寻找环的入口
+        slow = 0
+
+        while slow != fast:
+            slow = nums[slow]
+            fast = nums[fast]
+
+        # 环入口就是重复数字
+        return slow
+
+```
 #### 详细分析、小例子与代码执行流程
 `[1,3,4,2,2]` 中，下标和值形成路径 `0->1->3->2->4->2...`，入口是 2，所以重复数是 2。
 
@@ -12455,6 +12821,37 @@ class Solution:
         return False
 ```
 
+
+
+
+```python
+class Solution:
+    def findNumberIn2DArray(self, matrix, target: int) -> bool:
+        if not matrix or not matrix[0]:
+            return False
+
+        rows = len(matrix)
+        columns = len(matrix[0])
+
+        # 从右上角开始
+        row = 0
+        column = columns - 1
+
+        while row < rows and column >= 0:
+            current = matrix[row][column]
+
+            if current == target:
+                return True
+
+            if current > target:
+                # 当前值太大，排除当前列
+                column -= 1
+            else:
+                # 当前值太小，排除当前行
+                row += 1
+
+        return False
+```
 #### 详细分析、小例子与代码执行流程
 右上角是这一行最大、这一列最小。若它比 target 大，这一列下面更大，直接删列；若它比 target 小，这一行左边更小，直接删行。
 
@@ -12705,6 +13102,61 @@ class Solution:
                 if in_degree[next_course] == 0:
                     queue.append(next_course)
         return result if len(result) == numCourses else []
+```
+
+
+
+注释版
+
+```python
+
+from collections import deque
+
+
+class Solution:
+    def findOrder(self, numCourses: int, prerequisites):
+        # graph[course]：完成 course 后可以学习的课程
+        graph = [[] for _ in range(numCourses)]
+
+        # indegree[course]：course 还有多少门先修课程
+        indegree = [0] * numCourses
+
+        # 建图
+        for course, prerequisite in prerequisites:
+            # prerequisite 必须先于 course 完成
+            graph[prerequisite].append(course)
+            indegree[course] += 1
+
+        # 所有入度为 0 的课程可以立即学习
+        queue = deque()
+
+        for course in range(numCourses):
+            if indegree[course] == 0:
+                queue.append(course)
+
+        course_order = []
+
+        while queue:
+            current_course = queue.popleft()
+
+            # 出队顺序就是拓扑顺序
+            course_order.append(current_course)
+
+            # 完成当前课程后，更新它的后续课程
+            for next_course in graph[current_course]:
+                indegree[next_course] -= 1
+
+                # 所有先修课程都已完成
+                if indegree[next_course] == 0:
+                    queue.append(next_course)
+
+        # 记录了所有课程，说明不存在环
+        if len(course_order) == numCourses:
+            return course_order
+
+        # 处理不完所有课程，说明存在循环依赖
+        return []
+
 ```
 
 #### 详细分析、小例子与代码执行流程
@@ -13299,6 +13751,75 @@ class Solution:
             nums[left], nums[right] = nums[right], nums[left]
         return nums
 ```
+
+
+注释版
+
+
+```python
+
+class Solution:
+    def exchange(self, nums):
+        left = 0
+        right = len(nums) - 1
+
+        while left < right:
+            # 左边已经是奇数，位置正确，继续向右寻找偶数
+            while left < right and nums[left] % 2 == 1:
+                left += 1
+
+            # 右边已经是偶数，位置正确，继续向左寻找奇数
+            while left < right and nums[right] % 2 == 0:
+                right -= 1
+
+            # 此时 left 指向偶数，right 指向奇数，交换它们
+            if left < right:
+                nums[left], nums[right] = nums[right], nums[left]
+                left += 1
+                right -= 1
+
+        return nums
+
+```
+
+快慢指针法
+
+
+```python
+class Solution:
+    def exchange(self, nums):
+        slow = 0
+
+        for fast in range(len(nums)):
+            if nums[fast] % 2 == 1:
+                nums[slow], nums[fast] = nums[fast], nums[slow]
+                slow += 1
+
+        return nums
+```
+
+
+需要额外数组
+
+
+```python
+
+def exchange(nums):
+    odds = []
+    evens = []
+
+    for number in nums:
+        if number % 2 == 1:
+            odds.append(number)
+        else:
+            evens.append(number)
+
+    return odds + evens
+
+```
+
+
+
 
 #### 详细分析、小例子与代码执行流程
 `[1,2,3,4]`，左边 2 是偶数放错，右边 3 是奇数放错，交换后变 `[1,3,2,4]`。

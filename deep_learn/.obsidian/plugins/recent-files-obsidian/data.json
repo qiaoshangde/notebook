@@ -5,6 +5,14 @@
       "path": "八股/算法题/codetop前200题题解手册.md"
     },
     {
+      "basename": "经典排序算法手册",
+      "path": "八股/算法题/经典排序算法手册.md"
+    },
+    {
+      "basename": "hot100",
+      "path": "八股/算法题/hot100.md"
+    },
+    {
       "basename": "一些知识",
       "path": "八股/aifriend/一些知识.md"
     },
@@ -15,10 +23,6 @@
     {
       "basename": "Skills",
       "path": "八股/skill/Skills.md"
-    },
-    {
-      "basename": "hot100",
-      "path": "八股/算法题/hot100.md"
     },
     {
       "basename": "面试",
@@ -35,10 +39,6 @@
     {
       "basename": "数据",
       "path": "八股/agenticRAG/数据.md"
-    },
-    {
-      "basename": "经典排序算法手册",
-      "path": "八股/算法题/经典排序算法手册.md"
     },
     {
       "basename": "阅读：",
