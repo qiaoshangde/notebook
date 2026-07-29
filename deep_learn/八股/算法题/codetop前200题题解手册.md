@@ -3057,6 +3057,10 @@ class Solution:
 - 相似题：合并两个有序链表、数组中第 K 大。
 - 记忆卡片：K 路归并，用堆管住 K 个当前最小头。
 
+
+**`heapq` 是 Python 标准库中用来把普通列表维护成小根堆的一组工具函数。**
+小根堆：所有的父节点比子节点小。
+
 ```python
 class Solution:
     def mergeKLists(self, lists):
@@ -3085,6 +3089,51 @@ class Solution:
         return dummy.next
 ```
 
+
+```
+每条有序链表只把当前头节点放进最小堆；
+每次弹出最小节点接入结果；
+再把它的 next 放入堆；
+直到堆为空。
+```
+
+```python
+import heapq
+
+
+class Solution:
+    def mergeKLists(self, lists):
+        min_heap = []
+
+        # 把每条非空链表的头节点加入最小堆
+        for list_index, node in enumerate(lists):
+            if node:
+                heapq.heappush(
+                    min_heap,
+                    (node.val, list_index, node),
+                )
+
+        dummy = ListNode()
+        current = dummy
+
+        while min_heap:
+            # 取出当前所有候选节点中值最小的节点
+            value, list_index, node = heapq.heappop(min_heap)
+
+            # 把最小节点接到结果链表后面
+            current.next = node
+            current = current.next
+
+            # 当前节点来自某条有序链表；
+            # 它的下一个节点成为这条链表的新候选
+            if node.next:
+                heapq.heappush(
+                    min_heap,
+                    (node.next.val, list_index, node.next),
+                )
+
+        return dummy.next
+```
 
 #### 详细分析、小例子与代码执行流程
 合并两个链表时，每次从两个头里选小的。合并 K 个链表时，就是每次从 K 个当前头节点里选最小。最小堆非常适合反复取最小值。
@@ -8521,12 +8570,13 @@ class Solution:
 
 
 
-注释版
+注释版(开区间版本)
 
 ```python
 class Solution:
     def sortArray(self, nums):
-        def sift_down(index, heap_size):
+	    #下面这个函数的前提：根节点的左右子树本来已经是大根堆，只有根节点自己可能不合法。
+        def sift_down(index, heap_size):#[0, heap_size)
             """
             将 index 位置的元素向下调整，
             让 nums[0:heap_size] 恢复为大根堆。
@@ -8563,7 +8613,7 @@ class Solution:
 
                 # 原来的父节点被换到了孩子位置，
                 # 继续向下检查它是否破坏下一层的大根堆
-                index = largest
+                index = largest #因为子孩子大于根，刚跟子孩子和这个根交换，现在这个largest是交换下来的（原来的根），不知道它的孩子的大小。
 
         n = len(nums)
 
@@ -8572,7 +8622,7 @@ class Solution:
             sift_down(index, n)
 
         # 第二阶段：依次把堆顶最大值放到数组末尾
-        for end in range(n - 1, 0, -1):
+        for end in range(n - 1, 0, -1):  #从n-1到0，不包括0
             nums[0], nums[end] = nums[end], nums[0]
 
             # nums[end] 已经是最终位置，不再属于堆
@@ -8581,6 +8631,58 @@ class Solution:
         return nums
 
 ```
+
+
+闭区间版本
+
+```python
+class Solution:
+    def sortArray(self, nums):
+        def sift_down(index, last_index):
+            while True:
+                largest = index
+
+                left = 2 * index + 1
+                right = 2 * index + 2
+
+                # last_index 是最后一个有效下标，所以使用 <=
+                if (
+                    left <= last_index
+                    and nums[left] > nums[largest]
+                ):
+                    largest = left
+
+                if (
+                    right <= last_index
+                    and nums[right] > nums[largest]
+                ):
+                    largest = right
+
+                if largest == index:
+                    break
+
+                nums[index], nums[largest] = (
+                    nums[largest],
+                    nums[index],
+                )
+
+                index = largest
+
+        n = len(nums)
+
+        # 整个堆的最后一个有效下标是 n - 1
+        for index in range(n // 2 - 1, -1, -1):
+            sift_down(index, n - 1)
+
+        for end in range(n - 1, 0, -1):
+            nums[0], nums[end] = nums[end], nums[0]
+
+            # end 已经排好，新堆最后一个有效下标是 end - 1
+            sift_down(0, end - 1)
+
+        return nums
+```
+
 #### 详细分析、小例子与代码执行流程
 堆可以理解成“父节点总是不小于孩子”的树。大顶堆的堆顶永远是当前最大值，所以每次把堆顶换到数组最后，就确定了一个最终位置。
 
@@ -14467,18 +14569,135 @@ n=4 时，第一行放在第 1 列后，第二行不能放同列，也不能放�
 - 相似题：合并区间、会议室。
 - 记忆卡片：会议室数量 = 同时进行的最大会议数，用结束时间堆维护。
 
+
+普通列表，每轮重新排序`O(n² log n)``O(n)`
+开始时间排序 + 小根堆`O(n log n)``O(n)`
+开始、结束时间分别排序 + 双指针`O(n log n)``O(n)`
+
+
+**小根堆**
+
 ```python
 def minMeetingRooms(intervals):
     import heapq
 
-    intervals.sort(key=lambda x: x[0])
+    # 按会议开始时间从早到晚处理
+    intervals.sort(key=lambda interval: interval[0])
+
+    # 小根堆保存每个已分配会议室当前的结束时间
     heap = []
+
     for start, end in intervals:
+        # 最早结束的会议已经结束，可以复用它的会议室
         if heap and heap[0] <= start:
             heapq.heappop(heap)
+
+        # 当前会议占用一个会议室，记录它的结束时间
         heapq.heappush(heap, end)
+
+    # 堆中有多少个结束时间，就代表总共分配了多少个会议室
     return len(heap)
 ```
+
+
+普通列表写法
+
+```python
+def minMeetingRooms(intervals):
+    intervals.sort(key=lambda interval: interval[0])
+
+    end_times = []
+
+    for start, end in intervals:
+        # 每次排序后，第一个元素是最早结束时间
+        end_times.sort()
+
+        if end_times and end_times[0] <= start:
+            # 复用最早结束的会议室
+            end_times.pop(0)
+
+        # 记录当前会议占用房间的新结束时间
+        end_times.append(end)
+
+    return len(end_times)
+```
+
+
+#### 为什么 `len(heap)` 是答案
+
+每次处理会议：
+
+### 可以复用房间
+
+```
+先弹出一个，再加入一个
+```
+
+堆长度不变：
+
+```
+会议室数量不增加
+```
+
+### 不能复用房间
+
+```
+不弹出，直接加入
+```
+
+堆长度增加 `1`：
+
+```
+新开一间会议室
+```
+
+因此堆长度只会在确实需要新房间时增长。
+
+最终：
+
+```
+len(heap)
+```
+
+就是整个过程中分配过的最少会议室数量。
+
+双指针法（**不常用**）
+```python
+def minMeetingRooms(intervals):
+    if not intervals:
+        return 0
+
+    start_times = sorted(
+        interval[0]
+        for interval in intervals
+    )
+    end_times = sorted(
+        interval[1]
+        for interval in intervals
+    )
+
+    start_index = 0
+    end_index = 0
+
+    rooms_in_use = 0
+    max_rooms = 0
+
+    while start_index < len(intervals):
+        if start_times[start_index] < end_times[end_index]:
+            # 新会议开始，但最早的旧会议还没有结束
+            rooms_in_use += 1
+            max_rooms = max(max_rooms, rooms_in_use)
+            start_index += 1
+        else:
+            # 有旧会议已经结束，释放一个会议室
+            rooms_in_use -= 1
+            end_index += 1
+
+    return max_rooms
+
+```
+
+
 
 #### 详细分析、小例子与代码执行流程
 会议 `[0,30],[5,10],[15,20]`。第一个占一间；第二个 5 开始时 30 未结束，需要第二间；第三个 15 开始时 10 已结束，可复用第二间。答案 2。

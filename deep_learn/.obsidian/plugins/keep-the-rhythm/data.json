@@ -2988,7 +2988,13 @@
         "filePath": "八股/算法题/codetop前200题题解手册.md",
         "wordCountStart": 31805,
         "charCountStart": 412883,
-        "changes": [],
+        "changes": [
+          {
+            "timeKey": "22:15",
+            "w": 286,
+            "c": 3930
+          }
+        ],
         "id": 329
       }
     ]
