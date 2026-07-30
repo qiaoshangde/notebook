@@ -1081,7 +1081,7 @@ item = heapq.heappop(heap)
 
 链表分治 / 归并排序：45. 排序链表。
 
-归并计数 / 跨区间统计：118. 数组中的逆序对。
+归并计数 / 跨区间统计：**118. 数组中的逆序对**。
 
 目标：先用 120 题掌握归并排序，再做这两题。45 题把数组的下标切分换成链表的快慢指针断链；118 题在合并两个有序段时，利用有序性一次统计多个跨左右区间的逆序对。
 
@@ -2086,6 +2086,8 @@ class Solution:
             pivot_index = random.randint(left, right)
             nums[pivot_index], nums[right] = nums[right], nums[pivot_index]
             pivot = nums[right]
+            
+            # 下一个“小于等于 pivot 的元素”应该放置的位置
             store_index = left
             for scan_index in range(left, right):
                 if nums[scan_index] <= pivot:
@@ -2102,7 +2104,56 @@ class Solution:
         return nums
 ```
 
+```python
+import random
 
+
+class Solution:
+    def sortArray(self, nums):
+        def partition(left, right):
+            # 随机选择基准值，降低遇到最坏情况的概率
+            random_index = random.randint(left, right)
+            nums[random_index], nums[right] = (
+                nums[right],
+                nums[random_index],
+            )
+
+            # 现在基准值被放到了区间末尾
+            pivot = nums[right]
+
+            # small 表示：
+            # 下一个“小于等于 pivot 的元素”应该放置的位置
+            small = left
+
+            # right 位置存放着 pivot，所以这里只遍历到 right - 1
+            for current in range(left, right):
+                if nums[current] <= pivot:
+                    nums[small], nums[current] = (
+                        nums[current],
+                        nums[small],
+                    )
+                    small += 1
+
+            # 将 pivot 放到左右两部分之间
+            nums[small], nums[right] = nums[right], nums[small]
+
+            # 返回 pivot 的最终下标
+            return small
+
+        def quick_sort(left, right):
+            # 区间为空或者只有一个元素，不需要排序
+            if left >= right:
+                return
+
+            pivot_index = partition(left, right)
+
+            # pivot_index 已经处于最终位置，不需要再次参与排序
+            quick_sort(left, pivot_index - 1)
+            quick_sort(pivot_index + 1, right)
+
+        quick_sort(0, len(nums) - 1)
+        return nums
+```
 #### 详细分析、小例子与代码执行流程
 快排的核心是 partition：选一个基准值，把小于等于它的数放左边，大于它的数放右边。partition 完成后，基准值的位置已经是最终排序后的位置。
 
@@ -9471,27 +9522,37 @@ from collections import defaultdict, OrderedDict
 class LFUCache:
     def __init__(self, capacity: int):
         self.capacity = capacity
-        self.min_frequency = 0
-        self.key_to_value_frequency = {}
-        self.frequency_to_keys = defaultdict(OrderedDict)
+        self.min_frequency = 0#表示缓存中当前最低频率。
+        
+        # key -> (value, frequency)
+        self.key_to_value_frequency = {}#它负责 `O(1)` 查找键
+        
+        # frequency -> 按使用时间排列的 key
+        self.frequency_to_keys = defaultdict(OrderedDict)#frequency -> 该频率下的所有 key
 
+	#表示这个键刚刚被访问了
     def _touch(self, key):
         value, frequency = self.key_to_value_frequency[key]
         del self.frequency_to_keys[frequency][key]
+        
         if not self.frequency_to_keys[frequency] and self.min_frequency == frequency:
             self.min_frequency += 1
         self.key_to_value_frequency[key] = (value, frequency + 1)
+        
+        # 加入新频率桶的末尾，表示最近使用
         self.frequency_to_keys[frequency + 1][key] = None
 
     def get(self, key: int) -> int:
         if key not in self.key_to_value_frequency:
             return -1
+        # 访问一次，频率加 1
         self._touch(key)
         return self.key_to_value_frequency[key][0]
 
     def put(self, key: int, value: int) -> None:
         if self.capacity == 0:
             return
+        # key 已存在：更新值，同时算作使用一次
         if key in self.key_to_value_frequency:
             self.key_to_value_frequency[key] = (
                 value,
@@ -9499,6 +9560,7 @@ class LFUCache:
             )
             self._touch(key)
             return
+        # 缓存已满：淘汰最小频率桶中最旧的 key
         if len(self.key_to_value_frequency) == self.capacity:
             evicted_key, _ = self.frequency_to_keys[self.min_frequency].popitem(
                 last=False
@@ -9507,6 +9569,59 @@ class LFUCache:
         self.key_to_value_frequency[key] = (value, 1)
         self.frequency_to_keys[1][key] = None
         self.min_frequency = 1
+```
+
+```
+popitem(last=False) 是什么
+
+ordered_dict.popitem(last=False)
+
+删除并返回最前面的键值对。
+
+在频率桶中：
+
+最前面 = 同频率下最久未使用
+
+例如：
+
+频率 2 桶：[1, 3, 5]
+
+执行：
+
+popitem(last=False)
+
+会淘汰：
+
+key 1
+
+如果写：
+
+last=True
+
+则会删除最后面的、最近使用的键，方向就错了。
+```
+
+```
+frequency_to_keys = {
+    1: OrderedDict([(3, None), (5, None)]),
+    2: OrderedDict([(7, None)]),
+    4: OrderedDict([(2, None), (9, None)]),
+}
+
+
+```
+
+```
+self.key_to_value_frequency
+
+{
+
+1: (10, 2),
+
+2: (20, 1),
+
+}
+
 ```
 
 #### 详细分析、小例子与代码执行流程
@@ -10059,6 +10174,106 @@ class Solution:
         merge_sort(0, len(nums) - 1)
         return nums
 ```
+
+
+
+注释版（在原数组上排序，借助一个临时数组。）
+
+```python
+class Solution:
+    def sortArray(self, nums):
+        temporary = [0] * len(nums)
+
+        def merge(left, middle, right):
+            """
+            合并两个已经有序的区间：
+            nums[left : middle + 1]
+            nums[middle + 1 : right + 1]
+            """
+            left_pointer = left
+            right_pointer = middle + 1
+            write_pointer = left
+
+            # 两边都还有元素时，比较较小者
+            while (
+                left_pointer <= middle
+                and right_pointer <= right
+            ):
+                if nums[left_pointer] <= nums[right_pointer]:
+                    temporary[write_pointer] = nums[left_pointer]
+                    left_pointer += 1
+                else:
+                    temporary[write_pointer] = nums[right_pointer]
+                    right_pointer += 1
+
+                write_pointer += 1
+
+            # 左半部分可能还有剩余元素
+            while left_pointer <= middle:
+                temporary[write_pointer] = nums[left_pointer]
+                left_pointer += 1
+                write_pointer += 1
+
+            # 右半部分可能还有剩余元素
+            while right_pointer <= right:
+                temporary[write_pointer] = nums[right_pointer]
+                right_pointer += 1
+                write_pointer += 1
+
+            # 把合并结果写回原数组
+            for index in range(left, right + 1):
+                nums[index] = temporary[index]
+
+        def merge_sort(left, right):
+            # 区间为空或只有一个元素时，天然有序
+            if left >= right:
+                return
+
+            middle = left + (right - left) // 2
+
+            # 先分别排好左右两部分
+            merge_sort(left, middle)
+            merge_sort(middle + 1, right)
+
+            # 再合并两个有序区间
+            merge(left, middle, right)
+
+        merge_sort(0, len(nums) - 1)
+        return nums
+```
+
+
+直观理解版（递归返回新的有序数组，然后合并成一个新数组。）
+```python
+def merge_sort(nums):
+    arr = nums[:]
+
+    def sort(l, r):
+        if r - l <= 1:
+            return arr[l:r]
+        mid = (l + r) // 2
+        left = sort(l, mid)
+        right = sort(mid, r)
+        return merge(left, right)
+
+    def merge(left, right):
+        ans = []
+        i = j = 0
+        while i < len(left) and j < len(right):
+            if left[i] <= right[j]:
+                ans.append(left[i])
+                i += 1
+            else:
+                ans.append(right[j])
+                j += 1
+        ans.extend(left[i:])
+        ans.extend(right[j:])
+        return ans
+
+    return sort(0, len(arr))
+```
+
+
 
 #### 详细分析、小例子与代码执行流程
 `[5,2,3,1]` 先拆成 `[5,2]` 和 `[3,1]`，再拆成单个数。合并 `[5]` 和 `[2]` 得 `[2,5]`，合并 `[3]` 和 `[1]` 得 `[1,3]`，最后合并为 `[1,2,3,5]`。
@@ -11426,6 +11641,19 @@ class Solution:
 - 相似题：前 K 个高频单词、数组第 K 大。
 - 记忆卡片：TopK 高频 = 先数频率，再用堆留前 K。
 
+
+```
+frequency = Counter(nums)
+```
+
+等于
+```
+frequency = {}
+
+for number in nums:
+    frequency[number] = frequency.get(number, 0) + 1
+```
+
 ```python
 class Solution:
     def topKFrequent(self, nums, k: int):
@@ -11438,6 +11666,67 @@ class Solution:
             if len(heap) > k:
                 heapq.heappop(heap)
         return [number for frequency, number in heap]
+```
+
+字典的ittems取出来的是key value
+
+注释版
+
+```python
+import heapq
+from collections import Counter
+
+
+class Solution:
+    def topKFrequent(self, nums, k: int):
+        # frequency[number]：number 出现的次数
+        frequency = Counter(nums)
+
+        # 小根堆中保存 (出现次数, 数字)
+        min_heap = []
+
+        for number, count in frequency.items():
+            heapq.heappush(min_heap, (count, number))
+
+            # 堆中只保留 k 个候选
+            if len(min_heap) > k:
+                # 淘汰当前候选中出现次数最少的元素
+                heapq.heappop(min_heap)
+
+        # 堆中剩下的就是频率最高的 k 个元素
+        return [number for count, number in min_heap]
+```
+
+
+如果题目要求按照频率从高到低返回，可以写：
+
+```
+return [
+    number
+    for count, number in sorted(
+        min_heap,
+        reverse=True,
+    )
+]
+```
+
+
+
+另一种方法
+
+```
+class Solution:
+    def topKFrequent(self, nums, k: int):
+        frequency = Counter(nums)
+        min_heap = []
+
+        for number, count in frequency.items():
+            if len(min_heap) < k:
+                heapq.heappush(min_heap, (count, number))
+            elif count > min_heap[0][0]:
+                heapq.heapreplace(min_heap, (count, number))
+
+        return [number for count, number in min_heap]
 ```
 
 #### 详细分析、小例子与代码执行流程
@@ -11928,6 +12217,90 @@ class Solution:
             if len(heap) > k:
                 heapq.heappop(heap)
         return [-number for number in heap]
+```
+
+
+
+
+
+为什么要这么做，因为大于k时，要弹出来的是这几个值中最大的数，heapq不能快速找到最大值，只能快速找到最小值。
+因此。
+
+```
+求最小的 k 个：维护大小为 k 的大根堆
+求最大的 k 个：维护大小为 k 的小根堆
+```
+
+
+注释版
+
+```python
+import heapq
+
+
+class Solution:
+    def getLeastNumbers(self, arr, k: int):
+        if k == 0:
+            return []
+
+        max_heap = []
+
+        for number in arr:
+            # 取负数，使用小根堆模拟大根堆
+            heapq.heappush(max_heap, -number)
+
+            # 堆中只保留 k 个数
+            if len(max_heap) > k:
+                # 弹出最小负数，也就是原数字中的最大值
+                heapq.heappop(max_heap)
+
+        # 把负数还原成原数字
+        return [-number for number in max_heap]
+```
+
+时间复杂度
+```
+O(n log k)
+```
+
+另一种方法（先放入前 `k` 个数，后面只有遇到更小值时才替换堆顶）
+```python
+import heapq
+
+
+class Solution:
+    def getLeastNumbers(self, arr, k: int):
+        if k == 0:
+            return []
+
+        # 先用前 k 个数字建立大根堆
+        max_heap = [-number for number in arr[:k]]
+        heapq.heapify(max_heap)
+
+        for number in arr[k:]:
+            # -max_heap[0] 是当前候选中的最大值
+            current_largest = -max_heap[0]
+
+            if number < current_largest:
+                # 删除当前最大候选，并加入更小的新数字
+                heapq.heapreplace(max_heap, -number)
+
+        return [-number for number in max_heap]
+```
+
+
+
+排序的方法
+
+```python
+class Solution:
+    def getLeastNumbers(self, arr, k: int):
+        arr.sort()
+        return arr[:k]
+```
+时间复杂度
+```
+O(n log n)
 ```
 
 #### 详细分析、小例子与代码执行流程
@@ -12556,6 +12929,47 @@ n=3，有 `1+1+1`、`1+2`、`2+1` 三种，等于 `dp[2]+dp[1]`。这里 `dp[i]`
 - 相似题：TopK、最小 k 个数。
 - 记忆卡片：中位数数据流，一半小数大顶堆，一半大数小顶堆。
 
+
+分析：
+#### 必须维持的两个规则
+
+##### 规则一：大小关系
+
+```
+lower_half 中的所有数字
+<=
+upper_half 中的所有数字
+```
+
+也就是较小部分真的都在左边，较大部分真的都在右边。
+
+##### 规则二：数量关系
+
+让 `lower_half` 的数量等于 `upper_half`，或者比它多一个：
+
+```
+len(lower_half) == len(upper_half)
+```
+
+或者：
+
+```
+len(lower_half) == len(upper_half) + 1
+```
+
+也就是：
+
+```
+lower_half 可以多一个
+但不能少，也不能多两个
+```
+
+这样：
+
+- 总数是奇数时，中间元素位于 `lower_half` 堆顶。
+- 总数是偶数时，中间两个元素分别位于两个堆顶。
+
+
 ```python
 class MedianFinder:
     def __init__(self):
@@ -12576,6 +12990,45 @@ class MedianFinder:
         if len(self.lower_half) > len(self.upper_half):
             return -self.lower_half[0]
         return (-self.lower_half[0] + self.upper_half[0]) / 2
+```
+
+注释版
+
+```python
+import heapq
+
+
+class MedianFinder:
+    def __init__(self):
+        # 较小的一半：存负数，模拟大根堆
+        self.lower_half = []
+
+        # 较大的一半：普通小根堆
+        self.upper_half = []
+
+    def addNum(self, number: int) -> None:
+        # 第一步：先把数字放入较小的一半
+        heapq.heappush(self.lower_half, -number)
+
+        # 第二步：把较小部分的最大值转移到较大部分
+        largest_in_lower = -heapq.heappop(self.lower_half)
+        heapq.heappush(self.upper_half, largest_in_lower)
+
+        # 第三步：如果较大部分元素更多，
+        # 把它的最小值转移回较小部分
+        if len(self.upper_half) > len(self.lower_half):
+            smallest_in_upper = heapq.heappop(self.upper_half)
+            heapq.heappush(self.lower_half, -smallest_in_upper)
+
+    def findMedian(self) -> float:
+        if len(self.lower_half) > len(self.upper_half):
+            # 总数是奇数，中位数是较小部分的最大值
+            return float(-self.lower_half[0])
+
+        # 总数是偶数，中位数是两个堆顶的平均值
+        return (
+            -self.lower_half[0] + self.upper_half[0]
+        ) / 2
 ```
 
 #### 详细分析、小例子与代码执行流程
@@ -15159,6 +15612,71 @@ class Solution:
             frequencies.keys(), key=lambda word: (-frequencies[word], word),
         )
         return sorted_words[:k]
+```
+
+注释版
+```python
+from collections import Counter
+
+
+class Solution:
+    def topKFrequent(self, words, k: int):
+        # frequencies[word]：word 出现的次数
+        frequencies = Counter(words)
+
+        # frequencies.items() 中的每一项是：
+        # (单词, 出现次数)
+        sorted_words = sorted(
+            frequencies.items(),
+            key=lambda item: (-item[1], item[0]),
+        )
+
+        # 取排序后的前 k 个单词
+        return [
+            word
+            for word, count in sorted_words[:k]
+        ]
+```
+
+
+分析
+这个按-的频率数排序。
+
+问题：
+可以进行排序，得到排序的前K个，也就是升序的前K个。
+如果不按频率的负数排序，只考虑频率时也成立，但是在频率相同时，字典序发生错误。
+> 频率相同时，单词按照字典序从小到大排列。
+
+直接取 `[-k:]` 再整体翻转，会把相同频率单词的字典序也反转。
+
+
+
+也可以用小根堆
+
+```python
+import heapq
+from collections import Counter
+
+
+class Solution:
+    def topKFrequent(self, words, k: int):
+        frequencies = Counter(words)
+
+        heap = []
+
+        for word, count in frequencies.items():
+            heapq.heappush(
+                heap,
+                (-count, word),
+            )
+
+        result = []
+
+        for _ in range(k):
+            negative_count, word = heapq.heappop(heap)
+            result.append(word)
+
+        return result
 ```
 
 #### 详细分析、小例子与代码执行流程

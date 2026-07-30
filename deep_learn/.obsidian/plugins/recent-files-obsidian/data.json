@@ -1,6 +1,14 @@
 {
   "recentFiles": [
     {
+      "basename": "agent",
+      "path": "八股/agent/agent.md"
+    },
+    {
+      "basename": "几个项目",
+      "path": "几个项目.md"
+    },
+    {
       "basename": "codetop前200题题解手册",
       "path": "八股/算法题/codetop前200题题解手册.md"
     },
@@ -49,10 +57,6 @@
       "path": "八股/claude_code/claude code.md"
     },
     {
-      "basename": "agent",
-      "path": "八股/agent/agent.md"
-    },
-    {
       "basename": "面试",
       "path": "八股/rl/GRPO/面试.md"
     },
@@ -63,10 +67,6 @@
     {
       "basename": "PPO",
       "path": "八股/rl/ppo/PPO.md"
-    },
-    {
-      "basename": "几个项目",
-      "path": "几个项目.md"
     },
     {
       "basename": "学习",
