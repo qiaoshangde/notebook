@@ -1,16 +1,24 @@
 {
   "recentFiles": [
     {
+      "basename": "codetop前200题题解手册",
+      "path": "八股/算法题/codetop前200题题解手册.md"
+    },
+    {
+      "basename": "未命名 1",
+      "path": "未命名 1.base"
+    },
+    {
+      "basename": "未命名",
+      "path": "未命名.base"
+    },
+    {
       "basename": "agent",
       "path": "八股/agent/agent.md"
     },
     {
       "basename": "几个项目",
       "path": "几个项目.md"
-    },
-    {
-      "basename": "codetop前200题题解手册",
-      "path": "八股/算法题/codetop前200题题解手册.md"
     },
     {
       "basename": "经典排序算法手册",
@@ -191,14 +199,6 @@
     {
       "basename": "1759122866215",
       "path": "Agent/image/1759122866215.png"
-    },
-    {
-      "basename": "agent 代码能力测试方法",
-      "path": "Agent/agent 代码能力测试方法.md"
-    },
-    {
-      "basename": "transformers库",
-      "path": "小知识/transformers库.md"
     }
   ],
   "omittedPaths": [],

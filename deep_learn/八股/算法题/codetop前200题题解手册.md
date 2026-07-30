@@ -1081,7 +1081,7 @@ item = heapq.heappop(heap)
 
 链表分治 / 归并排序：45. 排序链表。
 
-归并计数 / 跨区间统计：**118. 数组中的逆序对**。
+归并计数 / 跨区间统计：118. 数组中的逆序对。
 
 目标：先用 120 题掌握归并排序，再做这两题。45 题把数组的下标切分换成链表的快慢指针断链；118 题在合并两个有序段时，利用有序性一次统计多个跨左右区间的逆序对。
 
@@ -3228,26 +3228,159 @@ Python 堆在值相同的时候会继续比较节点对象，可能报错，所�
 ```python
 class Solution:
     def spiralOrder(self, matrix):
+        if not matrix or not matrix[0]:
+            return []
+
         result = []
-        top, bottom = 0, len(matrix) - 1
-        left, right = 0, len(matrix[0]) - 1
+
+        top = 0
+        bottom = len(matrix) - 1
+        left = 0
+        right = len(matrix[0]) - 1
+
         while top <= bottom and left <= right:
-            for j in range(left, right + 1):
-                result.append(matrix[top][j])
+            # 第一步：遍历当前上边界
+            # 方向：从左到右
+            for column in range(left, right + 1):
+                result.append(matrix[top][column])
+
+            # 上边界这一行已经处理完，向下收缩
             top += 1
-            for i in range(top, bottom + 1):
-                result.append(matrix[i][right])
+
+            # 第二步：遍历当前右边界
+            # 方向：从上到下
+            for row in range(top, bottom + 1):
+                result.append(matrix[row][right])
+
+            # 右边界这一列已经处理完，向左收缩
             right -= 1
+
+            # 第三步：如果仍然存在未处理的行，
+            # 遍历当前下边界，方向从右到左
             if top <= bottom:
-                for j in range(right, left - 1, -1):
-                    result.append(matrix[bottom][j])
+                for column in range(right, left - 1, -1):
+                    result.append(matrix[bottom][column])
+
+                # 下边界这一行已经处理完，向上收缩
                 bottom -= 1
+
+            # 第四步：如果仍然存在未处理的列，
+            # 遍历当前左边界，方向从下到上
             if left <= right:
-                for i in range(bottom, top - 1, -1):
-                    result.append(matrix[i][left])
+                for row in range(bottom, top - 1, -1):
+                    result.append(matrix[row][left])
+
+                # 左边界这一列已经处理完，向右收缩
                 left += 1
+
         return result
 ```
+
+#### 为什么 `while` 需要同时判断两组边界
+
+主循环条件是：
+
+```python
+while top <= bottom and left <= right:
+```
+
+四个边界围成的矩形表示当前还没有遍历的区域：
+
+```text
+top、bottom：限制剩余的行
+left、right：限制剩余的列
+```
+
+其中：
+
+```python
+top <= bottom
+```
+
+表示当前至少还有一行没有处理；如果 `top > bottom`，说明上边界已经越过下边界，不再存在未处理的行。
+
+而：
+
+```python
+left <= right
+```
+
+表示当前至少还有一列没有处理；如果 `left > right`，说明左边界已经越过右边界，不再存在未处理的列。
+
+一个有效的剩余矩形必须同时拥有行和列。因此两个条件之间必须使用 `and`：
+
+```text
+还有未处理的行，并且还有未处理的列
+```
+
+只要其中一个条件不成立，剩余矩形就已经不存在，螺旋遍历应当结束。
+
+#### 为什么第三步和第四步还要重新检查边界
+
+进入一轮循环时虽然满足：
+
+```python
+top <= bottom and left <= right
+```
+
+但是这一轮的前两步会修改边界：
+
+```python
+top += 1
+right -= 1
+```
+
+也就是说，进入循环时有效的矩形，在走完上边和右边之后，可能已经没有剩余的行或列了。因此，在遍历下边和左边之前必须重新判断。
+
+第三步遍历下边之前检查：
+
+```python
+if top <= bottom:
+```
+
+这是为了确认当前仍然存在一行没有处理。以只有一行的矩阵为例：
+
+```text
+[[1, 2, 3, 4]]
+```
+
+第一步已经从左向右加入了：
+
+```text
+1、2、3、4
+```
+
+随后执行 `top += 1`，此时 `top > bottom`，说明这一行已经处理完。如果第三步不判断，又从右向左遍历下边，就会把同一行重复加入一次。
+
+第四步遍历左边之前检查：
+
+```python
+if left <= right:
+```
+
+这是为了确认当前仍然存在一列没有处理。以只有一列的矩阵为例：
+
+```text
+[
+    [1],
+    [2],
+    [3],
+]
+```
+
+第一步加入 `1`，第二步沿右边界加入 `2、3`。随后执行 `right -= 1`，此时 `left > right`，说明唯一的一列已经全部处理完。如果第四步不判断，又沿左边界从下向上遍历，就会重复加入这一列中的元素。
+
+所以这几处判断的分工是：
+
+```text
+while 条件：判断能不能开始新的一圈
+if top <= bottom：判断这一圈中还能不能走下边
+if left <= right：判断这一圈中还能不能走左边
+```
+
+一句话记忆：
+
+> 进入一圈时边界有效，不代表走完上边和右边后仍然有效；下边和左边开始前必须重新检查，避免单行或单列被重复遍历。
 
 
 #### 详细分析、小例子与代码执行流程
@@ -3605,7 +3738,34 @@ class Solution:
         return result
 ```
 
+注释版
+```python
+class Solution:
+    def merge(self, intervals):
+        if not intervals:
+            return []
 
+        # 按照区间起点从小到大排列
+        intervals.sort(key=lambda interval: interval[0])
+
+        # 先把第一个区间放入结果
+        result = [intervals[0]]
+
+        for current_start, current_end in intervals[1:]:
+            # 取出当前合并结果中的最后一个区间
+            last_start, last_end = result[-1]
+
+            if current_start <= last_end:
+                # 当前区间与最后一个区间存在重叠。
+                # 起点不需要改变，只需要扩大终点。
+                result[-1][1] = max(last_end, current_end)
+            else:
+                # 当前区间与最后一个区间没有重叠，
+                # 它应该作为一个新的独立区间。
+                result.append([current_start, current_end])
+
+        return result
+```
 #### 详细分析、小例子与代码执行流程
 区间合并必须先排序。按左端点排序后，当前区间只需要和结果里的最后一个区间比较：如果当前左端点不超过最后区间右端点，就说明有重叠。
 
@@ -5233,24 +5393,223 @@ class MyQueue:
 - 相似题：全排列、最大数。
 - 记忆卡片：从右找破坏降序的位置，换一个刚大的，再把后缀变最小。
 
+
 ```python
 class Solution:
-    def nextPermutation(self, nums) -> None:
-        i = len(nums) - 2
-        while i >= 0 and nums[i] >= nums[i + 1]:
-            i -= 1
-        if i >= 0:
-            j = len(nums) - 1
-            while nums[j] <= nums[i]:
-                j -= 1
-            nums[i], nums[j] = nums[j], nums[i]
-        left, right = i + 1, len(nums) - 1
-        while left < right:
+    def nextPermutation(self, nums):
+        n = len(nums)
+
+        # 第一步：
+        # 从右向左找到第一个 nums[left] < nums[left + 1] 的位置
+        left = n - 2
+
+        while left >= 0 and nums[left] >= nums[left + 1]:
+            left -= 1
+
+        # 如果找到了可以变大的位置
+        if left >= 0:
+            # 第二步：
+            # 从右向左找到第一个比 nums[left] 大的数字
+            right = n - 1
+
+            while nums[right] <= nums[left]:
+                right -= 1
+
+            # 用右边刚好大一点的数字替换 nums[left]
             nums[left], nums[right] = nums[right], nums[left]
-            left += 1
-            right -= 1
+
+        # 第三步：
+        # 将 left 后面的降序部分反转成升序
+        start = left + 1
+        end = n - 1
+
+        while start < end:
+            nums[start], nums[end] = nums[end], nums[start]
+            start += 1
+            end -= 1
 ```
 
+#### 核心步骤分析
+
+##### 1. 从右向左寻找可以变大的位置
+
+对应代码：
+
+```python
+left = n - 2
+
+while left >= 0 and nums[left] >= nums[left + 1]:
+    left -= 1
+```
+
+代码要找的是从右向左第一个满足下面条件的位置：
+
+```python
+nums[left] < nums[left + 1]
+```
+
+这个位置可以理解为：为了得到更大的排列，最靠右的、还有机会增大的位置。
+
+之所以从右边开始找，是因为数组越靠右的位置对整体大小影响越小。只有尽量少改动左边的高位，才能得到“刚好大一点”的排列。
+
+例如：
+
+```text
+[1, 3, 5, 4, 2]
+```
+
+从右向左检查：
+
+```text
+4 >= 2，继续向左
+5 >= 4，继续向左
+3 < 5，停止
+```
+
+因此：
+
+```text
+left = 1
+nums[left] = 3
+```
+
+数组可以看成：
+
+```text
+[1] [3] [5, 4, 2]
+     ↑
+    left
+```
+
+要得到下一个更大的排列，就应该尽量保留前面的 `1`，只把位置更靠右的 `3` 稍微增大。
+
+##### 2. 为什么 `left` 右侧一定是降序
+
+寻找 `left` 的过程中，代码不断跳过满足下面条件的位置：
+
+```python
+nums[left] >= nums[left + 1]
+```
+
+因此，找到 `left` 后，它右边的部分必然是非递增的，也就是从左到右越来越小或相等。
+
+例如：
+
+```text
+[1, 3, 5, 4, 2]
+       └─────┘
+        5,4,2
+```
+
+右侧满足：
+
+```text
+5 >= 4 >= 2
+```
+
+这个降序后缀已经是这些数字能够组成的最大排列，不能只调整后缀得到一个更大的排列。因此，必须增大后缀左边的 `nums[left]`。
+
+如果整个数组都是降序，例如 `[3, 2, 1]`，最终会得到 `left = -1`，说明当前已经是最大排列。代码会跳过交换步骤，直接反转整个数组，得到最小排列 `[1, 2, 3]`。
+
+##### 3. 从右侧寻找刚好大一点的数字
+
+对应代码：
+
+```python
+right = n - 1
+
+while nums[right] <= nums[left]:
+    right -= 1
+
+nums[left], nums[right] = nums[right], nums[left]
+```
+
+找到 `left` 后，需要从右边选择一个：
+
+```text
+严格大于 nums[left]，但又尽可能小的数字
+```
+
+还是以 `[1, 3, 5, 4, 2]` 为例：
+
+```text
+nums[left] = 3
+右侧后缀 = [5, 4, 2]
+```
+
+右侧比 `3` 大的数字有 `5` 和 `4`，其中刚好大一点的是 `4`，所以应该交换 `3` 和 `4`：
+
+```text
+[1, 3, 5, 4, 2]
+       交换
+[1, 4, 5, 3, 2]
+```
+
+右侧原本是降序，因此从最右边向左寻找时，遇到的第一个严格大于 `nums[left]` 的数字，就是满足条件的最小数字。
+
+##### 4. 为什么寻找时要使用 `<=`
+
+代码是：
+
+```python
+while nums[right] <= nums[left]:
+    right -= 1
+```
+
+我们要找的数字必须严格大于 `nums[left]`。如果右侧数字小于或等于它，就不能让当前排列变大，因此都要跳过。
+
+例如：
+
+```text
+[1, 5, 1]
+```
+
+此时 `left = 0`，`nums[left] = 1`。从最右边开始寻找：
+
+```text
+右边的 1 <= 左边的 1，跳过
+5 > 1，找到
+```
+
+于是交换 `1` 和 `5`，得到 `[5, 1, 1]`。如果允许选择相等的 `1`，交换后数组不会变大，也就不是下一个排列。
+
+##### 5. 为什么交换后还要反转后缀
+
+交换后，排列已经比原排列大了，但还不一定是所有更大排列中最小的那个。
+
+例如交换后得到：
+
+```text
+[1, 4, 5, 3, 2]
+```
+
+前面的 `3` 已经变成了 `4`，因此整个排列一定变大。接下来要让 `4` 后面的部分尽可能小，也就是把后缀排列成升序：
+
+```text
+[5, 3, 2] → [2, 3, 5]
+```
+
+最终得到：
+
+```text
+[1, 4, 2, 3, 5]
+```
+
+因为原后缀是降序的，交换后它仍然保持非递增结构，所以不需要重新排序，只需要使用双指针反转：
+
+```python
+start = left + 1
+end = n - 1
+
+while start < end:
+    nums[start], nums[end] = nums[end], nums[start]
+    start += 1
+    end -= 1
+```
+
+一句话记忆：
+
+> 从右找第一个可以增大的位置，换成右边刚好更大的数字，再把后缀反转成最小的升序排列。
 
 #### 详细分析、小例子与代码执行流程
 下一个排列要求“刚好比当前排列大一点”。所以应该尽量从右边改，因为右边位权小。从右往左找第一个 `nums[i] < nums[i+1]` 的位置，它右侧是降序，已经是最大后缀。
@@ -7248,6 +7607,114 @@ class Solution:
         result = "".join(parts)
         return "0" if result[0] == "0" else result
 ```
+
+注释版
+```python
+from functools import cmp_to_key
+
+
+class Solution:
+    def largestNumber(self, nums):
+        # 先把整数全部转换成字符串，方便拼接比较
+        numbers = [str(number) for number in nums]
+
+        def compare(a, b):
+            # 如果 a + b 更大，说明 a 应该放在 b 前面
+            if a + b > b + a:
+                return -1
+
+            # 如果 b + a 更大，说明 b 应该放在 a 前面
+            if a + b < b + a:
+                return 1
+
+            # 两种拼接结果相同，二者顺序没有影响
+            return 0
+
+        # 按照自定义规则排序
+        numbers.sort(key=cmp_to_key(compare))
+
+        # 如果最大的字符串都是 "0"，说明所有数字都是 0
+        if numbers[0] == "0":
+            return "0"
+
+        # 将排序后的字符串依次拼接
+        return "".join(numbers)
+```
+
+#### `cmp_to_key` 的作用
+
+Python 3 的 `sort()` 通常要求传入一个 `key` 函数。这个函数只接收一个元素，并为它生成一个固定的排序依据。例如：
+
+```python
+words.sort(key=len)
+```
+
+这里每个单词的排序依据就是它自己的长度。
+
+但是本题很难为字符串提前计算一个固定的排序依据。`"3"` 和 `"30"` 谁在前，必须把这两个字符串放在一起比较：
+
+```text
+"3" + "30"  = "330"
+"30" + "3"  = "303"
+```
+
+因为 `"330" > "303"`，所以 `"3"` 应该排在 `"30"` 前面。这种规则需要一个同时接收两个元素的比较函数：
+
+```python
+def compare(a, b):
+    if a + b > b + a:
+        return -1
+    if a + b < b + a:
+        return 1
+    return 0
+```
+
+比较函数返回值的含义是：
+
+| 返回值 | 排序含义 |
+|---|---|
+| 小于 `0` | `a` 应该排在 `b` 前面 |
+| 大于 `0` | `b` 应该排在 `a` 前面 |
+| 等于 `0` | `a` 和 `b` 谁在前都可以 |
+
+Python 3 的 `sort()` 不能直接写成：
+
+```python
+numbers.sort(compare)
+```
+
+因此需要：
+
+```python
+from functools import cmp_to_key
+numbers.sort(key=cmp_to_key(compare))
+```
+
+`cmp_to_key(compare)` 的作用是：
+
+> 把接收两个元素的旧式比较函数 `compare(a, b)`，转换成 `sort(key=...)` 可以使用的形式。
+
+它并不是简单地给每个数字计算出一个普通的整数键。它会把每个元素包装起来；排序算法比较两个包装后的元素时，包装对象内部再调用我们提供的 `compare(a, b)` 判断二者顺序。
+
+例如排序过程中比较 `"3"` 和 `"30"`：
+
+```python
+compare("3", "30")
+```
+
+因为：
+
+```text
+"330" > "303"
+```
+
+所以返回 `-1`，表示 `"3"` 应该排在 `"30"` 前面。
+
+这里虽然使用了 `-1`，但不表示 `"3"` 的排序键是 `-1`。`-1` 只是在这一次两两比较中表达顺序。如果换成另外一个字符串，`compare()` 会重新根据两种拼接结果进行判断。
+
+一句话记忆：
+
+> `key` 通常是“一个元素算一个依据”；`compare` 是“拿两个元素现场决定顺序”；`cmp_to_key` 负责把后者包装成 Python 排序能接受的形式。
 
 
 #### 详细分析、小例子与代码执行流程
@@ -10018,33 +10485,206 @@ class Solution:
 - 相似题：归并排序、右侧小于当前元素个数。
 - 记忆卡片：逆序对藏在归并合并里，左大于右时一口气数一段。
 
+
+
+直接暴力枚举的复杂度是O（n2）
+
+
+
 ```python
 class Solution:
     def reversePairs(self, nums):
+        # temporary 用来暂存每次归并后的有序结果。
+        # 只创建一次，后面所有递归区间共同使用。
         temporary = [0] * len(nums)
 
         def merge_sort(left, right):
+            # 当前处理的是左右闭区间 [left, right]。
+            # 区间中没有元素或只有一个元素时：
+            # 1. 区间已经有序；
+            # 2. 不可能产生逆序对。
             if left >= right:
                 return 0
+
             middle = (left + right) // 2
+
+            # 先统计左半部分内部和右半部分内部的逆序对。
+            # 递归结束后，这两个区间也都已经分别排好序：
+            # 左区间  [left, middle]
+            # 右区间  [middle + 1, right]
             count = merge_sort(left, middle) + merge_sort(middle + 1, right)
+
+            # left_index：左有序区间当前待比较的位置。
+            # right_index：右有序区间当前待比较的位置。
+            # write_index：合并结果在 temporary 中的写入位置。
             left_index, right_index, write_index = left, middle + 1, left
+
+            # 使用 or：只要左右任意一边还有元素，就要继续写入。
+            # 某一边先用完后，下面的判断会直接选择另一边的剩余元素。
             while left_index <= middle or right_index <= right:
+                # 选择左边元素有两种情况：
+                # 1. 右边已经全部用完；
+                # 2. 左边还有元素，并且左边当前值 <= 右边当前值。
                 if right_index > right or (
                     left_index <= middle and nums[left_index] <= nums[right_index]
                 ):
                     temporary[write_index] = nums[left_index]
                     left_index += 1
                 else:
+                    # 能走到这里，说明右边还有元素，并且：
+                    # 1. 左边已经用完，此时增加数量为 0；或者
+                    # 2. nums[left_index] > nums[right_index]。
+                    #
+                    # 第二种情况下，由于左半部分已经升序，
+                    # nums[left_index] 到 nums[middle] 都大于右边当前值，
+                    # 因此一次新增 middle - left_index + 1 个逆序对。
                     count += middle - left_index + 1
                     temporary[write_index] = nums[right_index]
                     right_index += 1
+
                 write_index += 1
+
+            # temporary[left:right+1] 已经有序，将它写回 nums。
+            # 这样上一层递归合并时，拿到的左右区间才是有序的。
             nums[left : right + 1] = temporary[left : right + 1]
+
+            # 返回当前区间 [left, right] 内的逆序对总数：
+            # 左区间内部 + 右区间内部 + 跨越左右区间。
             return count
 
+        # 空数组没有逆序对；非空数组从整个闭区间开始归并。
         return merge_sort(0, len(nums) - 1) if nums else 0
 ```
+
+注释版
+
+
+```python
+class Solution:
+    def reversePairs(self, nums):
+        count = 0
+
+        def merge(left, right):
+            nonlocal count
+
+            result = []
+            i = j = 0
+
+            while i < len(left) and j < len(right):
+                if left[i] <= right[j]:
+                    # 左边元素不大于右边元素，
+                    # 它们不能组成逆序对
+                    result.append(left[i])
+                    i += 1
+                else:
+                    # left[i] > right[j]
+                    #
+                    # 因为 left 已经升序，所以：
+                    # left[i]、left[i + 1] ... left[-1]
+                    # 全部大于 right[j]
+                    count += len(left) - i
+
+                    result.append(right[j])
+                    j += 1
+
+            # 将没有处理完的部分直接添加到结果中
+            result.extend(left[i:])
+            result.extend(right[j:])
+
+            return result
+
+        def sort(left, right):
+            # 使用左闭右开区间 [left, right)
+            if right - left <= 1:
+                return nums[left:right]
+
+            middle = (left + right) // 2
+
+            left_part = sort(left, middle)
+            right_part = sort(middle, right)
+
+            return merge(left_part, right_part)
+
+        sort(0, len(nums))
+        return count
+```
+
+#### 第二种方法为什么不会重复统计
+
+第二种方法中的 `count` 会在不同层的 `merge(left, right)` 中不断增加，但每一层负责统计的逆序对不同，所以不会重复。
+
+每次执行：
+
+```python
+left_part = sort(left, middle)
+right_part = sort(middle, right)
+return merge(left_part, right_part)
+```
+
+可以分成三个任务：
+
+1. `sort(left, middle)` 统计两个元素都在左半部分的逆序对，并返回排好序的 `left_part`。
+2. `sort(middle, right)` 统计两个元素都在右半部分的逆序对，并返回排好序的 `right_part`。
+3. `merge(left_part, right_part)` 只统计一个元素来自左半部分、另一个元素来自右半部分的逆序对。
+
+例如原数组是：
+
+```text
+[7, 5, 6, 4]
+```
+
+递归处理左半部分 `[7, 5]` 时，执行：
+
+```python
+merge([7], [5])
+```
+
+此时统计出 `(7, 5)`，`count` 增加 1，并返回有序数组 `[5, 7]`。
+
+递归处理右半部分 `[6, 4]` 时，执行：
+
+```python
+merge([6], [4])
+```
+
+此时统计出 `(6, 4)`，`count` 再增加 1，并返回有序数组 `[4, 6]`。
+
+最后一层执行：
+
+```python
+merge([5, 7], [4, 6])
+```
+
+这一次只统计横跨两个数组的逆序对：
+
+```text
+(5, 4)、(7, 4)、(7, 6)
+```
+
+它不会再次统计 `(7, 5)`，因为 `7` 和 `5` 现在都在参数 `left` 中；`merge()` 只比较 `left[i]` 和 `right[j]`，不会比较 `left` 内部的两个元素。
+
+同理，它也不会再次统计 `(6, 4)`，因为 `6` 和 `4` 都在参数 `right` 中。
+
+代码中的计数语句：
+
+```python
+count += len(left) - i
+```
+
+只统计当前 `right[j]` 与 `left[i:]` 之间的逆序对。`left` 内部和 `right` 内部的逆序对已经由前面的两次递归负责，所以当前 `merge()` 不会再处理它们。
+
+因此每一层的分工是：
+
+```text
+左递归：统计左半部分内部
+右递归：统计右半部分内部
+当前 merge：统计横跨左右两部分
+```
+
+一句话记忆：
+
+> 子递归统计各自内部的逆序对，当前 `merge()` 只统计跨越左右两边的逆序对，因此不会重复。
+
 
 #### 详细分析、小例子与代码执行流程
 `[7,5,6,4]` 中，7 和 5、6、4 都构成逆序对。归并时如果左边 `[7]` 和右边 `[5]` 合并，发现 7>5，就能直接加 1。
@@ -10583,6 +11223,249 @@ class Solution:
         return result
 ```
 
+#### 按对角线编号解法解析
+
+这份代码不直接模拟右上、左下的移动过程，而是利用一个规律给矩阵中的对角线分组：
+
+> 同一条对角线上的元素满足 `row + column` 相同。
+
+例如：
+
+```text
+[
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9],
+]
+```
+
+按照 `row + column` 分组后：
+
+```text
+对角线 0：[1]
+对角线 1：[2, 4]
+对角线 2：[3, 5, 7]
+对角线 3：[6, 8]
+对角线 4：[9]
+```
+
+##### 1. 为什么有 `rows + columns - 1` 条对角线
+
+左上角 `(0, 0)` 的对角线编号是 `0`，右下角的编号是：
+
+```text
+(rows - 1) + (columns - 1)
+= rows + columns - 2
+```
+
+编号范围为 `0` 到 `rows + columns - 2`，所以一共有 `rows + columns - 1` 个编号：
+
+```python
+for diagonal_id in range(rows + columns - 1):
+```
+
+##### 2. 为什么列号是 `diagonal_id - row`
+
+当前对角线上的坐标满足：
+
+```text
+row + column = diagonal_id
+```
+
+所以：
+
+```text
+column = diagonal_id - row
+```
+
+代码只需要枚举合法的 `row`，就能计算对应的列号：
+
+```python
+diagonal_values.append(mat[row][diagonal_id - row])
+```
+
+例如 `diagonal_id = 2`：
+
+```text
+row=0 → column=2 → mat[0][2]=3
+row=1 → column=1 → mat[1][1]=5
+row=2 → column=0 → mat[2][0]=7
+```
+
+因此收集到 `[3, 5, 7]`。
+
+##### 3. 内层行号范围为什么这样计算
+
+代码使用：
+
+```python
+for row in range(
+    max(0, diagonal_id - columns + 1),
+    min(rows - 1, diagonal_id) + 1,
+):
+```
+
+行号的起点为：
+
+```python
+max(0, diagonal_id - columns + 1)
+```
+
+其中 `0` 保证 `row` 不会越过上边界；`diagonal_id - columns + 1` 来自列号不能超过 `columns - 1`：
+
+```text
+diagonal_id - row <= columns - 1
+row >= diagonal_id - columns + 1
+```
+
+行号的终点为：
+
+```python
+min(rows - 1, diagonal_id)
+```
+
+其中 `rows - 1` 保证 `row` 不会越过下边界；`diagonal_id` 来自列号不能小于 `0`：
+
+```text
+diagonal_id - row >= 0
+row <= diagonal_id
+```
+
+因为 Python 的 `range()` 不包含结束值，所以终点后面还要加 `1`。
+
+整段范围计算的本质就是同时保证：
+
+```text
+0 <= row < rows
+0 <= diagonal_id - row < columns
+```
+
+##### 4. 为什么偶数对角线要反转
+
+内层循环让 `row` 从小到大变化，列号 `diagonal_id - row` 会从大到小变化，所以默认收集方向是从右上到左下。
+
+例如第 2 条对角线默认收集：
+
+```text
+3 → 5 → 7
+```
+
+题目要求偶数编号的对角线向右上输出：
+
+```text
+7 → 5 → 3
+```
+
+所以偶数编号需要反转：
+
+```python
+if diagonal_id % 2 == 0:
+    diagonal_values.reverse()
+```
+
+奇数编号本来就是题目要求的右上到左下方向，不需要反转。
+
+##### 5. 为什么使用 `extend`
+
+```python
+result.extend(diagonal_values)
+```
+
+`extend()` 会把当前对角线中的元素逐个加入 `result`。例如：
+
+```text
+result = [1, 2, 4]
+diagonal_values = [7, 5, 3]
+```
+
+执行后得到：
+
+```text
+[1, 2, 4, 7, 5, 3]
+```
+
+如果使用 `append(diagonal_values)`，会得到嵌套列表 `[1, 2, 4, [7, 5, 3]]`，不符合题目要求。
+
+##### 6. 完整执行结果
+
+```text
+编号 0：收集 [1]，偶数，反转后仍为 [1]
+编号 1：收集 [2, 4]，奇数，不反转
+编号 2：收集 [3, 5, 7]，偶数，反转为 [7, 5, 3]
+编号 3：收集 [6, 8]，奇数，不反转
+编号 4：收集 [9]，偶数，反转后仍为 [9]
+```
+
+最终结果：
+
+```text
+[1, 2, 4, 7, 5, 3, 6, 8, 9]
+```
+
+一句话记忆：
+
+> 用 `row + column` 给对角线编号，通过 `column = diagonal_id - row` 定位元素，偶数编号反转后加入结果。
+
+
+另一种解法
+```python
+class Solution:
+    def findDiagonalOrder(self, matrix):
+        if not matrix or not matrix[0]:
+            return []
+
+        rows = len(matrix)
+        columns = len(matrix[0])
+
+        result = []
+
+        row = 0
+        column = 0
+
+        # True 表示向右上走，False 表示向左下走
+        moving_up = True
+
+        # 矩阵中共有 rows * columns 个元素
+        for _ in range(rows * columns):
+            # 先收集当前位置的元素
+            result.append(matrix[row][column])
+
+            if moving_up:
+                # 向右上走时，优先判断是否碰到右边界
+                if column == columns - 1:
+                    # 已经在最右边，下一条对角线从下一行开始
+                    row += 1
+                    moving_up = False
+
+                elif row == 0:
+                    # 已经在最上边，下一条对角线从右边一列开始
+                    column += 1
+                    moving_up = False
+
+                else:
+                    # 没有碰到边界，继续向右上走
+                    row -= 1
+                    column += 1
+
+            else:
+                # 向左下走时，优先判断是否碰到下边界
+                if row == rows - 1:
+                    # 已经在最下面，下一条对角线从右边一列开始
+                    column += 1
+                    moving_up = True
+
+                elif column == 0:
+                    # 已经在最左边，下一条对角线从下一行开始
+                    row += 1
+                    moving_up = True
+
+                else:
+                    # 没有碰到边界，继续向左下走
+                    row += 1
+                    column -= 1
+
+        return result
+```
 #### 详细分析、小例子与代码执行流程
 矩阵 `[[1,2,3],[4,5,6],[7,8,9]]` 的对角线依次是 `[1]`、`[2,4]`、`[3,5,7]`、`[6,8]`、`[9]`，方向交替后得到题目要求顺序。
 
@@ -11487,6 +12370,148 @@ class Solution:
                 candies[i] = max(candies[i], candies[i + 1] + 1)
         return sum(candies)
 ```
+
+
+注释版
+```python
+
+class Solution:
+    def candy(self, ratings):
+        n = len(ratings)
+
+        # 每个孩子至少得到一颗糖
+        candies = [1] * n
+
+        # 第一遍：从左向右
+        # 如果当前孩子评分比左边高，
+        # 当前孩子的糖果必须比左边多一颗
+        for i in range(1, n):
+            if ratings[i] > ratings[i - 1]:
+                candies[i] = candies[i - 1] + 1
+
+        # 第二遍：从右向左
+        # 如果当前孩子评分比右边高，
+        # 当前孩子的糖果必须比右边多一颗
+        for i in range(n - 2, -1, -1):
+            if ratings[i] > ratings[i + 1]:
+                candies[i] = max(
+                    candies[i],
+                    candies[i + 1] + 1,
+                )
+
+        return sum(candies)
+
+```
+
+#### 为什么第二遍必须使用 `max`
+
+第一遍从左向右遍历后，`candies[i]` 已经满足了当前孩子与左边孩子之间的关系：
+
+```text
+如果 ratings[i] > ratings[i - 1]
+那么 candies[i] > candies[i - 1]
+```
+
+第二遍从右向左遍历时，又要满足当前孩子与右边孩子之间的关系：
+
+```text
+如果 ratings[i] > ratings[i + 1]
+那么 candies[i] > candies[i + 1]
+```
+
+因此，当前孩子最终需要同时满足两个方向的约束：
+
+```text
+第一遍得到的 candies[i]：满足左边关系所需的最少糖果数
+candies[i + 1] + 1：满足右边关系所需的最少糖果数
+```
+
+同时满足两个要求，就必须取二者中较大的值：
+
+```python
+candies[i] = max(
+    candies[i],
+    candies[i + 1] + 1,
+)
+```
+
+例如：
+
+```text
+ratings = [1, 3, 4, 5, 2]
+```
+
+初始化时：
+
+```text
+candies = [1, 1, 1, 1, 1]
+```
+
+第一遍从左向右后：
+
+```text
+ratings = [1, 3, 4, 5, 2]
+candies = [1, 2, 3, 4, 1]
+```
+
+其中评分为 `5` 的孩子有 `4` 颗糖，是为了满足左边连续上升的关系：
+
+```text
+评分：1 < 3 < 4 < 5
+糖果：1 < 2 < 3 < 4
+```
+
+第二遍处理评分为 `5` 的孩子时，发现：
+
+```text
+5 > 2
+```
+
+为了满足右边关系，只需要：
+
+```text
+candies[i + 1] + 1 = 1 + 1 = 2
+```
+
+如果不用 `max`，直接写成：
+
+```python
+candies[i] = candies[i + 1] + 1
+```
+
+就会把原来的 `4` 覆盖成 `2`：
+
+```text
+candies = [1, 2, 3, 2, 1]
+```
+
+这时评分 `5` 明明高于左边的评分 `4`，糖果却变成：
+
+```text
+评分：4 < 5
+糖果：3 > 2
+```
+
+第一遍已经满足的左侧关系被破坏了。
+
+使用 `max` 后：
+
+```python
+candies[i] = max(4, 2)
+```
+
+仍然保留 `4` 颗糖，左右两边的要求都满足：
+
+```text
+左边要求：4 > 3
+右边要求：4 > 1
+```
+
+反过来，如果第二遍算出的 `candies[i + 1] + 1` 更大，`max` 就会使用这个更大的值，确保右侧关系也成立。
+
+一句话记忆：
+
+> 第一遍的值不能丢，第二遍的值也要满足；两个方向同时成立，所以取 `max`，不能直接覆盖。
 
 #### 详细分析、小例子与代码执行流程
 `[1,0,2]` 初始 `[1,1,1]`。左扫后第三个比第二个高，变 `[1,1,2]`。右扫第一个比第二个高，变 `[2,1,2]`，总数 5。
@@ -13458,6 +14483,157 @@ class Solution:
         reverse_range(0, k - 1)
         reverse_range(k, length - 1)
 ```
+
+
+注释版
+```python
+class Solution:
+    def rotate(self, nums, k):
+        n = len(nums)
+
+        # 防止空数组导致 k % n 除零
+        if n == 0:
+            return
+
+        # 轮转 n 次会回到原数组，
+        # 所以只需要保留有效轮转次数
+        k %= n
+
+        def reverse(left, right):
+            # 反转闭区间 [left, right]
+            while left < right:
+                nums[left], nums[right] = (
+                    nums[right],
+                    nums[left],
+                )
+                left += 1
+                right -= 1
+
+        # 第一步：反转整个数组
+        reverse(0, n - 1)
+
+        # 第二步：反转前 k 个元素
+        reverse(0, k - 1)
+
+        # 第三步：反转剩余元素
+        reverse(k, n - 1)
+```
+
+#### 为什么需要三次反转
+
+向右轮转 `k` 个位置，本质上是把数组末尾的 `k` 个元素整体搬到数组前面，并且两部分内部原来的顺序不能改变。
+
+例如：
+
+```text
+nums = [1, 2, 3, 4, 5, 6, 7]
+k = 3
+```
+
+可以把原数组分成两部分：
+
+```text
+A = [1, 2, 3, 4]
+B = [5, 6, 7]
+```
+
+原数组是：
+
+```text
+A + B
+```
+
+向右轮转以后需要得到：
+
+```text
+B + A
+```
+
+也就是：
+
+```text
+[5, 6, 7, 1, 2, 3, 4]
+```
+
+第一次反转整个数组：
+
+```python
+reverse(0, n - 1)
+```
+
+相当于把 `A + B` 整体倒过来：
+
+```text
+A + B
+   ↓ 整体反转
+反转后的 B + 反转后的 A
+```
+
+具体结果是：
+
+```text
+[1, 2, 3, 4, 5, 6, 7]
+              ↓
+[7, 6, 5, 4, 3, 2, 1]
+```
+
+此时两部分的位置已经成功交换：`B` 来到了前面，`A` 来到了后面。但是两部分内部的顺序都是反的：
+
+```text
+反转后的 B = [7, 6, 5]
+反转后的 A = [4, 3, 2, 1]
+```
+
+所以还要分别把这两部分再反转一次，恢复它们各自原来的顺序。
+
+第二次反转前 `k` 个元素：
+
+```python
+reverse(0, k - 1)
+```
+
+把反转后的 `B` 恢复成原来的 `B`：
+
+```text
+[7, 6, 5, 4, 3, 2, 1]
+ └─────┘
+   反转
+
+[5, 6, 7, 4, 3, 2, 1]
+```
+
+第三次反转剩余元素：
+
+```python
+reverse(k, n - 1)
+```
+
+把反转后的 `A` 恢复成原来的 `A`：
+
+```text
+[5, 6, 7, 4, 3, 2, 1]
+          └──────────┘
+               反转
+
+[5, 6, 7, 1, 2, 3, 4]
+```
+
+三次反转的整体变化可以记成：
+
+```text
+A + B
+→ reverse(B) + reverse(A)   整体反转
+→ B + reverse(A)            反转前 k 个
+→ B + A                     反转剩余部分
+```
+
+为什么不能只反转一次？因为整体反转虽然交换了 `A、B` 的位置，但也把它们内部的顺序弄反了。后面两次反转就是分别恢复 `B` 和 `A` 的内部顺序。
+
+一句话记忆：
+
+> 第一次整体反转负责交换两部分的位置，后面两次局部反转负责恢复两部分内部的顺序。
+
+
 
 #### 详细分析、小例子与代码执行流程
 `[1,2,3,4,5,6,7], k=3`。全反得 `[7,6,5,4,3,2,1]`；前 3 个反转得 `[5,6,7,4,3,2,1]`；后面反转得 `[5,6,7,1,2,3,4]`。
@@ -15884,6 +17060,46 @@ class Solution:
                     return int("".join(digits))
         return num
 ```
+
+注释版
+```python
+class Solution:
+    def maximumSwap(self, num: int) -> int:
+        # 转成字符列表，方便交换数字
+        digits = list(str(num))
+
+        # last_position[digit] 表示：
+        # 数字 digit 最后一次出现的下标
+        last_position = [-1] * 10
+
+        for index, digit in enumerate(digits):
+            last_position[int(digit)] = index
+
+        # 从左向右，寻找第一个可以变大的位置
+        for index, digit in enumerate(digits):
+            current_digit = int(digit)
+
+            # 从 9 开始寻找比当前数字更大的数字
+            for bigger_digit in range(9, current_digit, -1):
+                bigger_index = last_position[bigger_digit]
+
+                # 这个更大的数字必须出现在当前位置右边
+                if bigger_index > index:
+                    digits[index], digits[bigger_index] = (
+                        digits[bigger_index],
+                        digits[index],
+                    )
+
+                    # 最多只能交换一次，交换后立即返回
+                    return int("".join(digits))
+
+        # 没有找到可以使数字变大的交换
+        return num
+```
+
+两者核心算法相同，只不过注释版用的数组保留的最后的位置，而前者用的字典保留的最后的位置。
+
+
 
 #### 详细分析、小例子与代码执行流程
 `2736`。从最高位 2 开始，右边有 7，比 2 大，直接交换得到 `7236`。因为高位提升最重要，后面不用再考虑。
