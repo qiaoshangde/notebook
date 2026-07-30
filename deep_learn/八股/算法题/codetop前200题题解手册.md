@@ -1148,7 +1148,7 @@ item = heapq.heappop(heap)
 
 四边界读取 / 顺时针遍历：24. 螺旋矩阵。
 
-四边界读取 / 剑指 Offer 同模型：193. 顺时针打印矩阵。
+四边界读取 / 剑指 Offer 同模型：193. 顺时针打印矩阵（跟24题完全相同）。
 
 四边界写入 / 顺时针生成矩阵：143. 螺旋矩阵 II。
 
@@ -1164,7 +1164,7 @@ item = heapq.heappop(heap)
 
 行列分别有序 / 右上角楼梯搜索：78. 搜索二维矩阵 II。
 
-行列分别有序 / 剑指 Offer 同模型：163. 二维数组中的查找。
+行列分别有序 / 剑指 Offer 同模型：163. 二维数组中的查找(跟78题完全相同)。
 
 目标：先看清题目给出的有序条件。132 题每行首元素还大于上一行尾元素，整个矩阵可以拉平成一维数组二分；78 和 163 基本是同一道题，只保证每行、每列分别升序，要从右上角开始，当前值太大就左移，太小就下移，每次排除一列或一行。
 
@@ -1172,7 +1172,7 @@ item = heapq.heappop(heap)
 
 连通块计数 / DFS 淹没陆地：11. 岛屿数量。
 
-连通块统计 / DFS 返回面积：69. 岛屿最大面积。
+连通块统计 / DFS 返回面积：69. 岛屿的最大面积。
 
 目标：掌握网格 DFS 的固定入口：坐标越界或当前位置不是目标值时返回，否则先标记访问，再递归上下左右。11 题每发现一个新岛屿就让答案加 1；69 题让 DFS 中的每个陆地贡献面积 1，返回整座岛的面积。
 
@@ -1236,7 +1236,7 @@ item = heapq.heappop(heap)
 
 双栈实现队列 / 标准接口：48. 用栈实现队列。
 
-双栈实现队列 / 剑指 Offer 同模型：130. 用两个栈实现队列。
+双栈实现队列 / 剑指 Offer 同模型：130. 用两个栈实现队列（跟48题基本一模一样。）。
 
 单队列实现栈 / 入队后旋转：159. 用队列实现栈。
 
@@ -2331,6 +2331,104 @@ class Solution:
 ```
 
 
+
+注释版
+
+```python
+class Solution:
+    def numIslands(self, grid):
+        if not grid or not grid[0]:
+            return 0
+
+        rows = len(grid)
+        columns = len(grid[0])
+
+        def dfs(row, column):
+            # 越过矩阵边界，停止搜索
+            if (
+                row < 0
+                or row >= rows
+                or column < 0
+                or column >= columns
+            ):
+                return
+
+            # 当前不是陆地：
+            # 可能是水，也可能是已经访问过的陆地
+            if grid[row][column] != "1":
+                return
+
+            # 将当前陆地标记为已经访问
+            # 直接改成水，防止以后重复访问
+            grid[row][column] = "0"
+
+            # 继续访问上下左右相邻位置
+            dfs(row - 1, column)  # 上
+            dfs(row + 1, column)  # 下
+            dfs(row, column - 1)  # 左
+            dfs(row, column + 1)  # 右
+
+        island_count = 0
+
+        for row in range(rows):
+            for column in range(columns):
+                # 发现一块还没有访问过的陆地，
+                # 说明发现了一个新的岛屿
+                if grid[row][column] == "1":
+                    island_count += 1
+
+                    # 把属于这个岛屿的所有陆地全部标记
+                    dfs(row, column)
+
+        return island_count
+```
+
+
+
+如果不能修改原网络
+
+
+```python
+class Solution:
+    def numIslands(self, grid):
+        if not grid or not grid[0]:
+            return 0
+
+        rows = len(grid)
+        columns = len(grid[0])
+        visited = set()
+
+        def dfs(row, column):
+            if (
+                row < 0
+                or row >= rows
+                or column < 0
+                or column >= columns
+                or grid[row][column] != "1"
+                or (row, column) in visited
+            ):
+                return
+
+            visited.add((row, column))
+
+            dfs(row - 1, column)
+            dfs(row + 1, column)
+            dfs(row, column - 1)
+            dfs(row, column + 1)
+
+        island_count = 0
+
+        for row in range(rows):
+            for column in range(columns):
+                if (
+                    grid[row][column] == "1"
+                    and (row, column) not in visited
+                ):
+                    island_count += 1
+                    dfs(row, column)
+
+        return island_count
+```
 #### 详细分析、小例子与代码执行流程
 一个岛屿就是上下左右连通的一整片陆地。遍历网格时，第一次遇到某座岛的 `1`，答案加 1，然后用 DFS/BFS 把这座岛全部标记为访问过，避免后面重复计数。
 
@@ -5327,31 +5425,194 @@ class Solution:
 - 相似题：用队列实现栈、最小栈。
 - 记忆卡片：入栈存新货，出栈倒一次，倒完就是队列顺序。
 
+
+
+
+```
+
+队列需要支持
+
+push(x)  # 将元素加入队尾
+pop()    # 删除并返回队头元素
+peek()   # 返回队头元素，但不删除
+empty()  # 判断队列是否为空
+
+
+栈是后进，先出，
+后进先出：LIFO
+
+队列是先进先出
+先进先出：FIFO
+
+使用两个栈：
+
+input_stack
+output_stack
+
+它们的职责不同。
+
+input_stack
+
+负责接收新加入的元素：
+
+入队栈
+
+output_stack
+
+负责按照队列顺序弹出元素：
+
+出队栈
+
+
+
+核心操作是：
+
+> 当 `output_stack` 为空时，将 `input_stack` 的所有元素依次弹出，再压入 `output_stack`。
+
+经过一次倒转，原来最早加入的元素会到达 `output_stack` 的栈顶。
+```
+
+
 ```python
 class MyQueue:
     def __init__(self):
-        self.in_stack = []
-        self.out_stack = []
+        # 负责接收新加入的元素
+        self.input_stack = []
+
+        # 负责弹出队头元素
+        self.output_stack = []
 
     def push(self, x: int) -> None:
-        self.in_stack.append(x)
+        # 新元素直接加入入队栈
+        self.input_stack.append(x)
 
-    def _move(self):
-        if not self.out_stack:
-            while self.in_stack:
-                self.out_stack.append(self.in_stack.pop())
+    def _move_if_needed(self) -> None:
+        # 只有出队栈为空时，才进行元素转移
+        if not self.output_stack:
+            while self.input_stack:
+                self.output_stack.append(
+                    self.input_stack.pop()
+                )
 
     def pop(self) -> int:
-        self._move()
-        return self.out_stack.pop()
+        # 确保队头元素位于 output_stack 的栈顶
+        self._move_if_needed()
+
+        # 弹出并返回队头元素
+        return self.output_stack.pop()
 
     def peek(self) -> int:
-        self._move()
-        return self.out_stack[-1]
+        # 确保队头元素位于 output_stack 的栈顶
+        self._move_if_needed()
+
+        # 查看队头元素，但不删除
+        return self.output_stack[-1]
 
     def empty(self) -> bool:
-        return not self.in_stack and not self.out_stack
+        # 两个栈都为空，队列才为空
+        return (
+            not self.input_stack
+            and not self.output_stack
+        )
 ```
+
+#### 为什么只有出队栈为空时才能转移
+
+`output_stack` 中保存的是更早进入队列的旧元素，并且它们已经按照正确的出队顺序排列好；`input_stack` 中保存的是后来进入队列的新元素。
+
+根据队列“先进先出”的规则，旧元素必须全部出队以后，才轮到新元素。因此，只要 `output_stack` 还有元素，就不能把 `input_stack` 中的新元素倒进去。
+
+例如依次执行：
+
+```text
+push(1)
+push(2)
+push(3)
+```
+
+此时：
+
+```text
+input_stack  = [1, 2, 3]
+output_stack = []
+```
+
+第一次调用 `pop()` 时，`output_stack` 为空，所以把 `input_stack` 全部倒过去：
+
+```text
+input_stack  = []
+output_stack = [3, 2, 1]
+                         ↑ 栈顶
+```
+
+弹出队头 `1` 后：
+
+```text
+input_stack  = []
+output_stack = [3, 2]
+                      ↑ 栈顶
+```
+
+此时队列中的正确顺序是：
+
+```text
+2、3
+```
+
+接着执行：
+
+```text
+push(4)
+```
+
+新元素 `4` 进入 `input_stack`：
+
+```text
+input_stack  = [4]
+output_stack = [3, 2]
+                      ↑ 栈顶
+```
+
+整个队列的真实顺序应该是：
+
+```text
+2、3、4
+```
+
+这时 `output_stack` 的栈顶 `2` 正是正确的队头，应该先弹出 `2`，然后弹出 `3`。只有这两个旧元素全部处理完，才轮到后来加入的 `4`。
+
+如果此时不管 `output_stack` 是否为空，强行把 `input_stack` 倒进去，就会得到：
+
+```text
+input_stack  = []
+output_stack = [3, 2, 4]
+                         ↑ 栈顶
+```
+
+下一次 `pop()` 会先弹出 `4`，但正确队头应该是 `2`，队列顺序被破坏了。
+
+因此 `_move_if_needed()` 必须先判断：
+
+```python
+if not self.output_stack:
+```
+
+只有 `output_stack` 为空，说明更早进入队列的旧元素已经全部处理完，才能把 `input_stack` 中的新元素整体倒入，并形成下一批正确的出队顺序。
+
+这种做法还保证了每个元素只会：
+
+```text
+进入 input_stack 一次
+从 input_stack 转移出去一次
+进入 output_stack 一次
+从 output_stack 弹出一次
+```
+
+元素不会在两个栈之间反复搬运，因此 `pop()` 和 `peek()` 的均摊时间复杂度是 `O(1)`。
+
+一句话记忆：
+
+> 出队栈里是必须先走的旧元素，入队栈里是后来的新元素；旧元素没走完时不能掺入新元素，所以只有出队栈为空才能转移。
 
 
 #### 详细分析、小例子与代码执行流程
@@ -6492,25 +6753,107 @@ class Solution:
 ```python
 class MinStack:
     def __init__(self):
+        # 主栈保存所有真正压入的元素
         self.stack = []
+
+        # 最小栈只保存“成为或追平当前最小值”的元素。
+        # 它的栈顶始终是主栈当前的最小值。
         self.min_stack = []
 
     def push(self, value: int) -> None:
+        # 所有元素都要进入主栈
         self.stack.append(value)
+
+        # 最小栈为空时，value 是第一个最小值。
+        # value 小于当前最小值时，它成为新的最小值。
+        # value 等于当前最小值时也必须入栈，用来记录重复最小值。
         if not self.min_stack or value <= self.min_stack[-1]:
             self.min_stack.append(value)
 
     def pop(self) -> None:
+        # 先从主栈删除真正的栈顶元素
         removed_value = self.stack.pop()
+
+        # 只有被删除的元素正好是当前最小值时，
+        # 才同步弹出最小栈；普通元素不会影响最小值。
         if removed_value == self.min_stack[-1]:
             self.min_stack.pop()
 
     def top(self) -> int:
+        # 主栈栈顶才是真正的栈顶元素
         return self.stack[-1]
+
+    def getMin(self) -> int:
+        # 最小栈栈顶始终是当前最小值
+        return self.min_stack[-1]
+```
+
+上面的写法中，`min_stack` 只记录最小值发生变化或出现重复最小值的时刻，因此两个栈不一定等长。例如依次压入 `3、5、2、2、4`：
+
+```text
+stack     = [3, 5, 2, 2, 4]
+min_stack = [3, 2, 2]
+```
+
+其中两个 `2` 都要进入 `min_stack`。这样弹出一个 `2` 后，另一个 `2` 仍然能够继续表示当前最小值。
+
+#### 解法二：每一层都同步保存当前最小值
+
+这种写法让 `data_stack` 和 `min_stack` 始终等长。每压入一个数据，`min_stack` 都同步压入“当前这一层的最小值”；每弹出一个数据，两个栈也同步弹出。
+
+```python
+class MinStack:
+    def __init__(self):
+        # 保存所有真正的数据
+        self.data_stack = []
+
+        # min_stack[i] 表示：
+        # data_stack 压入第 i 个元素以后，当前栈中的最小值
+        self.min_stack = []
+
+    def push(self, value: int) -> None:
+        self.data_stack.append(value)
+
+        if not self.min_stack:
+            # 第一个元素也是当前最小值
+            self.min_stack.append(value)
+        else:
+            # 新的最小值只有两种可能：
+            # 新加入的 value，或者上一层的最小值
+            self.min_stack.append(
+                min(value, self.min_stack[-1])
+            )
+
+    def pop(self) -> None:
+        # 两个栈中的相同下标表示同一次入栈后的状态，
+        # 所以弹栈时必须同步删除。
+        self.data_stack.pop()
+        self.min_stack.pop()
+
+    def top(self) -> int:
+        return self.data_stack[-1]
 
     def getMin(self) -> int:
         return self.min_stack[-1]
 ```
+
+例如依次压入 `3、5、2、2、4`：
+
+```text
+data_stack = [3, 5, 2, 2, 4]
+min_stack  = [3, 3, 2, 2, 2]
+```
+
+`min_stack` 的每一个位置都表示主栈处于对应层数时的最小值。弹出 `4` 后，两个栈同步弹出，新的 `min_stack[-1]` 仍然是 `2`；连续弹出两个 `2` 后，最小值会自动恢复为 `3`。
+
+两种解法的核心都是用辅助栈保存最小值历史，区别是：
+
+```text
+解法一：只在 value <= 当前最小值时记录，pop 时需要判断。
+解法二：每次 push 都记录当前最小值，pop 时两个栈直接同步弹出。
+```
+
+解法二会保存更多重复值，但逻辑更统一、更适合初学时记忆。两种解法的所有操作都是 `O(1)`，最坏空间复杂度都是 `O(n)`。
 
 
 #### 详细分析、小例子与代码执行流程
@@ -6689,6 +7032,18 @@ class Solution:
 - 相似题：不同路径、最大正方形。
 - 记忆卡片：网格路径 DP，看上面和左边。
 
+题目：
+
+从左上角出发，每次只能：
+
+```
+向右走
+或者向下走
+```
+
+最终到达右下角，求经过路径上的数字总和最小是多少。
+
+
 ```python
 class Solution:
     def minPathSum(self, grid):
@@ -6816,6 +7171,59 @@ class Solution:
         return result
 ```
 
+
+
+注释版
+
+
+```python
+class Solution:
+    def maxAreaOfIsland(self, grid):
+        if not grid or not grid[0]:
+            return 0
+
+        rows = len(grid)
+        columns = len(grid[0])
+
+        def dfs(row, column):
+            # 坐标越界，不能贡献陆地面积
+            if (
+                row < 0
+                or row >= rows
+                or column < 0
+                or column >= columns
+            ):
+                return 0
+
+            # 当前是水，或者是已经访问过的陆地，
+            # 都不能再贡献面积
+            if grid[row][column] != 1:
+                return 0
+
+            # 将当前陆地改成水，表示已经访问
+            grid[row][column] = 0
+
+            # 当前格子本身贡献面积 1，
+            # 再加上上下左右四个方向的陆地面积
+            area = 1
+
+            area += dfs(row - 1, column)
+            area += dfs(row + 1, column)
+            area += dfs(row, column - 1)
+            area += dfs(row, column + 1)
+
+            return area
+
+        max_area = 0
+
+        for row in range(rows):
+            for column in range(columns):
+                if grid[row][column] == 1:
+                    current_area = dfs(row, column)
+                    max_area = max(max_area, current_area)
+
+        return max_area
+```
 
 #### 详细分析、小例子与代码执行流程
 这题和岛屿数量类似，只是遇到一座岛时不只是计数，而是要算这座岛有多少格。DFS 每访问一个陆地格子，就贡献面积 1。
@@ -7017,6 +7425,14 @@ class Solution:
 - 相似题：最小路径和、 maximal rectangle。
 - 记忆卡片：正方形能长多大，看上、左、左上最短板。
 
+```
+注意
+dp[i][j] 对应 matrix[i - 1][j - 1]
+```
+
+
+状态定义为“以当前格子为右下角”
+
 ```python
 class Solution:
     def maximalSquare(self, matrix):
@@ -7030,6 +7446,90 @@ class Solution:
                     best = max(best, dp[i][j])
         return best * best
 ```
+
+#### 为什么 `dp` 要比原矩阵多一行、多一列
+
+原矩阵大小是 `m 行 × n 列`，代码创建的 `dp` 是：
+
+```python
+dp = [[0] * (n + 1) for _ in range(m + 1)]
+```
+
+也就是 `(m + 1) 行 × (n + 1) 列`。多出来的第 `0` 行和第 `0` 列全部保持为 `0`，相当于在原矩阵的上方和左方增加了一圈虚拟边界。
+
+因此，`dp` 和原矩阵的坐标整体偏移了一位：
+
+```text
+dp[i][j] 对应 matrix[i - 1][j - 1]
+```
+
+例如：
+
+```text
+dp[1][1] 对应 matrix[0][0]
+dp[1][2] 对应 matrix[0][1]
+dp[2][1] 对应 matrix[1][0]
+```
+
+状态转移需要查看当前格子的三个方向：
+
+```python
+dp[i - 1][j]      # 上方
+dp[i][j - 1]      # 左方
+dp[i - 1][j - 1]  # 左上方
+```
+
+如果 `dp` 和原矩阵大小相同，那么处理原矩阵第一行或第一列时，上方、左方或左上方可能不存在，需要额外写边界判断。
+
+例如处理原矩阵左上角 `matrix[0][0]` 时，如果使用相同下标，会访问：
+
+```text
+dp[-1][0]
+dp[0][-1]
+dp[-1][-1]
+```
+
+这些都不是真正的上方、左方和左上方。在 Python 中，负数下标还会访问数组末尾，可能产生错误结果。
+
+增加虚拟第 `0` 行和第 `0` 列以后，原矩阵左上角 `matrix[0][0]` 对应 `dp[1][1]`，它的三个来源变成：
+
+```text
+上方：  dp[0][1] = 0
+左方：  dp[1][0] = 0
+左上方：dp[0][0] = 0
+```
+
+如果 `matrix[0][0] == "1"`，就可以直接使用统一公式：
+
+```python
+dp[1][1] = min(
+    dp[0][1],
+    dp[1][0],
+    dp[0][0],
+) + 1
+```
+
+结果为 `min(0, 0, 0) + 1 = 1`，正好表示以左上角这个 `1` 为右下角，只能形成边长为 `1` 的正方形。
+
+原矩阵第一行的其他位置会自然使用虚拟第 `0` 行中的 `0`；原矩阵第一列的其他位置会自然使用虚拟第 `0` 列中的 `0`。这样，第一行、第一列和内部位置都能使用同一个状态转移公式，不需要分别初始化或编写特殊分支。
+
+所以，多一行、多一列的作用是：
+
+```text
+1. 给第一行和第一列提供值为 0 的虚拟邻居；
+2. 避免访问负数下标或编写大量边界判断；
+3. 让所有原矩阵位置使用同一个状态转移公式。
+```
+
+代价是读取原矩阵时必须记住下标偏移：
+
+```python
+if matrix[i - 1][j - 1] == "1":
+```
+
+一句话记忆：
+
+> `dp` 多出的第 0 行和第 0 列是全 0 的虚拟边界，让原矩阵第一行、第一列也能直接套用“上、左、左上取最小值加一”的公式。
 
 
 #### 详细分析、小例子与代码执行流程
@@ -7340,6 +7840,8 @@ class Solution:
 - 坑：从左上角无法决定排除方向；右上或左下才有单调性。
 - 相似题：搜索二维矩阵、二分查找。
 - 记忆卡片：矩阵行列都有序，从右上角走楼梯。
+
+`O(m+n)`
 
 ```python
 class Solution:
@@ -7856,16 +8358,25 @@ class Solution:
 - 相似题：螺旋矩阵。
 - 记忆卡片：顺时针 90 度 = 转置后每行反转。
 
+
+顺时针旋转 90° = 主对角线转置 + 每行反转。
+
 ```python
 class Solution:
     def rotate(self, matrix) -> None:
-        size = len(matrix)
-        for row in range(size):
-            for column in range(row + 1, size):
+        n = len(matrix)
+
+        # 第一步：沿主对角线转置矩阵
+        # 把 matrix[row][column]
+        # 和 matrix[column][row] 交换
+        for row in range(n):
+            for column in range(row + 1, n):
                 matrix[row][column], matrix[column][row] = (
                     matrix[column][row],
                     matrix[row][column],
                 )
+
+        # 第二步：反转每一行
         for row in matrix:
             row.reverse()
 ```
@@ -11672,6 +12183,151 @@ class Solution:
         return result
 ```
 
+用dp表示
+```python
+class Solution:
+    def longestIncreasingPath(self, matrix):
+        if not matrix or not matrix[0]:
+            return 0
+
+        rows = len(matrix)
+        columns = len(matrix[0])
+
+        # dp[row][column] 表示：
+        # 从 matrix[row][column] 出发，
+        # 能得到的最长严格递增路径长度
+        #
+        # 0 表示这个状态还没有计算
+        dp = [
+            [0] * columns
+            for _ in range(rows)
+        ]
+
+        def dfs(row, column):
+            # 当前状态已经计算过，直接返回
+            if dp[row][column] != 0:
+                return dp[row][column]
+
+            # 当前格子自己就能形成长度为 1 的路径
+            dp[row][column] = 1
+
+            # 枚举上下左右四个相邻位置
+            for next_row, next_column in (
+                (row - 1, column),  # 上
+                (row + 1, column),  # 下
+                (row, column - 1),  # 左
+                (row, column + 1),  # 右
+            ):
+                # 相邻位置没有越界，
+                # 并且相邻数字严格大于当前数字时才能走
+                if (
+                    0 <= next_row < rows
+                    and 0 <= next_column < columns
+                    and matrix[next_row][next_column]
+                    > matrix[row][column]
+                ):
+                    # 状态转移：
+                    # 当前格子自己占 1 个长度，
+                    # 再加上从更大邻居出发的最长路径
+                    dp[row][column] = max(
+                        dp[row][column],
+                        1 + dfs(next_row, next_column),
+                    )
+
+            return dp[row][column]
+
+        result = 0
+
+        # 最长路径可能从任意格子开始
+        for row in range(rows):
+            for column in range(columns):
+                result = max(
+                    result,
+                    dfs(row, column),
+                )
+
+        return result
+
+```
+
+
+注释版（维护了依赖longest变量，其余跟上面没什么差别）
+
+```python
+class Solution:
+    def longestIncreasingPath(self, matrix):
+        if not matrix or not matrix[0]:
+            return 0
+
+        rows = len(matrix)
+        columns = len(matrix[0])
+
+        # memo[row][column] 表示：
+        # 从 matrix[row][column] 出发的最长递增路径长度
+        # 0 表示这个位置还没有计算过
+        memo = [
+            [0] * columns
+            for _ in range(rows)
+        ]
+
+        directions = [
+            (-1, 0),  # 上
+            (1, 0),   # 下
+            (0, -1),  # 左
+            (0, 1),   # 右
+        ]
+
+        def dfs(row, column):
+            # 已经计算过，直接返回，避免重复搜索
+            if memo[row][column] != 0:
+                return memo[row][column]
+
+            # 即使四周都不能走，当前格子本身
+            # 也能构成长度为 1 的递增路径
+            longest = 1
+
+            for row_change, column_change in directions:
+                next_row = row + row_change
+                next_column = column + column_change
+
+                # 相邻位置必须位于矩阵内
+                if not (
+                    0 <= next_row < rows
+                    and 0 <= next_column < columns
+                ):
+                    continue
+
+                # 只有相邻数字严格更大时才能走
+                if (
+                    matrix[next_row][next_column]
+                    <= matrix[row][column]
+                ):
+                    continue
+
+                # 当前格子本身长度为 1，
+                # 再加上从相邻格子出发的最长路径
+                longest = max(
+                    longest,
+                    1 + dfs(next_row, next_column),
+                )
+
+            # 保存结果，后面再次访问时直接使用
+            memo[row][column] = longest
+            return longest
+
+        answer = 0
+
+        # 每个格子都有可能是最长路径的起点
+        for row in range(rows):
+            for column in range(columns):
+                answer = max(
+                    answer,
+                    dfs(row, column),
+                )
+
+        return answer
+```
+
 #### 详细分析、小例子与代码执行流程
 矩阵 `[[9,9,4],[6,6,8],[2,1,1]]` 中，可以走 `1->2->6->9`，长度 4。每个格子的最长后续路径算过一次后就缓存起来。
 
@@ -12154,22 +12810,42 @@ def has_cycle(dependencies):
 - 相似题：二分查找、二维数组中的查找。
 - 记忆卡片：整体有序矩阵，拉平成一维二分。
 
+`O(log(mn))`
+
 ```python
 class Solution:
-    def searchMatrix(self, matrix, target: int) -> bool:
-        rows, columns = len(matrix), len(matrix[0])
-        left, right = 0, rows * columns - 1
+    def searchMatrix(self, matrix, target):
+        if not matrix or not matrix[0]:
+            return False
+
+        rows = len(matrix)
+        columns = len(matrix[0])
+
+        # 把矩阵看成下标从 0 到 rows * columns - 1
+        # 的一维升序数组
+        left = 0
+        right = rows * columns - 1
+
         while left <= right:
-            mid = (left + right) // 2
-            value = matrix[mid // columns][mid % columns]
-            if value == target:
+            middle = left + (right - left) // 2
+
+            # 将一维下标转换成二维坐标
+            row = middle // columns
+            column = middle % columns
+
+            current = matrix[row][column]
+
+            if current == target:
                 return True
-            if value < target:
-                left = mid + 1
+
+            if current < target:
+                # 当前值太小，目标只可能在右半部分
+                left = middle + 1
             else:
-                right = mid - 1
-        return False
-```
+                # 当前值太大，目标只可能在左半部分
+                right = middle - 1
+
+        return False```
 
 #### 详细分析、小例子与代码执行流程
 矩阵 `[[1,3,5],[7,9,11]]` 可以看成 `[1,3,5,7,9,11]`。找 9 时，二分到一维下标 4，再映射回 `(1,1)`。
@@ -14166,22 +14842,51 @@ class Solution:
 - 相似题：用栈实现队列。
 - 记忆卡片：队列实现栈，push 后旋转，让新来的站队头。
 
+```
+栈支持的操作
+
+
+push(x) # 将元素压入栈顶
+
+pop() # 删除并返回栈顶元素
+
+top() # 返回栈顶元素，但不删除
+
+empty() # 判断栈是否为空
+
+
+```
+
+
+
 ```python
+from collections import deque
+
+
 class MyStack:
     def __init__(self):
-        from collections import deque
-
         self.queue = deque()
 
     def push(self, x: int) -> None:
+        # 新元素先进入队尾
         self.queue.append(x)
+
+        # 将新元素之前的所有旧元素，
+        # 依次从队头移动到队尾
         for _ in range(len(self.queue) - 1):
-            self.queue.append(self.queue.popleft())
+            self.queue.append(
+                self.queue.popleft()
+            )
+
+        # 旋转完成后，新元素位于队头，
+        # 也就是当前栈顶
 
     def pop(self) -> int:
+        # 队头始终是栈顶，直接删除并返回
         return self.queue.popleft()
 
     def top(self) -> int:
+        # 查看队头，但不删除
         return self.queue[0]
 
     def empty(self) -> bool:
@@ -15377,6 +16082,82 @@ class Solution:
         return max_area
 ```
 
+
+
+注释版
+每次弹出一个说明，以height为高的矩形的底的长度可以确定了。
+因为遇到了比这个小的，所以要弹出，右边界确定了，然后左边界在栈中存着呢。（height弹出后，左边界成为了新的栈顶，只取其下标，不弹出）
+
+遇到矮柱就结算高柱：当前下标确定右界，弹栈后的新栈顶提供左界；左界只读取不立即弹出，宽度就是两界下标之差减一。
+
+```python
+class Solution:
+    def maximalRectangle(self, matrix):
+        if not matrix or not matrix[0]:
+            return 0
+
+        columns = len(matrix[0])
+
+        # heights[column] 表示：
+        # 以当前行为底部，该列连续出现的 "1" 的数量
+        heights = [0] * columns
+
+        max_area = 0
+
+        def largest_rectangle_area(heights):
+            """
+            求柱状图中最大的矩形面积。
+            stack 中保存柱子下标，并保持柱高单调不减。
+            """
+
+            # 左右各添加一个高度为 0 的哨兵，
+            # 方便统一计算边界以及清空栈中剩余柱子
+            extended = [0] + heights + [0]
+
+            stack = []
+            best = 0
+
+            for right_boundary, current_height in enumerate(extended):
+                # 当前柱子更矮时，说明栈顶较高柱子的
+                # 右边界已经确定，可以计算面积
+                while (
+                    stack
+                    and extended[stack[-1]] > current_height
+                ):
+                    height = extended[stack.pop()]
+
+                    # 弹栈后，新的栈顶是当前高度
+                    # 左边第一个比它矮的柱子
+                    left_boundary = stack[-1]
+
+                    # right_boundary 是右边第一个更矮的位置，
+                    # 两个边界本身都不能放进矩形
+                    width = (
+                        right_boundary
+                        - left_boundary
+                        - 1
+                    )
+
+                    best = max(best, height * width)
+
+                stack.append(right_boundary)
+
+            return best
+
+        # 将每一行作为柱状图底部
+        for row in matrix:
+            for column in range(columns):
+                if row[column] == "1":
+                    heights[column] += 1
+                else:
+                    heights[column] = 0
+
+            # 计算当前柱状图的最大矩形
+            current_area = largest_rectangle_area(heights)
+            max_area = max(max_area, current_area)
+
+        return max_area
+```
 #### 详细分析、小例子与代码执行流程
 如果某一行的 heights 是 `[2,1,5,6,2,3]`，问题就变成柱状图最大矩形。每一行都这样计算，取最大值。
 
@@ -16587,31 +17368,62 @@ def add36(first, second):
 - 相似题：螺旋矩阵、螺旋矩阵 II。
 - 记忆卡片：顺时针打印就是四边界一圈圈剥。
 
+
 ```python
+
 class Solution:
-    def spiralOrder(self, matrix):
-        if not matrix or not matrix[0]:
-            return []
-        result = []
-        top, bottom, left, right = 0, len(matrix) - 1, 0, len(matrix[0]) - 1
+    def generateMatrix(self, n: int):
+        # 创建 n × n 的矩阵，初始全部填 0
+        matrix = [[0] * n for _ in range(n)]
+
+        # 当前准备填入的数字
+        number = 1
+
+        # 当前还没有填充区域的四个边界
+        top = 0
+        bottom = n - 1
+        left = 0
+        right = n - 1
+
         while top <= bottom and left <= right:
+            # 第一步：填充上边，从左到右
             for column in range(left, right + 1):
-                result.append(matrix[top][column])
+                matrix[top][column] = number
+                number += 1
+
+            # 上边填完，向下收缩
             top += 1
+
+            # 第二步：填充右边，从上到下
             for row in range(top, bottom + 1):
-                result.append(matrix[row][right])
+                matrix[row][right] = number
+                number += 1
+
+            # 右边填完，向左收缩
             right -= 1
+
+            # 第三步：如果还有未填充的行，
+            # 填充下边，从右到左
             if top <= bottom:
                 for column in range(right, left - 1, -1):
-                    result.append(matrix[bottom][column])
+                    matrix[bottom][column] = number
+                    number += 1
+
+                # 下边填完，向上收缩
                 bottom -= 1
+
+            # 第四步：如果还有未填充的列，
+            # 填充左边，从下到上
             if left <= right:
                 for row in range(bottom, top - 1, -1):
-                    result.append(matrix[row][left])
-                left += 1
-        return result
-```
+                    matrix[row][left] = number
+                    number += 1
 
+                # 左边填完，向右收缩
+                left += 1
+
+        return matrix
+```
 #### 详细分析、小例子与代码执行流程
 `[[1,2,3],[4,5,6],[7,8,9]]` 输出 `1,2,3,6,9,8,7,4,5`。
 
