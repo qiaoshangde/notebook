@@ -1530,61 +1530,89 @@ class Solution:
 - 相似题：LFU 缓存、设计浏览器历史。
 - 记忆卡片：LRU = 字典找人，链表排队；用过就搬到队头，淘汰队尾。
 
+
+
+
+```
+Least Recently Used
+最近最少使用
+
+根据 key 查询：O(1)
+
+删除最旧元素：O(1)
+
+把访问过的元素移动到最新位置：O(1)
+因此组合使用：
+
+哈希表 + 双向链表
+
+
+```
+
 ```python
-class CacheNode:
+class Node:
     def __init__(self, key=0, value=0):
         self.key = key
         self.value = value
-        self.previous = None
+        self.prev = None
         self.next = None
 
 
 class LRUCache:
     def __init__(self, capacity: int):
         self.capacity = capacity
-        self.node_by_key = {}
+        self.cache = {}
 
-        self.dummy_head = CacheNode()
-        self.dummy_tail = CacheNode()
-        self.dummy_head.next = self.dummy_tail
-        self.dummy_tail.previous = self.dummy_head
+        self.head = Node()
+        self.tail = Node()
+        self.head.next = self.tail
+        self.tail.prev = self.head
 
     def _remove(self, node):
-        node.previous.next = node.next
-        node.next.previous = node.previous
+        """把 node 从双向链表中删除。"""
+        previous = node.prev
+        following = node.next
+
+        previous.next = following
+        following.prev = previous
 
     def _add_to_front(self, node):
-        first_node = self.dummy_head.next
-        node.previous = self.dummy_head
-        node.next = first_node
-        self.dummy_head.next = node
-        first_node.previous = node
+        """把 node 插到 head 后面，表示最近使用。"""
+        first = self.head.next
 
-    def get(self, key: int) -> int:
-        if key not in self.node_by_key:
-            return -1
+        self.head.next = node
+        node.prev = self.head
+        node.next = first
+        first.prev = node
 
-        node = self.node_by_key[key]
+    def _move_to_front(self, node):
+        """访问节点后，将它移动到最近使用位置。"""
         self._remove(node)
         self._add_to_front(node)
+
+    def get(self, key: int) -> int:
+        if key not in self.cache:
+            return -1
+
+        node = self.cache[key]
+        self._move_to_front(node)
         return node.value
 
     def put(self, key: int, value: int) -> None:
-        if key in self.node_by_key:
-            node = self.node_by_key[key]
+        if key in self.cache:#表示有这个键，所以只需要将value更新，然后放到最新访问即可
+            node = self.cache[key]
             node.value = value
-            self._remove(node)
-            self._add_to_front(node)
+            self._move_to_front(node)
             return
+		#没这个键，新建一共节点
+        node = Node(key, value)
+        self.cache[key] = node
+        self._add_to_front(node)
 
-        new_node = CacheNode(key, value)
-        self.node_by_key[key] = new_node
-        self._add_to_front(new_node)
-
-        if len(self.node_by_key) > self.capacity:
-            least_recently_used = self.dummy_tail.previous
-            self._remove(least_recently_used)
-            del self.node_by_key[least_recently_used.key]
+        if len(self.cache) > self.capacity:
+            least_recent = self.tail.prev
+            self._remove(least_recent)
+            del self.cache[least_recent.key]
 ```
 
 
@@ -3784,6 +3812,61 @@ class Solution:
 ```
 
 
+注释版
+```python
+class Solution:
+    def addStrings(self, num1: str, num2: str) -> str:
+        # 两个指针分别指向两个字符串的最后一位
+        first_index = len(num1) - 1
+        second_index = len(num2) - 1
+
+        # carry 表示上一位产生的进位
+        carry = 0
+
+        # 结果从个位开始生成，因此先放进列表
+        result = []
+
+        # 只要还有数字没有处理，或者还有进位，就继续
+        while (
+            first_index >= 0
+            or second_index >= 0
+            or carry
+        ):
+            # 如果 num1 还有数字，就取出当前位；
+            # 如果已经处理完，就使用 0
+            if first_index >= 0:
+                first_digit = (
+                    ord(num1[first_index]) - ord("0")
+                )
+            else:
+                first_digit = 0
+
+            # 同样处理 num2 的当前位
+            if second_index >= 0:
+                second_digit = (
+                    ord(num2[second_index]) - ord("0")
+                )
+            else:
+                second_digit = 0
+
+            # 当前两位加上上一轮的进位
+            total = first_digit + second_digit + carry
+
+            # total 的个位是当前位置的结果
+            result.append(str(total % 10))
+
+            # total 的十位是给下一轮的进位
+            carry = total // 10
+
+            # 两个指针同时向左移动
+            first_index -= 1
+            second_index -= 1
+
+        # result 是从个位到最高位生成的，需要反转
+        return "".join(reversed(result))
+```
+
+
 #### 详细分析、小例子与代码执行流程
 字符串里的个位在最后面，数字加法又必须从个位开始，所以两个指针从末尾向前扫，模拟小学竖式加法。
 
@@ -4795,16 +4878,37 @@ a = (k - 1)(b + c) + c
 ```python
 class Solution:
     def compareVersion(self, version1: str, version2: str) -> int:
+        # 按 "." 拆分成多个版本段
         first_parts = version1.split(".")
         second_parts = version2.split(".")
-        max_parts = max(len(first_parts), len(second_parts))
+
+        # 比较次数以段数较多的版本为准
+        max_parts = max(
+            len(first_parts),
+            len(second_parts),
+        )
+
         for index in range(max_parts):
-            first_part = int(first_parts[index]) if index < len(first_parts) else 0
-            second_part = int(second_parts[index]) if index < len(second_parts) else 0
+            # 如果当前段存在，就转换成整数；
+            # 如果当前段不存在，就按照 0 处理
+            first_part = (
+                int(first_parts[index])
+                if index < len(first_parts)
+                else 0
+            )
+            second_part = (
+                int(second_parts[index])
+                if index < len(second_parts)
+                else 0
+            )
+
             if first_part < second_part:
                 return -1
+
             if first_part > second_part:
                 return 1
+
+        # 所有段都相同
         return 0
 ```
 
@@ -6113,6 +6217,118 @@ class Solution:
         return "".join(map(str, result)).lstrip("0")
 ```
 
+注释版
+```python
+class Solution:
+    def multiply(self, num1: str, num2: str) -> str:
+        # 只要其中一个数是 0，乘积就是 0
+        if num1 == "0" or num2 == "0":
+            return "0"
+
+        first_length = len(num1)
+        second_length = len(num2)
+
+        # 两个 m 位和 n 位的数字相乘，
+        # 结果最多有 m + n 位
+        result = [0] * (
+            first_length + second_length
+        )
+
+        # 从个位开始，模拟竖式乘法
+        for first_index in range(
+            first_length - 1, -1, -1
+        ):
+            for second_index in range(
+                second_length - 1, -1, -1
+            ):
+                first_digit = (
+                    ord(num1[first_index]) - ord("0")
+                )
+                second_digit = (
+                    ord(num2[second_index]) - ord("0")
+                )
+
+                product = first_digit * second_digit
+
+                # 当前乘积的个位和进位对应的位置
+                low_position = (
+                    first_index + second_index + 1
+                )
+                high_position = (
+                    first_index + second_index
+                )
+
+                # low_position 可能已经有其他乘积贡献
+                total = product + result[low_position]
+
+                # 当前位只保留个位
+                result[low_position] = total % 10
+
+                # 十位向前进位
+                result[high_position] += total // 10
+
+        # 转成字符串并删除可能存在的前导零
+        answer = "".join(map(str, result))
+        return answer.lstrip("0")
+```
+
+#### 位数落点、进位与 `+=` 的原因
+
+假设当前相乘的是 `num1[first_index]` 和 `num2[second_index]`，它们的乘积会影响结果数组中相邻的两个位置：
+
+```text
+乘积的个位：first_index + second_index + 1
+乘积的进位：first_index + second_index
+```
+
+以 `"12" * "34"` 为例，结果数组长度为 `2 + 2 = 4`：
+
+```text
+num1 = 1 2       num2 = 3 4
+下标 = 0 1       下标 = 0 1
+
+result = [0, 0, 0, 0]
+下标       0  1  2  3
+```
+
+| 相乘的数字 | `first_index` | `second_index` | 个位落点 | 对应数位 |
+|---|---:|---:|---:|---|
+| `2 * 4` | 1 | 1 | 3 | 个位 |
+| `2 * 3` | 1 | 0 | 2 | 十位 |
+| `1 * 4` | 0 | 1 | 2 | 十位 |
+| `1 * 3` | 0 | 0 | 1 | 百位 |
+
+这和竖式乘法一致：`2 * 4` 从个位开始，`2 * 3` 和 `1 * 4` 都从十位开始，`1 * 3` 从百位开始。可以记成：
+
+> 两个下标相加再加 `1` 是乘积个位的落点，它的左边一位就是进位的落点。
+
+当前位的计算为：
+
+```python
+total = product + result[low_position]
+result[low_position] = total % 10
+result[high_position] += total // 10
+```
+
+`result[low_position]` 可能已经保存其他乘法对这一位的贡献，所以需要先和新乘积相加。然后：
+
+```text
+total % 10  ：当前位保留的个位
+total // 10 ：加到左边一位的进位
+```
+
+进位必须使用 `+=`，因为同一个结果位置可能接收多次贡献。例如 `"12" * "34"` 中，`2 * 3` 和 `1 * 4` 都会影响中间的十位。处理 `1 * 4` 时，该位置已经有 `2 * 3` 留下的 `6`：
+
+```text
+4 + 6 = 10
+```
+
+当前位写入 `0`，并向左边进 `1`。左边位置也可能已有其他乘积或进位留下的数值，所以新进位必须累加，不能覆盖：
+
+```text
+`+=`：保留原来的贡献，再加上新进位
+`=`：用新进位覆盖原值，原来的贡献会被丢掉
+```
 
 #### 详细分析、小例子与代码执行流程
 字符串乘法就是模拟竖式乘法。`num1[i]` 和 `num2[j]` 相乘后，个位会落在结果数组的 `i+j+1`，进位落在 `i+j`。
@@ -6153,6 +6369,35 @@ class Solution:
 - 相似题：比较版本号、有效数字。
 - 记忆卡片：atoi 四步：空格、符号、数字、截断。
 
+```
+ord() 是什么
+
+digit = ord(s[index]) - ord("0")
+
+字符串中的 "4" 是字符，不是整数 4。
+
+ord() 可以获得字符对应的编码值：
+
+ord("0") == 48
+
+ord("4") == 52
+
+所以：
+
+ord("4") - ord("0")
+
+结果为：
+
+52 - 48 = 4
+
+也可以直接写：
+
+digit = int(s[index])
+
+但是手写字符串解析时，使用 ord() 更能体现“把字符转换成数字”的过程。
+```
+
+
 ```python
 class Solution:
     def myAtoi(self, s: str) -> int:
@@ -6169,6 +6414,53 @@ class Solution:
             i += 1
         result *= sign
         return max(-(2 ** 31), min(2 ** 31 - 1, result))
+```
+
+
+
+注释版本
+
+```python
+class Solution:
+    def myAtoi(self, s: str) -> int:
+        index = 0
+        length = len(s)
+
+        # 第一步：跳过字符串开头的空格
+        while index < length and s[index] == " ":
+            index += 1
+
+        # 第二步：读取正负号
+        sign = 1
+
+        if index < length and s[index] in "+-":
+            if s[index] == "-":
+                sign = -1
+
+            index += 1
+
+        # 第三步：读取连续的数字
+        number = 0
+
+        while index < length and s[index].isdigit():
+            digit = ord(s[index]) - ord("0")
+            number = number * 10 + digit
+            index += 1
+
+        # 加上正负号
+        number *= sign
+
+        # 第四步：限制在32位有符号整数范围内
+        lower_bound = -(2 ** 31)
+        upper_bound = 2 ** 31 - 1
+
+        if number < lower_bound:
+            return lower_bound
+
+        if number > upper_bound:
+            return upper_bound
+
+        return number
 ```
 
 
@@ -6466,6 +6758,41 @@ class Solution:
         return " ".join(words)
 ```
 
+
+
+不用系统函数
+
+
+```python
+class Solution:
+    def reverseWords(self, text: str) -> str:
+        result = []
+        right = len(text) - 1
+
+        while right >= 0:
+            # 跳过单词右边的空格
+            while right >= 0 and text[right] == " ":
+                right -= 1
+
+            # 已经没有单词
+            if right < 0:
+                break
+
+            # 记录当前单词的结尾
+            word_end = right
+
+            # 向左寻找当前单词的开头
+            while right >= 0 and text[right] != " ":
+                right -= 1
+
+            # 当前单词是 text[right + 1 : word_end + 1]
+            result.append(
+                text[right + 1 : word_end + 1]
+            )
+
+        return " ".join(result)
+
+```
 
 #### 详细分析、小例子与代码执行流程
 题目要反转单词顺序，并去掉多余空格。单词内部字符不需要反转。最简单的思路是先把字符串按空白切成单词，再反转单词列表。
@@ -9927,35 +10254,130 @@ DFS 有两个失败条件：坐标越界，或者当前格子的字符不等于 
 - 相似题：复原 IP 地址、比较版本号、atoi。
 - 记忆卡片：IP 校验先分段，再检查段数、字符、范围、前导零。
 
+
+
+```
+IPv4 的格式
+
+IPv4 使用 . 分成四段：
+
+172.16.254.1
+
+四段分别是：
+
+172
+
+16
+
+254
+
+1
+
+每一段必须满足：
+
+一共正好四段。
+
+每段不能为空。
+
+每段只能包含数字。
+
+数值必须在 0～255 之间。
+
+多位数字不能以 0 开头。
+
+
+
+IPv6 的格式
+
+IPv6 使用 : 分成八段：
+
+2001:0db8:85a3:0:0:8A2E:0370:7334
+
+每一段必须满足：
+
+一共正好八段。
+
+每段长度为 1～4。
+
+每段只能包含十六进制字符。
+
+十六进制字符包括：
+
+0～9
+
+a～f
+
+A～F
+
+IPv6 允许前导零，因此：
+
+0db8
+
+0370
+
+都是合法的。
+
+```
+
+
+
 ```python
 class Solution:
     def validIPAddress(self, queryIP: str) -> str:
         def is_ipv4(address):
             parts = address.split(".")
+
+            # IPv4 必须正好有四段
             if len(parts) != 4:
                 return False
+
             for part in parts:
-                if not part or (len(part) > 1 and part[0] == "0") or not part.isdigit():
+                # 每一段不能为空
+                if not part:
                     return False
+
+                # 每一段只能包含数字
+                if not part.isdigit():
+                    return False
+
+                # 多位数字不能以 0 开头
+                if len(part) > 1 and part[0] == "0":
+                    return False
+
+                # 每段数值不能超过 255
                 if int(part) > 255:
                     return False
+
             return True
 
         def is_ipv6(address):
-            hexdigits = set("0123456789abcdefABCDEF")
             parts = address.split(":")
+            valid_characters = set(
+                "0123456789abcdefABCDEF"
+            )
+
+            # IPv6 必须正好有八段
             if len(parts) != 8:
                 return False
-            return all(
-                1 <= len(part) <= 4
-                and all(character in hexdigits for character in part)
-                for part in parts
-            )
+
+            for part in parts:
+                # 每段必须有 1～4 个字符
+                if not 1 <= len(part) <= 4:
+                    return False
+
+                # 每个字符都必须是十六进制字符
+                for character in part:
+                    if character not in valid_characters:
+                        return False
+
+            return True
 
         if "." in queryIP and is_ipv4(queryIP):
             return "IPv4"
+
         if ":" in queryIP and is_ipv6(queryIP):
             return "IPv6"
+
         return "Neither"
 ```
 
@@ -12998,6 +13420,39 @@ class Solution:
         return result if -(2 ** 31) <= result <= 2 ** 31 - 1 else 0
 ```
 
+
+注释版
+
+```python
+class Solution:
+    def reverse(self, x: int) -> int:
+        # 记录原数字的正负号
+        sign = -1 if x < 0 else 1
+
+        # 先按照正数处理，避免 Python 负数取模带来的影响
+        x = abs(x)
+
+        result = 0
+
+        while x > 0:
+            # 取出 x 的最后一位
+            last_digit = x % 10
+
+            # 把最后一位拼接到 result 后面
+            result = result * 10 + last_digit
+
+            # 删除 x 的最后一位
+            x //= 10
+
+        # 恢复原来的正负号
+        result *= sign
+
+        # 检查是否处于 32 位有符号整数范围
+        if -(2 ** 31) <= result <= 2 ** 31 - 1:
+            return result
+
+        return 0
+```
 #### 详细分析、小例子与代码执行流程
 `123` 反转：取 3 得 3，取 2 得 32，取 1 得 321。`-120` 先处理 120 得 21，再加负号得 -21。
 
@@ -13842,33 +14297,122 @@ class Solution:
 - 相似题：单词搜索 II、前缀匹配。
 - 记忆卡片：Trie 把公共前缀合并成树，单词结束靠 end 标记。
 
+
+
+
+
+```
+children = {
+    "a": a对应的节点,
+    "b": b对应的节点,
+    "c": c对应的节点,
+}
+```
+
+```python
+class TrieNode:
+    def __init__(self):
+        # key 是下一个字符，
+        # value 是这个字符对应的子节点
+        self.children = {}
+
+        # 表示是否有一个完整单词在当前节点结束
+        self.is_end = False
+
+
+class Trie:
+    def __init__(self):
+        # 根节点本身不代表任何字符
+        self.root = TrieNode()
+
+    def insert(self, word: str) -> None:
+        current = self.root
+
+        # 沿着单词中的字符逐个向下走
+        for character in word:
+            # 当前节点没有这个字符对应的孩子，
+            # 就创建一个新节点
+            if character not in current.children:
+                current.children[character] = TrieNode()
+
+            # 移动到对应的子节点
+            current = current.children[character]
+
+        # 所有字符处理完成，标记单词结束
+        current.is_end = True
+
+    def search(self, word: str) -> bool:
+        current = self.root
+
+        for character in word:
+            # 缺少任何一个字符，说明单词不存在
+            if character not in current.children:
+                return False
+
+            current = current.children[character]
+
+        # 路径存在还不够，
+        # 最后一个节点必须是完整单词的结尾
+        return current.is_end
+
+    def startsWith(self, prefix: str) -> bool:
+        current = self.root
+
+        for character in prefix:
+            # 前缀路径中断，说明不存在这个前缀
+            if character not in current.children:
+                return False
+
+            current = current.children[character]
+
+        # 只要整个前缀路径存在即可，
+        # 不要求最后节点是完整单词结尾
+        return True
+```
+
+
+简化版
+将字符匹配的逻辑提取了出来
+
 ```python
 class Trie:
     def __init__(self):
-        self.children = {}
-        self.is_word_end = False
-
-    def insert(self, word: str) -> None:
-        node = self
-        for character in word:
-            node = node.children.setdefault(character, Trie())
-        node.is_word_end = True
+        self.root = TrieNode()
 
     def _find_node(self, text):
-        node = self
+        current = self.root
+
         for character in text:
-            if character not in node.children:
+            if character not in current.children:
                 return None
-            node = node.children[character]
-        return node
 
-    def search(self, word: str) -> bool:
+            current = current.children[character]
+
+        return current
+
+    def insert(self, word):
+        current = self.root
+
+        for character in word:
+            if character not in current.children:
+                current.children[character] = TrieNode()
+
+            current = current.children[character]
+
+        current.is_end = True
+
+    def search(self, word):
         node = self._find_node(word)
-        return bool(node and node.is_word_end)
 
-    def startsWith(self, prefix: str) -> bool:
+        return (
+            node is not None
+            and node.is_end
+        )
+
+    def startsWith(self, prefix):
         return self._find_node(prefix) is not None
 ```
+
 
 #### 详细分析、小例子与代码执行流程
 插入 `apple` 后，`startsWith("app")` 为 True，因为路径存在；但 `search("app")` 为 False，除非单独插入过 `app`。
@@ -15630,16 +16174,58 @@ class Solution:
 - 相似题：整数反转、验证回文串。
 - 记忆卡片：回文数只需反转后一半，前半后半比较。
 
+最简单的写法
+```python
+class Solution:
+    def isPalindrome(self, x: int) -> bool:
+        text = str(x)
+        return text == text[::-1]
+```
+
+
+
+
+
+```
+当：
+
+remaining <= reversed_half
+
+说明后半部分已经取出了一半或者多取了中间一位，不需要继续处理。
+
+如果继续循环，就会处理超过一半的数字，失去“前半和后半比较”的意义。
+```
+
+
 ```python
 class Solution:
     def isPalindrome(self, remaining: int) -> bool:
-        if remaining < 0 or (remaining % 10 == 0 and remaining != 0):
+        # 负数不可能是回文数；
+        # 除了 0 以外，末尾是 0 的数字也不可能是回文数
+        if (
+            remaining < 0
+            or (remaining % 10 == 0 and remaining != 0)
+        ):
             return False
+
         reversed_half = 0
+
+        # 不断把 remaining 的个位转移到 reversed_half
+        # 当 reversed_half 大于等于 remaining 时，
+        # 说明已经处理了一半数字
         while remaining > reversed_half:
-            reversed_half = reversed_half * 10 + remaining % 10
+            reversed_half = (
+                reversed_half * 10
+                + remaining % 10
+            )
             remaining //= 10
-        return remaining == reversed_half or remaining == reversed_half // 10
+
+        # 偶数位：两半直接相等
+        # 奇数位：去掉 reversed_half 的中间数字后再比较
+        return (
+            remaining == reversed_half
+            or remaining == reversed_half // 10#（奇数个位数的情况，最后一个数是中间呢个数）
+        )
 ```
 
 #### 详细分析、小例子与代码执行流程
@@ -15778,24 +16364,45 @@ n=3。根可以是 1、2、3。根为 2 时左右各一个节点，只有 1 种�
 - 相似题：Rand10、蓄水池抽样。
 - 记忆卡片：公平洗牌，每个位置从剩余元素中随机挑一个。
 
+
+
+```
+[尚未固定的部分 | 已经固定的部分]
+
+
+每次随机选都是从未固定的部分选出来一个的。
+```
+
 ```python
+import random
+
+
 class Solution:
     def __init__(self, nums):
+        # 保存原数组副本，reset 时使用
         self.original = nums[:]
 
     def reset(self):
+        # 返回原数组的副本，
+        # 防止外部修改 self.original
         return self.original[:]
 
     def shuffle(self):
-        import random
-
+        # 每次都从原数组的副本开始打乱
         shuffled = self.original[:]
-        for index in range(len(shuffled)):
-            swap_index = random.randint(index, len(shuffled) - 1)
-            shuffled[index], shuffled[swap_index] = (
-                shuffled[swap_index],
+
+        # 从最后一个位置开始，逐个确定最终元素
+        for index in range(len(shuffled) - 1, 0, -1):
+            # 从还没有固定的位置 [0, index] 中
+            # 随机选择一个元素
+            random_index = random.randint(0, index)
+
+            # 将随机选中的元素放到 index 的最终位置
+            shuffled[index], shuffled[random_index] = (
+                shuffled[random_index],
                 shuffled[index],
             )
+
         return shuffled
 ```
 
@@ -17333,6 +17940,63 @@ def add36(first, second):
     return "".join(reversed(result))
 ```
 
+
+注释版
+```python
+def add36(first: str, second: str) -> str:
+    # 下标就是字符代表的数值
+    digits = "0123456789abcdefghijklmnopqrstuvwxyz"
+
+    # 建立“字符 → 数值”的映射
+    value_by_character = {
+        character: value
+        for value, character in enumerate(digits)
+    }
+
+    # 两个指针从两个字符串的最后一位开始
+    first_index = len(first) - 1
+    second_index = len(second) - 1
+
+    carry = 0
+    result = []
+
+    while (
+        first_index >= 0
+        or second_index >= 0
+        or carry
+    ):
+        # 取出第一个数的当前位，缺少则补 0
+        if first_index >= 0:
+            first_character = first[first_index].lower()
+            first_digit = value_by_character[first_character]
+        else:
+            first_digit = 0
+
+        # 取出第二个数的当前位，缺少则补 0
+        if second_index >= 0:
+            second_character = second[second_index].lower()
+            second_digit = value_by_character[second_character]
+        else:
+            second_digit = 0
+
+        # 当前两位加上上一轮产生的进位
+        total = first_digit + second_digit + carry
+
+        # 当前位的数值是 total % 36，
+        # 再通过 digits 将数值转换成对应字符
+        current_digit = total % 36
+        result.append(digits[current_digit])
+
+        # 计算向前一位的进位
+        carry = total // 36
+
+        # 两个指针向左移动
+        first_index -= 1
+        second_index -= 1
+
+    # 结果按照从低位到高位的顺序产生，所以要反转
+    return "".join(reversed(result))
+```
 #### 详细分析、小例子与代码执行流程
 `z + 1` 中，z 表示 35，35+1=36，所以当前位为 0，进位 1，结果是 `10`。
 
