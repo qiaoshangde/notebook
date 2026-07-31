@@ -18470,15 +18470,29 @@ n=12，可以用 `4+4+4`，数量 3；n=13 可以用 `9+4`，数量 2。
 ```python
 class Solution:
     def simplifyPath(self, path: str) -> str:
+        # 栈中保存最终路径中的有效目录
         stack = []
+
+        # 使用 "/" 将路径切分成多个部分
         for part in path.split("/"):
+            # 空字符串来自连续斜杠；
+            # "." 表示当前目录；
+            # 两者都不需要处理
             if part == "" or part == ".":
                 continue
+
+            # ".." 表示返回上一级目录
             if part == "..":
+                # 只有栈中存在目录时才能返回
                 if stack:
                     stack.pop()
+
             else:
+                # 普通目录名，进入该目录
                 stack.append(part)
+
+        # 使用 "/" 重新连接目录，
+        # 并在开头补上根目录斜杠
         return "/" + "/".join(stack)
 ```
 
