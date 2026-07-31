@@ -96,7 +96,7 @@
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "codetop前200题题解手册 的大纲"
+              "title": "大纲"
             }
           }
         ],
@@ -294,6 +294,9 @@
   },
   "active": "923345c7839c249f",
   "lastOpenFiles": [
+    "八股/算法题/images/Pasted image 20260731184520.png",
+    "八股/算法题/images/Pasted image 20260731184303.png",
+    "八股/算法题/反转链表II-头插法演示.svg",
     "八股/算法题/images/Pasted image 20260731130151.png",
     "未命名 1.base",
     "未命名.base",
@@ -337,9 +340,6 @@
     "八股/算法题/images/Pasted image 20260429213636.png",
     "八股/算法题/images/Pasted image 20260429213634.png",
     "八股/算法题/images/Pasted image 20260427133930.png",
-    "八股/算法题/images/Pasted image 20260427132345.png",
-    "八股/算法题/images/Pasted image 20260427132318.png",
-    "八股/算法题/images/Pasted image 20260427130942.png",
     "未命名.canvas",
     "未命名 1.canvas"
   ]

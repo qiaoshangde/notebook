@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1040" viewBox="0 0 1400 1040">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L10,3 L0,6 Z" fill="#374151"/>
+    </marker>
+    <marker id="redArrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L10,3 L0,6 Z" fill="#dc2626"/>
+    </marker>
+    <style>
+      .title { font: 700 28px 'Microsoft YaHei', sans-serif; fill: #111827; }
+      .label { font: 600 20px 'Microsoft YaHei', sans-serif; fill: #374151; }
+      .code { font: 19px Consolas, monospace; fill: #7f1d1d; }
+      .num { font: 700 26px 'Microsoft YaHei', sans-serif; fill: #111827; text-anchor: middle; dominant-baseline: middle; }
+      .node { fill: #f3f4f6; stroke: #6b7280; stroke-width: 3; }
+      .prev { fill: #bfdbfe; stroke: #2563eb; }
+      .cur { fill: #fed7aa; stroke: #ea580c; }
+      .next { fill: #bbf7d0; stroke: #16a34a; }
+      .edge { stroke: #374151; stroke-width: 4; fill: none; marker-end: url(#arrow); }
+      .changed { stroke: #dc2626; stroke-width: 5; fill: none; marker-end: url(#redArrow); }
+      .panel { fill: #ffffff; stroke: #d1d5db; stroke-width: 2; rx: 10; }
+    </style>
+  </defs>
+
+  <rect width="1400" height="1040" fill="#f9fafb"/>
+
+  <!-- Panel 1 -->
+  <rect class="panel" x="30" y="25" width="1340" height="220"/>
+  <text class="title" x="60" y="65">1. 初始位置：准备反转 [2, 4]</text>
+  <rect x="260" y="105" width="590" height="100" rx="12" fill="#fef3c7" opacity="0.65"/>
+  <g transform="translate(120,135)">
+    <rect class="node prev" x="0" y="0" width="90" height="60" rx="8"/><text class="num" x="45" y="30">1</text>
+    <rect class="node cur" x="180" y="0" width="90" height="60" rx="8"/><text class="num" x="225" y="30">2</text>
+    <rect class="node next" x="360" y="0" width="90" height="60" rx="8"/><text class="num" x="405" y="30">3</text>
+    <rect class="node" x="540" y="0" width="90" height="60" rx="8"/><text class="num" x="585" y="30">4</text>
+    <rect class="node" x="720" y="0" width="90" height="60" rx="8"/><text class="num" x="765" y="30">5</text>
+    <path class="edge" d="M90,30 H175"/><path class="edge" d="M270,30 H355"/><path class="edge" d="M450,30 H535"/><path class="edge" d="M630,30 H715"/>
+    <text class="label" x="0" y="-15" fill="#2563eb">previous</text>
+    <text class="label" x="185" y="-15" fill="#ea580c">current</text>
+    <text class="label" x="350" y="-15" fill="#16a34a">next_node</text>
+  </g>
+
+  <!-- Panel 2 -->
+  <rect class="panel" x="30" y="265" width="1340" height="220"/>
+  <text class="title" x="60" y="305">2. 第 1 轮：把节点 3 从原位置取出</text>
+  <text class="code" x="870" y="305">current.next = next_node.next</text>
+  <g transform="translate(120,365)">
+    <rect class="node prev" x="0" y="0" width="90" height="60" rx="8"/><text class="num" x="45" y="30">1</text>
+    <rect class="node cur" x="180" y="0" width="90" height="60" rx="8"/><text class="num" x="225" y="30">2</text>
+    <rect class="node next" x="400" y="75" width="90" height="60" rx="8"/><text class="num" x="445" y="105">3</text>
+    <rect class="node" x="540" y="0" width="90" height="60" rx="8"/><text class="num" x="585" y="30">4</text>
+    <rect class="node" x="720" y="0" width="90" height="60" rx="8"/><text class="num" x="765" y="30">5</text>
+    <path class="edge" d="M90,30 H175"/>
+    <path class="changed" d="M270,30 C350,30 450,30 535,30"/>
+    <path class="edge" d="M630,30 H715"/>
+    <text class="label" x="300" y="18" fill="#dc2626">2 直接指向 4</text>
+    <text class="label" x="390" y="158" fill="#16a34a">3 被取出</text>
+  </g>
+
+  <!-- Panel 3 -->
+  <rect class="panel" x="30" y="505" width="1340" height="220"/>
+  <text class="title" x="60" y="545">3. 第 1 轮：把节点 3 插到 previous 后面</text>
+  <text class="code" x="780" y="540">next_node.next = previous.next</text>
+  <text class="code" x="780" y="570">previous.next = next_node</text>
+  <g transform="translate(120,615)">
+    <rect class="node prev" x="0" y="0" width="90" height="60" rx="8"/><text class="num" x="45" y="30">1</text>
+    <rect class="node next" x="180" y="0" width="90" height="60" rx="8"/><text class="num" x="225" y="30">3</text>
+    <rect class="node cur" x="360" y="0" width="90" height="60" rx="8"/><text class="num" x="405" y="30">2</text>
+    <rect class="node" x="540" y="0" width="90" height="60" rx="8"/><text class="num" x="585" y="30">4</text>
+    <rect class="node" x="720" y="0" width="90" height="60" rx="8"/><text class="num" x="765" y="30">5</text>
+    <path class="changed" d="M90,30 H175"/><path class="changed" d="M270,30 H355"/><path class="edge" d="M450,30 H535"/><path class="edge" d="M630,30 H715"/>
+    <text class="label" x="0" y="-15" fill="#2563eb">previous 固定</text>
+    <text class="label" x="335" y="-15" fill="#ea580c">current 仍是 2</text>
+  </g>
+
+  <!-- Panel 4 -->
+  <rect class="panel" x="30" y="745" width="1340" height="265"/>
+  <text class="title" x="60" y="785">4. 第 2 轮：再把节点 4 插到 previous 后面</text>
+  <g transform="translate(120,845)">
+    <rect class="node prev" x="0" y="0" width="90" height="60" rx="8"/><text class="num" x="45" y="30">1</text>
+    <rect class="node next" x="180" y="0" width="90" height="60" rx="8"/><text class="num" x="225" y="30">4</text>
+    <rect class="node" x="360" y="0" width="90" height="60" rx="8"/><text class="num" x="405" y="30">3</text>
+    <rect class="node cur" x="540" y="0" width="90" height="60" rx="8"/><text class="num" x="585" y="30">2</text>
+    <rect class="node" x="720" y="0" width="90" height="60" rx="8"/><text class="num" x="765" y="30">5</text>
+    <path class="changed" d="M90,30 H175"/><path class="changed" d="M270,30 H355"/><path class="edge" d="M450,30 H535"/><path class="edge" d="M630,30 H715"/>
+  </g>
+  <text class="label" x="120" y="970">记忆：固定 previous 和 current，不断把 current 后面的节点插到 previous 后面。</text>
+</svg>

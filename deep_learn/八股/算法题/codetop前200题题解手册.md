@@ -432,11 +432,11 @@ def backtrack(start):
 
 这三类题都使用“做选择 -> 递归 -> 撤销选择”的回溯框架，但它们枚举的对象不同。判断题型时，先问自己两个问题：**顺序是否重要？是不是每走到一个位置都要收集答案？**
 
-| 类型 | 顺序是否重要 | 什么时候收集答案 | 如何避免重复选择 | 典型题目 |
-| --- | --- | --- | --- | --- |
-| 子集 | 不重要 | 每个递归节点都是一个子集，进入递归后立即收集 | 用 `start`，下一层通常从 `i + 1` 开始 | 58. 子集 |
-| 组合 | 不重要 | 只有满足长度、目标和等条件时才收集 | 用 `start`；能否重复使用决定传 `i` 还是 `i + 1` | 65. 组合总和；113. 组合总和 II |
-| 排列 | 重要 | `path` 长度等于元素个数时收集 | 每一层从头枚举，用 `used` 记录当前路径已经使用的位置 | 15. 全排列；108. 全排列 II |
+| 类型  | 顺序是否重要 | 什么时候收集答案               | 如何避免重复选择                           | 典型题目                  |
+| --- | ------ | ---------------------- | ---------------------------------- | --------------------- |
+| 子集  | 不重要    | 每个递归节点都是一个子集，进入递归后立即收集 | 用 `start`，下一层通常从 `i + 1` 开始        | 58. 子集                |
+| 组合  | 不重要    | 只有满足长度、目标和等条件时才收集      | 用 `start`；能否重复使用决定传 `i` 还是 `i + 1` | 65. 组合总和；113. 组合总和 II |
+| 排列  | 重要     | `path` 长度等于元素个数时收集     | 每一层从头枚举，用 `used` 记录当前路径已经使用的位置     | 15. 全排列；108. 全排列 II   |
 
 例如有数字 `[1, 2]`：
 
@@ -772,6 +772,9 @@ if i >= 2 and 10 <= int(s[i - 2 : i]) <= 26:
 - 问“能不能/存不存在”：`or`
 - 问“多少种/总共有几种”：`+=`
 
+
+
+![[Pasted image 20260731184520.png]]
 #### 动态规划刷题顺序
 
 学习 DP 不建议按 CodeTop 题号刷，建议按状态设计难度分阶段。
@@ -1821,7 +1824,7 @@ class Solution:
             before = start
 ```
 
-写法二：边反转边接回
+写法二：边反转边接回(不太好记忆)**暂时不看了**
 
 这版不单独调用 `reverse`，而是把当前这一组直接反转到 `group_next` 前面。
 
@@ -1835,17 +1838,17 @@ class Solution:
             while node and k > 0:
                 node = node.next
                 k -= 1
-            return node
+            return node （k个一组的最后一个，也就是翻转后的第一个）
 
         while True:
             kth = get_kth(group_prev, k)
             if not kth:
                 break
 
-            group_next = kth.next
+            group_next = kth.next  #（要翻转了，将下一租第一个备份）
 
             prev = group_next
-            current = group_prev.next
+            current = group_prev.next #（这一组的第一个节点）
 
             while current != group_next:
                 next_node = current.next
@@ -2237,6 +2240,197 @@ class Solution:
         return s[start : end + 1]
 ```
 
+#### 方法二：动态规划（更复杂了，效率也更低了）
+
+因为一个子串同时由左端点和右端点确定。因此使用二维 DP。
+
+##### DP 状态定义
+
+```text
+dp[left][right] 表示：
+子串 s[left:right+1] 是否为回文子串。
+```
+
+其中：
+
+```text
+left  ：子串左端点
+right ：子串右端点
+```
+
+例如 `s="babad"`：
+
+```text
+dp[0][2] 表示子串 s[0:3] = "bab" 是否回文
+dp[1][3] 表示子串 s[1:4] = "aba" 是否回文
+dp[0][4] 表示子串 s[0:5] = "babad" 是否回文
+```
+
+
+> 本题不使用一维 `dp[i]`，而使用二维 `dp[left][right]`；它表示从 `left` 到 `right` 的连续子串是否回文。
+
+##### 状态转移
+
+子串 `s[left:right+1]` 要成为回文，需要满足：
+
+```text
+1. 左右两端字符相同：s[left] == s[right]
+2. 两端之间的子串也是回文：dp[left+1][right-1] == True
+```
+
+因此，当子串长度大于 `3` 时：
+
+```python
+dp[left][right] = (
+    s[left] == s[right]
+    and dp[left + 1][right - 1]
+)
+```
+
+例如判断 `"abccba"` 是否回文：
+
+```text
+两端 a == a
+中间子串 "bccb" 是回文
+所以 "abccba" 是回文
+```
+
+如果两端字符不同，子串一定不是回文：
+
+```python
+if s[left] != s[right]:
+    dp[left][right] = False
+```
+
+##### 初始化和短子串
+
+任何单个字符都是回文：
+
+```python
+dp[index][index] = True
+```
+
+对于长度为 `2` 的子串，例如 `"bb"`，只要两端相同就是回文。
+
+对于长度为 `3` 的子串，例如 `"aba"`，中间只有一个字符，它天然是回文，所以也只需要两端相同。
+
+因此可以统一写成：
+
+```python
+if s[left] == s[right]:
+    if length <= 3:
+        dp[left][right] = True
+    else:
+        dp[left][right] = dp[left + 1][right - 1]
+```
+
+##### 为什么要按子串长度从小到大遍历
+
+`dp[left][right]` 依赖：
+
+```python
+dp[left + 1][right - 1]
+```
+
+也就是依赖去掉左右两端后的更短子串。所以必须先算短子串，再算长子串：
+
+```text
+先处理长度1
+再处理长度2
+再处理长度3
+...
+最后处理整个字符串
+```
+
+##### DP 完整代码
+
+```python
+class Solution:
+    def longestPalindrome(self, s: str) -> str:
+        string_length = len(s)
+
+        if string_length < 2:
+            return s
+
+        # dp[left][right] 表示：
+        # s[left:right+1] 是否为回文子串
+        dp = [
+            [False] * string_length
+            for _ in range(string_length)
+        ]
+
+        # 任意单个字符都是回文子串
+        for index in range(string_length):
+            dp[index][index] = True
+
+        # 初始最长回文子串为第一个字符
+        longest_start = 0
+        longest_length = 1
+
+        # 按子串长度从小到大填表
+        for length in range(2, string_length + 1):
+            # 枚举子串左端点
+            for left in range(
+                0,
+                string_length - length + 1,
+            ):
+                right = left + length - 1
+
+                # 两端不同，一定不是回文
+                if s[left] != s[right]:
+                    dp[left][right] = False
+                    continue
+
+                # 长度为2或3时，两端相同即为回文
+                if length <= 3:
+                    dp[left][right] = True
+                else:
+                    # 长度大于3时，还要看内部子串
+                    dp[left][right] = (
+                        dp[left + 1][right - 1]
+                    )
+
+                # 当前子串是回文，并且更长时更新答案
+                if (
+                    dp[left][right]
+                    and length > longest_length
+                ):
+                    longest_start = left
+                    longest_length = length
+
+        return s[
+            longest_start:
+            longest_start + longest_length
+        ]
+```
+
+##### 状态转移总结
+
+```text
+状态：dp[left][right] 表示 s[left:right+1] 是否回文
+
+初始化：dp[i][i] = True
+
+转移：
+1. s[left] != s[right]
+   dp[left][right] = False
+
+2. s[left] == s[right] 且 length <= 3
+   dp[left][right] = True
+
+3. s[left] == s[right] 且 length > 3
+   dp[left][right] = dp[left+1][right-1]
+```
+
+##### DP 方法的复杂度
+
+```text
+时间复杂度：O(n²)
+空间复杂度：O(n²)
+```
+
+中心扩展法的时间复杂度也是 `O(n²)`，但只需要 `O(1)` 额外空间。因此，DP 方法更适合用来学习区间状态转移，中心扩展法的空间效率更好。
+
 
 #### 详细分析、小例子与代码执行流程
 回文串的特点是左右对称。与其枚举所有子串再判断，不如枚举“中心”，然后向两边扩展。中心有两种：单个字符中心和两个字符之间的中心。
@@ -2565,13 +2759,13 @@ class Solution:
             mid = (left + right) // 2
             if nums[mid] == target:
                 return mid
-            if nums[left] <= nums[mid]:
-                if nums[left] <= target < nums[mid]:
+            if nums[left] <= nums[mid]:#left到mid是有序的
+                if nums[left] <= target < nums[mid]:#目标在有序的里面
                     right = mid - 1
                 else:
                     left = mid + 1
             else:
-                if nums[mid] < target <= nums[right]:
+                if nums[mid] < target <= nums[right]:#目标在有序的里面
                     left = mid + 1
                 else:
                     right = mid - 1
@@ -2736,7 +2930,7 @@ class Solution:
 class Solution:
     def isValid(self, text: str) -> bool:
         mapping = {")": "(", "]": "[", "}": "{"}
-        stack = []
+        stack = []# 保存还没有被匹配的左括号
         for bracket in text:
             if bracket in mapping:
                 if not stack or stack[-1] != mapping[bracket]:
@@ -2747,6 +2941,54 @@ class Solution:
         return not stack
 ```
 
+
+
+注释版
+
+```python
+class Solution:
+    def isValid(self, text: str) -> bool:
+        # key是右括号，value是对应的左括号
+        mapping = {
+            ")": "(",
+            "]": "[",
+            "}": "{",
+        }
+
+        # 保存还没有被匹配的左括号
+        stack = []
+
+        for bracket in text:
+            # bracket在mapping中，说明当前是右括号
+            if bracket in mapping:
+                # 栈为空：
+                # 当前右括号没有对应的左括号
+                #
+                # 栈顶不匹配：
+                # 最近的左括号类型不正确
+                if (
+                    not stack
+                    or stack[-1] != mapping[bracket]
+                ):
+                    return False
+
+                # 当前右括号与栈顶左括号匹配，
+                # 弹出这个已经匹配完成的左括号
+                stack.pop()
+
+            else:
+                # 题目只包含括号；
+                # 不是右括号，就一定是左括号
+                stack.append(bracket)
+
+        # 栈为空，说明所有左括号都被匹配
+        return not stack
+```
+
+```
+- 时间复杂度：`O(n)`，每个括号最多入栈、出栈一次
+- 空间复杂度：`O(n)`，最坏情况全部是左括号
+```
 
 #### 详细分析、小例子与代码执行流程
 括号匹配符合“后出现的左括号先被匹配”，这就是栈的后进先出。遇到左括号就入栈，遇到右括号就检查栈顶是不是对应的左括号。
@@ -2898,6 +3140,42 @@ class Solution:
 ```
 
 
+注释版
+```python
+class Solution:
+    def maxProfit(self, prices):
+        if not prices:
+            return 0
+
+        n = len(prices)
+        dp = [[0, 0] for _ in range(n)]
+
+        # 第 0 天结束后不持股
+        dp[0][0] = 0
+
+        # 第 0 天买入股票
+        dp[0][1] = -prices[0]
+
+        for i in range(1, n):
+            # 今天不持股：
+            # 1. 昨天就不持股
+            # 2. 昨天持股，今天卖出
+            dp[i][0] = max(
+                dp[i - 1][0],
+                dp[i - 1][1] + prices[i],
+            )
+
+            # 今天持股：
+            # 1. 继续持有昨天的股票
+            # 2. 今天第一次买入
+            dp[i][1] = max(
+                dp[i - 1][1],
+                -prices[i],
+            )
+
+        return dp[n - 1][0]
+```
+
 #### 详细分析、小例子与代码执行流程
 只能交易一次，所以每天结束后只有两种状态：手里没有股票，或手里有一股股票。`dp[i][0]` 表示第 i 天结束后不持股的最大利润；`dp[i][1]` 表示第 i 天结束后持股的最大利润。
 
@@ -2938,6 +3216,8 @@ class Solution:
 - 记忆卡片：局部反转用头插，`cur` 留在组尾不动。
 
 写法一：头插法
+
+![[Pasted image 20260731184303.png]]
 
 ```python
 class Solution:
@@ -3174,23 +3454,34 @@ DP 版本虽然是 O(n²)，但最适合学习状态定义：每个位置都回�
 
 ```python
 class Solution:
-    def lowestCommonAncestor(self, root, p, queue):
+    def lowestCommonAncestor(self, root, p, q):
+        # 当前子树为空，说明没有找到 p 或 q
         if not root:
             return None
 
-        if root == p or root == queue:
+        # 当前节点就是 p 或 q
+        if root == p or root == q:
             return root
 
-        left = self.lowestCommonAncestor(root.left, p, queue)
-        right = self.lowestCommonAncestor(root.right, p, queue)
+        # 分别在左右子树中寻找 p 和 q
+        left = self.lowestCommonAncestor(root.left, p, q)
+        right = self.lowestCommonAncestor(root.right, p, q)
 
+        # 左右子树各有结果，当前节点就是最近公共祖先
         if left and right:
             return root
 
+        # 只有左子树有结果
         if left:
             return left
 
-        return right
+        # 只有右子树有结果
+        elif right:
+            return right
+
+        # 左右子树都没有找到
+        else:
+            return None
 ```
 
 
@@ -3214,10 +3505,10 @@ class Solution:
 #### 本题代码运行时的真实流程
 1. 先抓住本题主线：空节点返回空；命中 `p/q` 返回当前节点；递归左右；左右都非空返回 root，否则返回非空一侧。
 2. 代码对外入口是 `lowestCommonAncestor`，主要依赖的结构是：递归返回“当前子树里找到的目标节点或祖先”。
-3. 初始化先执行 `left = self.lowestCommonAncestor(root.left, p, queue)`。这一阶段准备后续循环或递归需要的状态。
+3. 初始化先执行 `left = self.lowestCommonAncestor(root.left, p, q)`。这一阶段准备后续循环或递归需要的状态。
 4. 主过程由递归推进：每次只解决一个更小的子问题，命中递归出口后再把结果逐层返回或组合。
 5. 第一个关键判断是 `if not root:`。它负责处理边界、命中答案或决定下一步走向。
-6. 状态更新重点看 `left = self.lowestCommonAncestor(root.left, p, queue)`。更新后的值会被下一轮循环或上一层递归继续使用。
+6. 状态更新重点看 `left = self.lowestCommonAncestor(root.left, p, q)`。更新后的值会被下一轮循环或上一层递归继续使用。
 7. 最后通过 `return right` 返回结果。手算时应确认这里返回的是最终状态，而不是中间变量。
 
 ### 23. 合并 K 个排序链表
@@ -3728,10 +4019,10 @@ class Solution:
 
 哈希集合法
 
+
+```
 时间复杂度：O(n)
 空间复杂度：O(n)
-```
-
 ```
 
 ```python
