@@ -2063,7 +2063,6 @@ class Solution:
         return result
 ```
 
-
 #### 详细分析、小例子与代码执行流程
 连续子数组的关键是“以当前数字结尾”。如果前面累积出来的和已经是负数，那么把它接到当前数字前面只会拖累当前数字，不如从当前数字重新开始。
 
@@ -4640,6 +4639,227 @@ class Solution:
 ```
 
 
+
+注释版
+```python
+class Solution:
+    def findMedianSortedArrays(
+        self,
+        nums1,
+        nums2,
+    ) -> float:
+        # 确保只在较短数组上进行二分
+        shorter = nums1
+        longer = nums2
+
+        if len(shorter) > len(longer):
+            shorter, longer = longer, shorter
+
+        shorter_length = len(shorter)
+        longer_length = len(longer)
+
+        # shorter_cut 可以取0～shorter_length
+        left = 0
+        right = shorter_length
+
+        # 左半部分应该拥有的元素数量
+        left_half_size = (
+            shorter_length
+            + longer_length
+            + 1
+        ) // 2
+
+        while left <= right:
+            # 短数组放进左半部分的元素数量
+            shorter_cut = (left + right) // 2
+
+            # 长数组放进左半部分的元素数量
+            longer_cut = (
+                left_half_size - shorter_cut
+            )
+
+            # 短数组切分线左边的最大值
+            shorter_left = (
+                shorter[shorter_cut - 1]
+                if shorter_cut > 0
+                else float("-inf")
+            )
+
+            # 短数组切分线右边的最小值
+            shorter_right = (
+                shorter[shorter_cut]
+                if shorter_cut < shorter_length
+                else float("inf")
+            )
+
+            # 长数组切分线左边的最大值
+            longer_left = (
+                longer[longer_cut - 1]
+                if longer_cut > 0
+                else float("-inf")
+            )
+
+            # 长数组切分线右边的最小值
+            longer_right = (
+                longer[longer_cut]
+                if longer_cut < longer_length
+                else float("inf")
+            )
+
+            # 找到了正确切分
+            if (
+                shorter_left <= longer_right
+                and longer_left <= shorter_right
+            ):
+                left_max = max(
+                    shorter_left,
+                    longer_left,
+                )
+
+                # 总长度为奇数：
+                # 中位数就是左半部分最大值
+                if (
+                    shorter_length + longer_length
+                ) % 2 == 1:
+                    return left_max
+
+                # 总长度为偶数：
+                # 中位数是中间两个数字的平均值
+                right_min = min(
+                    shorter_right,
+                    longer_right,
+                )
+
+                return (left_max + right_min) / 2
+
+            # 短数组左边取得太多，切分线向左
+            if shorter_left > longer_right:
+                right = shorter_cut - 1
+
+            # 短数组左边取得太少，切分线向右
+            else:
+                left = shorter_cut + 1
+```
+
+#### 总长度为奇数时，中位数放在左边还是右边
+
+当总长度为奇数时，两边不可能完全一样多，必然有一边比另一边多一个元素。这个多出来的元素就是中位数。
+
+例如有序数组：
+
+```text
+[1, 2, 3, 4, 5]
+```
+
+可以采用两种合法的切分约定。
+
+##### 约定一：奇数时左边多一个
+
+```text
+左半部分：[1, 2, 3]
+右半部分：[4, 5]
+```
+
+中位数 `3` 被分到了左半部分，而且它是左半部分的最大值。因此奇数时返回：
+
+```python
+left_max = max(shorter_left, longer_left)
+return left_max
+```
+
+要让左边在奇数时多一个，左半部分数量应该计算为：
+
+```python
+left_half_size = (total_length + 1) // 2
+```
+
+例如：
+
+```text
+总长度为 5：(5 + 1) // 2 = 3，左边3个、右边2个
+总长度为 6：(6 + 1) // 2 = 3，左边3个、右边3个
+```
+
+所以文档当前代码的约定是：
+
+```text
+偶数长度：左右一样多
+奇数长度：左边多一个，中位数是 left_max
+```
+
+##### 约定二：奇数时右边多一个
+
+同一个数组也可以切分为：
+
+```text
+左半部分：[1, 2]
+右半部分：[3, 4, 5]
+```
+
+此时中位数 `3` 被分到右半部分，它是右半部分的最小值。因此奇数时应该返回：
+
+```python
+right_min = min(shorter_right, longer_right)
+return right_min
+```
+
+要让右边在奇数时多一个，左半部分数量应该改为：
+
+```python
+left_half_size = total_length // 2
+```
+
+例如：
+
+```text
+总长度为 5：5 // 2 = 2，左边2个、右边3个
+总长度为 6：6 // 2 = 3，左边3个、右边3个
+```
+
+这种约定是：
+
+```text
+偶数长度：左右一样多
+奇数长度：右边多一个，中位数是 right_min
+```
+
+##### 两种约定的有序条件不变
+
+无论奇数时让左边多一个，还是让右边多一个，正确切分都必须满足：
+
+```python
+shorter_left <= longer_right
+and longer_left <= shorter_right
+```
+
+这两个条件只负责保证：
+
+```text
+左半部分所有元素 <= 右半部分所有元素
+```
+
+它们不负责决定哪一边多一个。哪一边多一个，是由 `left_half_size` 的计算方式决定的。
+
+##### 总长度为偶数时，两种约定完全相同
+
+当总长度为偶数时，左右两边的数量相同。中位数都是：
+
+```python
+left_max = max(shorter_left, longer_left)
+right_min = min(shorter_right, longer_right)
+median = (left_max + right_min) / 2
+```
+
+因此两种约定只在总长度为奇数时存在下面的区别：
+
+| 奇数时的约定 | `left_half_size` | 奇数时返回 |
+|---|---|---|
+| 左边多一个 | `(total_length + 1) // 2` | `left_max` |
+| 右边多一个 | `total_length // 2` | `right_min` |
+
+> 方便记忆：奇数时多出来的那一个元素就是中位数。左边多一个就取左边最大值，右边多一个就取右边最小值。
+
+
 #### 详细分析、小例子与代码执行流程
 中位数的本质是把两个有序数组合起来后切成左右两半，左边数量等于右边或多一个，并且左边所有数都不大于右边所有数。我们不真的合并，而是在两个数组上各切一刀。
 
@@ -6564,19 +6784,124 @@ class Solution:
 - 相似题：寻找重复数、数组中重复的数字。
 - 记忆卡片：数字 x 应该回到坑位 x-1。
 
+```
+什么是原地哈希
+
+普通哈希集合方法是把出现过的正数存起来：
+
+numbers = set(nums)
+
+然后从 1 开始查找：
+
+number = 1
+
+while number in numbers:
+
+number += 1
+
+return number
+
+这种写法容易理解，但使用了 O(n) 额外空间。
+
+原地哈希的思路是：
+
+直接把原数组当成哈希表，让每个数字回到它应该在的位置。
+```
+
+
 ```python
 class Solution:
     def firstMissingPositive(self, nums) -> int:
-        n = len(nums)
-        for i in range(n):
-            while 1 <= nums[i] <= n and nums[nums[i] - 1] != nums[i]:
-                j = nums[i] - 1
-                nums[i], nums[j] = nums[j], nums[i]
-        for i, x in enumerate(nums):
-            if x != i + 1:
-                return i + 1
-        return n + 1
+        length = len(nums)
+
+        # 第一阶段：让每个有效数字回到正确位置
+        for index in range(length):
+            while (
+                1 <= nums[index] <= length
+                and nums[nums[index] - 1] != nums[index]
+                #nums[nums[index] - 1] != nums[index]有两个作用。一个是防止重复数陷入死循环，一个是避免无意义的交换是吗
+            ):
+                # 数字 x 应该放到下标 x - 1
+                target_index = nums[index] - 1
+
+                nums[index], nums[target_index] = (
+                    nums[target_index],
+                    nums[index],
+                )
+
+        # 第二阶段：寻找第一个数字和位置不匹配的地方
+        for index, number in enumerate(nums):
+            # 下标 index 上应该放数字 index + 1
+            if number != index + 1:
+                return index + 1
+
+        # 1～length 全部存在
+        return length + 1
 ```
+
+#### 为什么答案一定在 `[1, n+1]`
+
+假设数组长度是 `n`，我们只需要关心正整数 `1～n`。
+
+如果 `1～n` 中有数字没有出现，那么答案就是其中最小的缺失数字，必然在 `[1,n]` 中。如果 `1～n` 全部出现，数组的 `n` 个位置已经被这 `n` 个数占满，下一个没有出现的正整数就是 `n+1`。
+
+例如数组长度为 `4`：
+
+```text
+[1, 3, 4, 8] ：1～4 中缺少 2，答案是 2
+[1, 2, 3, 4] ：1～4 全部出现，答案是 5
+```
+
+所以答案只可能在 `[1,n+1]` 中。小于等于 `0` 的数字和大于 `n` 的数字，都不会影响最小缺失正整数，可以在归位时忽略。
+
+#### `while` 条件的详细分析
+
+```python
+while (
+    1 <= nums[index] <= length
+    and nums[nums[index] - 1] != nums[index]
+):
+```
+
+这个条件表示：
+
+> 只要当前数字在有效范围内，并且它的正确位置还没有相同数字，就继续把它交换到正确位置。
+
+数字 `x` 应该放在下标 `x-1` 的位置：
+
+```text
+数字 1 -> 下标 0
+数字 2 -> 下标 1
+数字 3 -> 下标 2
+```
+
+第一个条件：
+
+```python
+1 <= nums[index] <= length
+```
+
+它保证当前数字属于 `1～length`。只有这些数字才能在长度为 `length` 的数组中找到合法坑位。例如长度为 `4` 时，`1～4` 分别可以放在下标 `0～3`；`-1`、0和8则没有需要放置的合法位置。这个条件也避免了计算出越界的目标下标。
+
+第二个条件：
+
+```python
+nums[nums[index] - 1] != nums[index]
+```
+
+可以逐层拆开：
+
+```text
+nums[index]           ：当前准备归位的数字
+nums[index] - 1       ：该数字应该去的目标下标
+nums[nums[index] - 1] ：目标位置上现在存放的数字
+```
+
+它表示目标位置上还不是当前数字，所以需要交换。这个条件还能防止重复数字造成死循环。
+
+例如 `nums = [1,1]`，处理第二个 `1` 时，它的目标下标是 `0`，但 `nums[0]` 已经是 `1`。如果继续交换，数组交换前后都是 `[1,1]`，状态永远不会改变，`while` 就会无限执行。因此目标位置已有相同数字时，必须停止交换。
+
+之所以使用 `while` 而不是 `if`，是因为交换后当前位置会换回一个新数字，新数字可能也需要归位。例如 `[3,4,-1,1]` 中，把 `4` 放到下标 `3` 后，当前位置换回了 `1`，还需要继续把 `1` 放到下标 `0`。
 
 
 #### 详细分析、小例子与代码执行流程
@@ -6966,21 +7291,52 @@ class Solution:
 ```python
 class Solution:
     def decodeString(self, encoded: str) -> str:
+        # 栈中保存：
+        # (进入当前括号前的字符串, 当前括号重复次数)
         stack = []
-        current = ""
+
+        # 当前层已经构造出的字符串
+        current_string = ""
+
+        # 当前读取到的重复次数
         repeat_count = 0
+
         for character in encoded:
+            # 情况一：当前字符是数字
             if character.isdigit():
-                repeat_count = repeat_count * 10 + int(character)
+                # 数字可能有多位，例如 12[a]
+                repeat_count = (
+                    repeat_count * 10 + int(character)
+                )
+
+            # 情况二：遇到左括号
             elif character == "[":
-                stack.append((current, repeat_count))
-                current, repeat_count = "", 0
+                # 保存进入括号前的现场
+                stack.append(
+                    (current_string, repeat_count)  #current_string出栈时就是前面已经有的字符，也就是外层构造出来的字符
+                )
+
+                # 开始处理括号中的新字符串
+                current_string = ""
+                repeat_count = 0
+
+            # 情况三：遇到右括号
             elif character == "]":
+                # 恢复进入当前括号前的现场
                 previous_string, times = stack.pop()
-                current = previous_string + current * times
+
+                # 外层已有字符串
+                # + 当前括号字符串重复 times 次
+                current_string = (
+                    previous_string
+                    + current_string * times
+                )
+
+            # 情况四：当前字符是普通字母
             else:
-                current += character
-        return current
+                current_string += character
+
+        return current_string
 ```
 
 
@@ -7438,6 +7794,115 @@ class Solution:
             if sample < 40:
                 return sample % 10 + 1
 ```
+
+#### 为什么两次 `rand7()` 能构造 49 种等概率结果
+
+`rand7()` 会等概率返回 `1～7`。减去 `1` 后：
+
+```python
+row = rand7() - 1
+column = rand7() - 1
+```
+
+`row` 和 `column` 都会等概率落在 `0～6`。可以把第一次结果看成行号，第二次结果看成列号，这样就得到一个 `7×7` 的表格，共有：
+
+```text
+7 * 7 = 49
+```
+
+种组合。每一个 `(row,column)` 组合的概率都是：
+
+```text
+1/7 * 1/7 = 1/49
+```
+
+代码使用：
+
+```python
+sample = row * 7 + column
+```
+
+将二维坐标按行展开成 `0～48` 的连续整数：
+
+```text
+          column
+        0  1  2  3  4  5  6
+row 0   0  1  2  3  4  5  6
+row 1   7  8  9 10 11 12 13
+row 2  14 15 16 17 18 19 20
+row 3  21 22 23 24 25 26 27
+row 4  28 29 30 31 32 33 34
+row 5  35 36 37 38 39 40 41
+row 6  42 43 44 45 46 47 48
+```
+
+每个 `sample` 只对应唯一一个 `(row,column)`，因此 `0～48` 中每个数字的概率都是 `1/49`。
+
+#### 为什么只接受 `0～39`
+
+我们需要将等概率情况平均分成 `10` 组。`49` 不能被 `10` 整除，如果直接对 `0～48` 取模：
+
+```python
+sample % 10
+```
+
+有些余数会对应 `5` 个 `sample`，有些只对应 `4` 个。例如：
+
+```text
+余数 0：0、10、20、30、40，共 5 个
+余数 9：9、19、29、39，共 4 个
+```
+
+这样不同结果的概率就不相同。
+
+不超过 `49` 且能被 `10` 整除的最大数是 `40`，所以只保留 `0～39` 这 `40` 种等概率结果，将 `40～48` 这 `9` 种结果拒绝并重新采样。这种方法叫作拒绝采样。
+
+#### 为什么 `sample % 10 + 1` 是均匀的
+
+在接受的 `0～39` 中，每个 `rand10()` 结果都恰好对应 `4` 个 `sample`：
+
+| 返回值 | 对应的 `sample` |
+|---:|---|
+| 1 | 0、10、20、30 |
+| 2 | 1、11、21、31 |
+| 3 | 2、12、22、32 |
+| 4 | 3、13、23、33 |
+| 5 | 4、14、24、34 |
+| 6 | 5、15、25、35 |
+| 7 | 6、16、26、36 |
+| 8 | 7、17、27、37 |
+| 9 | 8、18、28、38 |
+| 10 | 9、19、29、39 |
+
+所以每个返回值的概率都是：
+
+```text
+4 / 40 = 1 / 10
+```
+
+`sample % 10` 先得到 `0～9`，再加 `1` 就是题目要求的 `1～10`。
+
+#### 拒绝后重新采样为什么不会破坏均匀性
+
+如果 `sample` 落在 `40～48`，代码不返回任何数字，而是进入 `while True` 的下一轮，重新进行两次独立的 `rand7()` 调用。
+
+无论前面拒绝了多少次，最终成功的那一轮仍然只会在 `0～39` 这 `40` 个等概率结果中返回。前面被拒绝的结果完全不参与最终映射，所以不会改变 `1～10` 的概率。
+
+每轮接受的概率是 `40/49`，约为 `81.63%`，所以通常一两轮就能返回。
+
+#### 为什么不能直接使用两次 `rand7()` 的和
+
+两次 `rand7()` 的和不是均匀分布。例如：
+
+```text
+和为 2：只有 1+1 一种情况
+和为 3：有 1+2、2+1 两种情况
+和为 8：有 7 种情况
+```
+
+不同和的出现概率不同，后续再取模也不能保证 `1～10` 等概率。本题的关键不是“随便生成一个更大范围”，而是“先构造足够多的等概率基础结果，再平均分组”。
+
+> 一句话记忆：两次 `rand7()` 构造 49 个等概率格子，只取前 40 个；40 能平均分成 10 组，每组 4 个，剩余 9 个拒绝后重新采样。
 
 
 #### 详细分析、小例子与代码执行流程
@@ -9458,30 +9923,129 @@ class Solution:
 - 相似题：字符串解码、逆波兰表达式。
 - 记忆卡片：加减先入栈，乘除立刻和栈顶算。
 
+
+```
+这道题主要有三个难点：
+
+1. 数字可能有多位，例如 `123`。
+2. 乘除法的优先级高于加减法。
+3. 读取到新的运算符时，结算的是前一个运算符。
+   
+   
+   
+```
+
 ```python
 class Solution:
     def calculate(self, expression: str) -> int:
+        # 保存已经处理完成的每一项
         stack = []
+
+        # 当前正在读取的完整数字
         current_number = 0
+
+        # 当前数字前面的运算符
+        # 第一个数字前面可以看成有一个 "+"
         previous_operator = "+"
+
         for index, character in enumerate(expression):
+            # 当前字符是数字，继续组成多位数
             if character.isdigit():
-                current_number = current_number * 10 + int(character)
-            if (not character.isdigit() and character != " ") or index == len(
-                expression
-            ) - 1:
+                current_number = (
+                    current_number * 10
+                    + int(character)
+                )
+
+            # 遇到新的运算符，或者已经到达字符串末尾，
+            # 就使用 previous_operator 结算 current_number
+            if (
+                (
+                    not character.isdigit()
+                    and character != " "
+                )
+                or index == len(expression) - 1
+            ):
                 if previous_operator == "+":
                     stack.append(current_number)
+
                 elif previous_operator == "-":
                     stack.append(-current_number)
+
                 elif previous_operator == "*":
-                    stack.append(stack.pop() * current_number)
+                    previous_number = stack.pop()
+                    stack.append(
+                        previous_number * current_number
+                    )
+
                 elif previous_operator == "/":
-                    stack.append(int(stack.pop() / current_number))
+                    previous_number = stack.pop()
+
+                    # 题目要求除法结果向 0 截断
+                    stack.append(
+                        int(previous_number / current_number)
+                    )
+
+                # 当前遇到的运算符，
+                # 将作为下一个数字前面的运算符
                 previous_operator = character
+
+                # 当前数字已经处理完，重新开始读取
                 current_number = 0
+
+        # 加减已经通过正数、负数存入栈中
         return sum(stack)
 ```
+
+#### 为什么遇到运算符或字符串末尾时才结算
+
+代码中的这个条件：
+
+```python
+if (
+    (
+        not character.isdigit()
+        and character != " "
+    )
+    or index == len(expression) - 1
+):
+```
+
+核心目的是确认 `current_number` 是否已经读取完整。只有数字完整后，才能使用 `previous_operator` 对它进行结算。
+
+例如表达式 `"123+4"`，读取到 `1` 或 `2` 时都不能结算，因为后面可能还有数字。直到遇到 `+`，才能确定前面的完整数字是 `123`。
+
+第一部分：
+
+```python
+not character.isdigit() and character != " "
+```
+
+题目中除了数字和空格，剩下的字符就是 `+`、`-`、`*`、`/` 运算符。遇到运算符，表示前面的数字已经结束，因此可以结算。不能只判断 `not character.isdigit()`，因为空格也不是数字，但空格不是运算符，不应该更新 `previous_operator`。
+
+第二部分：
+
+```python
+index == len(expression) - 1
+```
+
+表示已经读到字符串的最后一个字符。通常数字是在遇到下一个运算符时才结算的，但最后一个数字后面没有下一个运算符。这已经是最后一轮循环，如果不在这里结算，循环结束后就再也没有机会处理最后一个数字。
+
+例如 `"3+2"`，读到最后的 `2` 时，本轮会先执行：
+
+```python
+current_number = current_number * 10 + 2
+```
+
+得到完整数字 `2`。然后因为当前下标已经是最后一个下标，条件成立，代码使用 `previous_operator` 对 `2` 进行结算。
+
+所以这个条件可以记成：
+
+```text
+遇到运算符：前面的数字已经完整，可以结算。
+到达字符串末尾：最后一个数字已经完整，必须立即结算。
+```
+
+> 运算符负责结束前一个完整数字，字符串末尾负责结束最后一个没有后续运算符的数字。
 
 
 #### 详细分析、小例子与代码执行流程
@@ -10740,26 +11304,225 @@ class Solution:
 ```python
 class Solution:
     def calculate(self, expression: str) -> int:
-        result, current_number, sign = 0, 0, 1
+        # 当前层已经结算的结果
+        result = 0
+
+        # 当前正在读取的数字
+        current_number = 0
+
+        # 当前数字前面的符号
+        # 1 表示加，-1 表示减
+        sign = 1
+
+        # 保存进入括号前的外层 result 和 sign
         stack = []
+
         for character in expression:
+            # 情况一：读取数字
             if character.isdigit():
-                current_number = current_number * 10 + int(character)
+                current_number = (
+                    current_number * 10
+                    + int(character)
+                )
+
+            # 情况二：遇到 + 或 -
+            elif character in "+-":
+                # 结算前面已经读取完整的数字
+                result += sign * current_number
+
+                # 准备读取下一个数字
+                current_number = 0
+
+                # 当前运算符是下一个数字的符号
+                sign = 1 if character == "+" else -1
+
+            # 情况三：进入括号
+            elif character == "(":
+                # 保存括号外已经计算的结果
+                stack.append(result)
+
+                # 保存括号前面的符号
+                stack.append(sign)
+
+                # 括号内作为一个新的表达式重新计算
+                result = 0
+                sign = 1
+
+            # 情况四：离开括号
+            elif character == ")":
+                # 先结算括号内最后一个数字
+                result += sign * current_number
+                current_number = 0
+
+                # 取出括号前面的符号
+                outer_sign = stack.pop()
+
+                # 括号整体乘以前面的符号
+                result *= outer_sign
+
+                # 取出括号外已经计算的结果
+                outer_result = stack.pop()
+
+                # 把括号结果加回外层
+                result += outer_result
+
+            # 空格没有对应分支，因此自动忽略
+
+        # 最后一个数字后面可能没有运算符，
+        # 所以循环结束后还要结算一次
+        return result + sign * current_number
+```
+
+
+#### 方法二：符号和外层结果作为元组入栈
+
+
+```python
+class Solution:
+    def calculate(self, expression: str) -> int:
+        result = 0
+        current_number = 0
+        sign = 1
+
+        # 每个元素都是：
+        # (进入括号前的结果, 括号前的符号)
+        stack = []
+
+        for character in expression:
+            # 读取多位数字
+            if character.isdigit():
+                current_number = (
+                    current_number * 10
+                    + int(character)
+                )
+
+            # 遇到加减号，结算前面的完整数字
             elif character in "+-":
                 result += sign * current_number
                 current_number = 0
-                sign = 1 if character == "+" else -1
+
+                sign = (
+                    1 if character == "+" else -1
+                )
+
+            # 进入括号，整体保存外层状态
             elif character == "(":
-                stack.append(result)
-                stack.append(sign)
-                result, sign = 0, 1
+                stack.append((result, sign))
+
+                # 括号内部作为一个新表达式计算
+                result = 0
+                sign = 1
+
+            # 退出括号
             elif character == ")":
+                # 先结算括号内部最后一个数字
                 result += sign * current_number
                 current_number = 0
-                result *= stack.pop()
-                result += stack.pop()
+
+                # 一次恢复外层结果和括号前符号
+                outer_result, outer_sign = stack.pop()
+
+                # 总结果 = 外层结果 + 外层符号 × 括号结果
+                result = (
+                    outer_result
+                    + outer_sign * result
+                )
+
+        # 处理表达式末尾没有运算符的最后一个数字
         return result + sign * current_number
 ```
+
+#### 两种入栈方式的分析与对比
+
+遇到左括号时，必须保存进入括号前的两个外层状态：
+
+```text
+outer_result：括号外已经计算完的结果
+outer_sign：当前括号整体前面的正负号
+```
+
+例如 `1-(2+3)`，进入括号前：
+
+```text
+outer_result = 1
+outer_sign = -1
+```
+
+括号内部计算出 `5` 后，需要使用统一公式合并内外层：
+
+```text
+总结果 = outer_result + outer_sign * inner_result
+        = 1 + (-1) * 5
+        = -4
+```
+
+##### 方法一：分别入栈
+
+原代码将两个状态分别放入栈：
+
+```python
+stack.append(result)
+stack.append(sign)
+```
+
+当 `result = 1`、`sign = -1` 时：
+
+```python
+stack = [1, -1]
+```
+
+由于栈是后进先出，恢复状态时必须反过来弹出：
+
+```python
+outer_sign = stack.pop()    # 先弹出 -1
+outer_result = stack.pop()  # 再弹出 1
+```
+
+这种写法完全正确，但需要记住：
+
+```text
+入栈：result -> sign
+出栈：sign -> result
+```
+
+如果两次弹栈顺序写反，就会把外层结果和括号前符号混淆。
+
+##### 方法二：元组整体入栈
+
+`result` 和 `sign` 属于同一层括号的完整外层现场，因此可以作为一个元组保存：
+
+```python
+stack.append((result, sign))
+```
+
+当 `result = 1`、`sign = -1` 时：
+
+```python
+stack = [(1, -1)]
+```
+
+退出括号时只需弹栈一次，再使用元组解包：
+
+```python
+outer_result, outer_sign = stack.pop()
+```
+
+栈中的每个元素都表示：
+
+```text
+(进入当前括号前的结果, 当前括号前的符号)
+```
+
+这种写法不需要记住两次弹栈的相反顺序，也更能表现“一个栈元素就是一层括号的外层现场”。
+
+两种方法的计算逻辑、时间复杂度和空间复杂度都相同：
+
+```text
+时间复杂度：O(n)
+空间复杂度：O(n)，最坏情况用于保存嵌套括号
+```
+
+元组版的状态关系更明确，更容易理解；分开入栈版则是把栈当成普通的值栈使用。
 
 #### 详细分析、小例子与代码执行流程
 `1-(2+3)` 中，遇到 `(` 前保存外层结果 1 和符号 -。括号内算出 5，右括号时变成 `1 + (-1)*5 = -4`。
@@ -11242,14 +12005,32 @@ class Solution:
 ```python
 class Solution:
     def singleNumber(self, nums):
+        # 0 与任何数异或，结果仍然是这个数
         result = 0
 
         for number in nums:
+            # 把当前数字加入异或累计结果
+            # 相同数字出现第二次时会抵消
             result ^= number
 
         return result
 ```
 
+
+哈希表方法
+
+```python
+class Solution:
+    def singleNumber(self, nums):
+        counts = {}
+
+        for number in nums:
+            counts[number] = counts.get(number, 0) + 1
+
+        for number, count in counts.items():
+            if count == 1:
+                return number
+```
 #### 详细分析、小例子与代码执行流程
 `[4,1,2,1,2]` 中，`1^1=0`，`2^2=0`，最后只剩 4。
 
@@ -13920,6 +14701,16 @@ class Solution:
 - 相似题：斐波那契矩阵快速幂、字典序第 K 小数字。
 - 记忆卡片：快速幂看指数二进制，位为 1 就乘当前底数。
 
+
+普通方法（复杂度为O（n））
+```
+result = 1
+
+for _ in range(n):
+    result *= x
+```
+
+
 ```python
 class Solution:
     def myPow(self, base: float, exponent: int) -> float:
@@ -13932,6 +14723,142 @@ class Solution:
                 result *= base
             base *= base
             exponent >>= 1
+        return result
+```
+
+#### 快速幂中的两个位运算
+
+##### `exponent & 1`：判断指数是否为奇数
+
+```python
+if exponent & 1:
+    result *= base
+```
+
+`&` 是按位与运算。两个二进制位都是 `1` 时，结果才是 `1`：
+
+```text
+0 & 0 = 0
+0 & 1 = 0
+1 & 0 = 0
+1 & 1 = 1
+```
+
+整数的二进制最低位可以表示奇偶性：最低位是 `0` 就是偶数，最低位是 `1` 就是奇数。数字 `1` 的二进制是 `0001`，所以 `exponent & 1` 会把其他位全部清零，只检查指数的最低位。
+
+例如 `exponent = 10`，二进制是 `1010`：
+
+```text
+  1010
+& 0001
+------
+  0000
+```
+
+结果是 `0`，说明 `10` 是偶数，当前 `base` 不需要乘入答案。
+
+再例如 `exponent = 5`，二进制是 `0101`：
+
+```text
+  0101
+& 0001
+------
+  0001
+```
+
+结果是 `1`，说明 `5` 是奇数。奇数次幂无法全部两两配对，需要先拿出一个当前底数：
+
+```text
+base^5 = base * base^4
+```
+
+因此需要执行 `result *= base`。`exponent & 1` 等价于更直观的：
+
+```python
+exponent % 2 == 1
+```
+
+##### `exponent >>= 1`：将指数整除 `2`
+
+```python
+exponent >>= 1
+```
+
+`>>` 是二进制右移运算。`exponent >>= 1` 表示将 `exponent` 的二进制位整体向右移动一位，再把结果保存回 `exponent`。
+
+例如 `10` 的二进制是 `1010`：
+
+```text
+1010 >> 1 = 0101
+```
+
+`0101` 是十进制的 `5`，所以：
+
+```text
+10 >> 1 = 5
+10 // 2 = 5
+```
+
+再例如 `5` 的二进制是 `0101`：
+
+```text
+0101 >> 1 = 0010
+```
+
+`0010` 是十进制的 `2`，所以 `5 >> 1` 和 `5 // 2` 都等于 `2`。当 `exponent` 已经处理成非负整数后：
+
+```python
+exponent >>= 1
+```
+
+等价于：
+
+```python
+exponent //= 2
+```
+
+可以将这两个位运算记成：
+
+```text
+exponent & 1   ：检查最低位，判断指数是否为奇数
+exponent >>= 1：丢掉已处理的最低位，将指数整除 2
+```
+
+它们对应的普通算术写法是：
+
+```python
+if exponent % 2 == 1:
+    result *= base
+
+base *= base
+exponent //= 2
+```
+
+
+好理解的版本
+
+```python
+
+class Solution:
+    def myPow(self, base: float, exponent: int) -> float:
+        # 处理负指数
+        if exponent < 0:
+            base = 1 / base
+            exponent = -exponent
+
+        result = 1.0
+
+        while exponent > 0:
+            # 当前指数是奇数，说明当前底数需要乘入答案
+            if exponent % 2 == 1:
+                result *= base
+
+            # 底数平方
+            base *= base
+
+            # 指数除以2，只保留整数部分
+            exponent //= 2
+
         return result
 ```
 
@@ -14583,6 +15510,34 @@ O(n log n)
 - 相似题：Trie、快速幂类数学分治。
 - 记忆卡片：字典序数字是一棵前缀树，数子树大小决定跳过还是深入。
 
+
+最简单的办法
+```python
+class Solution:
+    def findKthNumber(self, n: int, k: int) -> int:
+        numbers = [
+            str(number)
+            for number in range(1, n + 1)
+        ]
+
+        numbers.sort()
+
+        return int(numbers[k - 1])
+```
+
+```pythopn
+但是这个方法需要：
+
+- 生成 `n` 个数字
+- 对 `n` 个字符串排序
+- 使用 `O(n)` 额外空间
+
+当 `n` 很大时效率不够。
+
+标准方法把字典序看成一棵十叉树。
+```
+
+
 ```python
 class Solution:
     def findKthNumber(self, n: int, k: int) -> int:
@@ -14606,6 +15561,453 @@ class Solution:
                 k -= 1
         return current_prefix
 ```
+
+
+```python
+class Solution:
+    def findKthNumber(self, n: int, k: int) -> int:
+        def count_prefix_nodes(prefix):
+            # 当前层以prefix为起点
+            current_prefix = prefix
+
+            # 当前层的右边界
+            next_prefix = prefix + 1
+
+            total = 0
+
+            while current_prefix <= n:
+                # 统计当前层中不超过n的数字数量
+                total += (
+                    min(n + 1, next_prefix)
+                    - current_prefix
+                )
+
+                # 进入下一层
+                current_prefix *= 10
+                next_prefix *= 10
+
+            return total
+
+        # 字典序中的第一个数字是1
+        current_prefix = 1
+
+        # 当前位置已经是第一个数字，
+        # 转换成还需要向后移动多少步
+        k -= 1
+
+        while k > 0:
+            # 统计当前前缀子树的节点数量
+            subtree_size = count_prefix_nodes(
+                current_prefix
+            )
+
+            if subtree_size <= k:
+                # 目标不在当前子树，
+                # 跳过整棵子树，移动到下一个兄弟前缀
+                current_prefix += 1
+                k -= subtree_size
+
+            else:
+                # 目标在当前子树，
+                # 进入下一层的第一个孩子
+                current_prefix *= 10
+
+                # 从当前节点走到孩子节点消耗一步
+                k -= 1
+
+        return current_prefix
+```
+
+#### `min(n + 1, next_prefix)` 的分层例子
+
+代码：
+
+```python
+total += min(n + 1, next_prefix) - current_prefix
+```
+
+计算的是当前层中，以 `prefix` 开头且不超过 `n` 的数字数量。
+
+```text
+current_prefix：当前层的左边界，包含该数字
+next_prefix：当前层的理论右边界，不包含该数字
+n + 1：题目范围的左闭右开右边界，使 n 本身能被统计
+```
+
+##### 主例子：`n=130`、`prefix=1`
+
+以 `1` 为前缀的数字按层分为：
+
+```text
+第一层：1
+第二层：10～19
+第三层：100～130
+```
+
+此时 `n+1=131`。
+
+###### 第一层：完整层
+
+```text
+current_prefix = 1
+next_prefix = 2
+理论区间 = [1, 2)
+```
+
+实际右边界：
+
+```python
+min(131, 2) = 2
+```
+
+节点数：
+
+```text
+2 - 1 = 1
+```
+
+对应数字 `1`。这时 `next_prefix < n+1`，说明当前层完整存在。
+
+###### 第二层：完整层
+
+两个边界同时乘 `10`：
+
+```text
+current_prefix = 10
+next_prefix = 20
+理论区间 = [10, 20)
+```
+
+实际右边界：
+
+```python
+min(131, 20) = 20
+```
+
+节点数：
+
+```text
+20 - 10 = 10
+```
+
+对应 `10～19`，共 `10` 个数字。前两层累计有 `1+10=11` 个节点。
+
+###### 第三层：被 `n` 截断
+
+再次将边界乘 `10`：
+
+```text
+current_prefix = 100
+next_prefix = 200
+理论区间 = [100, 200)
+```
+
+理论上包含 `100～199`，但题目只允许数字到 `130`。所以实际右边界是：
+
+```python
+min(131, 200) = 131
+```
+
+实际区间：
+
+```text
+[100, 131)
+```
+
+包含 `100～130`，节点数：
+
+```text
+131 - 100 = 31
+```
+
+这里必须使用 `n+1=131`。如果错误使用 `n=130`：
+
+```text
+130 - 100 = 30
+```
+
+只会统计 `100～129`，把 `130` 漏掉。因为区间是左闭右开的，想要包含 `130`，右边界必须是 `131`。
+
+三层总节点数：
+
+```text
+1 + 10 + 31 = 42
+```
+
+所以在 `1～130` 中，以 `1` 为前缀的数字一共有 `42` 个。
+
+下一层 `current_prefix=1000`，已经大于 `n=130`，`while current_prefix <= n` 不成立，统计结束。
+
+##### 右边界刚好相等：`n=19`、`prefix=1`
+
+前缀 `1` 的第二层是：
+
+```text
+[10, 20)
+```
+
+此时：
+
+```text
+n + 1 = 20
+next_prefix = 20
+```
+
+两个右边界刚好相等：
+
+```python
+min(20, 20) = 20
+```
+
+节点数：
+
+```text
+20 - 10 = 10
+```
+
+正好完整统计 `10～19`。
+
+##### 各种情况总结
+
+| 情况 | 实际右边界 | 含义 |
+|---|---|---|
+| `next_prefix < n+1` | `next_prefix` | 当前层完整存在 |
+| `next_prefix > n+1` | `n+1` | 当前层被 `n` 从中间截断 |
+| `next_prefix == n+1` | 两者相同 | 当前层刚好在 `n` 结束 |
+
+> 方便记忆：`next_prefix` 是理论右边界，`n+1` 是题目范围的实际右边界。取两者较小值，既不会超过 `n`，又能在左闭右开区间中把 `n` 本身统计进来。
+
+#### 整道题的完整执行例子：`n=25`、`k=15`
+
+先把 `1～25` 按字典序排列，用来验证最终答案：
+
+```text
+排名： 1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18  19 ...
+数字： 1  10  11  12  13  14  15  16  17  18  19   2  20  21  22  23  24  25   3 ...
+```
+
+所以我们预期第 `15` 个数字是 `22`。下面完全按代码执行。
+
+##### 初始化
+
+```python
+current_prefix = 1
+k -= 1
+```
+
+变量变成：
+
+```text
+current_prefix = 1
+k = 15 - 1 = 14
+```
+
+之所以先将 `k` 减 `1`，是因为当前已经站在字典序第一个数字 `1` 上。此后 `k` 表示还要在字典序中向后移动多少步。
+
+##### 第一轮：统计前缀 `1` 的子树
+
+在 `1～25` 中，以 `1` 开头的数字是：
+
+```text
+1、10、11、12、13、14、15、16、17、18、19
+```
+
+使用 `count_prefix_nodes(1)` 分层统计：
+
+```text
+第一层 [1, 2)   ：1 个
+第二层 [10, 20) ：10 个
+总数 subtree_size = 11
+```
+
+当前：
+
+```text
+subtree_size = 11
+k = 14
+```
+
+判断：
+
+```python
+subtree_size <= k
+```
+
+也就是：
+
+```text
+11 <= 14，成立
+```
+
+说明第 `15` 个数字不在前缀 `1` 的整棵子树中。因此代码一次跳过这 `11` 个数字：
+
+```python
+current_prefix += 1
+k -= subtree_size
+```
+
+更新后：
+
+```text
+current_prefix = 2
+k = 14 - 11 = 3
+```
+
+这一步是横向跳到下一个兄弟前缀：
+
+```text
+前缀 1 -> 前缀 2
+```
+
+##### 第二轮：统计前缀 `2` 的子树
+
+在 `1～25` 中，以 `2` 开头的数字是：
+
+```text
+2、20、21、22、23、24、25
+```
+
+分层统计：
+
+```text
+第一层 [2, 3)   ：1 个，即 2
+第二层 [20, 26) ：6 个，即 20～25
+总数 subtree_size = 7
+```
+
+当前：
+
+```text
+subtree_size = 7
+k = 3
+```
+
+判断：
+
+```text
+7 <= 3，不成立
+```
+
+说明目标就在前缀 `2` 的子树中，不能把整棵子树跳过。代码进入前缀 `2` 的第一个孩子：
+
+```python
+current_prefix *= 10
+k -= 1
+```
+
+更新后：
+
+```text
+current_prefix = 20
+k = 3 - 1 = 2
+```
+
+`k` 减 `1` 是因为从当前节点 `2` 移动到它的第一个孩子 `20`，已经在字典序中向后走了一步。
+
+这一步是纵向进入子树：
+
+```text
+前缀 2 -> 前缀 20
+```
+
+##### 第三轮：处理前缀 `20`
+
+在 `1～25` 中，以 `20` 开头的数字只有：
+
+```text
+20
+```
+
+所以：
+
+```text
+subtree_size = 1
+k = 2
+```
+
+判断：
+
+```text
+1 <= 2，成立
+```
+
+目标不是 `20`，跳到它的下一个兄弟前缀：
+
+```python
+current_prefix += 1
+k -= subtree_size
+```
+
+更新后：
+
+```text
+current_prefix = 21
+k = 2 - 1 = 1
+```
+
+##### 第四轮：处理前缀 `21`
+
+在 `1～25` 中，以 `21` 开头的数字只有 `21`：
+
+```text
+subtree_size = 1
+k = 1
+```
+
+判断：
+
+```text
+1 <= 1，成立
+```
+
+跳过 `21`：
+
+```text
+current_prefix = 22
+k = 1 - 1 = 0
+```
+
+##### 循环结束
+
+此时：
+
+```text
+k = 0
+current_prefix = 22
+```
+
+`while k > 0` 结束，代码返回：
+
+```python
+return current_prefix
+```
+
+最终答案是：
+
+```text
+22
+```
+
+与开头列出的字典序第 `15` 个数字一致。
+
+##### 完整流程表
+
+| 轮次 | `current_prefix` | `subtree_size` | 剩余 `k` | 判断 | 操作 |
+|---:|---:|---:|---:|---|---|
+| 初始 | 1 | - | 14 | - | 已站在数字 1 |
+| 1 | 1 | 11 | 14 | `11 <= 14` | 跳过前缀 1 子树，到 2，`k=3` |
+| 2 | 2 | 7 | 3 | `7 > 3` | 进入子树，到 20，`k=2` |
+| 3 | 20 | 1 | 2 | `1 <= 2` | 跳到 21，`k=1` |
+| 4 | 21 | 1 | 1 | `1 <= 1` | 跳到 22，`k=0` |
+
+这个例子同时覆盖了本题的三个核心操作：
+
+```text
+数子树：count_prefix_nodes(current_prefix)
+跳过子树：current_prefix += 1，k -= subtree_size
+进入子树：current_prefix *= 10，k -= 1
+```
+
 
 #### 详细分析、小例子与代码执行流程
 n=13 时，字典序是 `1,10,11,12,13,2,3...`。如果 k 落在前缀 1 的子树里，就进入 10；如果不落在，就跳到前缀 2。
@@ -15311,21 +16713,6 @@ class MedianFinder:
 - 相似题：环形链表 II、缺失的第一个正数。
 - 记忆卡片：重复数让数组指针图成环，找环入口就是答案。
 
-```python
-class Solution:
-    def findDuplicate(self, nums):
-        slow = fast = nums[0]
-        while True:
-            slow = nums[slow]
-            fast = nums[nums[fast]]
-            if slow == fast:
-                break
-        finder = nums[0]
-        while finder != slow:
-            finder = nums[finder]
-            slow = nums[slow]
-        return finder
-```
 
 将数组转化为了链表
 与环形链表 II  完全相同
@@ -16441,6 +17828,30 @@ class Solution:
 - 相似题：圆环回原点问题。
 - 记忆卡片：约瑟夫环从小推大，答案每轮加 m 再取模。
 
+
+直接模拟的方法
+```python
+class Solution:
+    def lastRemaining(self, n: int, m: int) -> int:
+        numbers = list(range(n))
+        current_index = 0
+
+        while len(numbers) > 1:
+            # 从 current_index 开始数，
+            # 数到第 m 个数字对应向后移动 m-1 步
+            current_index = (
+                current_index + m - 1
+            ) % len(numbers)
+
+            numbers.pop(current_index)
+
+            # 删除后，原来的下一个数字会自动来到
+            # current_index 位置，因此不需要再加1
+
+        return numbers[0]
+```
+
+
 ```python
 class Solution:
     def lastRemaining(self, n: int, m: int) -> int:
@@ -16453,6 +17864,136 @@ class Solution:
 
         return result
 ```
+
+#### 递推公式的推导
+
+定义：
+
+```text
+f(size) 表示有 size 个人，
+并且这些人被编号为 0～size-1 时，
+最后存活的人的编号。
+```
+
+只有一个人时，编号只有 `0`，所以：
+
+```text
+f(1) = 0
+```
+
+下面考虑有 `size` 个人时，如何通过 `f(size-1)` 得到 `f(size)`。
+
+从编号 `0` 开始数，第 `m` 个人的下标是：
+
+```text
+(m - 1) % size
+```
+
+这个人被删除后，新一轮要从它的下一个人开始。因此新一轮的起点在原编号中是：
+
+```text
+((m - 1) + 1) % size = m % size
+```
+
+删除一个人后，剩下 `size-1` 个人。如果从新的起点开始，把剩余人重新编号为 `0～size-2`，剩下的问题就完全变成了一个 `size-1` 人的同类问题，它在新编号中的最终答案就是 `f(size-1)`。
+
+以 `size=5`、`m=3` 为例。原编号是：
+
+```text
+0  1  2  3  4
+```
+
+第一次删除 `2`，并从 `3` 重新开始，剩余人的计数顺序是：
+
+```text
+原编号：3  4  0  1
+新编号：0  1  2  3
+```
+
+从表中可以看出，新编号恢复成原编号的规则是：
+
+```text
+原编号 = (新编号 + m) % size
+```
+
+例如：
+
+```text
+新编号 0 -> (0 + 3) % 5 = 原编号 3
+新编号 1 -> (1 + 3) % 5 = 原编号 4
+新编号 2 -> (2 + 3) % 5 = 原编号 0
+新编号 3 -> (3 + 3) % 5 = 原编号 1
+```
+
+既然 `f(size-1)` 表示删除一个人后，在新编号中的最终幸存者，那么将它恢复为删除前的原编号，就得到：
+
+```text
+f(size) = (f(size-1) + m) % size
+```
+
+这就是约瑟夫环的递推公式。
+
+要注意：第一个被删除的位置是 `m-1`，但删除后从它的下一个位置重新开始，因此新编号的起点偏移量是 `m`，递推公式中加的是 `m`，不是 `m-1`。
+
+#### DP 数组写法
+
+定义：
+
+```text
+dp[size] 表示：
+当圆圈中有 size 个人，
+这些人被编号为 0～size-1 时，
+按照每次删除第 m 个人的规则，
+最后存活的人的编号。
+```
+
+初始化：
+
+```python
+dp[1] = 0
+```
+
+因为只有一个人时，最后存活的人只能是编号 `0`。
+
+状态转移：
+
+```python
+dp[size] = (dp[size - 1] + m) % size
+```
+
+其中 `dp[size-1]` 是删除一个人并重新编号后的最终幸存编号，加 `m` 并对 `size` 取模，是将这个新编号恢复成删除前的原编号。
+
+```python
+class Solution:
+    def lastRemaining(self, n: int, m: int) -> int:
+        # dp[size] 表示 size 个人时，
+        # 最后存活的人的编号
+        dp = [0] * (n + 1)
+
+        # 只有一个人时，幸存编号为 0
+        dp[1] = 0
+
+        for size in range(2, n + 1):
+            dp[size] = (
+                dp[size - 1] + m
+            ) % size
+
+        return dp[n]
+```
+
+以 `n=5`、`m=3` 为例：
+
+```text
+dp[1] = 0
+dp[2] = (dp[1] + 3) % 2 = 1
+dp[3] = (dp[2] + 3) % 3 = 1
+dp[4] = (dp[3] + 3) % 4 = 0
+dp[5] = (dp[4] + 3) % 5 = 3
+```
+
+所以最后剩下的原编号是 `3`。
+
+现有代码只使用一个 `result` 变量，是对 DP 数组的空间优化。因为 `dp[size]` 只依赖 `dp[size-1]`，不需要保存更早的状态。每轮循环开始时，`result` 表示 `dp[size-1]`；更新后，`result` 就表示 `dp[size]`。
 
 #### 详细分析、小例子与代码执行流程
 n=5,m=3，删除顺序是 2、0、4、1，最后剩 3。递推不用模拟链表，直接算最后编号。
@@ -16975,17 +18516,83 @@ def exchange(nums):
 - 相似题：字典序第 K 小数字。
 - 记忆卡片：第 N 位数字，先按 1 位、2 位、3 位整段跳。
 
+暴力生成
+
+```python
+text = ""
+
+number = 1
+while len(text) < n:
+    text += str(number)
+    number += 1
+
+return int(text[n - 1])
+```
+
+
+
+分析
+![[Pasted image 20260731130151.png]]
+
+
+组数量只与 `n` 的位数有关：
+
+- 时间复杂度：`O(log n)`
+- 空间复杂度：`O(1)`
 ```python
 class Solution:
     def findNthDigit(self, n: int) -> int:
-        digit_width, group_start, count = 1, 1, 9
+        # 当前分组中的每个整数有多少位
+        # 初始处理一位数分组：1～9
+        digit_width = 1
+
+        # 当前分组的第一个整数
+        # 一位数从 1 开始
+        group_start = 1
+
+        # 当前分组一共有多少个整数
+        # 一位数一共有 9 个
+        count = 9
+
+        # 第一步：确定第 n 位落在哪个位数分组
+        #
+        # 当前分组一共占据：
+        # digit_width * count 个数位
+        #
+        # 如果 n 比当前分组的总位数还大，
+        # 说明目标不在当前分组，可以整组跳过
         while n > digit_width * count:
+            # 去掉当前完整分组占据的所有数位
             n -= digit_width * count
+
+            # 跳过前面完整分组占据的字符。
+			# 此时 n - 1 表示从当前位数分组的第一个字符开始，
+			# 目标位置向后偏移了多少个字符。
+
+            # 进入下一个位数分组
             digit_width += 1
             group_start *= 10
             count *= 10
-        target_number = group_start + (n - 1) // digit_width
-        return int(str(target_number)[(n - 1) % digit_width])
+
+        # 第二步：确定目标位属于当前分组中的哪个整数
+        #
+        # n - 1：
+        # 把“从 1 开始的第 n 位”
+        # 转换成“从 0 开始的数位偏移量”
+        #
+        # 再除以每个整数的位数 digit_width，
+        # 得到目标整数相对 group_start 向后移动几个整数
+        number_offset = (n - 1) // digit_width
+
+        target_number = group_start + number_offset
+
+        # 第三步：确定目标位是该整数中的第几位
+        #
+        # 对 digit_width 取模，
+        # 得到目标位在 target_number 中从 0 开始的下标
+        digit_index = (n - 1) % digit_width
+
+        return int(str(target_number)[digit_index])
 ```
 
 #### 详细分析、小例子与代码执行流程
@@ -17856,26 +19463,68 @@ class Solution:
 - 相似题：合并 K 个有序链表、零钱兑换。
 - 记忆卡片：丑数序列由旧丑数乘 2/3/5 合并而来。
 
+最直接的方法
+
+```
+def is_ugly(number):
+    for factor in (2, 3, 5):
+        while number % factor == 0:
+            number //= factor
+
+    return number == 1
+```
+
+dp[i] 表示从小到大排列的第 i+1 个丑数
+```
+index2：下一个等待乘以2的丑数下标
+index3：下一个等待乘以3的丑数下标
+index5：下一个等待乘以5的丑数下标
+
+丑数从1开始；旧丑数分别乘2、3、5形成三条有序序列，每次取三个候选中的最小值；谁产生了这个最小值，谁的指针就向后移动，多个候选相等时必须一起移动。
+```
+
+
 ```python
 class Solution:
     def nthUglyNumber(self, n: int) -> int:
+        # dp[i] 表示第 i+1 个丑数
         dp = [0] * n
+
+        # 第一个丑数是1
         dp[0] = 1
-        index2 = index3 = index5 = 0
-        for i in range(1, n):
-            candidate2, candidate3, candidate5 = (
-                dp[index2] * 2,
-                dp[index3] * 3,
-                dp[index5] * 5,
+
+        # 分别指向下一个等待乘2、乘3、乘5的丑数
+        index2 = 0
+        index3 = 0
+        index5 = 0
+
+        # 从第二个丑数开始生成
+        for index in range(1, n):
+            candidate2 = dp[index2] * 2
+            candidate3 = dp[index3] * 3
+            candidate5 = dp[index5] * 5
+
+            # 三个候选中最小的就是下一个丑数
+            next_ugly = min(
+                candidate2,
+                candidate3,
+                candidate5,
             )
-            dp[i] = min(candidate2, candidate3, candidate5)
-            if dp[i] == candidate2:
+
+            dp[index] = next_ugly
+
+            # 哪些候选产生了当前丑数，
+            # 对应的指针就必须向后移动
+            if next_ugly == candidate2:
                 index2 += 1
-            if dp[i] == candidate3:
+
+            if next_ugly == candidate3:
                 index3 += 1
-            if dp[i] == candidate5:
+
+            if next_ugly == candidate5:
                 index5 += 1
-        return dp[-1]
+
+        return dp[n - 1]
 ```
 
 #### 详细分析、小例子与代码执行流程
