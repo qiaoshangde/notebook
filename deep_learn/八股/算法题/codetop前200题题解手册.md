@@ -10484,6 +10484,70 @@ class Solution:
         return result
 ```
 
+上面的版本同时dp多开一个，避免了第一行第一列的特殊处理
+
+好理解的版本1
+```python
+class Solution:
+    def findLength(self, nums1, nums2):
+        m = len(nums1)
+        n = len(nums2)
+
+        dp = [[0] * n for _ in range(m)]
+        answer = 0
+
+        # 初始化第一行：
+        # 比较 nums1[0] 和 nums2 中的每个元素
+        for j in range(n):
+            if nums1[0] == nums2[j]:
+                dp[0][j] = 1
+                answer = 1
+
+        # 初始化第一列：
+        # 比较 nums2[0] 和 nums1 中的每个元素
+        for i in range(m):
+            if nums1[i] == nums2[0]:
+                dp[i][0] = 1
+                answer = 1
+
+        # 第一行和第一列已经处理，主循环从 1 开始
+        for i in range(1, m):
+            for j in range(1, n):
+                if nums1[i] == nums2[j]:
+                    dp[i][j] = dp[i - 1][j - 1] + 1
+                    answer = max(answer, dp[i][j])
+
+                # 如果当前两个数字不相同，
+                # dp[i][j] 保持初始值 0
+
+        return answer
+```
+
+
+
+好理解的版本2
+```python
+class Solution:
+    def findLength(self, nums1, nums2):
+        m = len(nums1)
+        n = len(nums2)
+
+        dp = [[0] * n for _ in range(m)]
+        answer = 0
+
+        for i in range(m):
+            for j in range(n):
+                if nums1[i] == nums2[j]:
+                    # 第一行或第一列没有左上角状态
+                    if i == 0 or j == 0:
+                        dp[i][j] = 1
+                    else:
+                        dp[i][j] = dp[i - 1][j - 1] + 1
+
+                    answer = max(answer, dp[i][j])
+
+        return answer
+```
 
 #### 详细分析、小例子与代码执行流程
 重复子数组要求连续，所以 `dp[i][j]` 表示以 `nums1[i-1]` 和 `nums2[j-1]` 结尾的最长公共连续长度。如果两个元素相等，就接在前一个公共后缀后面；不相等就断掉。

@@ -157,7 +157,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 298.19447326660156
   },
   "right": {
     "id": "fd68a9d2938df27d",
@@ -204,7 +204,10 @@
             "type": "leaf",
             "state": {
               "type": "bookmarks",
-              "state": {},
+              "state": {
+                "showSearch": false,
+                "searchQuery": ""
+              },
               "icon": "lucide-bookmark",
               "title": "书签"
             }
