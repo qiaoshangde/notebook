@@ -10023,7 +10023,7 @@ class Solution:
 6. 状态更新重点看 `first = previous.next`。更新后的值会被下一轮循环或上一层递归继续使用。
 7. 最后通过 `return dummy.next` 返回结果。手算时应确认这里返回的是最终状态，而不是中间变量。
 
-### **90. 长度最小的子数组**
+### 90. 长度最小的子数组
 
 #### 题目简述
 给定正整数数组和 target，求和至少为 target 的最短连续子数组长度。
@@ -10161,6 +10161,31 @@ class Solution:
 ```
 
 
+```python
+class Solution:
+    def hasPathSum(self, root, remaining_sum: int) -> bool:
+        if not root:
+            return False
+
+        # 当前节点已经加入路径，减去它的值
+        remaining_sum -= root.val
+
+        # 到达叶子节点时，检查是否刚好减到 0
+        if not root.left and not root.right:
+            return remaining_sum == 0
+
+        # 左子树找到符合条件的路径
+        if self.hasPathSum(root.left, remaining_sum):
+            return True
+
+        # 右子树找到符合条件的路径
+        if self.hasPathSum(root.right, remaining_sum):
+            return True
+
+        # 左右子树都没有找到
+        return False
+```
+
 #### 详细分析、小例子与代码执行流程
 路径必须从根到叶子。递归时把 target 不断减去当前节点值，走到叶子时检查剩余值是否正好等于叶子值。
 
@@ -10265,6 +10290,46 @@ class Solution:
                     break
         return dp[-1]
 ```
+
+
+
+```
+dp[i]
+```
+
+表示：
+
+> 字符串的前 `i` 个字符，也就是 `s[:i]`，能不能被字典中的单词完全拆分。
+
+```
+要判断 dp[i]，代码尝试在位置 j 切一刀：
+
+s[:i] = s[:j] + s[j:i]
+
+要让整个 s[:i] 能够拆分，必须同时满足：
+
+1. 前半部分 s[:j] 能够成功拆分
+    
+2. 后半部分 s[j:i] 是字典里的单词
+    
+
+其中：
+
+dp[j]
+
+负责判断第一个条件：
+
+s[:j] 能不能被成功拆分
+
+而：
+
+s[j:i] in words
+
+负责判断第二个条件：
+
+s[j:i] 是不是一个完整单词
+```
+
 
 
 #### 详细分析、小例子与代码执行流程
