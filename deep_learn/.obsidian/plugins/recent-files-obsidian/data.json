@@ -1,16 +1,20 @@
 {
   "recentFiles": [
     {
+      "basename": "codetop前200题题解手册",
+      "path": "八股/算法题/codetop前200题题解手册.md"
+    },
+    {
+      "basename": "反转链表II-头插法演示",
+      "path": "八股/算法题/反转链表II-头插法演示.svg"
+    },
+    {
       "basename": "思考改进",
       "path": "八股/agenticRAG/思考改进.md"
     },
     {
       "basename": "面试",
       "path": "八股/agenticRAG/面试.md"
-    },
-    {
-      "basename": "codetop前200题题解手册",
-      "path": "八股/算法题/codetop前200题题解手册.md"
     },
     {
       "basename": "未命名 1",
@@ -195,10 +199,6 @@
     {
       "basename": "1759123084064",
       "path": "Agent/image/1759123084064.png"
-    },
-    {
-      "basename": "1759123076705",
-      "path": "Agent/image/1759123076705.png"
     }
   ],
   "omittedPaths": [],
