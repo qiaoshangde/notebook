@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "思考改进",
+      "path": "八股/agenticRAG/思考改进.md"
+    },
+    {
       "basename": "codetop前200题题解手册",
       "path": "八股/算法题/codetop前200题题解手册.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "1759123076705",
       "path": "Agent/image/1759123076705.png"
-    },
-    {
-      "basename": "1759122866215",
-      "path": "Agent/image/1759122866215.png"
     }
   ],
   "omittedPaths": [],
