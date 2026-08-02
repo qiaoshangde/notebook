@@ -6037,43 +6037,55 @@ class Solution:
 
 - 类型：树 DFS / 栈。
 - 分析：中序遍历顺序是左、根、右。递归最直观；面试也常要求迭代写法，用栈模拟递归一路向左。
-- 思路：当前节点不断压栈并左移；左边走到底后弹出访问，再转向右子树。
-- 核心结构：栈和当前指针。
+- 思路：递归法按左、根、右书写；栈迭代法让当前节点不断压栈并左移，左边走到底后弹出访问，再转向右子树。
+- 核心结构：递归调用栈，或手动维护栈和当前指针。
 - 坑：循环条件是 `cur or st`。
 - 相似题：前序遍历、验证 BST。
 - 记忆卡片：中序 = 左根右；迭代就是一路压左。
 
-递归：
+写法一：递归法
+
 ```python
 class Solution:
     def inorderTraversal(self, root):
-        ans = []
+        result = []
 
         def dfs(node):
+            # 空节点不需要处理，也是递归出口
             if not node:
                 return
 
+            # 中序遍历：左子树 -> 当前节点 -> 右子树
             dfs(node.left)
-            ans.append(node.val)
+            result.append(node.val)
             dfs(node.right)
 
         dfs(root)
-        return ans
+        return result
 ```
 
-迭代写法：
+写法二：栈迭代法
+
 ```python
 class Solution:
     def inorderTraversal(self, root):
-        result, stack = [], []
+        result = []
+        stack = []
         current = root
+
         while current or stack:
+            # 一路向左，把沿途节点压栈
             while current:
                 stack.append(current)
                 current = current.left
+
+            # 左子树已经处理完，访问当前节点
             current = stack.pop()
             result.append(current.val)
+
+            # 转向当前节点的右子树
             current = current.right
+
         return result
 ```
 
@@ -6096,8 +6108,8 @@ class Solution:
 5. 看树题代码时，先问一句：这个递归函数“返回给父节点”的到底是什么？这个问题想清楚，代码就顺了。
 
 #### 本题代码运行时的真实流程
-1. 先抓住本题主线：当前节点不断压栈并左移；左边走到底后弹出访问，再转向右子树。
-2. 代码对外入口是 `inorderTraversal`，主要依赖的结构是：栈和当前指针。
+1. 本题有两种写法：递归法直接按“左、根、右”调用；栈迭代法一路压左，左边走到底后弹出访问，再转向右子树。
+2. 代码对外入口是 `inorderTraversal`。递归法依赖系统调用栈，迭代法手动维护 `stack` 和 `current`。
 3. 初始化先执行 `result, stack = ([], [])`。这一阶段准备后续循环或递归需要的状态。
 4. 主过程从 `while current or stack:` 开始。代码会按这个范围反复处理元素、节点或状态。
 5. 主过程没有复杂分支，按照固定公式或固定顺序持续更新状态。
@@ -8451,7 +8463,27 @@ class Solution:
         return result
 ```
 
+```python
+class Solution:
+    def longestConsecutive(self, nums) -> int:
+        numbers = set(nums)
+        result = 0
 
+        for number in numbers:
+            # number - 1 不存在，说明 number 是一段序列的起点
+            if number - 1 not in numbers:
+                current = number
+
+                # 从起点不断寻找下一个连续数字
+                while current + 1 in numbers:
+                    current += 1
+
+                # current 是当前连续序列的最后一个数字
+                length = current - number + 1
+                result = max(result, length)
+
+        return result
+```
 #### 详细分析、小例子与代码执行流程
 要 O(n)，不能排序。把数字放进集合后，只有当 `x-1` 不存在时，x 才是一段连续序列的起点。只从起点开始向后数，能避免重复扫描。
 
@@ -8559,6 +8591,25 @@ class Solution:
 ```
 
 
+
+```python
+class Solution:
+    def maxDepth(self, root) -> int:
+        def dfs(node):
+            # 空树的深度为 0
+            if not node:
+                return 0
+
+            # 分别计算左右子树的深度
+            left_depth = dfs(node.left)
+            right_depth = dfs(node.right)
+
+            # 当前树深度 = 较深子树的深度 + 当前节点这一层
+            return max(left_depth, right_depth) + 1
+
+        return dfs(root)
+```
+
 #### 详细分析、小例子与代码执行流程
 二叉树最大深度就是从根到最远叶子的节点数。对任意节点来说，它的深度等于左右子树深度的最大值加 1。
 
@@ -8604,7 +8655,9 @@ dp[i][j] 对应 matrix[i - 1][j - 1]
 ```
 
 
-状态定义为“以当前格子为右下角”
+写法一：`dp` 多开一行一列，用全 0 虚拟边界
+
+状态定义为：`dp[i][j]` 表示以 `matrix[i - 1][j - 1]` 为右下角的最大全 1 正方形边长。
 
 ```python
 class Solution:
@@ -8619,6 +8672,7 @@ class Solution:
                     best = max(best, dp[i][j])
         return best * best
 ```
+
 
 #### 为什么 `dp` 要比原矩阵多一行、多一列
 
@@ -8704,6 +8758,55 @@ if matrix[i - 1][j - 1] == "1":
 
 > `dp` 多出的第 0 行和第 0 列是全 0 的虚拟边界，让原矩阵第一行、第一列也能直接套用“上、左、左上取最小值加一”的公式。
 
+写法二：`dp` 与矩阵同尺寸，单独初始化第一行和第一列
+
+这时下标不再偏移：`dp[row][column]` 表示以 `matrix[row][column]` 为右下角的最大全 1 正方形边长。由于第一行和第一列没有完整的“上、左、左上”三个来源，需要先单独初始化，再让主循环从下标 `1` 开始。
+
+```python
+class Solution:
+    def maximalSquare(self, matrix):
+        if not matrix or not matrix[0]:
+            return 0
+
+        rows = len(matrix)
+        columns = len(matrix[0])
+        dp = [[0] * columns for _ in range(rows)]
+        best = 0
+
+        # 初始化第一行：第一行的正方形边长只能是 0 或 1
+        for column in range(columns):
+            if matrix[0][column] == "1":
+                dp[0][column] = 1
+                best = 1
+
+        # 初始化第一列：第一列的正方形边长只能是 0 或 1
+        for row in range(rows):
+            if matrix[row][0] == "1":
+                dp[row][0] = 1
+                best = 1
+
+        # 第一行和第一列已经处理，所以从下标 1 开始
+        for row in range(1, rows):
+            for column in range(1, columns):
+                if matrix[row][column] == "1":
+                    dp[row][column] = min(
+                        dp[row - 1][column],      # 上方
+                        dp[row][column - 1],      # 左方
+                        dp[row - 1][column - 1],  # 左上方
+                    ) + 1
+
+                    best = max(best, dp[row][column])
+
+        # dp 保存的是边长，题目要求返回面积
+        return best * best
+```
+
+两种写法的状态含义只差一个下标偏移：
+
+```text
+写法一：dp[i][j] 对应 matrix[i - 1][j - 1]，不用单独初始化边界。
+写法二：dp[i][j] 对应 matrix[i][j]，需要初始化第一行和第一列。
+```
 
 #### 详细分析、小例子与代码执行流程
 以某个格子为右下角的正方形，能扩多大，取决于它的上方、左方、左上方三个位置能形成的正方形边长。三者中最小的那个限制了当前正方形。
@@ -8744,7 +8847,7 @@ if matrix[i - 1][j - 1] == "1":
 - 相似题：最大深度、二叉树直径。
 - 记忆卡片：查平衡顺便算高度，不平衡用 -1 传上去。
 
-```
+```python
 class Solution:
     def isBalanced(self, root) -> bool:
         def height(node):
@@ -8968,7 +9071,7 @@ class Solution:
         prefix = strs[0]
         for s in strs[1:]:
             while not s.startswith(prefix):
-                prefix = prefix[:-1]
+                prefix = prefix[:-1]#前缀缩短一个
                 if not prefix:
                     return ""
         return prefix
@@ -9123,6 +9226,8 @@ class Solution:
 - 相似题：二叉树中序遍历、BST 最近公共祖先。
 - 记忆卡片：验证 BST 传范围，不只看孩子。
 
+写法一：上下界递归
+
 ```python
 class Solution:
     def isValidBST(self, root) -> bool:
@@ -9140,33 +9245,37 @@ class Solution:
 
 写法二：中序遍历严格递增
 
-BST 的另一个核心性质是：中序遍历结果必须严格递增。所以可以用 `prev` 记录上一个访问到的节点值，如果当前值 `<= prev`，就不是合法 BST。
+BST 的另一个核心性质是：**合法 BST 的中序遍历结果一定严格递增。**为了让代码更直观，先用普通中序遍历收集所有节点值，再依次比较相邻元素。
 
 ```python
 class Solution:
     def isValidBST(self, root) -> bool:
-        prev = None
+        inorder_values = []
 
+        # 第一步：按照“左、根、右”的顺序收集节点值
         def inorder(node):
-            nonlocal prev
-
             if not node:
-                return True
+                return
 
-            if not inorder(node.left):
+            inorder(node.left)
+            inorder_values.append(node.val)
+            inorder(node.right)
+
+        inorder(root)
+
+        # 第二步：检查中序结果是否严格递增
+        for index in range(1, len(inorder_values)):
+            previous_value = inorder_values[index - 1]
+            current_value = inorder_values[index]
+
+            # BST 不允许重复值，所以必须严格大于
+            if current_value <= previous_value:
                 return False
 
-            if prev is not None and node.val <= prev:
-                return False
-
-            prev = node.val
-
-            return inorder(node.right)
-
-        return inorder(root)
+        return True
 ```
 
-两种写法都可以。上下界写法记“每个节点都有合法范围”；中序写法记“BST 中序遍历严格递增”。
+两种写法都可以。上下界写法记“每个节点都有合法范围”；中序写法分两步记：“先得到中序序列，再检查是否严格递增”。
 
 
 #### 详细分析、小例子与代码执行流程
@@ -9200,33 +9309,64 @@ class Solution:
 #### 题目简述
 给定二叉树，返回前序遍历结果。
 
-- 类型：树 DFS / 栈。
-- 分析：前序顺序是根、左、右。迭代时用栈，先压右孩子再压左孩子，保证左孩子先出栈。
-- 思路：根入栈；弹出访问；按右、左顺序压栈。
-- 核心结构：栈。
+- 类型：树 DFS / 递归 / 栈。
+- 分析：前序顺序是根、左、右。递归法先记录当前节点，再递归左、右子树；栈迭代法先压右孩子再压左孩子，保证左孩子先出栈。
+- 思路：递归法按照根、左、右书写；迭代法让根入栈，弹出访问，再按右、左顺序压栈。
+- 核心结构：递归调用栈，或手动维护栈。
 - 坑：压栈顺序和访问顺序相反。
 - 相似题：中序遍历、后序遍历。
-- 记忆卡片：前序根左右；栈里先压右再压左。
+- 记忆卡片：前序根左右；递归按访问顺序写，手动栈按相反顺序压。
+
+写法一：递归法
+
+```python
+class Solution:
+    def preorderTraversal(self, root):
+        result = []
+
+        def dfs(node):
+            # 空节点不需要处理，也是递归出口
+            if not node:
+                return
+
+            # 前序遍历：先访问当前节点
+            result.append(node.val)
+
+            # 再依次递归遍历左子树和右子树
+            dfs(node.left)
+            dfs(node.right)
+
+        dfs(root)
+        return result
+```
+
+写法二：栈迭代法
 
 ```python
 class Solution:
     def preorderTraversal(self, root):
         if not root:
             return []
-        stack, result = [root], []
+
+        stack = [root]
+        result = []
+
         while stack:
             node = stack.pop()
             result.append(node.val)
+
+            # 栈后进先出：先压右孩子，左孩子才会先出栈
             if node.right:
                 stack.append(node.right)
             if node.left:
                 stack.append(node.left)
+
         return result
 ```
 
 
 #### 详细分析、小例子与代码执行流程
-前序遍历顺序是根、左、右。用栈迭代时，因为栈后进先出，要先压右孩子，再压左孩子，这样左孩子会先被弹出访问。
+前序遍历顺序是根、左、右。递归法直接按照“记录当前节点、递归左子树、递归右子树”的顺序书写。用栈迭代时，因为栈后进先出，要先压右孩子，再压左孩子，这样左孩子会先被弹出访问。
 
 例子：根 1，左 2，右 3。先访问 1，再把 3 压栈、2 压栈；弹出时先弹 2，再弹 3，顺序就是 1、2、3。
 
@@ -9243,9 +9383,9 @@ class Solution:
 5. 看树题代码时，先问一句：这个递归函数“返回给父节点”的到底是什么？这个问题想清楚，代码就顺了。
 
 #### 本题代码运行时的真实流程
-1. 先抓住本题主线：根入栈；弹出访问；按右、左顺序压栈。
-2. 代码对外入口是 `preorderTraversal`，主要依赖的结构是：栈。
-3. 初始化先执行 `stack, result = ([root], [])`。这一阶段准备后续循环或递归需要的状态。
+1. 本题有两种写法：递归法直接按“根、左、右”调用；栈迭代法让根入栈，弹出访问，再按右、左顺序压栈。
+2. 代码对外入口是 `preorderTraversal`。递归法依赖系统调用栈，迭代法手动维护 `stack`。
+3. 栈迭代法先执行 `stack = [root]` 和 `result = []`，分别保存待访问节点和遍历结果。
 4. 主过程从 `while stack:` 开始。代码会按这个范围反复处理元素、节点或状态。
 5. 第一个关键判断是 `if not root:`。它负责处理边界、命中答案或决定下一步走向。
 6. 状态更新重点看 `node = stack.pop()`。更新后的值会被下一轮循环或上一层递归继续使用。
@@ -15464,22 +15604,26 @@ class Solution:
 给定二叉树，返回后序遍历结果。
 
 - 类型：树 DFS / 栈。
-- 分析：后序是左、右、根。递归最简单；迭代可以用“根右左”的前序变形，最后反转。
-- 思路：栈先访问根，再压左、右，得到根右左；反转为左右根。
-- 核心结构：栈 + 反转结果。
+- 分析：后序是左、右、根。递归最简单；迭代既可以用“根右左”的前序变形后反转，也可以用单栈和 `previous` 直接判断右子树是否已经处理。
+- 思路：递归法按左、右、根书写；简单迭代法先得到根右左再反转；直接迭代法用 `previous` 防止重复进入已经处理的右子树。
+- 核心结构：递归调用栈，或手动栈；直接后序还需要记录上一个访问节点。
 - 坑：压栈顺序要配合最终反转。
 - 相似题：前序遍历、中序遍历。
-- 记忆卡片：后序迭代可先做根右左，再整体反转。
-递归写法
+- 记忆卡片：后序是左右根；递归按顺序写，迭代先做根右左再整体反转。
+
+写法一：递归法
+
 ```python
 class Solution:
     def postorderTraversal(self, root):
         result = []
 
         def dfs(node):
+            # 空节点不需要处理，也是递归出口
             if not node:
                 return
 
+            # 后序遍历：左子树 -> 右子树 -> 当前节点
             dfs(node.left)
             dfs(node.right)
             result.append(node.val)
@@ -15488,23 +15632,33 @@ class Solution:
         return result
 ```
 
-栈的写法（先根右左再翻转）
+写法二：栈迭代法（先得到根右左，再反转）
+
 ```python
 class Solution:
     def postorderTraversal(self, root):
         if not root:
             return []
+
         stack = [root]
         result = []
+
         while stack:
             node = stack.pop()
             result.append(node.val)
+
+            # 先压左、再压右，右孩子会先出栈，
+            # 因而暂时得到“根、右、左”的访问顺序
             if node.left:
                 stack.append(node.left)
             if node.right:
                 stack.append(node.right)
+
+        # “根、右、左”反转后就是“左、右、根”
         return result[::-1]
 ```
+
+写法三：单栈直接后序遍历（不反转结果）
 
 ```python
 class Solution:
@@ -15512,26 +15666,37 @@ class Solution:
         result = []
         stack = []
         current = root
-        prev = None
+
+        # 记录上一个已经访问完成的节点，
+        # 用来判断当前节点的右子树是否已经处理过
+        previous = None
 
         while current or stack:
+            # 先一路向左，把沿途节点压栈
             while current:
                 stack.append(current)
                 current = current.left
 
+            # 暂时查看栈顶，但还不能马上弹出，
+            # 因为它的右子树可能还没有处理
             node = stack[-1]
 
-            if node.right and prev != node.right:
+            if node.right and previous != node.right:
+                # 有右子树，并且右子树还没处理，先转向右子树
                 current = node.right
             else:
+                # 没有右子树，或者右子树已经处理完成，
+                # 此时才能访问当前节点并将它弹出
                 result.append(node.val)
-                prev = stack.pop()
+                previous = stack.pop()
 
         return result
 ```
 
 #### 详细分析、小例子与代码执行流程
 树 `1 -> right 2 -> left 3`，后序是 `[3,2,1]`。先按根右左得到 `[1,2,3]`，反转后正好是 `[3,2,1]`。
+
+第三种单栈写法不需要反转结果，但判断更复杂：查看栈顶节点时，如果它有尚未访问的右子树，就先处理右子树；如果没有右子树，或者右子树已经由 `previous` 标记为处理完成，才能弹出并访问当前节点。
 
 
 #### 代码执行流程（零基础）
@@ -15544,8 +15709,8 @@ class Solution:
 5. 看树题代码时，先问一句：这个递归函数“返回给父节点”的到底是什么？这个问题想清楚，代码就顺了。
 
 #### 本题代码运行时的真实流程
-1. 先抓住本题主线：栈先访问根，再压左、右，得到根右左；反转为左右根。
-2. 代码对外入口是 `postorderTraversal`，主要依赖的结构是：栈 + 反转结果。
+1. 本题有三种写法：递归法直接按“左、右、根”调用；简单栈迭代法先得到“根、右、左”再反转；单栈直接法借助 `previous` 判断右子树是否处理完成。
+2. 代码对外入口都是 `postorderTraversal`。递归法依赖系统调用栈，另外两种方法手动维护 `stack`。
 3. 初始化先执行 `result = []`。这一阶段准备后续循环或递归需要的状态。
 4. 这题按照固定公式或固定步骤直接推进，不需要额外的循环层级或递归搜索。
 5. 第一个关键判断是 `if not node:`。它负责处理边界、命中答案或决定下一步走向。
