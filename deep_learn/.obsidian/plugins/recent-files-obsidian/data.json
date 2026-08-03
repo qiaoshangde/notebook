@@ -5,12 +5,12 @@
       "path": "八股/算法题/codetop前200题题解手册.md"
     },
     {
-      "basename": "反转链表II-头插法演示",
-      "path": "八股/算法题/反转链表II-头插法演示.svg"
-    },
-    {
       "basename": "思考改进",
       "path": "八股/agenticRAG/思考改进.md"
+    },
+    {
+      "basename": "反转链表II-头插法演示",
+      "path": "八股/算法题/反转链表II-头插法演示.svg"
     },
     {
       "basename": "面试",
