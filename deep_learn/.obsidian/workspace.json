@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "1ec5780c6b9b2b3e",
+        "id": "44adb206a920af08",
         "type": "tabs",
         "children": [
           {
-            "id": "923345c7839c249f",
+            "id": "ca828689dcc8b361",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "八股/agenticRAG/思考改进.md",
+                "file": "八股/阅读：.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "思考改进"
+              "title": "阅读："
             }
           }
         ]
@@ -92,7 +92,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "八股/agenticRAG/思考改进.md",
+                "file": "八股/agenticRAG/面试.md",
                 "followCursor": true,
                 "showSearch": false,
                 "searchQuery": ""
@@ -296,10 +296,11 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "923345c7839c249f",
+  "active": "ca828689dcc8b361",
   "lastOpenFiles": [
-    "八股/算法题/codetop前200题题解手册.md",
     "八股/agenticRAG/思考改进.md",
+    "八股/agenticRAG/数据.md",
+    "八股/算法题/codetop前200题题解手册.md",
     "八股/算法题/反转链表II-头插法演示.svg",
     "八股/agenticRAG/面试.md",
     "八股/算法题/images/Pasted image 20260801112909.png",
@@ -321,7 +322,6 @@
     "八股/skill/Skills.md",
     "八股/code_review/code_review面试题目.md",
     "八股/agenticRAG/评价指标.md",
-    "八股/agenticRAG/数据.md",
     "八股/阅读：.md",
     "八股/claude_code/claude code.md",
     "八股/rl/GRPO/面试.md",
