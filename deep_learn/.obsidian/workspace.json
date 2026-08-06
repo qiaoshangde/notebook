@@ -92,6 +92,7 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "八股/算法题/codetop前200题题解手册.md",
                 "followCursor": true,
                 "showSearch": false,
                 "searchQuery": ""
@@ -100,7 +101,8 @@
               "title": "大纲"
             }
           }
-        ]
+        ],
+        "currentTab": 4
       },
       {
         "id": "ab52c96cd9267565",
@@ -295,7 +297,7 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "ae89f00ff6e91f01",
+  "active": "4a0cf99042f01edd",
   "lastOpenFiles": [
     "随记.md",
     "八股/阅读：.md",

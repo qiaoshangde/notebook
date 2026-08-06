@@ -12746,7 +12746,7 @@ class Solution:
             while k > 0 and stack and stack[-1] > digit:
                 stack.pop()
                 k -= 1
-            # 当前数字入栈
+            # 当前数字入栈(每次入栈，入栈的这个元素都比原来元素大，不可能小，如果入栈的比栈顶元素小，就会在前面的while种将栈顶弹出)
             stack.append(digit)
         
         # 3. 如果遍历完了 k 还没用完（比如输入是 "12345"），
@@ -12761,7 +12761,7 @@ class Solution:
         return result if result else "0"
 ```
 
-
+栈种数字保持从左到右非递减
 
 **“高位大了就弹栈，弹完入栈等判断；遍历结束 k 没完，末尾切掉最划算；前导零要去干净，空串返回一个蛋（0）。**
 #### 详细分析、小例子与代码执行流程
@@ -13535,6 +13535,90 @@ class Solution:
             for current_amount in range(coin, amount + 1):
                 dp[current_amount] += dp[current_amount - coin]
         return dp[amount]
+```
+
+#### 为什么外层遍历硬币，不能把外层改成金额
+
+假设：
+
+```python
+coins = [1, 2]
+amount = 3
+```
+
+本题求的是组合数，所以：
+
+```text
+1 + 2 和 2 + 1 应该算同一种。
+```
+
+正确写法是外层遍历硬币：
+
+```python
+for coin in coins:
+    for current_amount in range(coin, amount + 1):
+        dp[current_amount] += dp[current_amount - coin]
+```
+
+它先处理硬币 `1`，再处理硬币 `2`。硬币的处理顺序固定，因此不会把 `1 + 2` 和 `2 + 1` 分别统计。
+
+如果改成外层遍历金额：
+
+```python
+for current_amount in range(1, amount + 1):
+    for coin in coins:
+        if current_amount >= coin:
+            dp[current_amount] += dp[current_amount - coin]
+```
+
+执行过程如下：
+
+```text
+初始：dp = [1, 0, 0, 0]
+```
+
+计算金额 `1`：
+
+```text
+使用硬币 1：dp[1] = dp[0] = 1
+方案：1
+dp = [1, 1, 0, 0]
+```
+
+计算金额 `2`：
+
+```text
+使用硬币 1：得到 1 + 1
+使用硬币 2：得到 2
+dp[2] = 2
+dp = [1, 1, 2, 0]
+```
+
+计算金额 `3`：
+
+```text
+使用硬币 1：把金额 2 的两种方案后面都加上 1
+得到：1 + 1 + 1、2 + 1
+
+使用硬币 2：把金额 1 的方案后面加上 2
+得到：1 + 2
+```
+
+因此最终会统计出：
+
+```text
+1 + 1 + 1
+2 + 1
+1 + 2
+```
+
+结果是 `3`。其中 `2 + 1` 和 `1 + 2` 使用的硬币完全相同，只是顺序不同，本题应该只算一种。这说明外层金额的写法统计的是排列数，而不是组合数。
+
+记忆：
+
+```text
+外层硬币，内层金额：固定硬币处理顺序，统计组合数。
+外层金额，内层硬币：不同顺序可能被分别统计，容易得到排列数。
 ```
 
 #### 详细分析、小例子与代码执行流程
@@ -20857,27 +20941,45 @@ class Solution:
 - 相似题：下一个排列、移掉 K 位数字。
 - 记忆卡片：最大交换先看高位，能换右边最大的就立刻换。
 
+写法一：使用字典记录每个数字最后出现的位置
+
 ```python
 class Solution:
     def maximumSwap(self, num: int) -> int:
+        # 转成字符列表，方便交换两个数字
         digits = list(str(num))
+
+        # last_position[digit] 表示数字 digit 最后一次出现的下标
         last_position = {
             int(character): index for index, character in enumerate(digits)
         }
+
+        # 从左到右寻找第一个可以变大的位置
         for index, character in enumerate(digits):
             current = int(character)
+
+            # 从 9 开始向下找，优先尝试最大的数字
             for larger_digit in range(9, current, -1):
+                # 如果数字不存在，get 返回 -1；
+                # -1 不可能大于当前下标，因此会自动跳过
                 if last_position.get(larger_digit, -1) > index:
                     swap_index = last_position[larger_digit]
+
+                    # 把当前位置换成右侧更大的数字
                     digits[index], digits[swap_index] = (
                         digits[swap_index],
                         digits[index],
                     )
+
+                    # 只允许交换一次，交换后立即得到最大结果
                     return int("".join(digits))
+
+        # 没有找到可以变大的交换
         return num
 ```
 
-注释版
+写法二：使用长度为 10 的数组记录最后位置
+
 ```python
 class Solution:
     def maximumSwap(self, num: int) -> int:
@@ -20938,3 +21040,121 @@ class Solution:
 5. 第一个关键判断是 `if last_position.get(larger_digit, -1) > index:`。它负责处理边界、命中答案或决定下一步走向。
 6. 状态更新重点看 `current = int(character)`。更新后的值会被下一轮循环或上一层递归继续使用。
 7. 最后通过 `return num` 返回结果。手算时应确认这里返回的是最终状态，而不是中间变量。
+
+### 201. 组合总和 IV（LeetCode 377，补充题）
+
+#### 题目简述
+
+给定一个由不同正整数组成的数组 `nums`，以及目标值 `target`。每个数字可以重复使用，求组成 `target` 的组合数量。
+
+本题中顺序不同算不同方案：
+
+```text
+[1, 2] 和 [2, 1] 算两种。
+```
+
+说明：本题是 LeetCode 377“组合总和 IV”，作为动态规划补充题加入，不属于原 CodeTop 前 200 题。
+
+- 类型：完全背包 / 排列数 DP。
+- 分析：数字可以重复使用，而且顺序有区别，所以外层遍历目标和，内层枚举最后选择的数字。
+- 思路：`dp[total]` 表示组成 `total` 的有序组合数量；最后选择 `number` 时，前面需要组成 `total - number`。
+- 核心结构：一维计数 DP。
+- 坑：循环顺序和零钱兑换 II 相反；零钱兑换 II 统计组合数，本题统计排列数。
+- 相似题：122. 零钱兑换 II；55. 爬楼梯；65. 组合总和。
+- 记忆卡片：顺序重要，外层金额；顺序不重要，外层硬币。
+
+```python
+class Solution:
+    def combinationSum4(self, nums, target: int) -> int:
+        # dp[total] 表示组成 total 的有序组合数量
+        dp = [0] * (target + 1)
+
+        # 凑出 0 的方式是一个数字都不选
+        dp[0] = 1
+
+        # 先确定当前要凑出的总和
+        for total in range(1, target + 1):
+            # 枚举最后选择的数字
+            for number in nums:
+                if total >= number:
+                    # 先组成 total - number，
+                    # 再把 number 放到最后
+                    dp[total] += dp[total - number]
+
+        return dp[target]
+```
+
+#### 为什么外层是金额
+
+以 `nums = [1, 2]`、`target = 3` 为例。
+
+```text
+dp[0] = 1
+```
+
+计算 `dp[1]`：
+
+```text
+最后选择 1：前面组成 0，得到 [1]
+dp[1] = 1
+```
+
+计算 `dp[2]`：
+
+```text
+最后选择 1：前面组成 1，得到 [1, 1]
+最后选择 2：前面组成 0，得到 [2]
+dp[2] = 2
+```
+
+计算 `dp[3]`：
+
+```text
+最后选择 1：把组成 2 的方案后面加 1
+得到 [1, 1, 1]、[2, 1]
+
+最后选择 2：把组成 1 的方案后面加 2
+得到 [1, 2]
+```
+
+因此：
+
+```text
+[1, 1, 1]
+[2, 1]
+[1, 2]
+```
+
+答案是 `3`。其中 `[2,1]` 和 `[1,2]` 顺序不同，所以必须分别统计。
+
+如果把外层改成硬币，就会固定硬币的处理顺序，`[2,1]` 和 `[1,2]` 会被视为同一种，这正是零钱兑换 II 的组合数写法。
+
+#### 和零钱兑换 II 的区别
+
+```python
+# 零钱兑换 II：顺序不重要，统计组合数
+for coin in coins:
+    for total in range(coin, amount + 1):
+        dp[total] += dp[total - coin]
+```
+
+```python
+# 组合总和 IV：顺序重要，统计排列数
+for total in range(1, target + 1):
+    for number in nums:
+        if total >= number:
+            dp[total] += dp[total - number]
+```
+
+两道题都允许数字重复使用，但循环顺序决定了是否区分数字的排列顺序。
+
+#### 复杂度
+
+设 `n = len(nums)`，则时间复杂度为 `O(n * target)`，空间复杂度为 `O(target)`。
+
+
+
+
+
+**各种dp太乱了，需要重新总结一下。**
+下面该### 197. 回文子串了
