@@ -1,6 +1,18 @@
 {
   "recentFiles": [
     {
+      "basename": "几个项目",
+      "path": "几个项目.md"
+    },
+    {
+      "basename": "算法开发讨论",
+      "path": "算法开发讨论.md"
+    },
+    {
+      "basename": "学习",
+      "path": "学习.md"
+    },
+    {
       "basename": "阅读：",
       "path": "八股/阅读：.md"
     },
@@ -29,20 +41,8 @@
       "path": "八股/算法题/反转链表II-头插法演示.svg"
     },
     {
-      "basename": "未命名 1",
-      "path": "未命名 1.base"
-    },
-    {
-      "basename": "未命名",
-      "path": "未命名.base"
-    },
-    {
       "basename": "agent",
       "path": "八股/agent/agent.md"
-    },
-    {
-      "basename": "几个项目",
-      "path": "几个项目.md"
     },
     {
       "basename": "经典排序算法手册",
@@ -85,20 +85,12 @@
       "path": "八股/rl/ppo/PPO.md"
     },
     {
-      "basename": "学习",
-      "path": "学习.md"
-    },
-    {
       "basename": "架构改进",
       "path": "安全/架构改进.md"
     },
     {
       "basename": "AI AGENT安全",
       "path": "安全/AI AGENT安全.md"
-    },
-    {
-      "basename": "算法开发讨论",
-      "path": "算法开发讨论.md"
     },
     {
       "basename": "常用prompt",
