@@ -3130,7 +3130,13 @@
         "filePath": "学习.md",
         "wordCountStart": 2,
         "charCountStart": 42,
-        "changes": [],
+        "changes": [
+          {
+            "timeKey": "14:35",
+            "w": -2,
+            "c": -42
+          }
+        ],
         "id": 346
       },
       {
@@ -3148,6 +3154,38 @@
         "charCountStart": 355,
         "changes": [],
         "id": 348
+      },
+      {
+        "date": "2026-08-06",
+        "filePath": "随记.md",
+        "wordCountStart": 0,
+        "charCountStart": 0,
+        "changes": [],
+        "id": 349
+      },
+      {
+        "date": "2026-08-06",
+        "filePath": "SpringBoot基础注解与依赖注入笔记.md",
+        "wordCountStart": 1247,
+        "charCountStart": 15986,
+        "changes": [],
+        "id": 350
+      },
+      {
+        "date": "2026-08-06",
+        "filePath": "八股/阅读：.md",
+        "wordCountStart": 365,
+        "charCountStart": 3464,
+        "changes": [],
+        "id": 351
+      },
+      {
+        "date": "2026-08-06",
+        "filePath": "常用prompt.md",
+        "wordCountStart": 12,
+        "charCountStart": 533,
+        "changes": [],
+        "id": 352
       }
     ]
   }
