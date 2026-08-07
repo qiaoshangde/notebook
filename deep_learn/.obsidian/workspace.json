@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "8f22ffd9904932d5",
+        "id": "1864d8742ec4d720",
         "type": "tabs",
         "children": [
           {
-            "id": "ae89f00ff6e91f01",
+            "id": "d972f9a0a3bcc650",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "八股/算法题/codetop前200题题解手册.md",
+                "file": "SpringBoot基础注解与依赖注入笔记.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "codetop前200题题解手册"
+              "title": "SpringBoot基础注解与依赖注入笔记"
             }
           }
         ]
@@ -92,7 +92,6 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "八股/算法题/codetop前200题题解手册.md",
                 "followCursor": true,
                 "showSearch": false,
                 "searchQuery": ""
@@ -101,8 +100,7 @@
               "title": "大纲"
             }
           }
-        ],
-        "currentTab": 4
+        ]
       },
       {
         "id": "ab52c96cd9267565",
@@ -297,12 +295,13 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "4a0cf99042f01edd",
+  "active": "d972f9a0a3bcc650",
   "lastOpenFiles": [
+    "算法开发讨论.md",
+    "八股/算法题/codetop前200题题解手册.md",
     "随记.md",
     "八股/阅读：.md",
     "SpringBoot基础注解与依赖注入笔记.md",
-    "算法开发讨论.md",
     "几个项目.md",
     "常用prompt.md",
     "学习.md",
@@ -310,7 +309,6 @@
     "未命名.base",
     "未命名 1.base",
     "八股/算法题/hot100.md",
-    "八股/算法题/codetop前200题题解手册.md",
     "八股/agenticRAG/思考改进.md",
     "八股/agenticRAG/数据.md",
     "八股/算法题/反转链表II-头插法演示.svg",
