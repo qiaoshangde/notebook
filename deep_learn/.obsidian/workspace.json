@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "55617cdc36c87bb6",
+        "id": "bc114c8f18ed123f",
         "type": "tabs",
         "children": [
           {
-            "id": "7feecbfde42d377d",
+            "id": "6416e24381cf7613",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -236,16 +236,6 @@
               "icon": "lucide-archive",
               "title": "添加笔记属性"
             }
-          },
-          {
-            "id": "5476523c974482a5",
-            "type": "leaf",
-            "state": {
-              "type": "planner-timeline",
-              "state": {},
-              "icon": "calendar-with-checkmark",
-              "title": "Timeline"
-            }
           }
         ],
         "currentTab": 2
@@ -261,8 +251,8 @@
             "state": {
               "type": "planner-timeline",
               "state": {},
-              "icon": "lucide-ghost",
-              "title": "planner-timeline"
+              "icon": "calendar-with-checkmark",
+              "title": "Timeline"
             }
           },
           {
@@ -271,8 +261,8 @@
             "state": {
               "type": "smtcmp-chat-view",
               "state": {},
-              "icon": "lucide-ghost",
-              "title": "smtcmp-chat-view"
+              "icon": "wand-sparkles",
+              "title": "Smart composer chat"
             }
           }
         ]
@@ -303,15 +293,18 @@
   },
   "active": "6a5eb320d475b043",
   "lastOpenFiles": [
-    "常用prompt.md",
     "项目进度.md",
-    "Java",
-    "算法开发讨论.md",
-    "Java/注解.md",
     "Java/SpringBoot基础注解与依赖注入笔记.md",
+    "Java/注解.md",
+    "Java",
     "未命名.base",
     "八股/算法题/codetop前200题题解手册.md",
+    "随记.md",
+    "SpringBoot基础注解与依赖注入笔记.md",
+    "算法开发讨论.md",
     "八股/阅读：.md",
+    "几个项目.md",
+    "常用prompt.md",
     "学习.md",
     "docs",
     "未命名 1.base",
@@ -346,8 +339,6 @@
     "八股/算法题/images/Pasted image 20260624220951.png",
     "项目",
     "八股/code_review",
-    "安全/架构改进.md",
-    "安全/AI AGENT安全.md",
     "未命名.canvas",
     "未命名 1.canvas"
   ]

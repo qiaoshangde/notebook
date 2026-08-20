@@ -1,32 +1,20 @@
 {
   "recentFiles": [
     {
-      "basename": "常用prompt",
-      "path": "常用prompt.md"
-    },
-    {
-      "basename": "项目进度",
-      "path": "项目进度.md"
+      "basename": "codetop前200题题解手册",
+      "path": "八股/算法题/codetop前200题题解手册.md"
     },
     {
       "basename": "算法开发讨论",
       "path": "算法开发讨论.md"
     },
     {
-      "basename": "注解",
-      "path": "Java/注解.md"
-    },
-    {
-      "basename": "SpringBoot基础注解与依赖注入笔记",
-      "path": "Java/SpringBoot基础注解与依赖注入笔记.md"
-    },
-    {
-      "basename": "codetop前200题题解手册",
-      "path": "八股/算法题/codetop前200题题解手册.md"
-    },
-    {
       "basename": "阅读：",
       "path": "八股/阅读：.md"
+    },
+    {
+      "basename": "常用prompt",
+      "path": "常用prompt.md"
     },
     {
       "basename": "hot100",
