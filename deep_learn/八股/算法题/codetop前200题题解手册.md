@@ -2182,34 +2182,6 @@ class Solution:
 - 相似题：数组排序、第 K 大、颜色分类。
 - 记忆卡片：快排 = 随机基准 + 一次分区 + 递归两边。
 
-```python
-class Solution:
-    def sortArray(self, nums):
-        import random
-
-        def quicksort(left, right):
-            if left >= right:
-                return
-            pivot_index = random.randint(left, right)
-            nums[pivot_index], nums[right] = nums[right], nums[pivot_index]
-            pivot = nums[right]
-            
-            # 下一个“小于等于 pivot 的元素”应该放置的位置
-            store_index = left
-            for scan_index in range(left, right):
-                if nums[scan_index] <= pivot:
-                    nums[store_index], nums[scan_index] = (
-                        nums[scan_index],
-                        nums[store_index],
-                    )
-                    store_index += 1
-            nums[store_index], nums[right] = nums[right], nums[store_index]
-            quicksort(left, store_index - 1)
-            quicksort(store_index + 1, right)
-
-        quicksort(0, len(nums) - 1)
-        return nums
-```
 
 ```python
 import random

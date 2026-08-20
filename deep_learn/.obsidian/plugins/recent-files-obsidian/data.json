@@ -5,6 +5,14 @@
       "path": "八股/算法题/codetop前200题题解手册.md"
     },
     {
+      "basename": "经典排序算法手册",
+      "path": "八股/算法题/经典排序算法手册.md"
+    },
+    {
+      "basename": "反转链表II-头插法演示",
+      "path": "八股/算法题/反转链表II-头插法演示.svg"
+    },
+    {
       "basename": "算法开发讨论",
       "path": "算法开发讨论.md"
     },
@@ -33,16 +41,8 @@
       "path": "八股/agenticRAG/数据.md"
     },
     {
-      "basename": "反转链表II-头插法演示",
-      "path": "八股/算法题/反转链表II-头插法演示.svg"
-    },
-    {
       "basename": "agent",
       "path": "八股/agent/agent.md"
-    },
-    {
-      "basename": "经典排序算法手册",
-      "path": "八股/算法题/经典排序算法手册.md"
     },
     {
       "basename": "一些知识",
