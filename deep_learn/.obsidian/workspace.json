@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "1864d8742ec4d720",
+        "id": "bc114c8f18ed123f",
         "type": "tabs",
         "children": [
           {
-            "id": "d972f9a0a3bcc650",
+            "id": "6416e24381cf7613",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "八股/算法题/codetop前200题题解手册.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "codetop前200题题解手册"
+              "title": "新标签页"
             }
           }
         ]
@@ -92,7 +88,6 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "八股/算法题/codetop前200题题解手册.md",
                 "followCursor": true,
                 "showSearch": false,
                 "searchQuery": ""
@@ -297,18 +292,18 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "4a0cf99042f01edd",
+  "active": "6416e24381cf7613",
   "lastOpenFiles": [
+    "未命名.base",
+    "八股/算法题/codetop前200题题解手册.md",
     "随记.md",
     "SpringBoot基础注解与依赖注入笔记.md",
     "算法开发讨论.md",
-    "八股/算法题/codetop前200题题解手册.md",
     "八股/阅读：.md",
     "几个项目.md",
     "常用prompt.md",
     "学习.md",
     "docs",
-    "未命名.base",
     "未命名 1.base",
     "八股/算法题/hot100.md",
     "八股/agenticRAG/思考改进.md",
@@ -343,7 +338,6 @@
     "八股/code_review",
     "安全/架构改进.md",
     "安全/AI AGENT安全.md",
-    "安全/工作安排.md",
     "八股/claude_code",
     "未命名.canvas",
     "未命名 1.canvas"
