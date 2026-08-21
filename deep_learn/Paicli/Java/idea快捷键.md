@@ -1,10 +1,4 @@
 
-# @Autowired和@Resource
-
-这些注解都是干什么的。
-
-
-在spring boot框架中，Spring 管理的对象都叫bean
 
 
 

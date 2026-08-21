@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "日程安排.md",
+                "file": "Paicli/项目内容/记忆，长上下文压缩.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "日程安排"
+              "title": "记忆，长上下文压缩"
             }
           }
         ]
@@ -307,16 +307,19 @@
   },
   "active": "56fc9189339d7759",
   "lastOpenFiles": [
+    "Paicli/Java/SpringBoot基础注解与依赖注入笔记.md",
+    "Paicli/Java/idea快捷键.md",
+    "Paicli/项目内容/记忆，长上下文压缩.md",
+    "Paicli/项目内容",
     "日程安排.md",
+    "Paicli",
     "项目进度.md",
     "八股/算法题/codetop前200题题解手册.md",
     "八股/算法题/经典排序算法手册.md",
     "八股/算法题/反转链表II-头插法演示.svg",
     "常用prompt.md",
-    "Java",
+    "Paicli/Java",
     "算法开发讨论.md",
-    "Java/注解.md",
-    "Java/SpringBoot基础注解与依赖注入笔记.md",
     "未命名.base",
     "八股/阅读：.md",
     "学习.md",
@@ -349,10 +352,6 @@
     "八股/agent/images",
     "八股/agenticRAG",
     "八股/算法题/images/Pasted image 20260624220951.png",
-    "项目",
-    "八股/code_review",
-    "安全/架构改进.md",
-    "安全/AI AGENT安全.md",
     "未命名.canvas",
     "未命名 1.canvas"
   ]

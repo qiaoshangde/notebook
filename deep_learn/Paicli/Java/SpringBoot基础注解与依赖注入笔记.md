@@ -1,3 +1,10 @@
+
+# @Autowired和@Resource
+
+这些注解都是干什么的。
+
+
+在spring boot框架中，Spring 管理的对象都叫bean
 # Spring Boot 基础注解与依赖注入笔记
 
 > 适合 Spring Boot 零基础学习。本文从 Java 类、对象和 Bean 开始，依次讲解 Spring 容器、依赖注入、项目分层、Web 请求映射、JSON 响应和数据库事务。

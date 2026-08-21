@@ -3157,7 +3157,7 @@
       },
       {
         "date": "2026-08-06",
-        "filePath": "Java/注解.md",
+        "filePath": "Paicli/Java/idea快捷键.md",
         "wordCountStart": 0,
         "charCountStart": 0,
         "changes": [],
@@ -3165,7 +3165,7 @@
       },
       {
         "date": "2026-08-06",
-        "filePath": "Java/SpringBoot基础注解与依赖注入笔记.md",
+        "filePath": "Paicli/Java/SpringBoot基础注解与依赖注入笔记.md",
         "wordCountStart": 1247,
         "charCountStart": 15986,
         "changes": [],
@@ -3203,7 +3203,7 @@
       },
       {
         "date": "2026-08-07",
-        "filePath": "Java/SpringBoot基础注解与依赖注入笔记.md",
+        "filePath": "Paicli/Java/SpringBoot基础注解与依赖注入笔记.md",
         "wordCountStart": 1247,
         "charCountStart": 15986,
         "changes": [
@@ -3217,7 +3217,7 @@
       },
       {
         "date": "2026-08-07",
-        "filePath": "Java/注解.md",
+        "filePath": "Paicli/Java/idea快捷键.md",
         "wordCountStart": 189,
         "charCountStart": 3104,
         "changes": [],
@@ -3255,7 +3255,7 @@
       },
       {
         "date": "2026-08-20",
-        "filePath": "Java/SpringBoot基础注解与依赖注入笔记.md",
+        "filePath": "Paicli/Java/SpringBoot基础注解与依赖注入笔记.md",
         "wordCountStart": 1247,
         "charCountStart": 17065,
         "changes": [],
@@ -3263,7 +3263,7 @@
       },
       {
         "date": "2026-08-20",
-        "filePath": "Java/注解.md",
+        "filePath": "Paicli/Java/idea快捷键.md",
         "wordCountStart": 218,
         "charCountStart": 3590,
         "changes": [],
@@ -3316,6 +3316,30 @@
         "charCountStart": 107,
         "changes": [],
         "id": 366
+      },
+      {
+        "date": "2026-08-21",
+        "filePath": "Paicli/项目内容/记忆，长上下文压缩.md",
+        "wordCountStart": 0,
+        "charCountStart": 0,
+        "changes": [],
+        "id": 367
+      },
+      {
+        "date": "2026-08-21",
+        "filePath": "Paicli/Java/idea快捷键.md",
+        "wordCountStart": 218,
+        "charCountStart": 3487,
+        "changes": [],
+        "id": 368
+      },
+      {
+        "date": "2026-08-21",
+        "filePath": "Paicli/Java/SpringBoot基础注解与依赖注入笔记.md",
+        "wordCountStart": 1247,
+        "charCountStart": 15986,
+        "changes": [],
+        "id": 369
       }
     ]
   }

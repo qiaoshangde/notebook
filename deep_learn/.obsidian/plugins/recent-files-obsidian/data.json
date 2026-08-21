@@ -1,6 +1,18 @@
 {
   "recentFiles": [
     {
+      "basename": "记忆，长上下文压缩",
+      "path": "Paicli/项目内容/记忆，长上下文压缩.md"
+    },
+    {
+      "basename": "SpringBoot基础注解与依赖注入笔记",
+      "path": "Paicli/Java/SpringBoot基础注解与依赖注入笔记.md"
+    },
+    {
+      "basename": "idea快捷键",
+      "path": "Paicli/Java/idea快捷键.md"
+    },
+    {
       "basename": "日程安排",
       "path": "日程安排.md"
     },
@@ -187,10 +199,6 @@
     {
       "basename": "1759123997061",
       "path": "Agent/image/1759123997061.png"
-    },
-    {
-      "basename": "1759123084064",
-      "path": "Agent/image/1759123084064.png"
     }
   ],
   "omittedPaths": [],
