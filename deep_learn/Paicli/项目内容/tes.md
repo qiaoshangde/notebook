@@ -3,12 +3,12 @@
 
 ## 核心实现
 
-|文件|作用|
-|---|---|
-|[ConversationHistoryCompactor.java (line 32)](E:\\idea_project\\paicli-main\\src\\main\\java\\com\\paicli\\memory\\ConversationHistoryCompactor.java:32)|压缩算法本体：切分历史、调用 LLM 摘要、重建消息|
-|[Agent.java (line 159)](E:\\idea_project\\paicli-main\\src\\main\\java\\com\\paicli\\agent\\Agent.java:159)|ReAct 主循环调用压缩器，并维护 `conversationHistory`|
-|[TokenBudget.java (line 113)](E:\\idea_project\\paicli-main\\src\\main\\java\\com\\paicli\\memory\\TokenBudget.java:113)|估算消息、工具参数和图片占用的 Token|
-|[ContextProfile.java (line 64)](E:\\idea_project\\paicli-main\\src\\main\\java\\com\\paicli\\context\\ContextProfile.java:64)|根据模型窗口计算自动压缩阈值|
+| 文件                                                                                                                                                       | 作用                                       |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------- |
+| [ConversationHistoryCompactor.java (line 32)](E:\\idea_project\\paicli-main\\src\\main\\java\\com\\paicli\\memory\\ConversationHistoryCompactor.java:32) | 压缩算法本体：切分历史、调用 LLM 摘要、重建消息               |
+| [Agent.java (line 159)](E:\\idea_project\\paicli-main\\src\\main\\java\\com\\paicli\\agent\\Agent.java:159)                                              | ReAct 主循环调用压缩器，并维护 `conversationHistory` |
+| [TokenBudget.java (line 113)](E:\\idea_project\\paicli-main\\src\\main\\java\\com\\paicli\\memory\\TokenBudget.java:113)                                 | 估算消息、工具参数和图片占用的 Token                    |
+| [ContextProfile.java (line 64)](E:\\idea_project\\paicli-main\\src\\main\\java\\com\\paicli\\context\\ContextProfile.java:64)                            | 根据模型窗口计算自动压缩阈值                           |
 
 关系如下：
 
