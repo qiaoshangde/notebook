@@ -1,29 +1,16 @@
 
 
 
-**最主要的是把学习到的东西落实下来，能看到输出**
 
 
+总结一个面经（15个问题左右，背下来）
 
-
-
-
-本周：
-1、hot100    
-2、hello-Agents
-3、总结一个面经（15个问题左右，背下来）
-4、开始手撕之前的代码。
-
-每周要有可以输出的东西，可以讲出来的。
-
-第一周：hello_agents   7、8、9、10
-第二周：hello_agents    11、12、13、14、15  
 
 最近要学会的。45天
 	算法：
 		hot100
 	agent：
-		hello-agents（难度有点大，慢慢来），以及一些agenticRL
+		hello-agents，以及一些agenticRL
 		building AI Agents in Pure Python
 		Camel[‍​﻿‬⁠​​​⁠⁠‬​﻿‍‌​​‌﻿‍⁠​​‍﻿​​​​​⁠​​​​​​⁠​​‍‌​‬​‬​​‍‬Handy Multi-Agent Tutorial - 飞书云文档](https://my.feishu.cn/docx/AF4XdOZpIo6TOaxzDK8cxInNnCe)
 		acwing（项目）

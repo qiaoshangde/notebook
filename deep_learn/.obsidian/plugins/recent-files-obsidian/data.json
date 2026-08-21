@@ -1,28 +1,116 @@
 {
   "recentFiles": [
     {
-      "basename": "tes",
-      "path": "Paicli/项目内容/tes.md"
+      "basename": "8.21日八股整理",
+      "path": "8.21日八股整理.md"
     },
     {
-      "basename": "记忆，长上下文压缩",
-      "path": "Paicli/项目内容/记忆，长上下文压缩.md"
+      "basename": "好用的prompt",
+      "path": "好用的prompt.md"
     },
     {
-      "basename": "SpringBoot基础注解与依赖注入笔记",
-      "path": "Paicli/Java/SpringBoot基础注解与依赖注入笔记.md"
+      "basename": "算法开发讨论",
+      "path": "list/算法开发讨论.md"
     },
     {
-      "basename": "idea快捷键",
-      "path": "Paicli/Java/idea快捷键.md"
+      "basename": "agent",
+      "path": "八股/agent/agent.md"
     },
     {
-      "basename": "日程安排",
-      "path": "日程安排.md"
+      "basename": "Agent笔记",
+      "path": "八股/agent/Agent笔记.md"
+    },
+    {
+      "basename": "Pasted image 20260706111316",
+      "path": "八股/agent/image/Pasted image 20260706111316.png"
+    },
+    {
+      "basename": "Pasted image 20260706105338",
+      "path": "八股/agent/image/Pasted image 20260706105338.png"
     },
     {
       "basename": "项目进度",
-      "path": "项目进度.md"
+      "path": "list/项目进度.md"
+    },
+    {
+      "basename": "日程安排",
+      "path": "list/日程安排.md"
+    },
+    {
+      "basename": "list",
+      "path": "list/list.md"
+    },
+    {
+      "basename": "coding_agent 代码能力测试",
+      "path": "八股/agent/coding_agent 代码能力测试.md"
+    },
+    {
+      "basename": "claude code",
+      "path": "八股/claude_code/claude code.md"
+    },
+    {
+      "basename": "Skills",
+      "path": "八股/skill/Skills.md"
+    },
+    {
+      "basename": "阅读：",
+      "path": "八股/阅读：.md"
+    },
+    {
+      "basename": "恋爱提升",
+      "path": "小知识/note/恋爱提升.md"
+    },
+    {
+      "basename": "穿搭护肤",
+      "path": "小知识/note/穿搭护肤.md"
+    },
+    {
+      "basename": "transformers库",
+      "path": "小知识/transformers库.md"
+    },
+    {
+      "basename": "python八股",
+      "path": "小知识/python八股.md"
+    },
+    {
+      "basename": "1759129523652",
+      "path": "八股/agent/image/1759129523652.png"
+    },
+    {
+      "basename": "1759124005677",
+      "path": "八股/agent/image/1759124005677.png"
+    },
+    {
+      "basename": "1759123997061",
+      "path": "八股/agent/image/1759123997061.png"
+    },
+    {
+      "basename": "1759123084064",
+      "path": "八股/agent/image/1759123084064.png"
+    },
+    {
+      "basename": "1759123076705",
+      "path": "八股/agent/image/1759123076705.png"
+    },
+    {
+      "basename": "1759122866215",
+      "path": "八股/agent/image/1759122866215.png"
+    },
+    {
+      "basename": "test",
+      "path": "Java/Paicli/项目内容/test.md"
+    },
+    {
+      "basename": "记忆，长上下文压缩",
+      "path": "Java/Paicli/项目内容/记忆，长上下文压缩.md"
+    },
+    {
+      "basename": "SpringBoot基础注解与依赖注入笔记",
+      "path": "Java/SpringBoot基础注解与依赖注入笔记.md"
+    },
+    {
+      "basename": "idea快捷键",
+      "path": "Java/idea快捷键.md"
     },
     {
       "basename": "codetop前200题题解手册",
@@ -35,18 +123,6 @@
     {
       "basename": "反转链表II-头插法演示",
       "path": "八股/算法题/反转链表II-头插法演示.svg"
-    },
-    {
-      "basename": "算法开发讨论",
-      "path": "算法开发讨论.md"
-    },
-    {
-      "basename": "阅读：",
-      "path": "八股/阅读：.md"
-    },
-    {
-      "basename": "常用prompt",
-      "path": "常用prompt.md"
     },
     {
       "basename": "hot100",
@@ -65,32 +141,12 @@
       "path": "八股/agenticRAG/数据.md"
     },
     {
-      "basename": "agent",
-      "path": "八股/agent/agent.md"
-    },
-    {
-      "basename": "一些知识",
-      "path": "八股/aifriend/一些知识.md"
-    },
-    {
-      "basename": "superpower 使用体验",
-      "path": "八股/skill/superpower 使用体验.md"
-    },
-    {
-      "basename": "Skills",
-      "path": "八股/skill/Skills.md"
-    },
-    {
       "basename": "code_review面试题目",
       "path": "八股/code_review/code_review面试题目.md"
     },
     {
       "basename": "评价指标",
       "path": "八股/agenticRAG/评价指标.md"
-    },
-    {
-      "basename": "claude code",
-      "path": "八股/claude_code/claude code.md"
     },
     {
       "basename": "面试",
@@ -125,18 +181,6 @@
       "path": "小知识/python包管理/python包管理.md"
     },
     {
-      "basename": "python小的知识点",
-      "path": "小知识/python小的知识点.md"
-    },
-    {
-      "basename": "list",
-      "path": "list/list.md"
-    },
-    {
-      "basename": "生活计划",
-      "path": "list/生活计划.md"
-    },
-    {
       "basename": "minimind学习笔记",
       "path": "post_train/minimind/minimind学习笔记.md"
     },
@@ -149,56 +193,8 @@
       "path": "八股/skill/images/Pasted image 20260326212005.png"
     },
     {
-      "basename": "Agent笔记",
-      "path": "Agent/Agent笔记.md"
-    },
-    {
       "basename": "评估",
       "path": "post_train/minimind/评估.md"
-    },
-    {
-      "basename": "DDP",
-      "path": "post_train/minimind/DDP.md"
-    },
-    {
-      "basename": "名言",
-      "path": "小知识/note/名言.md"
-    },
-    {
-      "basename": "恋爱提升",
-      "path": "小知识/note/恋爱提升.md"
-    },
-    {
-      "basename": "穿搭护肤",
-      "path": "小知识/note/穿搭护肤.md"
-    },
-    {
-      "basename": "思考",
-      "path": "小知识/note/思考.md"
-    },
-    {
-      "basename": "agent基础知识",
-      "path": "Agent/agent基础知识.md"
-    },
-    {
-      "basename": "1759129523652",
-      "path": "Agent/image/1759129523652.png"
-    },
-    {
-      "basename": "1759129200763",
-      "path": "Agent/image/1759129200763.png"
-    },
-    {
-      "basename": "1759128951263",
-      "path": "Agent/image/1759128951263.png"
-    },
-    {
-      "basename": "1759124482271",
-      "path": "Agent/image/1759124482271.png"
-    },
-    {
-      "basename": "1759124005677",
-      "path": "Agent/image/1759124005677.png"
     }
   ],
   "omittedPaths": [],
