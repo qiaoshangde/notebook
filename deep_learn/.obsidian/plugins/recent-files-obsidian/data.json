@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "test",
+      "path": "Paicli/项目内容/test.md"
+    },
+    {
       "basename": "阅读：",
       "path": "八股/阅读：.md"
     },
@@ -99,10 +103,6 @@
     {
       "basename": "1759122866215",
       "path": "八股/agent/image/1759122866215.png"
-    },
-    {
-      "basename": "test",
-      "path": "Paicli/项目内容/test.md"
     },
     {
       "basename": "记忆，长上下文压缩",

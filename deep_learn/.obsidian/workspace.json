@@ -11,10 +11,14 @@
             "id": "b7f5ca054df04892",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "Paicli/项目内容/test.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "新标签页"
+              "title": "test"
             }
           }
         ]
@@ -301,7 +305,7 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "6a5eb320d475b043",
+  "active": "b7f5ca054df04892",
   "lastOpenFiles": [
     "八股/阅读：.md",
     "八股/openclaw/openclaw.md",
