@@ -1,6 +1,3 @@
-
-
-
 **1、为什么要自己做一个新的coding agent？**
 有以下几个原因吧。
 	1、coding agent 相较于别的智能体，学习资料比较多。   比如learn-claude-code。opencode，claude code 的源码等。方便我进行学习
@@ -14,4 +11,4 @@
 
 
 
-3、
+**3、**
