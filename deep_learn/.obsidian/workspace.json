@@ -92,6 +92,7 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "coding agent的八股.md",
                 "followCursor": true,
                 "showSearch": false,
                 "searchQuery": ""
@@ -100,7 +101,8 @@
               "title": "大纲"
             }
           }
-        ]
+        ],
+        "currentTab": 4
       },
       {
         "id": "ab52c96cd9267565",
@@ -304,7 +306,7 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "b7f5ca054df04892",
+  "active": "4a0cf99042f01edd",
   "lastOpenFiles": [
     "Paicli/项目内容/test.md",
     "coding agent的八股.md",
