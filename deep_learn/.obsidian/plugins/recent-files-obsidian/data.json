@@ -1,8 +1,20 @@
 {
   "recentFiles": [
     {
-      "basename": "8.21日八股整理",
-      "path": "8.21日八股整理.md"
+      "basename": "阅读：",
+      "path": "八股/阅读：.md"
+    },
+    {
+      "basename": "openclaw",
+      "path": "八股/openclaw/openclaw.md"
+    },
+    {
+      "basename": "claude code",
+      "path": "八股/claude_code/claude code.md"
+    },
+    {
+      "basename": "教程",
+      "path": "八股/deepseek_harness/教程.md"
     },
     {
       "basename": "好用的prompt",
@@ -45,16 +57,8 @@
       "path": "八股/agent/coding_agent 代码能力测试.md"
     },
     {
-      "basename": "claude code",
-      "path": "八股/claude_code/claude code.md"
-    },
-    {
       "basename": "Skills",
       "path": "八股/skill/Skills.md"
-    },
-    {
-      "basename": "阅读：",
-      "path": "八股/阅读：.md"
     },
     {
       "basename": "恋爱提升",
@@ -98,11 +102,11 @@
     },
     {
       "basename": "test",
-      "path": "Java/Paicli/项目内容/test.md"
+      "path": "Paicli/项目内容/test.md"
     },
     {
       "basename": "记忆，长上下文压缩",
-      "path": "Java/Paicli/项目内容/记忆，长上下文压缩.md"
+      "path": "Paicli/项目内容/记忆，长上下文压缩.md"
     },
     {
       "basename": "SpringBoot基础注解与依赖注入笔记",
@@ -130,23 +134,23 @@
     },
     {
       "basename": "面试",
-      "path": "八股/agenticRAG/面试.md"
+      "path": "agenticRAG/面试.md"
     },
     {
       "basename": "思考改进",
-      "path": "八股/agenticRAG/思考改进.md"
+      "path": "agenticRAG/思考改进.md"
     },
     {
       "basename": "数据",
-      "path": "八股/agenticRAG/数据.md"
+      "path": "agenticRAG/数据.md"
     },
     {
       "basename": "code_review面试题目",
-      "path": "八股/code_review/code_review面试题目.md"
+      "path": "code_review/code_review面试题目.md"
     },
     {
       "basename": "评价指标",
-      "path": "八股/agenticRAG/评价指标.md"
+      "path": "agenticRAG/评价指标.md"
     },
     {
       "basename": "面试",
