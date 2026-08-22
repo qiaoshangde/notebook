@@ -285,7 +285,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 343.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -306,7 +306,7 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "4a0cf99042f01edd",
+  "active": "b7f5ca054df04892",
   "lastOpenFiles": [
     "Paicli/项目内容/test.md",
     "coding agent的八股.md",
