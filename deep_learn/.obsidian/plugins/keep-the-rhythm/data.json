@@ -3571,7 +3571,7 @@
       },
       {
         "date": "2026-08-22",
-        "filePath": "coding agent的八股.md",
+        "filePath": "coding/coding agent的八股.md",
         "wordCountStart": 0,
         "charCountStart": 0,
         "changes": [],
@@ -3587,11 +3587,57 @@
       },
       {
         "date": "2026-08-23",
-        "filePath": "coding agent的八股.md",
+        "filePath": "coding/coding agent的八股.md",
         "wordCountStart": 209,
         "charCountStart": 5379,
         "changes": [],
         "id": 396
+      },
+      {
+        "date": "2026-08-23",
+        "filePath": "Paicli/项目内容/test.md",
+        "wordCountStart": 166,
+        "charCountStart": 2545,
+        "changes": [],
+        "id": 397
+      },
+      {
+        "date": "2026-08-23",
+        "filePath": "Paicli/项目内容/面试.md",
+        "wordCountStart": 0,
+        "charCountStart": 0,
+        "changes": [],
+        "id": 398
+      },
+      {
+        "date": "2026-08-23",
+        "filePath": "coding/项目分层.md",
+        "wordCountStart": 0,
+        "charCountStart": 0,
+        "changes": [],
+        "id": 399
+      },
+      {
+        "date": "2026-08-23",
+        "filePath": "coding/检测到任务切换.md",
+        "wordCountStart": 0,
+        "charCountStart": 0,
+        "changes": [
+          {
+            "timeKey": "19:25",
+            "w": 0,
+            "c": 0
+          }
+        ],
+        "id": 400
+      },
+      {
+        "date": "2026-08-23",
+        "filePath": "coding/任务切换.md",
+        "wordCountStart": 0,
+        "charCountStart": 0,
+        "changes": [],
+        "id": 401
       }
     ]
   }
