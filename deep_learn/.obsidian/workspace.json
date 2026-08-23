@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "coding/coding agent的八股.md",
+                "file": "coding/压缩机制.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "coding agent的八股"
+              "title": "压缩机制"
             }
           }
         ]
@@ -92,7 +92,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "coding/coding agent的八股.md",
+                "file": "coding/压缩机制.md",
                 "followCursor": true,
                 "showSearch": false,
                 "searchQuery": ""
@@ -305,12 +305,13 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "702ec68cf52ed81a",
+  "active": "6a5eb320d475b043",
   "lastOpenFiles": [
+    "coding/coding agent的八股.md",
+    "coding/压缩机制.md",
     "coding/项目分层.md",
     "coding/记忆",
     "coding/任务切换.md",
-    "coding/coding agent的八股.md",
     "coding/检测到任务切换.md",
     "Paicli/项目内容/面试.md",
     "Paicli/项目内容/test.md",
