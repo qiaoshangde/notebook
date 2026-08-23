@@ -5,6 +5,10 @@
       "path": "coding agent的八股.md"
     },
     {
+      "basename": "codetop前200题题解手册",
+      "path": "八股/算法题/codetop前200题题解手册.md"
+    },
+    {
       "basename": "test",
       "path": "Paicli/项目内容/test.md"
     },
@@ -119,10 +123,6 @@
     {
       "basename": "idea快捷键",
       "path": "Java/idea快捷键.md"
-    },
-    {
-      "basename": "codetop前200题题解手册",
-      "path": "八股/算法题/codetop前200题题解手册.md"
     },
     {
       "basename": "经典排序算法手册",
