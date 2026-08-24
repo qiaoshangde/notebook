@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "会话重建",
+      "path": "coding/会话重建.md"
+    },
+    {
       "basename": "压缩机制",
       "path": "coding/压缩机制.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "git",
       "path": "小知识/git.md"
-    },
-    {
-      "basename": "新进展",
-      "path": "安全/新进展.md"
     }
   ],
   "omittedPaths": [],

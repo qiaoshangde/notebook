@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "coding/压缩机制.md",
+                "file": "coding/会话重建.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "压缩机制"
+              "title": "会话重建"
             }
           }
         ]
@@ -92,7 +92,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "coding/压缩机制.md",
+                "file": "coding/会话重建.md",
                 "followCursor": true,
                 "showSearch": false,
                 "searchQuery": ""
@@ -307,8 +307,9 @@
   },
   "active": "52915a487e1de821",
   "lastOpenFiles": [
-    "coding/任务切换.md",
     "coding/压缩机制.md",
+    "coding/会话重建.md",
+    "coding/任务切换.md",
     "coding/coding agent的八股.md",
     "coding/项目分层.md",
     "coding/记忆",
@@ -340,7 +341,6 @@
     "Agent/agent八股.md",
     "八股/aifriend/一些知识.md",
     "八股/skill/Skills.md",
-    "八股/skill/superpower 使用体验.md",
     "八股/agent/image/1759129523652.png",
     "八股/agent/image/1759124005677.png",
     "八股/agent/image/1759123997061.png",
