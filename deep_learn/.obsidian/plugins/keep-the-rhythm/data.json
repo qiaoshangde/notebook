@@ -3646,6 +3646,22 @@
         "charCountStart": 0,
         "changes": [],
         "id": 402
+      },
+      {
+        "date": "2026-08-24",
+        "filePath": "coding/任务切换.md",
+        "wordCountStart": 0,
+        "charCountStart": 0,
+        "changes": [],
+        "id": 403
+      },
+      {
+        "date": "2026-08-24",
+        "filePath": "coding/压缩机制.md",
+        "wordCountStart": 1521,
+        "charCountStart": 24079,
+        "changes": [],
+        "id": 404
       }
     ]
   }
