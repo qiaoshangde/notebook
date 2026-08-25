@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "f5569d1f28a37467",
+        "id": "82482d71b3bd1664",
         "type": "tabs",
         "children": [
           {
-            "id": "d653217ab771cf6d",
+            "id": "4964647dac0a59d2",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "八股/算法题/codetop前200题题解手册.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "codetop前200题题解手册"
+              "title": "新标签页"
             }
           }
         ]
@@ -92,7 +88,6 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "八股/算法题/codetop前200题题解手册.md",
                 "followCursor": true,
                 "showSearch": false,
                 "searchQuery": ""
@@ -101,8 +96,7 @@
               "title": "大纲"
             }
           }
-        ],
-        "currentTab": 4
+        ]
       },
       {
         "id": "ab52c96cd9267565",
@@ -306,11 +300,11 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "4a0cf99042f01edd",
+  "active": "6a5eb320d475b043",
   "lastOpenFiles": [
+    "八股/算法题/codetop前200题题解手册.md",
     "八股/算法题/hot100.md",
     "coding/coding agent的八股.md",
-    "八股/算法题/codetop前200题题解手册.md",
     "草稿箱",
     "coding/会话重建.md",
     "coding/压缩机制.md",
