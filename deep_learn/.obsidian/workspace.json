@@ -4,17 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "82482d71b3bd1664",
+        "id": "f639537d3d3bb8c6",
         "type": "tabs",
         "children": [
           {
-            "id": "4964647dac0a59d2",
+            "id": "5aa4830c6845150a",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "coding/loop解析.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "新标签页"
+              "title": "loop解析"
             }
           }
         ]
@@ -88,6 +92,7 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "coding/loop解析.md",
                 "followCursor": true,
                 "showSearch": false,
                 "searchQuery": ""
@@ -153,7 +158,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 298.19447326660156
+    "width": 200,
+    "collapsed": true
   },
   "right": {
     "id": "fd68a9d2938df27d",
@@ -170,6 +176,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "coding/loop解析.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -188,6 +195,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "coding/loop解析.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
@@ -247,8 +255,7 @@
               "title": "Timeline"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       },
       {
         "id": "51deb8f25499109b",
@@ -279,7 +286,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 343.5
+    "width": 343.5,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -300,11 +308,15 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "6a5eb320d475b043",
+  "active": "5aa4830c6845150a",
   "lastOpenFiles": [
+    "coding/coding agent的八股.md",
+    "_run_user_turn_streaming.md",
+    "coding/loop解析.md",
+    "未命名.base",
+    "未命名 1.base",
     "八股/算法题/codetop前200题题解手册.md",
     "八股/算法题/hot100.md",
-    "coding/coding agent的八股.md",
     "草稿箱",
     "coding/会话重建.md",
     "coding/压缩机制.md",
@@ -334,9 +346,6 @@
     "list/日程安排.md",
     "list/list.md",
     "list/生活计划.md",
-    "八股/agent/coding_agent 代码能力测试.md",
-    "Agent/agent八股.md",
-    "八股/aifriend/一些知识.md",
     "八股/agent/image/1759129523652.png",
     "八股/agent/image/1759124005677.png",
     "八股/agent/image/1759123997061.png",
@@ -344,8 +353,6 @@
     "八股/agent/image/1759123076705.png",
     "八股/agent/image/1759122866215.png",
     "Paicli/项目内容/未命名",
-    "Paicli/项目内容",
-    "Paicli",
     "八股/算法题/images/反转链表II-头插法演示.svg",
     "八股/算法题/images/Pasted image 20260801112909.png",
     "未命名.canvas",

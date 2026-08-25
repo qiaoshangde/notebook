@@ -1,16 +1,20 @@
 {
   "recentFiles": [
     {
+      "basename": "loop解析",
+      "path": "coding/loop解析.md"
+    },
+    {
+      "basename": "coding agent的八股",
+      "path": "coding/coding agent的八股.md"
+    },
+    {
       "basename": "codetop前200题题解手册",
       "path": "八股/算法题/codetop前200题题解手册.md"
     },
     {
       "basename": "hot100",
       "path": "八股/算法题/hot100.md"
-    },
-    {
-      "basename": "coding agent的八股",
-      "path": "coding/coding agent的八股.md"
     },
     {
       "basename": "会话重建",
@@ -183,22 +187,6 @@
     {
       "basename": "grpo",
       "path": "八股/rl/GRPO/grpo.md"
-    },
-    {
-      "basename": "PPO",
-      "path": "八股/rl/ppo/PPO.md"
-    },
-    {
-      "basename": "架构改进",
-      "path": "安全/架构改进.md"
-    },
-    {
-      "basename": "AI AGENT安全",
-      "path": "安全/AI AGENT安全.md"
-    },
-    {
-      "basename": "git",
-      "path": "小知识/git.md"
     }
   ],
   "omittedPaths": [],
