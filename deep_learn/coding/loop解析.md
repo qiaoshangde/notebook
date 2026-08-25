@@ -42,3 +42,8 @@ begin_turn()一个turn的台账
 清空本轮激活的MCP工具
 active_mcp_tool_names.clear()
 重置Provider调用次数
+
+
+
+
+run_tool_loop_interactive是真正的核心
