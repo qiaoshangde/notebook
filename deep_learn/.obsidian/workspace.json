@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "coding/coding agent的八股.md",
+                "file": "八股/算法题/codetop前200题题解手册.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "coding agent的八股"
+              "title": "codetop前200题题解手册"
             }
           }
         ]
@@ -92,7 +92,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "coding/coding agent的八股.md",
+                "file": "八股/算法题/codetop前200题题解手册.md",
                 "followCursor": true,
                 "showSearch": false,
                 "searchQuery": ""
@@ -101,7 +101,8 @@
               "title": "大纲"
             }
           }
-        ]
+        ],
+        "currentTab": 4
       },
       {
         "id": "ab52c96cd9267565",
@@ -305,14 +306,15 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "d653217ab771cf6d",
+  "active": "4a0cf99042f01edd",
   "lastOpenFiles": [
+    "八股/算法题/hot100.md",
+    "coding/coding agent的八股.md",
     "八股/算法题/codetop前200题题解手册.md",
     "草稿箱",
     "coding/会话重建.md",
     "coding/压缩机制.md",
     "coding/任务切换.md",
-    "coding/coding agent的八股.md",
     "coding/项目分层.md",
     "coding/记忆",
     "coding/检测到任务切换.md",
@@ -350,7 +352,7 @@
     "Paicli/项目内容/未命名",
     "Paicli/项目内容",
     "Paicli",
-    "八股/算法题/反转链表II-头插法演示.svg",
+    "八股/算法题/images/反转链表II-头插法演示.svg",
     "八股/算法题/images/Pasted image 20260801112909.png",
     "未命名.canvas",
     "未命名 1.canvas"
