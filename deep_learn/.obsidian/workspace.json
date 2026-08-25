@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "ff65390f5d0e9cc5",
+        "id": "f5569d1f28a37467",
         "type": "tabs",
         "children": [
           {
-            "id": "44a1812ded90bb1e",
+            "id": "d653217ab771cf6d",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "八股/算法题/codetop前200题题解手册.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "codetop前200题题解手册"
+              "title": "新标签页"
             }
           }
         ]
@@ -92,7 +88,6 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "八股/算法题/codetop前200题题解手册.md",
                 "followCursor": true,
                 "showSearch": false,
                 "searchQuery": ""
@@ -101,8 +96,7 @@
               "title": "大纲"
             }
           }
-        ],
-        "currentTab": 4
+        ]
       },
       {
         "id": "ab52c96cd9267565",
@@ -306,8 +300,10 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "4a0cf99042f01edd",
+  "active": "d653217ab771cf6d",
   "lastOpenFiles": [
+    "八股/算法题/codetop前200题题解手册.md",
+    "草稿箱",
     "coding/会话重建.md",
     "coding/压缩机制.md",
     "coding/任务切换.md",
@@ -317,7 +313,6 @@
     "coding/检测到任务切换.md",
     "Paicli/项目内容/面试.md",
     "Paicli/项目内容/test.md",
-    "八股/算法题/codetop前200题题解手册.md",
     "coding",
     "八股/阅读：.md",
     "八股/openclaw/openclaw.md",
@@ -341,7 +336,6 @@
     "八股/agent/coding_agent 代码能力测试.md",
     "Agent/agent八股.md",
     "八股/aifriend/一些知识.md",
-    "八股/skill/Skills.md",
     "八股/agent/image/1759129523652.png",
     "八股/agent/image/1759124005677.png",
     "八股/agent/image/1759123997061.png",
@@ -352,7 +346,6 @@
     "Paicli/项目内容",
     "Paicli",
     "八股/算法题/反转链表II-头插法演示.svg",
-    "Java",
     "八股/算法题/images/Pasted image 20260801112909.png",
     "未命名.canvas",
     "未命名 1.canvas"
