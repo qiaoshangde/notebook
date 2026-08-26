@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "阅读：",
+      "path": "草稿箱/阅读：.md"
+    },
+    {
       "basename": "八股",
       "path": "coding/八股.md"
     },
@@ -45,10 +49,6 @@
       "path": "Paicli/项目内容/test.md"
     },
     {
-      "basename": "阅读：",
-      "path": "八股/阅读：.md"
-    },
-    {
       "basename": "openclaw",
       "path": "八股/openclaw/openclaw.md"
     },
@@ -62,7 +62,7 @@
     },
     {
       "basename": "好用的prompt",
-      "path": "好用的prompt.md"
+      "path": "草稿箱/好用的prompt.md"
     },
     {
       "basename": "算法开发讨论",
