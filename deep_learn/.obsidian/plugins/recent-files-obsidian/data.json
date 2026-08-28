@@ -1,40 +1,16 @@
 {
   "recentFiles": [
     {
+      "basename": "conflict-files-obsidian-git",
+      "path": "conflict-files-obsidian-git.md"
+    },
+    {
       "basename": "codetop前200题题解手册",
       "path": "八股/算法题/codetop前200题题解手册.md"
     },
     {
-      "basename": "算法开发讨论",
-      "path": "算法开发讨论.md"
-    },
-    {
-      "basename": "阅读：",
-      "path": "八股/阅读：.md"
-    },
-    {
-      "basename": "常用prompt",
-      "path": "常用prompt.md"
-    },
-    {
       "basename": "hot100",
       "path": "八股/算法题/hot100.md"
-    },
-    {
-      "basename": "面试",
-      "path": "八股/agenticRAG/面试.md"
-    },
-    {
-      "basename": "思考改进",
-      "path": "八股/agenticRAG/思考改进.md"
-    },
-    {
-      "basename": "数据",
-      "path": "八股/agenticRAG/数据.md"
-    },
-    {
-      "basename": "反转链表II-头插法演示",
-      "path": "八股/算法题/反转链表II-头插法演示.svg"
     },
     {
       "basename": "agent",
@@ -45,24 +21,8 @@
       "path": "八股/算法题/经典排序算法手册.md"
     },
     {
-      "basename": "一些知识",
-      "path": "八股/aifriend/一些知识.md"
-    },
-    {
-      "basename": "superpower 使用体验",
-      "path": "八股/skill/superpower 使用体验.md"
-    },
-    {
       "basename": "Skills",
       "path": "八股/skill/Skills.md"
-    },
-    {
-      "basename": "code_review面试题目",
-      "path": "八股/code_review/code_review面试题目.md"
-    },
-    {
-      "basename": "评价指标",
-      "path": "八股/agenticRAG/评价指标.md"
     },
     {
       "basename": "claude code",
@@ -81,36 +41,16 @@
       "path": "八股/rl/ppo/PPO.md"
     },
     {
-      "basename": "架构改进",
-      "path": "安全/架构改进.md"
-    },
-    {
-      "basename": "AI AGENT安全",
-      "path": "安全/AI AGENT安全.md"
-    },
-    {
       "basename": "git",
       "path": "小知识/git.md"
-    },
-    {
-      "basename": "新进展",
-      "path": "安全/新进展.md"
     },
     {
       "basename": "python包管理",
       "path": "小知识/python包管理/python包管理.md"
     },
     {
-      "basename": "python小的知识点",
-      "path": "小知识/python小的知识点.md"
-    },
-    {
       "basename": "list",
       "path": "list/list.md"
-    },
-    {
-      "basename": "生活计划",
-      "path": "list/生活计划.md"
     },
     {
       "basename": "minimind学习笔记",
@@ -123,10 +63,6 @@
     {
       "basename": "Pasted image 20260326212005",
       "path": "八股/skill/images/Pasted image 20260326212005.png"
-    },
-    {
-      "basename": "Agent笔记",
-      "path": "Agent/Agent笔记.md"
     },
     {
       "basename": "评估",
@@ -151,38 +87,6 @@
     {
       "basename": "思考",
       "path": "小知识/note/思考.md"
-    },
-    {
-      "basename": "agent基础知识",
-      "path": "Agent/agent基础知识.md"
-    },
-    {
-      "basename": "1759129523652",
-      "path": "Agent/image/1759129523652.png"
-    },
-    {
-      "basename": "1759129200763",
-      "path": "Agent/image/1759129200763.png"
-    },
-    {
-      "basename": "1759128951263",
-      "path": "Agent/image/1759128951263.png"
-    },
-    {
-      "basename": "1759124482271",
-      "path": "Agent/image/1759124482271.png"
-    },
-    {
-      "basename": "1759124005677",
-      "path": "Agent/image/1759124005677.png"
-    },
-    {
-      "basename": "1759123997061",
-      "path": "Agent/image/1759123997061.png"
-    },
-    {
-      "basename": "1759123084064",
-      "path": "Agent/image/1759123084064.png"
     }
   ],
   "omittedPaths": [],
