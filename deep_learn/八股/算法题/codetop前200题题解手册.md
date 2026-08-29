@@ -7528,6 +7528,29 @@ class Solution:
 ```
 
 
+闭区间版本。（这个版本的用的比较多）
+
+```python
+class Solution:
+    def searchRange(self, nums: List[int], target: int) -> List[int]:
+        def low_bound(value):
+            left, right = 0, len(nums) - 1  # 闭区间 [left, right]
+            while left <= right:            # 注意是 <=，因为区间要有效
+                mid = (left + right) // 2
+                if nums[mid] >= value:
+                    right = mid - 1         # 缩小区间到 [left, mid-1]
+                else:
+                    left = mid + 1          # 缩小区间到 [mid+1, right]
+            return left                     # 仍然返回 left
+        
+        left = low_bound(target)
+        if left == len(nums) or nums[left] != target:
+            return [-1, -1]
+        right = low_bound(target + 1) - 1
+        return [left, right]
+```
+
+
 #### 详细分析、小例子与代码执行流程
 排序数组里找某个值的范围，本质是找两个边界：第一个大于等于 target 的位置，以及第一个大于 target 的位置。右边界就是第二个位置减 1。
 
