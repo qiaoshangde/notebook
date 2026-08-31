@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "b445c597f4adb8a2",
+        "id": "0fc9baaa4e77b80a",
         "type": "tabs",
         "children": [
           {
-            "id": "f77c1c98f57d4b6c",
+            "id": "bafc3f6c851c66f6",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -159,7 +159,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 298.19447326660156
+    "width": 353.5
   },
   "right": {
     "id": "fd68a9d2938df27d",
@@ -176,6 +176,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "草稿箱/阅读：.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -194,6 +195,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "草稿箱/阅读：.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
@@ -242,9 +244,18 @@
               "icon": "lucide-archive",
               "title": "添加笔记属性"
             }
+          },
+          {
+            "id": "5476523c974482a5",
+            "type": "leaf",
+            "state": {
+              "type": "planner-timeline",
+              "state": {},
+              "icon": "calendar-with-checkmark",
+              "title": "Timeline"
+            }
           }
-        ],
-        "currentTab": 2
+        ]
       },
       {
         "id": "51deb8f25499109b",
@@ -267,15 +278,15 @@
             "state": {
               "type": "smtcmp-chat-view",
               "state": {},
-              "icon": "wand-sparkles",
-              "title": "Smart composer chat"
+              "icon": "lucide-ghost",
+              "title": "smtcmp-chat-view"
             }
           }
         ]
       }
     ],
     "direction": "horizontal",
-    "width": 200,
+    "width": 343.5,
     "collapsed": true
   },
   "left-ribbon": {
@@ -299,52 +310,51 @@
   },
   "active": "4a0cf99042f01edd",
   "lastOpenFiles": [
+    "coding_agent/coding agent的八股.md",
     "conflict-files-obsidian-git.md",
-    "八股/算法题/codetop前200题题解手册.md",
-    "草稿箱/安全/架构改进.md",
-    "草稿箱/安全/新进展.md",
-    "草稿箱/安全/AI AGENT安全.md",
-    "草稿箱/阅读：.md",
+    "coding_agent/八股.md",
+    "coding_agent/项目解析",
+    "大模型应用开发.md",
     "草稿箱/自进化.md",
-    "草稿箱/安全",
-    "草稿箱/好用的prompt.md",
+    "草稿箱/阅读：.md",
+    "八股/算法题/codetop前200题题解手册.md",
+    "coding_agent/项目解析/loop解析.md",
+    "_run_user_turn_streaming.md",
+    "未命名.base",
+    "未命名 1.base",
+    "八股/算法题/hot100.md",
     "草稿箱",
-    "小知识/python八股.md",
-    "八股/算法题/images/反转链表II-头插法演示.svg",
+    "coding_agent/项目解析/会话重建.md",
+    "coding_agent/项目解析/压缩机制.md",
+    "coding_agent/项目解析/任务切换.md",
+    "coding_agent/项目解析/项目分层.md",
+    "coding_agent/记忆",
+    "coding/检测到任务切换.md",
+    "八股/Paicli/项目内容/面试.md",
+    "八股/Paicli/项目内容/test.md",
+    "coding_agent",
     "八股/openclaw/openclaw.md",
-    "八股/openclaw",
+    "八股/claude_code/claude code.md",
     "八股/deepseek_harness/教程.md",
+    "8.21日八股整理.md",
+    "八股/deerflow",
+    "八股/harmes",
+    "八股/openclaw",
+    "草稿箱/好用的prompt.md",
+    "list/算法开发讨论.md",
     "八股/deepseek_harness",
+    "八股/agent/agent.md",
+    "八股/agent/Agent笔记.md",
     "八股/agent/image/Pasted image 20260706111316.png",
     "八股/agent/image/Pasted image 20260706105338.png",
     "八股/agent/image/1759129523652.png",
-    "八股/agent/image/1759129200763.png",
-    "八股/agent/image/1759128951263.png",
-    "八股/agent/image/1759124482271.png",
     "八股/agent/image/1759124005677.png",
     "八股/agent/image/1759123997061.png",
     "八股/agent/image/1759123084064.png",
-    "八股/agent/image",
-    "八股/agent/coding_agent 代码能力测试.md",
-    "八股/agent/Agent笔记.md",
-    "list/项目进度.md",
-    "list/算法开发讨论.md",
-    "list/日程安排.md",
-    "coding/项目分层.md",
-    "coding/八股.md",
-    "coding/压缩机制.md",
-    "coding/会话重建.md",
-    "coding/loop解析.md",
-    "coding/任务切换.md",
-    "coding/coding agent的八股.md",
-    "coding",
-    "code_review/code_review面试题目.md",
-    "code_review",
-    "agenticRAG/面试.md",
-    "agenticRAG/评价指标.md",
-    "agenticRAG",
-    "Paicli/项目内容",
-    "Paicli",
+    "八股/agent/image/1759123076705.png",
+    "八股/agent/image/1759122866215.png",
+    "八股/算法题/images/反转链表II-头插法演示.svg",
+    "八股/算法题/images/Pasted image 20260801112909.png",
     "未命名.canvas",
     "未命名 1.canvas"
   ]
