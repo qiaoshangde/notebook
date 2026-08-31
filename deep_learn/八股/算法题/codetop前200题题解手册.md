@@ -598,7 +598,7 @@ def backtrack(index):
 
 第一阶段：子集 / 组合，先理解 start 控制不回头
 
-子集枚举 / 每个数选或不选：58. 子集。
+**子集枚举 / 每个数选或不选：58. 子集。**
 
 **组合求和 / 可重复选择：65. 组合总和。**
 
@@ -5665,8 +5665,7 @@ class Solution:
             if nums[mid] == target:
                 return mid
             if nums[mid] < target:
-                left = mid + 1
-            else:
+                left = mid + 1  
                 right = mid - 1
         return -1
 ```
@@ -14770,8 +14769,8 @@ class Solution:
                 # 当前值太大，目标只可能在左半部分
                 right = middle - 1
 
-        return False```
-
+        return False
+```
 #### 详细分析、小例子与代码执行流程
 矩阵 `[[1,3,5],[7,9,11]]` 可以看成 `[1,3,5,7,9,11]`。找 9 时，二分到一维下标 4，再映射回 `(1,1)`。
 
