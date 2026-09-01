@@ -16315,52 +16315,42 @@ class Solution:
         def count_prefix_nodes(prefix):
             # 当前层以prefix为起点
             current_prefix = prefix
-
             # 当前层的右边界
             next_prefix = prefix + 1
-
             total = 0
-
             while current_prefix <= n:
                 # 统计当前层中不超过n的数字数量
                 total += (
                     min(n + 1, next_prefix)
                     - current_prefix
                 )
-
                 # 进入下一层
                 current_prefix *= 10
                 next_prefix *= 10
 
             return total
-
         # 字典序中的第一个数字是1
         current_prefix = 1
 
         # 当前位置已经是第一个数字，
         # 转换成还需要向后移动多少步
         k -= 1
-
         while k > 0:
             # 统计当前前缀子树的节点数量
             subtree_size = count_prefix_nodes(
                 current_prefix
             )
-
             if subtree_size <= k:
                 # 目标不在当前子树，
                 # 跳过整棵子树，移动到下一个兄弟前缀
                 current_prefix += 1
                 k -= subtree_size
-
             else:
                 # 目标在当前子树，
                 # 进入下一层的第一个孩子
                 current_prefix *= 10
-
                 # 从当前节点走到孩子节点消耗一步
                 k -= 1
-
         return current_prefix
 ```
 
