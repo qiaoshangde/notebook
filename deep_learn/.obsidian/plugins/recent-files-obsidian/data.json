@@ -1,6 +1,14 @@
 {
   "recentFiles": [
     {
+      "basename": "coding agent的八股",
+      "path": "coding_agent/coding agent的八股.md"
+    },
+    {
+      "basename": "压缩机制",
+      "path": "coding_agent/项目解析/压缩机制.md"
+    },
+    {
       "basename": "codetop前200题题解手册",
       "path": "八股/算法题/codetop前200题题解手册.md"
     },
@@ -11,10 +19,6 @@
     {
       "basename": "经典排序算法手册",
       "path": "八股/算法题/经典排序算法手册.md"
-    },
-    {
-      "basename": "coding agent的八股",
-      "path": "coding_agent/coding agent的八股.md"
     },
     {
       "basename": "agent",
@@ -195,10 +199,6 @@
     {
       "basename": "评价指标",
       "path": "agenticRAG/评价指标.md"
-    },
-    {
-      "basename": "面试",
-      "path": "八股/rl/GRPO/面试.md"
     }
   ],
   "omittedPaths": [],
