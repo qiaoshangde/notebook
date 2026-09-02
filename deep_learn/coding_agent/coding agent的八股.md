@@ -135,7 +135,7 @@ flowchart TD
 
 
 
-
+图片的token计算是怎么算的。 base64？
 
 ## 4、上下文怎么管理的
 
