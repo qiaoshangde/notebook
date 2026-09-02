@@ -19509,6 +19509,39 @@ class Solution:
         return dfs([float(number) for number in cards])
 ```
 
+
+```python
+class Solution:
+
+    def judgePoint24(self, cards: List[int]) -> bool:
+
+        EPS = 1e-6
+
+        def dfs(numbers):
+
+            if len(numbers) == 1:
+                return abs(numbers[0]-24) < EPS
+            for i in range(len(numbers)):
+                for j in range(len(numbers)):
+                    if i == j:
+                        continue
+                    rest = [numbers[k] for k in range(len(numbers)) if k!=i and k!=j]
+                    
+                    if abs(numbers[j]) > EPS:
+                        new_num = [numbers[i]+numbers[j],numbers[i]-numbers[j],numbers[i]*numbers[j],numbers[i]/numbers[j]]
+
+                    else:
+                        new_num = [numbers[i]+numbers[j],numbers[i]-numbers[j],numbers[i]*numbers[j]]                  
+
+                    for value in new_num:
+                        if dfs(rest + [value]):
+                            return True
+
+            return False
+
+        return dfs([float(number) for number in cards])
+```
+
 #### 详细分析、小例子与代码执行流程
 
 加、减、乘、除每次都需要两个操作数，所以每层从 `numbers` 中选择两个不同位置 `i` 和 `j`，计算一个结果 `value`，再用这个结果替换原来的两个数。数字数量会按照 `4 -> 3 -> 2 -> 1` 逐层减少；只剩一个数时，判断它是否接近 24。
