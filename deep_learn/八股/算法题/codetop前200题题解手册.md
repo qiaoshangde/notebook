@@ -9943,7 +9943,7 @@ class Solution:
 
 ```python
 class Solution:
-    def pathSum(self, root, targetSum: int):
+    def path2Sum(self, root, targetSum: int):
         result = []
         path = []
 

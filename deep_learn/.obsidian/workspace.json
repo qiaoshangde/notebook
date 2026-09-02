@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "coding_agent/后台工具调用.md",
+                "file": "八股/算法题/codetop前200题题解手册.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "后台工具调用"
+              "title": "codetop前200题题解手册"
             }
           }
         ]
@@ -92,7 +92,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "coding_agent/后台工具调用.md",
+                "file": "八股/算法题/codetop前200题题解手册.md",
                 "followCursor": true,
                 "showSearch": false,
                 "searchQuery": ""
@@ -101,7 +101,8 @@
               "title": "大纲"
             }
           }
-        ]
+        ],
+        "currentTab": 4
       },
       {
         "id": "ab52c96cd9267565",
@@ -307,11 +308,11 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "941b90f7d04fbb58",
+  "active": "4a0cf99042f01edd",
   "lastOpenFiles": [
+    "coding_agent/后台工具调用.md",
     "八股/算法题/codetop前200题题解手册.md",
     "八股/算法题/hot100.md",
-    "coding_agent/后台工具调用.md",
     "coding_agent/coding agent的八股.md",
     "八股/agent/agent.md",
     "coding_agent/项目解析/会话运行状态.md",
