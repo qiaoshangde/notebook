@@ -1,16 +1,20 @@
 {
   "recentFiles": [
     {
+      "basename": "coding agent的八股",
+      "path": "coding_agent/coding agent的八股.md"
+    },
+    {
+      "basename": "agent",
+      "path": "八股/agent/agent.md"
+    },
+    {
       "basename": "会话运行状态",
       "path": "coding_agent/项目解析/会话运行状态.md"
     },
     {
       "basename": "会话视图",
       "path": "coding_agent/项目解析/会话视图.md"
-    },
-    {
-      "basename": "coding agent的八股",
-      "path": "coding_agent/coding agent的八股.md"
     },
     {
       "basename": "压缩机制",
@@ -27,10 +31,6 @@
     {
       "basename": "经典排序算法手册",
       "path": "八股/算法题/经典排序算法手册.md"
-    },
-    {
-      "basename": "agent",
-      "path": "八股/agent/agent.md"
     },
     {
       "basename": "hot100",
