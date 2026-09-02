@@ -1,6 +1,14 @@
 {
   "recentFiles": [
     {
+      "basename": "会话运行状态",
+      "path": "coding_agent/项目解析/会话运行状态.md"
+    },
+    {
+      "basename": "会话视图",
+      "path": "coding_agent/项目解析/会话视图.md"
+    },
+    {
       "basename": "coding agent的八股",
       "path": "coding_agent/coding agent的八股.md"
     },
@@ -191,14 +199,6 @@
     {
       "basename": "数据",
       "path": "agenticRAG/数据.md"
-    },
-    {
-      "basename": "code_review面试题目",
-      "path": "code_review/code_review面试题目.md"
-    },
-    {
-      "basename": "评价指标",
-      "path": "agenticRAG/评价指标.md"
     }
   ],
   "omittedPaths": [],
