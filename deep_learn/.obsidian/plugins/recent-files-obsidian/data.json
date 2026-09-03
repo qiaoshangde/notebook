@@ -1,12 +1,16 @@
 {
   "recentFiles": [
     {
-      "basename": "后台工具调用",
-      "path": "coding_agent/后台工具调用.md"
+      "basename": "权限模式",
+      "path": "coding_agent/权限模式.md"
     },
     {
       "basename": "多agent",
       "path": "coding_agent/多agent.md"
+    },
+    {
+      "basename": "后台工具调用",
+      "path": "coding_agent/后台工具调用.md"
     },
     {
       "basename": "coding agent的八股",
@@ -195,10 +199,6 @@
     {
       "basename": "反转链表II-头插法演示",
       "path": "八股/算法题/images/反转链表II-头插法演示.svg"
-    },
-    {
-      "basename": "面试",
-      "path": "agenticRAG/面试.md"
     }
   ],
   "omittedPaths": [],
