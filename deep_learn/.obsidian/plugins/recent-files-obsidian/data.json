@@ -1,20 +1,24 @@
 {
   "recentFiles": [
     {
-      "basename": "codetop前200题题解手册",
-      "path": "八股/算法题/codetop前200题题解手册.md"
-    },
-    {
       "basename": "后台工具调用",
       "path": "coding_agent/后台工具调用.md"
     },
     {
-      "basename": "hot100",
-      "path": "八股/算法题/hot100.md"
+      "basename": "多agent",
+      "path": "coding_agent/多agent.md"
     },
     {
       "basename": "coding agent的八股",
       "path": "coding_agent/coding agent的八股.md"
+    },
+    {
+      "basename": "codetop前200题题解手册",
+      "path": "八股/算法题/codetop前200题题解手册.md"
+    },
+    {
+      "basename": "hot100",
+      "path": "八股/算法题/hot100.md"
     },
     {
       "basename": "agent",
@@ -195,10 +199,6 @@
     {
       "basename": "面试",
       "path": "agenticRAG/面试.md"
-    },
-    {
-      "basename": "思考改进",
-      "path": "agenticRAG/思考改进.md"
     }
   ],
   "omittedPaths": [],

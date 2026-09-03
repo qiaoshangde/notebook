@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "2548e121b13dec26",
+        "id": "176b331d15ac239b",
         "type": "tabs",
         "children": [
           {
-            "id": "941b90f7d04fbb58",
+            "id": "88f5de0c1c87741a",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "八股/算法题/codetop前200题题解手册.md",
+                "file": "coding_agent/后台工具调用.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "codetop前200题题解手册"
+              "title": "后台工具调用"
             }
           }
         ]
@@ -92,7 +92,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "八股/算法题/codetop前200题题解手册.md",
+                "file": "coding_agent/后台工具调用.md",
                 "followCursor": true,
                 "showSearch": false,
                 "searchQuery": ""
@@ -101,8 +101,7 @@
               "title": "大纲"
             }
           }
-        ],
-        "currentTab": 4
+        ]
       },
       {
         "id": "ab52c96cd9267565",
@@ -308,12 +307,13 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "4a0cf99042f01edd",
+  "active": "88f5de0c1c87741a",
   "lastOpenFiles": [
+    "coding_agent/多agent.md",
+    "coding_agent/coding agent的八股.md",
     "coding_agent/后台工具调用.md",
     "八股/算法题/codetop前200题题解手册.md",
     "八股/算法题/hot100.md",
-    "coding_agent/coding agent的八股.md",
     "八股/agent/agent.md",
     "coding_agent/项目解析/会话运行状态.md",
     "coding_agent/项目解析/会话视图.md",
@@ -342,7 +342,6 @@
     "coding_agent",
     "八股/openclaw/openclaw.md",
     "八股/claude_code/claude code.md",
-    "八股/deepseek_harness/教程.md",
     "八股/deerflow",
     "八股/harmes",
     "八股/openclaw",
