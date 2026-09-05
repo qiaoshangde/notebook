@@ -1,16 +1,28 @@
 {
   "recentFiles": [
     {
+      "basename": "工具权限模式",
+      "path": "coding_agent/工具执行/工具权限模式.md"
+    },
+    {
+      "basename": "后台工具调用",
+      "path": "coding_agent/工具执行/后台工具调用.md"
+    },
+    {
       "basename": "用户审批HITL",
       "path": "coding_agent/用户审批HITL.md"
     },
     {
-      "basename": "权限模式",
-      "path": "coding_agent/权限模式.md"
+      "basename": "工具执行流程",
+      "path": "coding_agent/工具执行/工具执行流程.md"
     },
     {
-      "basename": "后台工具调用",
-      "path": "coding_agent/后台工具调用.md"
+      "basename": "工具的分类",
+      "path": "coding_agent/工具执行/工具的分类.md"
+    },
+    {
+      "basename": "coding agent的八股",
+      "path": "coding_agent/coding agent的八股.md"
     },
     {
       "basename": "碎碎念",
@@ -23,10 +35,6 @@
     {
       "basename": "多agent",
       "path": "coding_agent/多agent.md"
-    },
-    {
-      "basename": "coding agent的八股",
-      "path": "coding_agent/coding agent的八股.md"
     },
     {
       "basename": "hot100",
@@ -191,14 +199,6 @@
     {
       "basename": "记忆，长上下文压缩",
       "path": "Paicli/项目内容/记忆，长上下文压缩.md"
-    },
-    {
-      "basename": "SpringBoot基础注解与依赖注入笔记",
-      "path": "Java/SpringBoot基础注解与依赖注入笔记.md"
-    },
-    {
-      "basename": "idea快捷键",
-      "path": "Java/idea快捷键.md"
     }
   ],
   "omittedPaths": [],

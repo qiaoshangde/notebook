@@ -3928,7 +3928,7 @@
       },
       {
         "date": "2026-09-02",
-        "filePath": "coding_agent/后台工具调用.md",
+        "filePath": "coding_agent/工具执行/后台工具调用.md",
         "wordCountStart": 0,
         "charCountStart": 0,
         "changes": [],
@@ -3952,7 +3952,7 @@
       },
       {
         "date": "2026-09-03",
-        "filePath": "coding_agent/后台工具调用.md",
+        "filePath": "coding_agent/工具执行/后台工具调用.md",
         "wordCountStart": 478,
         "charCountStart": 16377,
         "changes": [],
@@ -3976,7 +3976,7 @@
       },
       {
         "date": "2026-09-03",
-        "filePath": "coding_agent/权限模式.md",
+        "filePath": "coding_agent/工具执行/工具权限模式.md",
         "wordCountStart": 0,
         "charCountStart": 0,
         "changes": [],
@@ -4008,7 +4008,7 @@
       },
       {
         "date": "2026-09-04",
-        "filePath": "coding_agent/后台工具调用.md",
+        "filePath": "coding_agent/工具执行/后台工具调用.md",
         "wordCountStart": 583,
         "charCountStart": 19320,
         "changes": [],
@@ -4016,7 +4016,7 @@
       },
       {
         "date": "2026-09-05",
-        "filePath": "coding_agent/权限模式.md",
+        "filePath": "coding_agent/工具执行/工具权限模式.md",
         "wordCountStart": 1766,
         "charCountStart": 28944,
         "changes": [],
@@ -4040,7 +4040,7 @@
       },
       {
         "date": "2026-09-05",
-        "filePath": "coding_agent/后台工具调用.md",
+        "filePath": "coding_agent/工具执行/后台工具调用.md",
         "wordCountStart": 583,
         "charCountStart": 19320,
         "changes": [],
@@ -4053,6 +4053,30 @@
         "charCountStart": 0,
         "changes": [],
         "id": 450
+      },
+      {
+        "date": "2026-09-05",
+        "filePath": "coding_agent/工具执行/工具执行流程.md",
+        "wordCountStart": 0,
+        "charCountStart": 0,
+        "changes": [],
+        "id": 451
+      },
+      {
+        "date": "2026-09-05",
+        "filePath": "coding_agent/coding agent的八股.md",
+        "wordCountStart": 814,
+        "charCountStart": 17708,
+        "changes": [],
+        "id": 452
+      },
+      {
+        "date": "2026-09-05",
+        "filePath": "coding_agent/工具执行/工具的分类.md",
+        "wordCountStart": 0,
+        "charCountStart": 0,
+        "changes": [],
+        "id": 453
       }
     ]
   }
