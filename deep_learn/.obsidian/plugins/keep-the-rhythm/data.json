@@ -4005,6 +4005,30 @@
         "charCountStart": 516879,
         "changes": [],
         "id": 444
+      },
+      {
+        "date": "2026-09-04",
+        "filePath": "coding_agent/后台工具调用.md",
+        "wordCountStart": 583,
+        "charCountStart": 19320,
+        "changes": [],
+        "id": 445
+      },
+      {
+        "date": "2026-09-05",
+        "filePath": "coding_agent/权限模式.md",
+        "wordCountStart": 1766,
+        "charCountStart": 28944,
+        "changes": [],
+        "id": 446
+      },
+      {
+        "date": "2026-09-05",
+        "filePath": "八股/算法题/codetop前200题题解手册.md",
+        "wordCountStart": 40072,
+        "charCountStart": 516793,
+        "changes": [],
+        "id": 447
       }
     ]
   }

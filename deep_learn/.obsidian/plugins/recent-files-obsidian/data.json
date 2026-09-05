@@ -1,10 +1,6 @@
 {
   "recentFiles": [
     {
-      "basename": "碎碎念",
-      "path": "碎碎念.md"
-    },
-    {
       "basename": "codetop前200题题解手册",
       "path": "八股/算法题/codetop前200题题解手册.md"
     },
@@ -13,12 +9,16 @@
       "path": "coding_agent/权限模式.md"
     },
     {
-      "basename": "多agent",
-      "path": "coding_agent/多agent.md"
-    },
-    {
       "basename": "后台工具调用",
       "path": "coding_agent/后台工具调用.md"
+    },
+    {
+      "basename": "碎碎念",
+      "path": "碎碎念.md"
+    },
+    {
+      "basename": "多agent",
+      "path": "coding_agent/多agent.md"
     },
     {
       "basename": "coding agent的八股",
