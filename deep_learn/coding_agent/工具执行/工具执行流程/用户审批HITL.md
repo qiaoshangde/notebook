@@ -1,6 +1,5 @@
 
 执行工具时，需要用户审批时，
-‘
 因为工具的不同，在请求审批时，用户能看到的选项也不同
 
 共有以下几种选项
@@ -9,10 +8,9 @@
 2、allow
 3、allow always
 
-
-其中支持写前预览的工具会出现下面两个选项
-4、Reject with feedback
-5、Apply reviewed change`
+其中支持写前预览的工具会出现下面一个选项
+4、Apply reviewed change
+以及输入框显示Reject ： 原因
 
 
 

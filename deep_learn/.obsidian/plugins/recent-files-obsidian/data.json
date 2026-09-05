@@ -1,24 +1,28 @@
 {
   "recentFiles": [
     {
+      "basename": "工具执行流程",
+      "path": "coding_agent/工具执行/工具执行流程/工具执行流程.md"
+    },
+    {
       "basename": "工具权限模式",
       "path": "coding_agent/工具执行/工具权限模式.md"
+    },
+    {
+      "basename": "工具的分类",
+      "path": "coding_agent/工具执行/工具的分类.md"
     },
     {
       "basename": "后台工具调用",
       "path": "coding_agent/工具执行/后台工具调用.md"
     },
     {
+      "basename": "写前预览",
+      "path": "coding_agent/工具执行/工具执行流程/写前预览.md"
+    },
+    {
       "basename": "用户审批HITL",
-      "path": "coding_agent/用户审批HITL.md"
-    },
-    {
-      "basename": "工具执行流程",
-      "path": "coding_agent/工具执行/工具执行流程.md"
-    },
-    {
-      "basename": "工具的分类",
-      "path": "coding_agent/工具执行/工具的分类.md"
+      "path": "coding_agent/工具执行/工具执行流程/用户审批HITL.md"
     },
     {
       "basename": "coding agent的八股",
@@ -195,10 +199,6 @@
     {
       "basename": "1759122866215",
       "path": "八股/agent/image/1759122866215.png"
-    },
-    {
-      "basename": "记忆，长上下文压缩",
-      "path": "Paicli/项目内容/记忆，长上下文压缩.md"
     }
   ],
   "omittedPaths": [],
