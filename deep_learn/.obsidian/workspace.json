@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "八股/算法题/codetop前200题题解手册.md",
+                "file": "碎碎念.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "codetop前200题题解手册"
+              "title": "碎碎念"
             }
           }
         ]
@@ -92,7 +92,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "八股/算法题/codetop前200题题解手册.md",
+                "file": "碎碎念.md",
                 "followCursor": true,
                 "showSearch": false,
                 "searchQuery": ""
@@ -101,8 +101,7 @@
               "title": "大纲"
             }
           }
-        ],
-        "currentTab": 4
+        ]
       },
       {
         "id": "ab52c96cd9267565",
@@ -176,7 +175,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "草稿箱/阅读：.md",
+                "file": "碎碎念.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -308,12 +307,12 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "4a0cf99042f01edd",
+  "active": "a673851de4847435",
   "lastOpenFiles": [
+    "八股/算法题/codetop前200题题解手册.md",
     "coding_agent/权限模式.md",
     "coding_agent/后台工具调用.md",
     "碎碎念.md",
-    "八股/算法题/codetop前200题题解手册.md",
     "coding_agent/多agent.md",
     "coding_agent/coding agent的八股.md",
     "八股/算法题/hot100.md",
