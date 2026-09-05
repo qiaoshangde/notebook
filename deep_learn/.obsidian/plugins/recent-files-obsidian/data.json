@@ -1,12 +1,8 @@
 {
   "recentFiles": [
     {
-      "basename": "碎碎念",
-      "path": "碎碎念.md"
-    },
-    {
-      "basename": "codetop前200题题解手册",
-      "path": "八股/算法题/codetop前200题题解手册.md"
+      "basename": "用户审批HITL",
+      "path": "coding_agent/用户审批HITL.md"
     },
     {
       "basename": "权限模式",
@@ -15,6 +11,14 @@
     {
       "basename": "后台工具调用",
       "path": "coding_agent/后台工具调用.md"
+    },
+    {
+      "basename": "碎碎念",
+      "path": "碎碎念.md"
+    },
+    {
+      "basename": "codetop前200题题解手册",
+      "path": "八股/算法题/codetop前200题题解手册.md"
     },
     {
       "basename": "多agent",
@@ -195,10 +199,6 @@
     {
       "basename": "idea快捷键",
       "path": "Java/idea快捷键.md"
-    },
-    {
-      "basename": "反转链表II-头插法演示",
-      "path": "八股/算法题/images/反转链表II-头插法演示.svg"
     }
   ],
   "omittedPaths": [],
