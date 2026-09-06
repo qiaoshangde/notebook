@@ -11,10 +11,14 @@
             "id": "a26195c69d04678e",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "agenticRAG/数据库.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "新标签页"
+              "title": "数据库"
             }
           }
         ]
@@ -88,6 +92,7 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "agenticRAG/数据库.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -170,6 +175,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "agenticRAG/数据库.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -301,8 +307,16 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "6a5eb320d475b043",
+  "active": "a26195c69d04678e",
   "lastOpenFiles": [
+    "agenticRAG/面试.md",
+    "agenticRAG/数据库.md",
+    "agenticRAG/思考改进.md",
+    "agenticRAG/数据.md",
+    "agenticRAG/评价指标.md",
+    "八股/算法题/codetop前200题题解手册.md",
+    "八股/算法题/经典排序算法手册.md",
+    "碎碎念.md",
     "coding_agent/评测/Harbor的零技术使用教程.md",
     "coding_agent/评测/agent的评测.md",
     "coding_agent/评测/未命名",
@@ -329,15 +343,7 @@
     "coding_agent/工具执行/工具执行流程",
     "coding_agent/工具执行/工具执行.md",
     "coding_agent/工具执行",
-    "碎碎念.md",
-    "八股/算法题/codetop前200题题解手册.md",
-    "八股/算法题/hot100.md",
-    "八股/agent/agent.md",
-    "coding_agent/会话/会话运行状态.md",
-    "coding_agent/会话/会话视图.md",
-    "八股/算法题/经典排序算法手册.md",
     "八股/workbuddy",
-    "conflict-files-obsidian-git.md",
     "coding_agent/项目解析",
     "八股/agent/image/Pasted image 20260706111316.png",
     "八股/agent/image/Pasted image 20260706105338.png",

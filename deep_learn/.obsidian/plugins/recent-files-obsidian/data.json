@@ -1,6 +1,38 @@
 {
   "recentFiles": [
     {
+      "basename": "数据库",
+      "path": "agenticRAG/数据库.md"
+    },
+    {
+      "basename": "面试",
+      "path": "agenticRAG/面试.md"
+    },
+    {
+      "basename": "思考改进",
+      "path": "agenticRAG/思考改进.md"
+    },
+    {
+      "basename": "数据",
+      "path": "agenticRAG/数据.md"
+    },
+    {
+      "basename": "评价指标",
+      "path": "agenticRAG/评价指标.md"
+    },
+    {
+      "basename": "codetop前200题题解手册",
+      "path": "八股/算法题/codetop前200题题解手册.md"
+    },
+    {
+      "basename": "经典排序算法手册",
+      "path": "八股/算法题/经典排序算法手册.md"
+    },
+    {
+      "basename": "碎碎念",
+      "path": "碎碎念.md"
+    },
+    {
       "basename": "Harbor的零技术使用教程",
       "path": "coding_agent/评测/Harbor的零技术使用教程.md"
     },
@@ -65,14 +97,6 @@
       "path": "coding_agent/工具执行/工具权限模式.md"
     },
     {
-      "basename": "碎碎念",
-      "path": "碎碎念.md"
-    },
-    {
-      "basename": "codetop前200题题解手册",
-      "path": "八股/算法题/codetop前200题题解手册.md"
-    },
-    {
       "basename": "hot100",
       "path": "八股/算法题/hot100.md"
     },
@@ -87,10 +111,6 @@
     {
       "basename": "会话视图",
       "path": "coding_agent/会话/会话视图.md"
-    },
-    {
-      "basename": "经典排序算法手册",
-      "path": "八股/算法题/经典排序算法手册.md"
     },
     {
       "basename": "八股",
@@ -179,26 +199,6 @@
     {
       "basename": "list",
       "path": "list/list.md"
-    },
-    {
-      "basename": "coding_agent 代码能力测试",
-      "path": "八股/agent/coding_agent 代码能力测试.md"
-    },
-    {
-      "basename": "Skills",
-      "path": "八股/skill/Skills.md"
-    },
-    {
-      "basename": "恋爱提升",
-      "path": "小知识/note/恋爱提升.md"
-    },
-    {
-      "basename": "穿搭护肤",
-      "path": "小知识/note/穿搭护肤.md"
-    },
-    {
-      "basename": "transformers库",
-      "path": "小知识/transformers库.md"
     }
   ],
   "omittedPaths": [],
