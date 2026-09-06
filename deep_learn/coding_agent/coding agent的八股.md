@@ -134,291 +134,6 @@ FirstCoder的“记忆召回”不是向量库自动搜索，而是三种机制�
 
 ## 4、上下文怎么管理的
 
-> FirstCoder每次给主模型发送的请求，可以分成 `messages`、工具定义和生成参数三部分。先说 `messages`，它是严格按顺序构建的。
-> 
-> 第一部分是系统前缀。最前面是一条稳定的 system message，内部依次包含基础规则、Agent工作规范、项目的 `AGENTS.md`、Skill协议与可用 Skill、Provider能力，以及权限策略。接着根据当前运行状态，可能再追加临时运行指令、任务验收条件和当前 TaskPlan，这些也都是 system message。
-> 
-> 第二部分是压缩后的历史。如果存在 Checkpoint，就先放一条 Checkpoint摘要，再从 Checkpoint指定的消息边界继续；如果没有 Checkpoint，就使用当前全部有效消息。如果之前有内容被裁剪，还会放一个“早期对话已裁剪”的提示。
-> 
-> 第三部分是真实消息尾部，按照发生顺序放入用户消息、模型回复、工具调用和工具结果。用户消息会带真实 message ID，供任务边界判断使用；工具调用后必须紧跟对应的工具结果，发送前还会校验这个协议。第一次调用通常以当前用户消息结尾，工具执行后的下一次调用通常以工具结果结尾。
-> 
-> `messages` 之外，请求还会携带当前可用工具的 Schema、`tool_choice`、温度、最大输出 Token 和 Provider私有参数。最后由不同 Provider适配器补充模型名称并转换成 OpenAI或Anthropic需要的格式。
-
-### 请求的完整顺序
-
-```
-ChatRequest
-│
-├── messages
-│   │
-│   ├── 1. 稳定系统提示词
-│   │      ├── 基础规则
-│   │      ├── Agent工作规范
-│   │      ├── AGENTS.md
-│   │      ├── Skill协议
-│   │      ├── 可用Skill
-│   │      ├── Provider能力
-│   │      └── 权限策略
-│   │
-│   ├── 2. 临时运行指令                  可选
-│   ├── 3. 验收条件                      可选
-│   ├── 4. 当前TaskPlan                  可选
-│   ├── 5. Checkpoint摘要                可选
-│   ├── 6. 早期对话已裁剪标记             可选
-│   │
-│   └── 7. 真实消息tail
-│          ├── user
-│          ├── assistant文本或tool_call
-│          ├── tool_result
-│          └── 后续user/assistant/tool...
-│
-├── tools：当前可见的工具Schema
-├── tool_choice：auto、none、required或指定工具
-├── temperature
-├── max_tokens
-└── extra_body：Provider私有参数
-```
-
-#### 1. 稳定系统提示词
-
-系统提示词内部顺序由 [prefix.py](E:\\agent\\后端agent开发资料\\FirstCoder\\firstcoder\\prompting\\domain\\prefix.py) 决定。
-
-这些内容会合并成第一条 system message，并通过指纹缓存；项目规则或Provider能力变化时才重新生成。
-
-#### 2～4. 动态system消息
-
-动态内容依次追加：
-
-```
-runtime_instruction
-→ acceptance_contract
-→ task_plan
-```
-
-对应 [request.py](E:\\agent\\后端agent开发资料\\FirstCoder\\firstcoder\\agent\\preparation\\request.py)。
-
-其中：
-
-- `runtime_instruction`：本轮临时指令，例如结束前要求协调未完成任务。
-- `acceptance_contract`：当前任务明确的验证和验收要求。
-- `task_plan`：最新结构化任务计划，只发送当前快照。
-
-#### 5～7. Checkpoint与真实历史
-
-顺序是：
-
-```
-Checkpoint summary
-→ trimmed marker
-→ checkpoint之后的真实tail
-```
-
-没有 Checkpoint 时，直接从当前有效消息开始。对应 [builder.py](E:\\agent\\后端agent开发资料\\FirstCoder\\firstcoder\\context\\domain\\projection\\builder.py)。
-
-发送前还会：
-
-- 去掉内部 `system_meta`。
-- 忽略已经完全裁剪的空消息。
-- 把用户图片转换成多模态内容。
-- 把 assistant内部的工具调用转换成 Provider工具调用。
-- 把工具结果转换成 `role=tool`。
-- 校验工具调用和结果必须配对。
-
-#### 顶层请求字段
-
-最终的中立请求结构是：
-
-```
-ChatRequest(
-    messages=...,
-    tools=...,
-    tool_choice=...,
-    temperature=...,
-    max_tokens=...,
-    extra_body=...,
-)
-```
-
-定义位于 [contracts.py](E:\\agent\\后端agent开发资料\\FirstCoder\\firstcoder\\providers\\contracts.py)。
-
-需要补充一句：
-
-> 上述结构描述的是主 Agent请求。任务边界分类和 L4摘要也会调用模型，但它们属于内部辅助请求，使用专门的精简Prompt，并不会携带完整的主Agent上下文。
-
-可能的追问：
-
-1. 为什么工具Schema放在独立的 `tools` 字段，而不是system prompt中？
-2. 没有Checkpoint和存在Checkpoint时，请求消息数量分别如何确定？
-3. FirstCoder如何保证Checkpoint不会切断工具调用事务？
-4. 上下文超过Token预算时，请求发送前会经历什么流程？
-5. 为什么TaskPlan作为system消息，而不是普通user消息？
-6. 第一次模型调用和工具执行后的第二次调用有什么区别？
-7. OpenAI与Anthropic的system prompt和工具结果格式如何适配？
-8. 如何记录哪些工具结果已经真正进入过模型上下文？
-
-- 系统提示词为什么不能直接写进普通会话历史？
-- FirstCoder如何决定一轮请求发送多少条历史消息？
-- Checkpoint是如何减少上下文长度的？
-- 如何保证截取历史后不会切断工具调用和工具结果？
-- 为什么工具定义需要根据运行状态动态过滤？
-- 工具结果发送给模型后，系统如何记录它已经被消费？
-- 如果构建完成的请求仍然超过模型窗口，系统如何恢复？
-- 主 Agent请求、任务边界请求和L4摘要请求有什么区别？
-
-
-
-### 第一次模型调用和工具执行后的第二次调用有什么区别？
-#### 面试表达
-
-> 第一次模型调用和工具执行后的第二次调用，最大的区别是上下文尾部不同。第一次调用发生在用户消息写入 Session之后，请求通常以当前用户消息结尾，目的是让模型理解任务并决定直接回答还是调用工具。
-> 
-> 如果模型返回了工具调用，FirstCoder会先把这条 assistant消息持久化，再执行工具，并把每个工具结果继续写入 Session。然后重新构建第二次请求。此时请求尾部就变成了“用户问题、assistant工具调用、tool工具结果”的完整事务。第二次调用的目的不是重新理解问题，而是让模型根据真实工具结果继续推理，决定给出最终回答，还是继续发起下一轮工具调用。
-> 
-> 两次请求的系统提示词和基础工具集通常相同，但也可能发生变化，比如工具修改了TaskPlan、激活了新的MCP工具、产生了后台通知，或者触发了上下文压缩。还有一个重要细节：如果工具等待权限确认，第二次调用不会立即发生，而是等用户授权、工具产生最终结果以后再继续。
-
-#### 两次请求的消息对比
-
-假设用户要求读取一个文件。
-
-#### 第一次模型调用
-
-```
-messages:
-1. system：基础规则、AGENTS.md、权限策略等
-2. system：TaskPlan等动态指令（可选）
-3. checkpoint summary（可选）
-4. 历史消息
-5. user：请读取 config.json
-```
-
-这时模型还不知道文件内容，只能决定：
-
-```
-需要调用 read 工具
-```
-
-模型返回：
-
-```
-assistant
-└── tool_call
-    ├── name = read
-    └── arguments = {"path": "config.json"}
-```
-
-#### 中间发生的事情
-
-FirstCoder严格按照下面的顺序处理：
-
-```
-持久化assistant工具调用
-        ↓
-校验工具名称和参数
-        ↓
-进行权限判断
-        ↓
-执行工具
-        ↓
-持久化tool_result
-```
-
-源码中先保存 assistant响应，再执行工具：[engine.py](E:\\agent\\后端agent开发资料\\FirstCoder\\firstcoder\\agent\\turn\\engine.py)。
-
-这样即使执行期间程序崩溃，恢复时也能知道：
-
-- 模型曾经调用过什么工具。
-- 工具是否已经产生结果。
-- 是否需要补写中断结果。
-- 是否存在尚未完成的工具调用。
-
-#### 第二次模型调用
-
-第二次会从 Session重新构建请求：
-
-```
-messages:
-1. system：基础规则、AGENTS.md、权限策略等
-2. system：更新后的TaskPlan等动态指令（可选）
-3. checkpoint summary（可选）
-4. 历史消息
-5. user：请读取 config.json
-6. assistant：调用 read(path="config.json")
-7. tool：config.json的真实内容
-```
-
-模型看到工具结果后可能：
-
-```
-直接生成最终回答
-```
-
-也可能继续：
-
-```
-再调用search工具
-    ↓
-产生新的tool_result
-    ↓
-发起第三次模型调用
-```
-
-因此，它实际上是一个循环：
-
-```
-模型调用
-   ↓
-是否有tool_call？
-   ├── 没有 → 保存最终回答，结束
-   └── 有
-        ↓
-      保存assistant tool_call
-        ↓
-      执行并保存tool_result
-        ↓
-      重新构建完整请求
-        ↓
-      再次调用模型
-```
-
-循环入口可以在 [engine.py](E:\\agent\\后端agent开发资料\\FirstCoder\\firstcoder\\agent\\turn\\engine.py) 看到。
-
-#### 关键区别汇总
-
-| 维度       | 第一次调用          | 工具后的第二次调用                 |
-| -------- | -------------- | ------------------------- |
-| 消息尾部     | 当前用户消息         | assistant工具调用 + tool结果    |
-| 模型掌握的信息  | 只有任务描述和已有历史    | 已经拿到本轮工具执行结果              |
-| 主要目的     | 理解任务并选择行动      | 根据观察结果继续推理                |
-| 是否一定发生   | 用户轮通常会发生       | 只有模型发起工具调用才发生             |
-| 工具结果消费状态 | 当前结果还不存在       | 请求成功完成后，结果被标记为模型已消费       |
-| 工具定义     | 当前可用工具         | 可能因MCP激活、TaskPlan或运行状态而变化 |
-| 异常情况     | Provider调用可能失败 | 权限暂停、工具失败、取消都可能阻止或改变调用    |
-
-另外，即使工具执行失败，通常也会生成结构化的失败 `tool_result`。第二次调用仍然可以看到错误信息，然后决定重试、换工具或者向用户解释失败。
-
-#### 一个容易被追问的细节
-
-新产生的工具结果在第二次请求准备阶段还没有被标记为“模型已消费”。
-
-只有第二次Provider调用成功返回后，FirstCoder才记录这次投影已经被消费：[adapters.py](E:\\agent\\后端agent开发资料\\FirstCoder\\firstcoder\\agent\\turn\\adapters.py)。
-
-这保证了：
-
-> 模型尚未看过的新工具结果不能被上下文压缩提前归档。
-
-可能的追问：
-
-1. 为什么必须先持久化assistant工具调用，再真正执行工具？
-2. 程序在工具执行后、写入结果前崩溃，恢复时怎么处理？
-3. 工具调用需要用户授权时，整个Agent Loop如何暂停和恢复？
-4. 一次返回多个并行工具调用时，第二次请求如何组织结果？
-5. 为什么工具执行失败也必须生成一个对应的tool result？
-6. 工具结果什么时候才算被模型真正消费？
-7. 第二次请求触发上下文压缩时，如何保护本轮新工具结果？
-8. Agent如何防止模型无限循环调用工具？
-
-
-
 ## 5、一个turn 是怎么运行的
 #### 面试表达
 
@@ -468,7 +183,7 @@ pending_input为空
 触发第二次模型调用
 ```
 
-对应的核心控制流在 [engine.py](E:\\agent\\后端agent开发资料\\FirstCoder\\firstcoder\\agent\\turn\\engine.py)。
+
 
 真正触发第二次调用的是：
 
@@ -476,7 +191,6 @@ pending_input为空
 response = await complete_once()
 ```
 
-位于 [engine.py](E:\\agent\\后端agent开发资料\\FirstCoder\\firstcoder\\agent\\turn\\engine.py)。
 
 #### 几种具体情况
 
@@ -542,15 +256,12 @@ assistant
 
 
 
-后天任务运行：
 
-“FirstCoder 的后台工具机制主要解决长耗时工具阻塞 Agent Loop 的问题。模型调用工具时，可以附加后台执行标记。工具执行层先剥离这些控制参数，并完成参数校验和权限检查，之后把可信工具调用提交给线程池。系统会立即返回一个包含后台任务 ID 的占位工具结果，从而关闭原来的工具调用协议，主循环可以继续请求模型。真实工具执行完成后，结果进入完成队列，在下一次模型请求准备阶段，以独立的任务通知加入会话。系统还提供状态查询、协作式取消、并发上限、会话隔离和任务计划关联。这个设计的核心是把同步的工具调用事务和异步的任务完成事件分开处理。”
 
 ## 5、Agent上下文压缩机制怎么做的？
 ### prompt压缩如何实现的，剪裁哪些内容，怎么判断的
 ### prompt被错误裁剪了怎么办
 ### 压缩是怎么做的 压缩率是多少
-
 
 ## 6、介绍一下工具部分怎么做的？
 
@@ -712,9 +423,7 @@ autoresearch式地优化system prompt
 11. 介绍一下transformer架构？
     
 12. 为什么不使用GitHub上开源的而是要自己写一个？
-13. 
-14. 
-15. 
+
 FTS5是什么？
 # 面试问题
 ## 1、为什么要自己做一个新的coding agent？
@@ -731,13 +440,7 @@ FTS5是什么？
 ## 3、项目开发过程中最大的挑战是什么？
 
 
-## 4、你测评过你这个coding agent 吗?
-
-
-
 ## 5、做了几层记忆？记忆模块是怎么做的？
-
-
 
 ## 6、给了多少工具，hitl是怎么做的?
 
