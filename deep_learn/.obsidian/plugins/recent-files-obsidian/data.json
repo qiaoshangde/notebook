@@ -1,20 +1,28 @@
 {
   "recentFiles": [
     {
-      "basename": "codetop前200题题解手册",
-      "path": "八股/算法题/codetop前200题题解手册.md"
+      "basename": "coding agent的八股",
+      "path": "coding_agent/coding agent的八股.md"
     },
     {
-      "basename": "会话压缩机制",
-      "path": "coding_agent/会话/会话压缩机制.md"
+      "basename": "碎碎念",
+      "path": "碎碎念.md"
+    },
+    {
+      "basename": "项目分层",
+      "path": "coding_agent/项目分层.md"
     },
     {
       "basename": "讲解",
       "path": "coding_agent/讲解.md"
     },
     {
-      "basename": "coding agent的八股",
-      "path": "coding_agent/coding agent的八股.md"
+      "basename": "codetop前200题题解手册",
+      "path": "八股/算法题/codetop前200题题解手册.md"
+    },
+    {
+      "basename": "会话压缩机制",
+      "path": "coding_agent/会话/会话压缩机制.md"
     },
     {
       "basename": "面试",
@@ -41,10 +49,6 @@
       "path": "八股/算法题/经典排序算法手册.md"
     },
     {
-      "basename": "碎碎念",
-      "path": "碎碎念.md"
-    },
-    {
       "basename": "Harbor的零技术使用教程",
       "path": "coding_agent/评测/Harbor的零技术使用教程.md"
     },
@@ -67,10 +71,6 @@
     {
       "basename": "构造一个turn请求",
       "path": "coding_agent/请求构造/构造一个turn请求.md"
-    },
-    {
-      "basename": "项目分层",
-      "path": "coding_agent/项目分层.md"
     },
     {
       "basename": "loop解析",
