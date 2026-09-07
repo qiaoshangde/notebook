@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "codetop前200题题解手册",
+      "path": "八股/算法题/codetop前200题题解手册.md"
+    },
+    {
       "basename": "会话压缩机制",
       "path": "coding_agent/会话/会话压缩机制.md"
     },
@@ -31,10 +35,6 @@
     {
       "basename": "评价指标",
       "path": "agenticRAG/评价指标.md"
-    },
-    {
-      "basename": "codetop前200题题解手册",
-      "path": "八股/算法题/codetop前200题题解手册.md"
     },
     {
       "basename": "经典排序算法手册",
