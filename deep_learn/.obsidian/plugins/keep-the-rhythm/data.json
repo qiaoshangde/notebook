@@ -4305,6 +4305,38 @@
         "charCountStart": 0,
         "changes": [],
         "id": 480
+      },
+      {
+        "date": "2026-09-07",
+        "filePath": "coding_agent/coding agent的八股.md",
+        "wordCountStart": 495,
+        "charCountStart": 11191,
+        "changes": [],
+        "id": 481
+      },
+      {
+        "date": "2026-09-07",
+        "filePath": "agenticRAG/面试.md",
+        "wordCountStart": 408,
+        "charCountStart": 7183,
+        "changes": [],
+        "id": 482
+      },
+      {
+        "date": "2026-09-07",
+        "filePath": "coding_agent/会话/会话压缩机制.md",
+        "wordCountStart": 1521,
+        "charCountStart": 24485,
+        "changes": [],
+        "id": 483
+      },
+      {
+        "date": "2026-09-07",
+        "filePath": "coding_agent/讲解.md",
+        "wordCountStart": 0,
+        "charCountStart": 0,
+        "changes": [],
+        "id": 484
       }
     ]
   }
