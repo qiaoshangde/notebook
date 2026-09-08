@@ -7,7 +7,7 @@
 ### 1.1 请用一分钟介绍FirstCoder
 
 面试表达：
-> FirstCoder 是我从零实现的一套本地 Coding Agent Harness，重点是模型之外的运行时。我实现了统一的 Agent Loop 和 Provider 适配，支持流式响应、多轮工具循环和分类重试。工具侧有可见性筛选、参数校验、权限审批以及串并行和后台调度，并保证每个 tool_call 都能闭合。Session 通过追加式 JSONL 支持重放恢复，长上下文使用分层压缩、Checkpoint 和归档控制。任务侧有 TaskPlan 版本控制、计划对账和完成门禁；四类子 Agent 按角色隔离工具，后台 coder 再用 Git Worktree 隔离文件。最后通过 Harbor 接入 Aider Polyglot 和 Terminal-Bench，验证整套 Harness。
+> 我从零实现的一套本地 Coding Agent Harness，重点是模型之外的运行时。我实现了统一的 Agent Loop 和 Provider 适配，支持流式响应、多轮工具循环和分类重试。工具侧有可见性筛选、参数校验、权限审批以及串并行和后台调度，并保证每个 tool_call 都能闭合。Session 通过追加式 JSONL 支持重放恢复，长上下文使用分层压缩、Checkpoint 和归档控制。任务侧有 TaskPlan 版本控制、计划对账和完成门禁；四类子 Agent 按角色隔离工具，后台 coder 再用 Git Worktree 隔离文件。最后通过 Harbor 接入 Aider Polyglot 和 Terminal-Bench，验证整套 Harness。
 
 #### 可能的追问
 
@@ -42,7 +42,7 @@
 ### 1.2 请用三分钟介绍FirstCoder
 
 面试表达：
-> FirstCoder 是我从零实现的一套本地 Coding Agent Harness。相比介绍读代码、改文件这些通用能力，我主要会讲五部分 Agent 工程设计。
+> 我从零实现的一套本地 Coding Agent Harness。我主要会讲五部分 Agent 工程设计。
 >
 > 第一部分是 Agent Loop 和 Provider 适配。内部使用统一的请求、响应、工具调用和流式事件，再转换成 OpenAI 兼容协议或 Anthropic 协议。一次 Turn 中，模型可以多次调用工具：系统先保存调用，执行并写回结果，再重新构造模型请求。网络、限流、超时等瞬时错误会有限重试；上下文过长则先强制压缩再重试，不会把所有错误混在一起处理。
 >
