@@ -5,6 +5,22 @@
       "path": "coding_agent/coding agent的八股.md"
     },
     {
+      "basename": "会话压缩机制",
+      "path": "coding_agent/会话/会话压缩机制.md"
+    },
+    {
+      "basename": "会话重建",
+      "path": "coding_agent/会话/会话重建.md"
+    },
+    {
+      "basename": "讲解",
+      "path": "coding_agent/讲解.md"
+    },
+    {
+      "basename": "后台工具调用",
+      "path": "coding_agent/工具执行/后台工具调用.md"
+    },
+    {
       "basename": "工具结果的处理",
       "path": "coding_agent/请求构造/工具结果的处理.md"
     },
@@ -15,10 +31,6 @@
     {
       "basename": "两次请求分析",
       "path": "coding_agent/请求构造/两次请求分析.md"
-    },
-    {
-      "basename": "后台工具调用",
-      "path": "coding_agent/工具执行/后台工具调用.md"
     },
     {
       "basename": "面试",
@@ -53,16 +65,8 @@
       "path": "coding_agent/项目分层.md"
     },
     {
-      "basename": "讲解",
-      "path": "coding_agent/讲解.md"
-    },
-    {
       "basename": "codetop前200题题解手册",
       "path": "八股/算法题/codetop前200题题解手册.md"
-    },
-    {
-      "basename": "会话压缩机制",
-      "path": "coding_agent/会话/会话压缩机制.md"
     },
     {
       "basename": "数据库",
@@ -191,14 +195,6 @@
     {
       "basename": "Pasted image 20260706111316",
       "path": "八股/agent/image/Pasted image 20260706111316.png"
-    },
-    {
-      "basename": "Pasted image 20260706105338",
-      "path": "八股/agent/image/Pasted image 20260706105338.png"
-    },
-    {
-      "basename": "项目进度",
-      "path": "list/项目进度.md"
     }
   ],
   "omittedPaths": [],
