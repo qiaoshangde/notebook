@@ -5,6 +5,18 @@
       "path": "coding_agent/coding agent的八股.md"
     },
     {
+      "basename": "工具结果的处理",
+      "path": "coding_agent/请求构造/工具结果的处理.md"
+    },
+    {
+      "basename": "构造一个turn请求",
+      "path": "coding_agent/请求构造/构造一个turn请求.md"
+    },
+    {
+      "basename": "两次请求分析",
+      "path": "coding_agent/请求构造/两次请求分析.md"
+    },
+    {
       "basename": "后台工具调用",
       "path": "coding_agent/工具执行/后台工具调用.md"
     },
@@ -83,14 +95,6 @@
     {
       "basename": "工具暴露",
       "path": "coding_agent/请求构造/工具暴露.md"
-    },
-    {
-      "basename": "两次请求分析",
-      "path": "coding_agent/请求构造/两次请求分析.md"
-    },
-    {
-      "basename": "构造一个turn请求",
-      "path": "coding_agent/请求构造/构造一个turn请求.md"
     },
     {
       "basename": "loop解析",
@@ -195,10 +199,6 @@
     {
       "basename": "项目进度",
       "path": "list/项目进度.md"
-    },
-    {
-      "basename": "日程安排",
-      "path": "list/日程安排.md"
     }
   ],
   "omittedPaths": [],
