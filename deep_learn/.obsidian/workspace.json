@@ -115,7 +115,8 @@
               "title": "大纲"
             }
           }
-        ]
+        ],
+        "currentTab": 4
       },
       {
         "id": "ab52c96cd9267565",
@@ -321,10 +322,12 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "00dc45c32950af23",
+  "active": "4a0cf99042f01edd",
   "lastOpenFiles": [
-    "coding_agent/会话/会话压缩机制.md",
+    "coding_agent/评测/Harbor的零技术使用教程.md",
+    "coding_agent/评测/agent的评测.md",
     "coding_agent/coding agent的八股.md",
+    "coding_agent/会话/会话压缩机制.md",
     "coding_agent/会话/会话重建.md",
     "coding_agent/会话/未命名.md",
     "coding_agent/讲解.md",
@@ -346,8 +349,6 @@
     "agenticRAG/数据.md",
     "agenticRAG/评价指标.md",
     "八股/算法题/经典排序算法手册.md",
-    "coding_agent/评测/Harbor的零技术使用教程.md",
-    "coding_agent/评测/agent的评测.md",
     "coding_agent/评测/未命名",
     "coding_agent/请求构造/工具暴露.md",
     "coding_agent/请求构造",

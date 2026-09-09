@@ -5,6 +5,14 @@
       "path": "coding_agent/coding agent的八股.md"
     },
     {
+      "basename": "Harbor的零技术使用教程",
+      "path": "coding_agent/评测/Harbor的零技术使用教程.md"
+    },
+    {
+      "basename": "agent的评测",
+      "path": "coding_agent/评测/agent的评测.md"
+    },
+    {
       "basename": "会话压缩机制",
       "path": "coding_agent/会话/会话压缩机制.md"
     },
@@ -87,14 +95,6 @@
     {
       "basename": "经典排序算法手册",
       "path": "八股/算法题/经典排序算法手册.md"
-    },
-    {
-      "basename": "Harbor的零技术使用教程",
-      "path": "coding_agent/评测/Harbor的零技术使用教程.md"
-    },
-    {
-      "basename": "agent的评测",
-      "path": "coding_agent/评测/agent的评测.md"
     },
     {
       "basename": "工具暴露",
