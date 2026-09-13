@@ -5,6 +5,30 @@
       "path": "coding_agent/coding agent的八股.md"
     },
     {
+      "basename": "数据",
+      "path": "agenticRAG/数据.md"
+    },
+    {
+      "basename": "数据库",
+      "path": "agenticRAG/数据库.md"
+    },
+    {
+      "basename": "面试",
+      "path": "agenticRAG/面试.md"
+    },
+    {
+      "basename": "评价指标",
+      "path": "agenticRAG/评价指标.md"
+    },
+    {
+      "basename": "思考改进",
+      "path": "agenticRAG/思考改进.md"
+    },
+    {
+      "basename": "碎碎念",
+      "path": "碎碎念.md"
+    },
+    {
       "basename": "agent的评测",
       "path": "coding_agent/评测/agent的评测.md"
     },
@@ -41,10 +65,6 @@
       "path": "coding_agent/请求构造/两次请求分析.md"
     },
     {
-      "basename": "面试",
-      "path": "agenticRAG/面试.md"
-    },
-    {
       "basename": "工具的分类",
       "path": "coding_agent/工具执行/工具的分类.md"
     },
@@ -65,32 +85,12 @@
       "path": "coding_agent/工具执行/工具执行流程/工具执行流程.md"
     },
     {
-      "basename": "碎碎念",
-      "path": "碎碎念.md"
-    },
-    {
       "basename": "项目分层",
       "path": "coding_agent/项目分层.md"
     },
     {
       "basename": "codetop前200题题解手册",
       "path": "八股/算法题/codetop前200题题解手册.md"
-    },
-    {
-      "basename": "数据库",
-      "path": "agenticRAG/数据库.md"
-    },
-    {
-      "basename": "思考改进",
-      "path": "agenticRAG/思考改进.md"
-    },
-    {
-      "basename": "数据",
-      "path": "agenticRAG/数据.md"
-    },
-    {
-      "basename": "评价指标",
-      "path": "agenticRAG/评价指标.md"
     },
     {
       "basename": "经典排序算法手册",
