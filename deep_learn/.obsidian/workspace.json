@@ -11,10 +11,14 @@
             "id": "d4223d017892615a",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "八股/算法题/codetop前200题题解手册.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "新标签页"
+              "title": "codetop前200题题解手册"
             }
           }
         ]
@@ -88,7 +92,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "coding_agent/coding agent的八股.md",
+                "file": "八股/算法题/codetop前200题题解手册.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -97,7 +101,8 @@
               "title": "大纲"
             }
           }
-        ]
+        ],
+        "currentTab": 4
       },
       {
         "id": "ab52c96cd9267565",
@@ -303,7 +308,7 @@
       "obsidian-day-planner:Open Multi-Day View": false
     }
   },
-  "active": "6a5eb320d475b043",
+  "active": "d4223d017892615a",
   "lastOpenFiles": [
     "agenticRAG/数据.md",
     "agenticRAG/数据库.md",
